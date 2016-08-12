@@ -21,7 +21,7 @@ class AppTest extends \miaoxing\plugin\tests\BaseTestCase
 
         // 更改视图为测试的目录
         $origDirs = $app->view->getOption('dirs');
-        $app->view->setDirs(['plugins/app/tests/fixtures/views']);
+        $app->view->setDirs(['vendor/miaoxing/app/tests/fixtures/views']);
 
         ob_start();
         $app->dispatch('test', $action);
