@@ -1,0 +1,15 @@
+{
+  "name": "miaoxing/app",
+  "keywords": [
+    "miaoxing", "app"
+  ],
+  "license": "MIT",
+  "require": {
+    "miaoxing/plugin": "dev-master"
+  },
+  "autoload": {
+    "psr-4": {
+      "miaoxing\\app\\": ""
+    }
+  }
+}
