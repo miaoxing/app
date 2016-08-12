@@ -1,0 +1,78 @@
+<?php
+
+namespace miaoxing\app\tests\fixtures\controllers;
+
+use miaoxing\app\tests\fixtures\middleware\ReturnResponse;
+use miaoxing\app\tests\fixtures\middleware\ReturnRet;
+use miaoxing\app\tests\fixtures\middleware\ReturnString;
+
+class Test extends \miaoxing\plugin\BaseController
+{
+    public function __construct(array $options = [])
+    {
+        parent::__construct($options);
+
+        $this->middleware(ReturnRet::className(), ['only' => 'returnRetInMiddleware']);
+        $this->middleware(ReturnString::className(), ['only' => 'returnStringInMiddleware']);
+        $this->middleware(ReturnResponse::className(), ['only' => 'returnResponseInMiddleware']);
+    }
+
+    public function sucAction()
+    {
+        return $this->suc();
+    }
+
+    public function errAction()
+    {
+        return $this->err('err', -2);
+    }
+
+    public function returnCodeAndMessageAction()
+    {
+        $code = 1;
+        $message = 'returnCodeAndMessage';
+        return get_defined_vars();
+    }
+
+    public function returnOnlyCodeAction()
+    {
+        $code = 1;
+        return get_defined_vars();
+    }
+
+    public function returnOnlyMessageAction()
+    {
+        $message = 'message';
+        return get_defined_vars();
+    }
+
+    public function returnResponseAction()
+    {
+        return $this->response->setContent('returnResponse');
+    }
+
+    public function returnEmptyArrayWillRenderViewAction()
+    {
+        return get_defined_vars();
+    }
+
+    public function returnRetInMiddlewareAction()
+    {
+        throw new \Exception('test error');
+    }
+
+    public function returnStringInMiddlewareAction()
+    {
+        throw new \Exception('test error');
+    }
+
+    public function returnResponseInMiddlewareAction()
+    {
+        throw new \Exception('test error');
+    }
+
+    public static function className()
+    {
+        return get_called_class();
+    }
+}
