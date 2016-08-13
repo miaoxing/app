@@ -5,9 +5,12 @@ namespace miaoxing\app\tests\fixtures\controllers;
 use miaoxing\app\tests\fixtures\middleware\ReturnResponse;
 use miaoxing\app\tests\fixtures\middleware\ReturnRet;
 use miaoxing\app\tests\fixtures\middleware\ReturnString;
+use Wei\RetTrait;
 
-class Test extends \miaoxing\plugin\BaseController
+class Test extends \Wei\BaseController
 {
+    use RetTrait;
+
     public function __construct(array $options = [])
     {
         parent::__construct($options);

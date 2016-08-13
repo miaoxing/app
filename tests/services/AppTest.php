@@ -14,14 +14,14 @@ class AppTest extends \miaoxing\plugin\tests\BaseTestCase
      */
     public function testResponse($action, $content)
     {
-        wei()->curUser->loginById(1);
+        //wei()->curUser->loginById(1);
 
         $app = wei()->app;
         $app->setControllerMap(['test' => Test::className()]);
 
         // 更改视图为测试的目录
         $origDirs = $app->view->getOption('dirs');
-        $app->view->setDirs(['vendor/miaoxing/app/tests/fixtures/views']);
+        $app->view->setDirs([dirname(__DIR__) . '/fixtures/views']);
 
         ob_start();
         $app->dispatch('test', $action);
@@ -38,7 +38,7 @@ class AppTest extends \miaoxing\plugin\tests\BaseTestCase
         return [
             [
                 'suc',
-                '{"message":"操作成功","code":1}'
+                json_encode(wei()->ret->suc()),
             ],
             [
                 'err',
