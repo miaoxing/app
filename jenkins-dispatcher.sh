@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # 1. 取出更改的文件
-results=$(git show --pretty="format:" --name-only HEAD~2..HEAD)
+results=$(git show --pretty="format:" --name-only HEAD~7..HEAD)
 if [[ -z "$results" ]];
 then
   echo "No changed files found."
@@ -14,10 +14,10 @@ fi
 plugins=()
 for file in ${results}
 do
-  if [[ ${file} == plugins/* ]];
+  if [[ ${file} == vendor/miaoxing/* ]];
   then
-    # 先移除前面的"plugins/",再移除"/"之后的字符串,得到插件名称
-    tmp=${file#plugins/}
+    # 先移除前面的"vendor/miaoxing/",再移除"/"之后的字符串,得到插件名称
+    tmp=${file#vendor/miaoxing/}
     tmp=${tmp%%/*}
     tmp=$(echo ${tmp} | sed -E 's/([A-Z])/-\L\1/g')
     plugins+=(${tmp})
@@ -27,8 +27,8 @@ done
 plugins=($(printf "%s\n" "${plugins[@]}" | sort -u))
 echo "Found plugins: ${plugins[@]}"
 
-# 3. 逐个插件触发构建
+# 3. 逐个插件推送到子仓库
 for plugin in ${plugins[@]}
 do
-  java -jar /var/jenkins_home/jenkins-cli.jar -s http://localhost:8080/ build miaoxing-${plugin}
+  git subrepo push vendor/miaoxing/${plugin} -d -v
 done
