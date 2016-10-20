@@ -1,6 +1,6 @@
 <?php
 
-namespace miaoxing\app\jobs;
+namespace Miaoxing\App\Job;
 
 use plugins\queue\Job;
 use services\BaseJob;
