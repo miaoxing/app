@@ -1,6 +1,6 @@
 <?php
 
-namespace miaoxing\app\features;
+namespace Miaoxing\App;
 
 trait Constant
 {
