@@ -20,7 +20,7 @@ namespace miaoxing\app\docs {
 namespace {
     // 为视图提供代码提示
 
-    /** @var \miaoxing\plugin\services\App $app */
+    /** @var \Miaoxing\Plugin\Service\App $app */
     $app = wei()->app;
 
     /** @var \Wei\View $view */
