@@ -2,7 +2,7 @@
 
 namespace miaoxing\app\tests\fixtures\middleware;
 
-class ReturnString extends \miaoxing\plugin\middleware\Base
+class ReturnString extends \Miaoxing\Plugin\Middleware\Base
 {
     /**
      * {@inheritdoc}

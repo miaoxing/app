@@ -2,7 +2,7 @@
 
 namespace miaoxing\app\tests\fixtures\middleware;
 
-class ReturnResponse extends \miaoxing\plugin\middleware\Base
+class ReturnResponse extends \Miaoxing\Plugin\Middleware\Base
 {
     /**
      * {@inheritdoc}
