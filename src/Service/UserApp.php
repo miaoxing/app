@@ -1,6 +1,6 @@
 <?php
 
-namespace miaoxing\app\services;
+namespace Miaoxing\App\Service;
 
 class UserApp extends \miaoxing\plugin\BaseModel
 {

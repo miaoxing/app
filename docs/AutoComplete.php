@@ -2,15 +2,15 @@
 
 namespace miaoxing\app\docs {
     /**
-     * @property    \miaoxing\app\services\AppRecord $appRecord 应用数据表服务
-     * @method      \miaoxing\app\services\AppRecord|\miaoxing\app\services\AppRecord[] appRecord()
+     * @property    \Miaoxing\App\Service\AppRecord $appRecord 应用数据表服务
+     * @method      \Miaoxing\App\Service\AppRecord|\Miaoxing\App\Service\AppRecord[] appRecord()
      *
-     * @property    \miaoxing\app\services\UserApp $userApp 用户拥有的应用
-     * @method      \miaoxing\app\services\UserApp|\miaoxing\app\services\UserApp[] userApp()
+     * @property    \Miaoxing\App\Service\UserApp $userApp 用户拥有的应用
+     * @method      \Miaoxing\App\Service\UserApp|\Miaoxing\App\Service\UserApp[] userApp()
      *
      * @property    \services\UrlMapper urlMapper() URL地址映射
      *
-     * @property    \miaoxing\app\services\Status $status 状态服务
+     * @property    \Miaoxing\App\Service\Status $status 状态服务
      */
     class AutoComplete
     {
