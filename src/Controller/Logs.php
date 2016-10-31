@@ -1,6 +1,6 @@
 <?php
 
-namespace miaoxing\app\controllers;
+namespace Miaoxing\App\Controller;
 
 class Logs extends \miaoxing\plugin\BaseController
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace miaoxing\app\controllers\admin;
+namespace Miaoxing\App\Controller\Admin;
 
 class AppSettings extends \miaoxing\plugin\BaseController
 {
