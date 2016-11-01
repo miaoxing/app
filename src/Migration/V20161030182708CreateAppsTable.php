@@ -2,18 +2,15 @@
 
 namespace Miaoxing\App\Migration;
 
-use miaoxing\plugin\BaseService;
-use services\Scheme;
-use Wei\Db;
+use Miaoxing\Plugin\BaseMigration;
 
-/**
- * @property Scheme $scheme
- * @property Db $db
- */
-class V20161030182708CreateAppsTable extends BaseService
+class V20161030182708CreateAppsTable extends BaseMigration
 {
     protected $table = 'apps2';
 
+    /**
+     * {@inheritdoc}
+     */
     public function up()
     {
         $this->scheme->table($this->table)
@@ -27,8 +24,7 @@ class V20161030182708CreateAppsTable extends BaseService
             ->string('description', 255)
             ->string('industry', 16)
             ->string('configs', 255)
-            ->timestamp('createTime')
-            ->timestamp('updateTime')
+            ->timestamps()
             ->int('createUser')
             ->int('updateUser')
             ->exec();
@@ -53,6 +49,9 @@ class V20161030182708CreateAppsTable extends BaseService
         ]]);
     }
 
+    /**
+     * {@inheritdoc}
+     */
     public function down()
     {
         $this->scheme->dropIfExists($this->table);
