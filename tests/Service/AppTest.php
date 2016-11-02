@@ -1,9 +1,8 @@
 <?php
 
-namespace miaoxing\app\tests\services;
+namespace MiaoxingTest\App\Service;
 
-
-use miaoxing\app\tests\fixtures\controllers\Test;
+use MiaoxingTest\App\Fixture\Controller\Test;
 
 class AppTest extends \miaoxing\plugin\tests\BaseTestCase
 {

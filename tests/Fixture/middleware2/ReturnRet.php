@@ -1,6 +1,6 @@
 <?php
 
-namespace miaoxing\app\tests\fixtures\middleware;
+namespace MiaoxingTest\App\Middleware;
 
 use Wei\RetTrait;
 

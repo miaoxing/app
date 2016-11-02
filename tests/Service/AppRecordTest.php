@@ -1,6 +1,6 @@
 <?php
 
-namespace miaoxing\app\tests\services;
+namespace MiaoxingTest\App\Service;
 
 class AppRecordTest extends \miaoxing\plugin\tests\BaseTestCase
 {
