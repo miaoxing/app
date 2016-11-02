@@ -2,9 +2,9 @@
 
 namespace MiaoxingTest\App\Fixture\Controller;
 
-use MiaoxingTest\App\Fixture\middleware\ReturnResponse;
-use MiaoxingTest\App\Fixture\middleware\ReturnRet;
-use MiaoxingTest\App\Fixture\middleware\ReturnString;
+use MiaoxingTest\App\Fixture\Middleware\ReturnResponse;
+use MiaoxingTest\App\Fixture\Middleware\ReturnRet;
+use MiaoxingTest\App\Fixture\Middleware\ReturnString;
 use Wei\RetTrait;
 
 class Test extends \Wei\BaseController
