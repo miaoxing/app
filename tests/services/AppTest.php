@@ -8,6 +8,8 @@ use miaoxing\app\tests\fixtures\controllers\Test;
 class AppTest extends \miaoxing\plugin\tests\BaseTestCase
 {
     /**
+     * 测试返回数据
+     *
      * @dataProvider dataForResponse
      * @param $action
      * @param $content
@@ -38,7 +40,7 @@ class AppTest extends \miaoxing\plugin\tests\BaseTestCase
         return [
             [
                 'suc',
-                json_encode(wei()->ret->suc()),
+                json_encode(wei()->ret->suc(), JSON_UNESCAPED_UNICODE),
             ],
             [
                 'err',
