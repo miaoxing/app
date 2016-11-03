@@ -47,7 +47,7 @@ class V20161030182708CreateAppsTable extends BaseMigration
             'createTime' => $now,
             'createUser' => 1,
             'updateTime' => $now,
-            'updateUser' => 1
+            'updateUser' => 1,
         ]]);
     }
 
