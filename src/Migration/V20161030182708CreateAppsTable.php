@@ -34,14 +34,16 @@ class V20161030182708CreateAppsTable extends BaseMigration
             'userId' => 1,
             'name' => 'app',
             'title' => 'app',
+            'pluginIds' => '',
             'createTime' => $now,
             'createUser' => 1,
             'updateTime' => $now,
-            'updateUser' => 1
+            'updateUser' => 1,
         ], [
             'userId' => 1,
             'name' => 'test',
             'title' => 'test',
+            'pluginIds' => '',
             'createTime' => $now,
             'createUser' => 1,
             'updateTime' => $now,
