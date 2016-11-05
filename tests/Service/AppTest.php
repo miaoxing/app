@@ -4,7 +4,7 @@ namespace MiaoxingTest\App\Service;
 
 use MiaoxingTest\App\Fixture\Controller\Test;
 
-class AppTest extends \miaoxing\plugin\tests\BaseTestCase
+class AppTest extends \MiaoxingTest\Plugin\BaseTestCase
 {
     /**
      * 测试返回数据
