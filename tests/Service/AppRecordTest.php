@@ -2,7 +2,7 @@
 
 namespace MiaoxingTest\App\Service;
 
-class AppRecordTest extends \MiaoxingTest\Plugin\BaseTestCase
+class AppRecordTest extends \Miaoxing\Plugin\Test\BaseTestCase
 {
     public function testGetIdByDomain()
     {

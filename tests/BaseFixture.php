@@ -5,7 +5,7 @@ namespace miaoxing\app\tests;
 class BaseFixture extends \miaoxing\plugin\BaseService
 {
     /**
-     * @var \MiaoxingTest\Plugin\BaseTestCase
+     * @var \Miaoxing\Plugin\Test\BaseTestCase
      */
     protected $test;
 
