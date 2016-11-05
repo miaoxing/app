@@ -43,40 +43,40 @@ class AppTest extends \MiaoxingTest\Plugin\BaseTestCase
             ],
             [
                 'err',
-                '{"message":"err","code":-2}'
+                '{"message":"err","code":-2}',
             ],
             [
                 'returnCodeAndMessage',
-                '{"code":1,"message":"returnCodeAndMessage"}'
+                '{"code":1,"message":"returnCodeAndMessage"}',
             ],
             [
                 'returnOnlyCode',
-                'returnOnlyCode'
+                'returnOnlyCode',
             ],
             [
                 'returnOnlyMessage',
-                'returnOnlyMessage'
+                'returnOnlyMessage',
             ],
             [
                 'returnResponse',
-                'returnResponse'
+                'returnResponse',
             ],
             [
                 'returnEmptyArrayWillRenderView',
-                'returnEmptyArrayWillRenderView'
+                'returnEmptyArrayWillRenderView',
             ],
             [
                 'returnRetInMiddleware',
-                '{"message":"returnRetInMiddleware","code":1}'
+                '{"message":"returnRetInMiddleware","code":1}',
             ],
             [
                 'returnStringInMiddleware',
-                'returnStringInMiddleware'
+                'returnStringInMiddleware',
             ],
             [
                 'returnResponseInMiddleware',
-                'returnResponseInMiddleware'
-            ]
+                'returnResponseInMiddleware',
+            ],
         ];
     }
 }

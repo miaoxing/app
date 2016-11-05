@@ -10,7 +10,7 @@ class AppRecordTest extends \MiaoxingTest\Plugin\BaseTestCase
         $app = wei()->appRecord()->findOrInit(['domain' => 't.test.com']);
         $app->save([
             'name' => 'domain',
-            'domain' => ''
+            'domain' => '',
         ]);
 
         wei()->cache->remove($prefix . 't.test.com');
