@@ -1,7 +1,9 @@
 <?php
 
 return [
-    'plugin' => [
-        'curNamespace' => 'miaoxing\app'
+    'setting' => [
+        'providers' => [
+            'cache' => 'arrayCache',
+        ]
     ]
 ];
