@@ -17,5 +17,7 @@
     "psr-4": {
       "MiaoxingTest\\App\\": "tests"
     }
-  }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
 }
