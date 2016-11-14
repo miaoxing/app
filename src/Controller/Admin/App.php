@@ -33,7 +33,7 @@ class App extends \miaoxing\plugin\BaseController
 
         $appRecord = wei()->app->getRecord();
         $appRecord->save([
-            'domain' => $req['domain']
+            'domain' => (string) $req['domain']
         ]);
 
         return $this->suc();
