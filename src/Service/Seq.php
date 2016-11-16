@@ -31,15 +31,16 @@ class Seq extends \miaoxing\plugin\BaseService
         $offset = mt_rand(1, $offset);
 
         switch ($this->driver) {
-            case 'redis' :
+            case 'redis':
                 return $this->redis->incr($name, $offset);
 
-            case 'db' :
+            case 'db':
                 $stmt = $this->db->query("UPDATE $name SET id = id + $offset;SELECT id FROM $name");
                 $stmt->nextRowset();
-                return (int)$stmt->fetchColumn();
 
-            default :
+                return (int) $stmt->fetchColumn();
+
+            default:
                 throw new \Exception(sprintf('Unsupported driver "%s"', $this->driver));
         }
     }
