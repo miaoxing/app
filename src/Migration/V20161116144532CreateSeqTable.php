@@ -15,6 +15,8 @@ class V20161116144532CreateSeqTable extends BaseMigration
             ->bigInt('id')->autoIncrement()
             ->primary('id')
             ->exec();
+
+        $this->db->insert('seq', ['id' => 1]);
     }
 
     /**
