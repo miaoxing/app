@@ -48,7 +48,7 @@ class Status extends \miaoxing\plugin\BaseService
      */
     public function req($reqStatus, array $configs, $defaultId = false)
     {
-        $key = array_search($reqStatus, array_column($configs, 'name', 'id'));
+        $key = array_search($reqStatus, $this->coll->column($configs, 'name', 'id'));
         if ($key === false) {
             $key = $defaultId;
         }

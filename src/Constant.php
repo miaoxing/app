@@ -113,7 +113,7 @@ trait Constant
     {
         if (!isset(self::$constantNameToIds[$prefix])) {
             $constants = $this->getConstants($prefix);
-            $nameToIds = array_flip(array_column($constants, 'name'));
+            $nameToIds = array_flip(wei()->coll->column($constants, 'name'));
             self::$constantNameToIds[$prefix] = $nameToIds;
         }
         return self::$constantNameToIds[$prefix];
