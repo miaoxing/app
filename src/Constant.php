@@ -19,7 +19,7 @@ trait Constant
      */
     protected $constantExcludes = [
         'STATE_DIRTY',
-        'STATE_CLEAN'
+        'STATE_CLEAN',
     ];
 
     /**
@@ -61,6 +61,7 @@ trait Constant
         }
 
         self::$constants[$prefix] = $data;
+
         return $data;
     }
 
@@ -75,6 +76,7 @@ trait Constant
     public function getConstantValue($prefix, $id, $key)
     {
         $constants = $this->getConstants($prefix);
+
         return isset($constants[$id][$key]) ? $constants[$id][$key] : null;
     }
 
@@ -100,6 +102,7 @@ trait Constant
     public function getConstantIdByName($prefix, $name)
     {
         $nameToIds = $this->getConstantNameToIds($prefix);
+
         return isset($nameToIds[$name]) ? $nameToIds[$name] : null;
     }
 
@@ -116,6 +119,7 @@ trait Constant
             $nameToIds = array_flip(wei()->coll->column($constants, 'name'));
             self::$constantNameToIds[$prefix] = $nameToIds;
         }
+
         return self::$constantNameToIds[$prefix];
     }
 }

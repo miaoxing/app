@@ -58,6 +58,7 @@ class Status extends \miaoxing\plugin\BaseService
         } else {
             $config = $configs[$key];
         }
+
         return $config['name'];
     }
 

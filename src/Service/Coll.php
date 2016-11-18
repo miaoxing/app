@@ -17,6 +17,7 @@ class Coll extends \miaoxing\plugin\BaseService
         foreach ($data as $row) {
             $newData[$row[$key]] = $row;
         }
+
         return $newData;
     }
 
@@ -30,11 +31,12 @@ class Coll extends \miaoxing\plugin\BaseService
      */
     public function orderBy(array $array, $key = 'sort', $type = SORT_DESC)
     {
-        $array2 = array();
+        $array2 = [];
         foreach ($array as $k => $v) {
             $array2[$k] = $v[$key];
         }
         array_multisort($array2, $type, $array);
+
         return $array;
     }
 
@@ -54,7 +56,7 @@ class Coll extends \miaoxing\plugin\BaseService
             return call_user_func_array('array_column', func_get_args());
         }
 
-        $output = array();
+        $output = [];
 
         foreach ($input as $row) {
             $key = $value = null;
