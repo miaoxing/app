@@ -25,8 +25,7 @@ class V20161030182708CreateAppsTable extends BaseMigration
             ->string('industry', 16)
             ->string('configs', 255)
             ->timestamps()
-            ->int('createUser')
-            ->int('updateUser')
+            ->userstamps()
             ->exec();
 
         $now = date('Y-m-d H:i:s');
@@ -35,19 +34,19 @@ class V20161030182708CreateAppsTable extends BaseMigration
             'name' => 'app',
             'title' => 'app',
             'pluginIds' => '',
-            'createTime' => $now,
-            'createUser' => 1,
-            'updateTime' => $now,
-            'updateUser' => 1,
+            'created_at' => $now,
+            'created_by' => 1,
+            'updated_at' => $now,
+            'updated_by' => 1,
         ], [
             'userId' => 1,
             'name' => 'test',
             'title' => 'test',
             'pluginIds' => '',
-            'createTime' => $now,
-            'createUser' => 1,
-            'updateTime' => $now,
-            'updateUser' => 1,
+            'created_at' => $now,
+            'created_by' => 1,
+            'updated_at' => $now,
+            'updated_by' => 1,
         ]]);
     }
 
