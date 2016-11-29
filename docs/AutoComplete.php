@@ -34,7 +34,7 @@ namespace {
     /** @var \services\Url $url */
     $url = wei()->url;
 
-    /** @var \Wei\Request $url */
+    /* @var \Wei\Request $url */
     $req = wei()->req;
 
     /** @var \Wei\E $e */

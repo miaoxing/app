@@ -10,7 +10,7 @@ class AppRecord extends \miaoxing\plugin\BaseModel
     protected $table = 'apps';
 
     protected $providers = [
-        'db' => 'app.db'
+        'db' => 'app.db',
     ];
 
     protected $data = [
@@ -44,6 +44,7 @@ class AppRecord extends \miaoxing\plugin\BaseModel
 
         return $this->cache->get('appExists' . $name, 86400, function () use ($name) {
             $app = wei()->appRecord()->select('name')->fetch(['name' => $name]);
+
             return $app && $app['name'] === $name;
         });
     }
@@ -58,6 +59,7 @@ class AppRecord extends \miaoxing\plugin\BaseModel
     {
         return $this->cache->get('appDomain' . $domain, 86400, function () use ($domain) {
             $app = wei()->appRecord()->select('name')->fetch(['domain' => $domain]);
+
             return $app ? $app['name'] : false;
         });
     }
@@ -65,14 +67,14 @@ class AppRecord extends \miaoxing\plugin\BaseModel
     public function afterFind()
     {
         parent::afterFind();
-        $this['configs'] = (array)json_decode($this['configs'], true);
+        $this['configs'] = (array) json_decode($this['configs'], true);
         $this['pluginIds'] = explode(',', $this['pluginIds']);
     }
 
     public function beforeSave()
     {
         parent::beforeSave();
-        $this['configs'] = json_encode((array)$this['configs']);
+        $this['configs'] = json_encode((array) $this['configs']);
         $this['pluginIds'] = implode(',', $this['pluginIds']);
     }
 
