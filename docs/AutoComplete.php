@@ -1,6 +1,7 @@
 <?php
 
 namespace miaoxing\app\docs {
+
     /**
      * @property    \Miaoxing\App\Service\AppRecord $appRecord 应用数据表服务
      * @method      \Miaoxing\App\Service\AppRecord|\Miaoxing\App\Service\AppRecord[] appRecord()
@@ -18,6 +19,7 @@ namespace miaoxing\app\docs {
 }
 
 namespace {
+
     // 为视图提供代码提示
 
     /** @var \Miaoxing\Plugin\Service\App $app */

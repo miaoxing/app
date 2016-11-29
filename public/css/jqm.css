@@ -48,7 +48,7 @@
   -webkit-justify-content: center;
   justify-content: center;
   -webkit-box-align: center;
-  box-align: center;
+  box-align: center; /* csslint allow: known-properties */
   -webkit-align-items: center;
   align-items: center
 }
@@ -96,7 +96,7 @@
 
 .align-center {
   -webkit-box-align: center;
-  box-align: center;
+  box-align: center; /* csslint allow: known-properties */
   -webkit-align-items: center;
   align-items: center
 }

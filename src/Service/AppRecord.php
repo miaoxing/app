@@ -42,7 +42,7 @@ class AppRecord extends \miaoxing\plugin\BaseModel
             return true;
         }
 
-        return $this->cache->get('appExists' . $name, 86400, function () use($name) {
+        return $this->cache->get('appExists' . $name, 86400, function () use ($name) {
             $app = wei()->appRecord()->select('name')->fetch(['name' => $name]);
             return $app && $app['name'] === $name;
         });
@@ -56,7 +56,7 @@ class AppRecord extends \miaoxing\plugin\BaseModel
      */
     public function getIdByDomain($domain)
     {
-        return $this->cache->get('appDomain' . $domain, 86400, function () use($domain) {
+        return $this->cache->get('appDomain' . $domain, 86400, function () use ($domain) {
             $app = wei()->appRecord()->select('name')->fetch(['domain' => $domain]);
             return $app ? $app['name'] : false;
         });

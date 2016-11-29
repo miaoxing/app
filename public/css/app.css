@@ -62,6 +62,7 @@ body {
 
 /* TODO 待和后台合并为一个 */
 /* Spacing */
+/* csslint ignore:start */
 .m-a-sm {
   margin: .625rem !important;
 }
@@ -366,6 +367,7 @@ body {
   padding-top: 3rem !important;
   padding-bottom: 3rem !important;
 }
+/* csslint ignore:end */
 
 /* 头部的选项卡 */
 .header-tab {
