@@ -62,7 +62,8 @@ body {
 
 /* TODO 待和后台合并为一个 */
 /* Spacing */
-/* csslint ignore:start */
+/* 助手方法使用!important确保有效 */
+/* stylelint-disable declaration-no-important */
 .m-a-sm {
   margin: .625rem !important;
 }
@@ -367,7 +368,7 @@ body {
   padding-top: 3rem !important;
   padding-bottom: 3rem !important;
 }
-/* csslint ignore:end */
+/* stylelint-enable declaration-no-important */
 
 /* 头部的选项卡 */
 .header-tab {
