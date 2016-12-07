@@ -12,6 +12,8 @@ namespace miaoxing\app\docs {
      * @property    \services\UrlMapper urlMapper() URL地址映射
      *
      * @property    \Miaoxing\App\Service\Status $status 状态服务
+     *
+     * @property    \Miaoxing\App\Service\Captcha $captcha 验证码服务
      */
     class AutoComplete
     {
