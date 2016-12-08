@@ -8,7 +8,6 @@ use Wei\Session;
 
 /**
  * Class Captcha
- * @package Miaoxing\App\Servic
  * @property Session $session
  */
 class Captcha extends BaseService
@@ -28,6 +27,7 @@ class Captcha extends BaseService
 
         if ($code != $this->session['captcha']) {
             unset($this->session['captcha']);
+
             return $this->err('验证码不正确');
         }
 
