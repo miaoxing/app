@@ -15,44 +15,44 @@ class Captcha extends BaseService
     use RetTrait;
 
     /**
-     * @var integer the width of the generated CAPTCHA image. Defaults to 120.
+     * @var int the width of the generated CAPTCHA image. Defaults to 120
      */
     protected $width = 75;
 
     /**
-     * @var integer the height of the generated CAPTCHA image. Defaults to 50.
+     * @var int the height of the generated CAPTCHA image. Defaults to 50
      */
     protected $height = 32;
 
     /**
-     * @var integer padding around the text. Defaults to 2.
+     * @var int padding around the text. Defaults to 2
      */
     protected $padding = 2;
 
     /**
-     * @var integer the background color. For example, 0x55FF00.
-     * Defaults to 0xFFFFFF, meaning white color.
+     * @var int the background color. For example, 0x55FF00.
+     * Defaults to 0xFFFFFF, meaning white color
      */
     protected $backColor = 0xFFFFFF;
 
     /**
-     * @var integer the font color. For example, 0x55FF00. Defaults to 0x2040A0 (blue color).
+     * @var int the font color. For example, 0x55FF00. Defaults to 0x2040A0 (blue color)
      */
     protected $foreColor = 0x2040A0;
 
     /**
-     * @var boolean whether to use transparent background. Defaults to false.
+     * @var bool whether to use transparent background. Defaults to false
      */
     protected $transparent = false;
 
     /**
-     * @var integer the offset between characters. Defaults to -2. You can adjust this property
-     * in order to decrease or increase the readability of the captcha.
+     * @var int the offset between characters. Defaults to -2. You can adjust this property
+     * in order to decrease or increase the readability of the captcha
      */
     protected $offset = -2;
 
     /**
-     * @var string the TrueType font file. This can be either a file path or path alias.
+     * @var string the TrueType font file. This can be either a file path or path alias
      */
     protected $fontFile = '../../resources/fonts/SpicyRice.ttf';
 
