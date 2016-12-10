@@ -70,7 +70,7 @@ class Captcha extends BaseService
      */
     public function renderImageByGD($code)
     {
-        $this->fontFile = __DIR__ . '/' . $this->fontFile;
+        $fontFile = __DIR__ . '/' . $this->fontFile;
 
         $image = imagecreatetruecolor($this->width, $this->height);
 
@@ -95,17 +95,17 @@ class Captcha extends BaseService
         );
 
         $length = strlen($code);
-        $box = imagettfbbox(30, 0, $this->fontFile, $code);
-        $w = $box[4] - $box[0] + $this->offset * ($length - 1);
-        $h = $box[1] - $box[5];
-        $scale = min(($this->width - $this->padding * 2) / $w, ($this->height - $this->padding * 2) / $h);
+        $box = imagettfbbox(30, 0, $fontFile, $code);
+        $width = $box[4] - $box[0] + $this->offset * ($length - 1);
+        $height = $box[1] - $box[5];
+        $scale = min(($this->width - $this->padding * 2) / $width, ($this->height - $this->padding * 2) / $height);
         $x = 10;
         $y = round($this->height * 27 / 40);
         for ($i = 0; $i < $length; ++$i) {
             $fontSize = (int) (rand(26, 32) * $scale * 0.8);
             $angle = rand(-10, 10);
             $letter = $code[$i];
-            $box = imagettftext($image, $fontSize, $angle, $x, $y, $foreColor, $this->fontFile, $letter);
+            $box = imagettftext($image, $fontSize, $angle, $x, $y, $foreColor, $fontFile, $letter);
             $x = $box[2] + $this->offset;
         }
 
@@ -118,16 +118,21 @@ class Captcha extends BaseService
         return ob_get_clean();
     }
 
+    public function getCode()
+    {
+        return $this->session['captcha'];
+    }
+
     public function check($code)
     {
         if (!$code) {
-            return $this->err('请输入验证码');
+            return $this->err('请输入验证码', -1);
         }
 
         if ($code != $this->session['captcha']) {
             unset($this->session['captcha']);
 
-            return $this->err('验证码不正确');
+            return $this->err('验证码不正确', -2);
         }
 
         return $this->suc('通过验证');
