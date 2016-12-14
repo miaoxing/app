@@ -45,7 +45,7 @@ $view->layout();
 
       <div class="clearfix form-actions form-group">
         <div class="col-lg-offset-2">
-          <button class="btn btn-info" type="submit">
+          <button class="btn btn-primary" type="submit">
             <i class="fa fa-check bigger-110"></i>
             提交
           </button>
