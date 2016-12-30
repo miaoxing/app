@@ -129,7 +129,7 @@ class Captcha extends BaseService
             return $this->err('请输入验证码', -1);
         }
 
-        if ($code != $this->session['captcha']) {
+        if (strcasecmp($code, $this->session['captcha']) !== 0) {
             unset($this->session['captcha']);
 
             return $this->err('验证码不正确', -2);
