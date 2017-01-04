@@ -11,7 +11,7 @@ class V20161103140841CreateUserLogsTable extends BaseMigration
      */
     public function up()
     {
-        $this->scheme->table('userLogs')
+        $this->schema->table('userLogs')
             ->id()
             ->int('appId')
             ->int('userId')
@@ -34,6 +34,6 @@ class V20161103140841CreateUserLogsTable extends BaseMigration
      */
     public function down()
     {
-        $this->scheme->dropIfExists('userLogs');
+        $this->schema->dropIfExists('userLogs');
     }
 }

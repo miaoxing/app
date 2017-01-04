@@ -13,7 +13,7 @@ class V20161030182708CreateAppsTable extends BaseMigration
      */
     public function up()
     {
-        $this->scheme->table($this->table)
+        $this->schema->table($this->table)
             ->id()
             ->int('userId')
             ->text('pluginIds')
@@ -55,6 +55,6 @@ class V20161030182708CreateAppsTable extends BaseMigration
      */
     public function down()
     {
-        $this->scheme->dropIfExists($this->table);
+        $this->schema->dropIfExists($this->table);
     }
 }

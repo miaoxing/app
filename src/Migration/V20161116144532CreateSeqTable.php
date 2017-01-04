@@ -11,7 +11,7 @@ class V20161116144532CreateSeqTable extends BaseMigration
      */
     public function up()
     {
-        $this->scheme->table('seq')
+        $this->schema->table('seq')
             ->bigInt('id')->autoIncrement()
             ->primary('id')
             ->exec();
@@ -24,6 +24,6 @@ class V20161116144532CreateSeqTable extends BaseMigration
      */
     public function down()
     {
-        $this->scheme->dropIfExists('seq');
+        $this->schema->dropIfExists('seq');
     }
 }
