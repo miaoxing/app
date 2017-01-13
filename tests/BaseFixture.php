@@ -2,13 +2,13 @@
 
 namespace miaoxing\app\tests;
 
+use Miaoxing\Plugin\Test\BaseTestCase;
+
+/**
+ * @property BaseTestCase $testCase
+ */
 class BaseFixture extends \miaoxing\plugin\BaseService
 {
-    /**
-     * @var \Miaoxing\Plugin\Test\BaseTestCase
-     */
-    protected $test;
-
     /**
      * @return string
      */
