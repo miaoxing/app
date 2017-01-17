@@ -14,6 +14,7 @@ class V20170117121751CreateTrashTable extends BaseMigration
         $this->schema->table('trash')
             ->id()
             ->string('tableName', 64)
+            ->text('data')
             ->softDeletable()
             ->exec();
     }
