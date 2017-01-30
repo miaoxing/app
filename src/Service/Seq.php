@@ -35,7 +35,7 @@ class Seq extends \miaoxing\plugin\BaseService
                 return $this->redis->incr($name, $offset);
 
             case 'db':
-                $stmt = $this->db->query("UPDATE $name SET id = id + $offset;SELECT id FROM $name");
+                $stmt = $this->db->query("REPLACE INTO $name (stub) VALUES (1);SELECT LAST_INSERT_ID();");
                 $stmt->nextRowset();
 
                 return (int) $stmt->fetchColumn();

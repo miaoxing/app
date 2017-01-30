@@ -14,9 +14,9 @@ class V20161116144532CreateSeqTable extends BaseMigration
         $this->schema->table('seq')
             ->bigInt('id')->autoIncrement()
             ->primary('id')
+            ->tinyInt('stub')
+            ->unique('stub')
             ->exec();
-
-        $this->db->insert('seq', ['id' => 1]);
     }
 
     /**
