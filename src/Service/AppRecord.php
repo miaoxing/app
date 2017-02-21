@@ -57,7 +57,7 @@ class AppRecord extends \miaoxing\plugin\BaseModel
      */
     public function getIdByDomain($domain)
     {
-        $this->cache->clear();
+        wei()->cache->clear();
         return $this->cache->get('appDomain' . $domain, 86400, function () use ($domain) {
             $app = wei()->appRecord()->select('name')->fetch(['domain' => $domain]);
 
