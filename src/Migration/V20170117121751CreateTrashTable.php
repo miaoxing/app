@@ -15,7 +15,7 @@ class V20170117121751CreateTrashTable extends BaseMigration
             ->id()
             ->string('tableName', 64)
             ->text('data')
-            ->softDeletable()
+            ->softDeletableV1()
             ->exec();
     }
 

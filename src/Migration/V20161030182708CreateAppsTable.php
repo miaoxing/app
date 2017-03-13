@@ -24,8 +24,8 @@ class V20161030182708CreateAppsTable extends BaseMigration
             ->string('description', 255)
             ->string('industry', 16)
             ->string('configs', 255)
-            ->timestamps()
-            ->userstamps()
+            ->timestampsV1()
+            ->userstampsV1()
             ->exec();
 
         $now = date('Y-m-d H:i:s');
