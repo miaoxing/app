@@ -8,18 +8,17 @@
 
   <testsuites>
     <testsuite name="Default Test Suite">
-      <directory>./tests</directory>
+      <directory>tests</directory>
     </testsuite>
   </testsuites>
 
   <filter>
     <whitelist>
-      <directory>.</directory>
+      <directory>src</directory>
+      <directory>resources</directory>
       <exclude>
-        <directory>./data</directory>
-        <directory>./docs</directory>
-        <directory>./tests</directory>
-        <directory>./vendor</directory>
+        <directory>src/Lib</directory>
+        <directory>src/Migration</directory>
       </exclude>
     </whitelist>
   </filter>
