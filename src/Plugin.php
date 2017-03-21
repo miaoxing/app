@@ -49,7 +49,7 @@ class Plugin extends \miaoxing\plugin\BasePlugin
         $links[] = [
             'typeId' => 'site',
             'name' => '首页',
-            'url' => ''
+            'url' => '',
         ];
     }
 
