@@ -2,6 +2,9 @@
 
 namespace Miaoxing\App;
 
+use Miaoxing\App\Middleware\CheckAppStatus;
+use miaoxing\plugin\BaseController;
+
 class Plugin extends \miaoxing\plugin\BasePlugin
 {
     protected $name = '核心';
@@ -59,8 +62,23 @@ class Plugin extends \miaoxing\plugin\BasePlugin
 
     /**
      * 限制命令行控制器,只有在命令行下或超级管理员才可以访问
+     *
+     * @param BaseController $controller
      */
-    public function onControllerInit()
+    public function onControllerInit(BaseController $controller)
+    {
+        // 除去 admin/login 页面
+        if (substr($this->app->getController(), 0, 6) === 'admin/') {
+            $controller->middleware(CheckAppStatus::className());
+        }
+
+        $this->checkCli();
+    }
+
+    /**
+     * @todo 作为middleware
+     */
+    protected function checkCli()
     {
         if (substr($this->app->getController(), 0, 4) !== 'cli/') {
             return;
