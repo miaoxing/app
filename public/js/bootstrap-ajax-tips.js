@@ -1,5 +1,8 @@
 /* TODO 待ajaxTips移除autoMsg?功能后,合并到ajaxTips */
 (function (window, $) {
+  var unauthorizedCode = -401;
+  var tipsDelay = 2000;
+
   $(document)
     .ajaxSend(function (event, jqXHR, ajaxOptions) {
       if (ajaxOptions.loading) {
@@ -11,12 +14,12 @@
         $.loading('hide');
       }
     })
-    .ajaxSuccess(function (event, jqXHR, ajaxOptions) {
+    .ajaxSuccess(function (event, jqXHR) {
       // 未登录,跳转到登录地址
-      if (typeof jqXHR.responseJSON != 'undefined' && jqXHR.responseJSON.code == -401) {
+      if (typeof jqXHR.responseJSON !== 'undefined' && jqXHR.responseJSON.code === unauthorizedCode) {
         setTimeout(function () {
           window.location.href = jqXHR.responseJSON.redirect;
-        }, 2000);
+        }, tipsDelay);
       }
     })
     .ajaxError(function (event, jqXHR, ajaxOptions) {
@@ -31,7 +34,7 @@
         type: ajaxOptions.type,
         data: ajaxOptions.data,
         status: jqXHR.status,
-        response: jqXHR.responseText,
+        response: jqXHR.responseText
       });
     });
 }(window, $));

@@ -1,3 +1,4 @@
+/*eslint-disable */
 /**
  * Popup dialog base on bootbox.js [v4.2.0]
  *

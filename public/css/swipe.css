@@ -41,6 +41,6 @@
   box-shadow: 0 0 1px rgba(0, 0, 0, .6);
 }
 
-.swipe-nav li a.swipe-nav-active {
+.swipe-nav-active {
   background-color: rgba(0, 0, 0, .2);
 }

@@ -1,4 +1,7 @@
 (function (root, $) {
+  var showDuration = 350;
+  var hideDuration = 100;
+
   $.tips = function (message, options) {
     options = $.extend({}, $.tips.defaults, options);
 
@@ -15,7 +18,7 @@
       $tips.addClass('in');
     }, 0);
     if (options.delay > 0) {
-      setTimeout(hide, options.delay + 350);
+      setTimeout(hide, options.delay + showDuration);
     }
     $overlay.click(hide);
 
@@ -25,7 +28,7 @@
         setTimeout(function () {
           $overlay.remove();
           options.callback && options.callback();
-        }, 100);
+        }, hideDuration);
       }
     }
 

@@ -18,17 +18,17 @@
    * @link http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
    */
   $.req = function (name) {
-    name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
-    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+    name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
       results = regex.exec(location.search);
-    return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
   };
 
   /**
    * 当前项目的基础路径
    */
-  if (typeof $.appUrl == 'undefined') {
-    $.appUrl = $.baseUrl + '/' + ($.req('app') != '' ? $.req('app') : window.location.pathname.split('/')[1]);
+  if (typeof $.appUrl === 'undefined') {
+    $.appUrl = $.baseUrl + '/' + ($.req('app') !== '' ? $.req('app') : window.location.pathname.split('/')[1]);
   }
 
   /**
@@ -38,15 +38,15 @@
     if (url.indexOf('%s') !== -1) {
       // @link http://stackoverflow.com/questions/610406/javascript-equivalent-to-printf-string-format
       var i = 0;
-      typeof argsOrParam != 'object' && (argsOrParam = [argsOrParam]);
+      typeof argsOrParam !== 'object' && (argsOrParam = [argsOrParam]);
       url = url.replace(/%((%)|s)/g, function (m) {
-        return m[2] || argsOrParam[i++]
+        return m[2] || argsOrParam[i++];
       });
     } else {
       params = argsOrParam;
     }
     if (!$.isEmptyObject(params)) {
-      url += (-1 == url.indexOf('?') ? '?' : '&');
+      url += (url.indexOf('?') === -1 ? '?' : '&');
     }
     switch (typeof params) {
       case 'string' :
@@ -100,7 +100,12 @@
    * 记录日志到后台
    */
   $.log = function (message, level) {
-    typeof message != 'string' && (message = JSON.stringify(message));
-    $.post($.url('logs.json'), {message: message, level: level || 'error'}, function () {});
+    typeof message !== 'string' && (message = JSON.stringify(message));
+    $.post($.url('logs.json'), {
+      message: message,
+      level: level || 'error'
+    }, function () {
+      // 留空以便不弹出提示
+    });
   };
-})(window, $);
+}(window, $));
