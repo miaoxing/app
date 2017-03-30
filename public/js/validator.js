@@ -1,12 +1,12 @@
 define(['jquery-validation', 'jquery-validation-zh'], function () {
   // http://stackoverflow.com/a/19006517
   $.validator.setDefaults({
-    errorElement: "span",
-    errorClass: "help-block",
-    highlight: function (element, errorClass, validClass) {
+    errorElement: 'span',
+    errorClass: 'help-block',
+    highlight: function (element) {
       $(element).closest('.form-group').addClass('has-error');
     },
-    unhighlight: function (element, errorClass, validClass) {
+    unhighlight: function (element) {
       $(element).closest('.form-group').removeClass('has-error');
     },
     errorPlacement: function (error, element) {
