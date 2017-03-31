@@ -114,14 +114,14 @@ class Asset extends \Wei\Asset
         }
 
         if (count($files) > 1 && $this->wei->isDebug()) {
-            $config = json_decode(file_get_contents($this->concatFile), true);
+            $config = $this->getConcatConfig();
             if (!isset($config['revs'][$name]) && $config['revs'][$name] != $files) {
                 $config['revs'][$name] = $files;
                 foreach ($files as $file) {
                     $config['files'][$file][] = $name;
                     $config['files'][$file] = array_unique($config['files'][$file]);
                 }
-                file_put_contents($this->concatFile, json_encode($config, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
+                $this->setConcatConfig($config);
             }
         }
 
@@ -129,6 +129,25 @@ class Asset extends \Wei\Asset
         $baseUrl = trim($this->baseUrl, '/');
 
         return $baseUrl ? $url . '&b=' . $baseUrl : $url;
+    }
+
+    protected function getConcatConfig()
+    {
+        if (!is_file($this->concatFile)) {
+            $dir = dirname($this->concatFile);
+            if (!is_dir($dir)) {
+                mkdir($dir, 0777, true);
+            }
+
+            return [];
+        }
+
+        return json_decode(file_get_contents($this->concatFile), true);
+    }
+
+    protected function setConcatConfig($config)
+    {
+        file_put_contents($this->concatFile, json_encode($config, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));
     }
 
     /**
@@ -163,7 +182,7 @@ class Asset extends \Wei\Asset
     public function getRevMap()
     {
         if ($this->revMap === null) {
-            $this->revMap = (array) json_decode(file_get_contents($this->revFile));
+            $this->revMap = $this->getConcatConfig();
         }
 
         return $this->revMap;
