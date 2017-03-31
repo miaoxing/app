@@ -23,7 +23,6 @@ namespace miaoxing\app\docs {
 namespace {
 
     // 为视图提供代码提示
-    use Miaoxing\App\Service\Asset;
 
     /** @var \Miaoxing\Plugin\Service\App $app */
     $app = wei()->app;
@@ -43,7 +42,7 @@ namespace {
     /** @var \Wei\E $e */
     $e = wei()->e;
 
-    /** @var Asset $asset */
+    /** @var \Miaoxing\App\Service\Asset $asset */
     $asset = wei()->asset;
 
     /**
