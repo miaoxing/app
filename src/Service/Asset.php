@@ -182,7 +182,11 @@ class Asset extends \Wei\Asset
     public function getRevMap()
     {
         if ($this->revMap === null) {
-            $this->revMap = $this->getConcatConfig();
+            if (is_file($this->revFile)) {
+                $this->revMap = (array) json_decode(file_get_contents($this->revFile));
+            } else {
+                $this->revMap = [];
+            }
         }
 
         return $this->revMap;
