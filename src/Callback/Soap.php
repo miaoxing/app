@@ -4,13 +4,13 @@ namespace Miaoxing\App\Callback;
 
 abstract class Soap
 {
-    static function beforeSend(\Wei\Soap $soap, \SoapClient $soapClient)
+    public static function beforeSend(\Wei\Soap $soap, \SoapClient $soapClient)
     {
-        wei()->logger->debug(array(
+        wei()->logger->debug([
             'Request URL' => $soap->getUrl(),
             'Request Method' => $soap->getMethod(),
             'Parameters' => $soap->getData(),
-        ));
+        ]);
     }
 
     /**
@@ -19,7 +19,7 @@ abstract class Soap
      * @param $data
      * @param \Wei\Soap $soap
      */
-    static function success($data, \Wei\Soap $soap)
+    public static function success($data, \Wei\Soap $soap)
     {
         // 按需记录
     }
@@ -29,14 +29,14 @@ abstract class Soap
      *
      * @param \Wei\Soap $soap
      */
-    static function error(\Wei\Soap $soap)
+    public static function error(\Wei\Soap $soap)
     {
         $e = $soap->getErrorException();
         wei()->logger->error([
             'faultstring' => $e->faultstring,
             'faultcode' => $e->faultcode,
             'faultcodens' => $e->faultcodens,
-            'Exception' => (string)$e,
+            'Exception' => (string) $e,
         ]);
     }
 
@@ -46,12 +46,12 @@ abstract class Soap
      * @param \Wei\Soap $soap
      * @param \SoapClient $soapClient
      */
-    static function complete(\Wei\Soap $soap, \SoapClient $soapClient = null)
+    public static function complete(\Wei\Soap $soap, \SoapClient $soapClient = null)
     {
         if ($soapClient && wei()->isDebug()) {
             wei()->logger->debug([
                 'Request Body' => $soapClient->__getLastRequest(),
-                'Response Body' => $soapClient->__getLastResponse()
+                'Response Body' => $soapClient->__getLastResponse(),
             ]);
         }
     }
