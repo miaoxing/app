@@ -46,7 +46,9 @@ class Logger extends \Wei\Logger
     public function log($level, $message, $context = [], $fromErrorLogger = false)
     {
         // 将较高级别的日志,引到error.logger服务
-        if ($fromErrorLogger || (isset($this->levels[$level]) && $this->levels[$level] < $this->levels[$this->proxyLevel])) {
+        if ($fromErrorLogger
+            || (isset($this->levels[$level]) && $this->levels[$level] < $this->levels[$this->proxyLevel])
+        ) {
             return parent::log($level, $message, $context);
         } else {
             return $this->errorLogger->log($level, $message, $context, true);
