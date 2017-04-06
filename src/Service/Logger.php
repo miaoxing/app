@@ -35,7 +35,7 @@ class Logger extends \Wei\Logger
         'notice' => 'info',
         'critical' => 'fatal',
         'alert' => 'fatal',
-        'emergency' => 'fatal'
+        'emergency' => 'fatal',
     ];
 
     /**
@@ -43,7 +43,7 @@ class Logger extends \Wei\Logger
      *
      * @param bool $fromErrorLogger 是否来自error.logger对象
      */
-    public function log($level, $message, $context = array(), $fromErrorLogger = false)
+    public function log($level, $message, $context = [], $fromErrorLogger = false)
     {
         // 将较高级别的日志,引到error.logger服务
         if ($fromErrorLogger || (isset($this->levels[$level]) && $this->levels[$level] < $this->levels[$this->proxyLevel])) {
