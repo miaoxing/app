@@ -54,7 +54,19 @@ class Captcha extends BaseService
     /**
      * @var string the TrueType font file. This can be either a file path or path alias
      */
-    protected $fontFile = '../../resources/fonts/SpicyRice.ttf';
+    protected $fontFile = '';
+
+    /**
+     * {@inheritdoc}
+     */
+    public function __construct(array $options)
+    {
+        parent::__construct($options);
+
+        if (!$this->fontFile) {
+            $this->fontFile = __DIR__ . '/../../resources/fonts/SpicyRice.ttf';
+        }
+    }
 
     public function render()
     {
@@ -70,8 +82,6 @@ class Captcha extends BaseService
      */
     public function renderImageByGD($code)
     {
-        $fontFile = __DIR__ . '/' . $this->fontFile;
-
         $image = imagecreatetruecolor($this->width, $this->height);
 
         $backColor = imagecolorallocate(
@@ -95,7 +105,7 @@ class Captcha extends BaseService
         );
 
         $length = strlen($code);
-        $box = imagettfbbox(30, 0, $fontFile, $code);
+        $box = imagettfbbox(30, 0, $this->fontFile, $code);
         $width = $box[4] - $box[0] + $this->offset * ($length - 1);
         $height = $box[1] - $box[5];
         $scale = min(($this->width - $this->padding * 2) / $width, ($this->height - $this->padding * 2) / $height);
@@ -105,7 +115,7 @@ class Captcha extends BaseService
             $fontSize = (int) (rand(26, 32) * $scale * 0.8);
             $angle = rand(-10, 10);
             $letter = $code[$i];
-            $box = imagettftext($image, $fontSize, $angle, $x, $y, $foreColor, $fontFile, $letter);
+            $box = imagettftext($image, $fontSize, $angle, $x, $y, $foreColor, $this->fontFile, $letter);
             $x = $box[2] + $this->offset;
         }
 
