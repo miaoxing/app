@@ -59,19 +59,8 @@ $view->layout();
 
 <?= $block('js') ?>
 <script>
-  require(['assets/spectrum'], function () {
-    $('.js-brand-primary').spectrum();
-  });
-
-  require(['form', 'validator'], function () {
-    $('.js-setting-form')
-      .ajaxForm({
-        dataType: 'json',
-        beforeSubmit: function(arr, $form, options) {
-          return $form.valid();
-        }
-      })
-      .validate();
+  require(['plugins/app/js/admin/app-settings'], function (appSettings) {
+    appSettings.indexAction();
   });
 </script>
 <?= $block->end() ?>
