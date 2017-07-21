@@ -37,6 +37,9 @@ class App extends \miaoxing\plugin\BaseController
             'domain' => (string) $req['domain'],
         ]);
 
+        // 移除域名的缓存
+        $this->cache->remove('appDomain' . $req['domain']);
+
         return $this->suc();
     }
 
