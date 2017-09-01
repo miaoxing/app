@@ -114,6 +114,12 @@ jQuery.fn.populate = function(obj, options) {
         continue;
       }
 
+      // Ignore element like hidden field
+      var ignore = $(element).data('populate-ignore');
+      if (ignore || ignore === '') {
+        continue;
+      }
+
       // anything else, process
       switch(element.type || element.tagName) {
         case 'radio':
