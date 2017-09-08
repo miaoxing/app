@@ -12,6 +12,19 @@
 
   ToggleDisplay.prototype.reverseTarget = null;
 
+  ToggleDisplay.prototype.on = 'show';
+
+  ToggleDisplay.prototype.off = 'hide';
+
+  ToggleDisplay.prototype.methods = {
+    enable: function ($el) {
+      $el.prop('disabled', false);
+    },
+    disable: function ($el) {
+      $el.prop('disabled', true);
+    }
+  };
+
   ToggleDisplay.prototype.initialize = function () {
     this.change();
     this.$el.change($.proxy(this.change, this));
@@ -29,11 +42,19 @@
     }
 
     if (this.target) {
-      $(this.target)[match ? 'show' : 'hide']();
+      this.executeMethod($(this.target), match ? this.on : this.off);
     }
 
     if (this.reverseTarget) {
-      $(this.reverseTarget)[match ? 'hide' : 'show']();
+      this.executeMethod($(this.reverseTarget), match ? this.off : this.on);
+    }
+  };
+
+  ToggleDisplay.prototype.executeMethod = function ($el, method) {
+    if (typeof this.methods[method] !== 'undefined') {
+      this.methods[method]($el);
+    } else {
+      $el[method]();
     }
   };
 
