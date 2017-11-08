@@ -12,7 +12,7 @@ class Asset extends \Wei\Asset
      *
      * @var bool
      */
-    protected $enableRev = false;
+    protected $enableRev = null;
 
     /**
      * The URL prefix of revision file
@@ -59,11 +59,13 @@ class Asset extends \Wei\Asset
     {
         parent::__construct($options);
 
-        if (!$this->wei->isDebug()) {
-            $this->enableRev = true;
-        }
-        if (isset($this->wei->request['rev'])) {
-            $this->enableRev = (bool) $this->wei->request['rev'];
+        if ($this->enableRev == null) {
+            if (!$this->wei->isDebug()) {
+                $this->enableRev = true;
+            }
+            if (isset($this->wei->request['rev'])) {
+                $this->enableRev = (bool) $this->wei->request['rev'];
+            }
         }
 
         // 根据应用地址生成
