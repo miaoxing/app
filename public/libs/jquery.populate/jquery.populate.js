@@ -102,7 +102,7 @@ jQuery.fn.populate = function(obj, options) {
     // this is so that the next bit of code (a loop) can treat them the
     // same as any array-elements passed, ie radiobutton or checkox arrays,
     // and the code will just work
-    elements = element.type == undefined && element.length ? element : [element];
+    var elements = element.type == undefined && element.length ? element : [element];
 
     // populate the element correctly
     for(var e = 0; e < elements.length; e++) {
