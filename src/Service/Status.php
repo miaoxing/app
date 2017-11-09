@@ -4,6 +4,9 @@ namespace Miaoxing\App\Service;
 
 use Wei\Record;
 
+/**
+ * 状态
+ */
 class Status extends \miaoxing\plugin\BaseService
 {
     /**

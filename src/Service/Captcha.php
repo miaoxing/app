@@ -7,7 +7,8 @@ use Wei\RetTrait;
 use Wei\Session;
 
 /**
- * Class Captcha
+ * 图形验证码
+ *
  * @property Session $session
  */
 class Captcha extends BaseService

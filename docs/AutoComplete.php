@@ -1,19 +1,33 @@
 <?php
 
-namespace miaoxing\app\docs {
+namespace MiaoxingDoc\App {
 
     /**
-     * @property    \Miaoxing\Plugin\Service\AppRecord $appRecord 应用数据表服务
-     * @method      \Miaoxing\Plugin\Service\AppRecord|\Miaoxing\Plugin\Service\AppRecord[] appRecord()
+     * @property    \Miaoxing\App\Service\Asset $asset 
+     * @method      mixed asset($file, $version = true) 
+     * @see         \Miaoxing\App\Service\Asset::__invoke
      *
-     * @property    \Miaoxing\App\Service\UserApp $userApp 用户拥有的应用
-     * @method      \Miaoxing\App\Service\UserApp|\Miaoxing\App\Service\UserApp[] userApp()
+     * @property    \Miaoxing\App\Service\Captcha $captcha 图形验证码
      *
-     * @property    \Miaoxing\Plugin\Service\UrlMapper urlMapper() URL地址映射
+     * @property    \Miaoxing\App\Service\Coll $coll 
      *
-     * @property    \Miaoxing\App\Service\Status $status 状态服务
+     * @property    \Miaoxing\App\Service\Logger $logger 
+     * @method      bool logger($level, $message, $context = []) Logs with an arbitrary level
+     * @see         \Miaoxing\App\Service\Logger::__invoke
      *
-     * @property    \Miaoxing\App\Service\Captcha $captcha 验证码服务
+     * @property    \Miaoxing\App\Service\Page $page 页面
+     *
+     * @property    \Miaoxing\App\Service\Random $random 
+     *
+     * @property    \Miaoxing\App\Service\Seq $seq 
+     * @method      null|int seq($offset = 100) 
+     * @see         \Miaoxing\App\Service\Seq::__invoke
+     *
+     * @property    \Miaoxing\App\Service\Status $status 状态
+     *
+     * @property    \Miaoxing\App\Service\UserApp $userApp 
+     * @method      \Miaoxing\App\Service\UserApp|\Miaoxing\App\Service\UserApp[] userApp() 
+     * @see         \Miaoxing\App\Service\UserApp::__invoke
      */
     class AutoComplete
     {
@@ -22,33 +36,37 @@ namespace miaoxing\app\docs {
 
 namespace {
 
-    // 为视图提供代码提示
-
-    /** @var \Miaoxing\Plugin\Service\App $app */
-    $app = wei()->app;
-
-    /** @var \Wei\View $view */
-    $view = wei()->view;
-
-    /** @var \Wei\Block $block */
-    $block = wei()->block;
-
-    /** @var \services\Url $url */
-    $url = wei()->url;
-
-    /** @var \Wei\Request $req */
-    $req = wei()->req;
-
-    /** @var \Wei\E $e */
-    $e = wei()->e;
-
-    /** @var \Miaoxing\App\Service\Asset $asset */
-    $asset = wei()->asset;
-
     /**
-     * @return \miaoxing\app\docs\AutoComplete
+     * @return MiaoxingDoc\App\AutoComplete
      */
     function wei()
     {
     }
+
+    /** @var Miaoxing\App\Service\Asset $asset */
+    $asset = wei()->asset;
+
+    /** @var Miaoxing\App\Service\Captcha $captcha */
+    $captcha = wei()->captcha;
+
+    /** @var Miaoxing\App\Service\Coll $coll */
+    $coll = wei()->coll;
+
+    /** @var Miaoxing\App\Service\Logger $logger */
+    $logger = wei()->logger;
+
+    /** @var Miaoxing\App\Service\Page $page */
+    $page = wei()->page;
+
+    /** @var Miaoxing\App\Service\Random $random */
+    $random = wei()->random;
+
+    /** @var Miaoxing\App\Service\Seq $seq */
+    $seq = wei()->seq;
+
+    /** @var Miaoxing\App\Service\Status $status */
+    $status = wei()->status;
+
+    /** @var Miaoxing\App\Service\UserApp $userApp */
+    $userApp = wei()->userApp;
 }
