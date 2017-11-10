@@ -21,6 +21,8 @@ $.getUeditor = function () {
 };
 
 export default import(/* webpackChunkName:"ueditor-config" */ 'vendor/miaoxing/ueditor/modules/ueditor-config').then(() => {
-  import(/* webpackChunkName:"ueditor" */ 'comps/ueditor/ueditor.all.min');
-  import(/* webpackChunkName:"ueditor" */ 'comps/ueditor/lang/zh-cn/zh-cn');
+  return Promise.all([
+    import(/* webpackChunkName:"ueditor" */ 'comps/ueditor/ueditor.all.min'),
+    import(/* webpackChunkName:"ueditor" */ 'comps/ueditor/lang/zh-cn/zh-cn')
+  ]);
 });
