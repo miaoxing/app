@@ -2,11 +2,7 @@ import React from 'react';
 import {FormGroup, FormControl, ControlLabel, HelpBlock, Col} from 'react-bootstrap';
 import decamelize from 'decamelize';
 
-function Required() {
-  return (
-    <span className="text-warning">* </span>
-  )
-}
+import Required from 'Required.jsx';
 
 function FormRow({ label, name, help, controlSize, ...props }) {
   const id = decamelize(name, '-');
