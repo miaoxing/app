@@ -1,6 +1,17 @@
 // 原表单模块，待废弃
 
 define([], function () {
+  // require jquery-deparam
+  $.fn.loadParams = function () {
+    return this.loadJSON($.deparam(location.search.substring(1)));
+  };
+
+  // require jquery-deparam
+  $.queryUrl = function (url, args) {
+    var params = $.deparam(location.search.substring(1));
+    return $.url(url, typeof args != 'undefined' ? args : params, args);
+  };
+
   // 点击弹出ueditor的图片选择器
   $.fn.imageInput = function () {
     var editor = $.getUeditor();
