@@ -10,7 +10,7 @@ function FormAction({url}) {
           {' '}提交
         </Button>
         &nbsp; &nbsp; &nbsp;
-        <Button componentClass="a" href={url}>
+        <Button href={url}>
           <i className="fa fa-undo bigger-110"/>
           {' '}返回列表
         </Button>
