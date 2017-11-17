@@ -1,12 +1,12 @@
 import React from 'react';
 import PageHeader from './PageHeader.jsx';
 
-class Content extends React.Component {
+class Page extends React.Component {
   render () {
     var firstChild = React.Children.toArray(this.props.children)[0];
 
     return (
-      <div className="content-wrapper">
+      <div className="page-wrapper">
         {firstChild.type !== PageHeader && <PageHeader />}
         {this.props.children}
       </div>
@@ -14,4 +14,4 @@ class Content extends React.Component {
   }
 }
 
-export default Content
+export default Page
