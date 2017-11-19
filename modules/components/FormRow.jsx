@@ -1,5 +1,6 @@
 import React from 'react';
 import {FormGroup, FormControl, ControlLabel, HelpBlock, Col} from 'react-bootstrap';
+import {Options} from 'components';
 import decamelize from 'decamelize';
 import trim from 'trim-character';
 
@@ -9,11 +10,9 @@ function FormRow({ label, name, help, controlSize, ...props }) {
   // 移除 name[] 后面的 []
   const id = trim(decamelize(name.replace(/\[\]/g, '-'), '-'), '-');
 
-  var type = '';
-  React.Children.forEach(props.children, function (child) {
-    type || (type = child.type);
-  });
-  if (type == 'option') {
+  // 自动识别select类型
+  var firstChild = React.Children.toArray(props.children)[0];
+  if (firstChild && (firstChild.type === 'option' || firstChild.type === Options)) {
     props.componentClass = 'select';
   }
 

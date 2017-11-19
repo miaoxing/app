@@ -7,3 +7,4 @@ export PageHeader from './components/PageHeader.jsx';
 export DataTable from './components/DataTable.jsx';
 export Form from './components/Form.jsx';
 export SearchForm from './components/SearchForm.jsx';
+export Options from './components/Options.jsx';
