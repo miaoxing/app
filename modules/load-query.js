@@ -1,5 +1,8 @@
-export default import('./jquery-deparam').then(function () {
-  $.fn.loadParams = function () {
-    return this.loadJSON($.deparam(location.search.substring(1)));
+import jQueryDeparam from 'jquery-deparam';
+import jQueryPopulate from 'jquery-populate';
+
+export default Promise.all([jQueryDeparam, jQueryPopulate]).then(() => {
+  $.fn.loadQuery = function () {
+    return this.populate($.deparam(location.search.substring(1)));
   };
 });
