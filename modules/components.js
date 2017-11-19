@@ -5,4 +5,5 @@ export FormAction from './components/FormAction.jsx';
 export Required from './components/Required.jsx';
 export PageHeader from './components/PageHeader.jsx';
 export DataTable from './components/DataTable.jsx';
+export Form from './components/Form.jsx';
 export SearchForm from './components/SearchForm.jsx';
