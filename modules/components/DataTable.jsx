@@ -60,6 +60,7 @@ $.extend(true, $.fn.dataTable.defaults, {
     }
   },
   language: {
+    url: '',
     emptyTable: '暂无记录',
     sProcessing: "加载中...",
     sLengthMenu: "每页 _MENU_ 项结果",
@@ -70,7 +71,6 @@ $.extend(true, $.fn.dataTable.defaults, {
     sInfoPostFix: "",
     sInfoThousands: ' ',
     sSearch: "搜索:",
-    sUrl: "",
     paginate: {
       first: '<i class="fa fa-angle-double-left"></i>',
       previous: '<i class="fa fa-angle-left">',
