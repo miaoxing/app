@@ -21,13 +21,18 @@ $.extend(true, $.fn.dataTable.defaults, {
       sortable: false
     }
   ],
+  order: false, // 默认第一栏不排序
   ajax: {
     data: function (data) {
       // 转换为后台需要的参数
       data.rows = data.length;
       data.page = data.start / data.length + 1;
-      data.sort = data.columns[data.order[0].column].data;
-      data.order = data.order[0].dir;
+
+      // 如果有排序，先改为老的一维排序
+      if (data.order.length) {
+        data.sort = data.columns[data.order[0].column].data;
+        data.order = data.order[0].dir;
+      }
 
       delete data.draw;
       delete data.start;
