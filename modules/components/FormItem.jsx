@@ -6,7 +6,7 @@ import trim from 'trim-character';
 
 import Required from './Required.jsx';
 
-function FormRow({ label, name, help, controlSize, ...props }) {
+function FormItem({ label, name, help, controlSize, ...props }) {
   // 移除 name[] 后面的 []
   const id = trim(decamelize(name.replace(/\[\]/g, '-'), '-'), '-');
 
@@ -42,4 +42,4 @@ function FormRow({ label, name, help, controlSize, ...props }) {
   );
 }
 
-export default FormRow
+export default FormItem
