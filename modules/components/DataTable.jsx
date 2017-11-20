@@ -21,7 +21,7 @@ $.extend(true, $.fn.dataTable.defaults, {
       sortable: false
     }
   ],
-  order: false, // 默认第一栏不排序
+  order: [], // 默认第一栏不排序
   ajax: {
     data: function (data) {
       // 转换为后台需要的参数
