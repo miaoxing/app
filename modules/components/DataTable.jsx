@@ -2,13 +2,12 @@ import React from 'react';
 import {Table} from 'react-bootstrap';
 
 import 'datatables.net';
-import 'bootstrap/dist/css/bootstrap.css';
 import 'datatables.net-bs/js/dataTables.bootstrap';
-import 'datatables.net-bs/css/dataTables.bootstrap.css';
+//import 'datatables.net-bs/css/dataTables.bootstrap.css';
 
 // Reload dataTables with extra parameters
 $.extend(true, $.fn.dataTable.defaults, {
-  dom: "t<'row'<'col-sm-4'ir><'col-sm-8'pl>>",
+  dom: "tr<'row'<'col-sm-4'i><'col-sm-8'pl>>",
   processing: true,
   serverSide: true,
   autoWidth: false,
