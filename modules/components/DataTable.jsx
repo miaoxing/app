@@ -17,7 +17,8 @@ $.extend(true, $.fn.dataTable.defaults, {
   columnDefs: [
     {
       targets: ['_all'],
-      sortable: false
+      sortable: false,
+      orderSequence: ['desc', 'asc', '']
     }
   ],
   order: [[0, 'desc']], // 默认第一栏改为倒序
