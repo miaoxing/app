@@ -4,7 +4,7 @@ import {Table} from 'react-bootstrap';
 class DataTable extends React.Component {
   render () {
     return (
-      <Table bordered hover responsive className={this.props.className + ' table-center'}>
+      <Table bordered hover className={this.props.className + ' table-center'}>
         {this.props.children}
       </Table>
     );
