@@ -1,45 +1,24 @@
 /**
- * @summary     搜索
- * @description 指定的表单提交或控件值更改时，传递参数给dataTable并刷新
+ * 传入字符串参数搜索DataTable
  *
- * @example
- *    $('#myTable').DataTable({
- *        searchEl: 'search-form',
- *        searchEvent: 'submit'
- *    });
+ * 1. URL会更新
+ * 2. 会跳转到第一页
+ *
+ * @param setting
+ * @param params
  */
-
-$(document).on('init.dt', (event, settings) => {
-  if (event.namespace !== 'dt') {
-    return;
+$.fn.dataTableExt.oApi.search = function (setting, params) {
+  // 记录原始的URL,每次搜索使用原始URL,避免参数不断叠加
+  if (typeof setting.ajax.origUrl == 'undefined') {
+    setting.ajax.origUrl = setting.ajax.url;
   }
 
-  var api = $.fn.dataTable.Api(settings);
-  var options = api.init();
-  if (!options.searchEl) {
-    return;
+  // 允许直接传入jQuery对象
+  if (params instanceof jQuery) {
+    params = params.serializeArray();
   }
 
-  // 根据标签自动识别出事件
-  var $searchEl = $(options.searchEl);
-  if (!options.searchEvent) {
-    if ($searchEl[0].nodeName === 'FORM') {
-      options.searchEvent = 'submit';
-    } else {
-      options.searchEvent = 'change';
-    }
-  }
-
-  api.on('preXhr.dt', function (e, settings, data) {
-    var params = $(options.searchEl).serializeArray();
-    $.each(params, function (i, param) {
-      data[param.name] = param.value;
-    });
-  });
-
-  $searchEl.on(options.searchEvent, (e) => {
-    // 避免提交表单页面刷新
-    e.preventDefault();
-    api.ajax.reload();
-  });
-});
+  var table = this.DataTable();
+  var url = $.appendUrl(setting.ajax.origUrl, params);
+  table.ajax.url(url).load();
+};
