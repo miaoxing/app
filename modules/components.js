@@ -1,6 +1,5 @@
 export Page from './components/Page.jsx';
 export FormItem from './components/FormItem.jsx';
-export FormFilter from './components/FormFilter.jsx';
 export FormAction from './components/FormAction.jsx';
 export Required from './components/Required.jsx';
 export PageHeader from './components/PageHeader.jsx';
@@ -9,3 +8,4 @@ export Form from './components/Form.jsx';
 export SearchForm from './components/SearchForm.jsx';
 export Options from './components/Options.jsx';
 export ImageInput from './components/ImageInput.jsx';
+export SearchItem from './components/SearchItem.jsx';

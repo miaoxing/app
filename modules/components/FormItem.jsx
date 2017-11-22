@@ -1,12 +1,12 @@
 import React from 'react';
 import {FormGroup, FormControl, ControlLabel, HelpBlock, Col} from 'react-bootstrap';
-import {Options} from 'components';
+import Options from './Options.jsx';
 import decamelize from 'decamelize';
 import trim from 'trim-character';
 
 import Required from './Required.jsx';
 
-function FormItem({ label, name, help, controlSize, ...props }) {
+function FormItem({ label, name, help, labelSize, controlSize, groupSize, ...props }) {
   // 移除 name[] 后面的 []
   const id = trim(decamelize(name.replace(/\[\]/g, '-'), '-'), '-');
 
@@ -20,9 +20,14 @@ function FormItem({ label, name, help, controlSize, ...props }) {
     props.type = 'text';
   }
 
+  var groupProps = {};
+  if (groupSize) {
+    groupProps = {bsSize: groupSize};
+  }
+
   return (
-    <FormGroup controlId={id}>
-      <Col componentClass={ControlLabel} sm={2}>
+    <FormGroup controlId={id} {...groupProps}>
+      <Col componentClass={ControlLabel} sm={labelSize || 2}>
         {props.required && <Required />}
         {label}
       </Col>
