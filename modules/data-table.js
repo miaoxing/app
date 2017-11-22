@@ -1,3 +1,5 @@
+import './datatables/search';
+
 export default Promise.all([
   import (/* webpackChunkName:"jquery-data-tables" */ 'datatables.net'),
   import (/* webpackChunkName:"jquery-data-tables" */ 'datatables.net-bs/js/dataTables.bootstrap')
