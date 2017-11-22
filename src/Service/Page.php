@@ -28,7 +28,7 @@ class Page extends BaseService
         $path = dirname($this->app->getControllerAction());
         $path = $this->dash($path);
 
-        return $this->addJs($this->wpAsset('js/' . $path . '/' . $name . '.js'));
+        return $this->addJs($this->wpAsset($path . '/' . $name . '.js'));
     }
 
     /**
