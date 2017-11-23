@@ -9,6 +9,7 @@ use Wei\Block;
  * 页面
  *
  * @property Block $block
+ * @method string wpAsset($file)
  */
 class Page extends BaseService
 {
@@ -16,7 +17,20 @@ class Page extends BaseService
     {
         $this->block->start('js');
 
-        echo '<script src="' . $src . '"></script>', "\n";
+        foreach ((array)$src as $item) {
+            echo '<script src="' . $item . '"></script>', "\n";
+        }
+
+        $this->block->end();
+
+        return $this;
+    }
+
+    public function addCss($src)
+    {
+        $this->block->start('css');
+
+        echo ' <link rel="stylesheet" href="' . $src . '" />', "\n";
 
         $this->block->end();
 
@@ -28,7 +42,14 @@ class Page extends BaseService
         $path = dirname($this->app->getControllerAction());
         $path = $this->dash($path);
 
-        return $this->addJs($this->wpAsset($path . '/' . $name . '.js'));
+        // TODO 完善后再移到布局中
+        $this->addCss($this->wpAsset('common.css'));
+
+        return $this->addJs([
+            $this->wpAsset('manifest.js'),
+            $this->wpAsset('common.js'),
+            $this->wpAsset($path . '/' . $name . '.js')
+        ]);
     }
 
     /**
