@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import Form from './Form.jsx';
 import loadQuery from 'load-query';
-//import '../styles/_search-form.scss';
+import '../styles/_search-form.scss';
 
 class SearchForm extends React.Component {
   componentDidMount () {
