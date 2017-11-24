@@ -2,8 +2,6 @@ import React from 'react';
 import {findDOMNode} from 'react-dom';
 import {InputGroup, FormControl, Button} from 'react-bootstrap';
 
-import ueditor from 'ueditor';
-
 $.fn.imageInput = function () {
   var editor = $.getUeditor();
   var $this = $(this);
@@ -27,7 +25,7 @@ $.fn.imageInput = function () {
 
 class ImageInput extends React.Component {
   componentDidMount () {
-    ueditor.then(() => $(findDOMNode(this.control)).imageInput())
+    import('ueditor').then(() => $(findDOMNode(this.control)).imageInput())
   }
 
   render () {

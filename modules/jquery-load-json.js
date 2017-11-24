@@ -1,1 +1,1 @@
-export default import(/* webpackChunkName:"jquery-load-json" */ 'comps/jquery.loadJSON/index');
+export default from 'comps/jquery.loadJSON/index'

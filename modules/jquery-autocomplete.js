@@ -1,1 +1,1 @@
-export default import(/* webpackChunkName:"jquery-autocomplete" */ 'jquery-ui/ui/widgets/autocomplete');
+export default from 'jquery-ui/ui/widgets/autocomplete'

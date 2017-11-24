@@ -1,3 +1,7 @@
+import 'vendor/miaoxing/ueditor/modules/ueditor-config'
+import 'comps/ueditor/ueditor.all.min';
+import 'comps/ueditor/lang/zh-cn/zh-cn';
+
 // 渲染富文本编辑器
 window.ueditors = [];
 
@@ -19,10 +23,3 @@ $.getUeditor = function () {
   }
   return window.ueditors[0];
 };
-
-export default import(/* webpackChunkName:"ueditor-config" */ 'vendor/miaoxing/ueditor/modules/ueditor-config').then(() => {
-  return Promise.all([
-    import(/* webpackChunkName:"ueditor" */ 'comps/ueditor/ueditor.all.min'),
-    import(/* webpackChunkName:"ueditor" */ 'comps/ueditor/lang/zh-cn/zh-cn')
-  ]);
-});

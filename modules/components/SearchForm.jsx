@@ -9,7 +9,7 @@ import '../styles/_search-form.scss';
 class SearchForm extends React.Component {
   componentDidMount () {
     if (this.props.loadQuery) {
-      loadQuery.then(() => $(findDOMNode(this)).loadQuery());
+      $(findDOMNode(this)).loadQuery();
     }
   }
 
