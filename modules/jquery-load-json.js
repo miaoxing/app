@@ -1,1 +1,1 @@
-export default from 'comps/jquery.loadJSON/index'
+export default from 'comps/jquery.loadJSON'
