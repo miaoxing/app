@@ -25,7 +25,7 @@ $.fn.imageInput = function () {
 
 class ImageInput extends React.Component {
   componentDidMount () {
-    import('ueditor').then(() => $(findDOMNode(this.control)).imageInput())
+    import('ueditor-mx').then(() => $(findDOMNode(this.control)).imageInput())
   }
 
   render () {
