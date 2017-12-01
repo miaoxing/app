@@ -7,7 +7,7 @@ class Page extends React.Component {
 
     return (
       <div className="page-wrapper">
-        {firstChild.type !== PageHeader && <PageHeader />}
+        {firstChild.type !== <PageHeader />.type && <PageHeader />}
         {this.props.children}
       </div>
     );

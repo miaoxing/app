@@ -43,12 +43,11 @@ class Page extends BaseService
         $path = $this->dash($path);
 
         // TODO 完善后再移到布局中
-        $this->addCss($this->wpAsset('common.css'));
+        //$this->addCss($this->wpAsset('admin.css'));
 
         return $this->addJs([
             $this->wpAsset('manifest.js'),
-            $this->wpAsset('common.js'),
-            $this->wpAsset($path . '/' . $name . '.js')
+            $this->wpAsset('admin.js')
         ]);
     }
 

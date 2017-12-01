@@ -12,7 +12,7 @@ function FormItem({ label, name, help, labelSize, controlSize, groupSize, ...pro
 
   // 自动识别select类型
   var firstChild = React.Children.toArray(props.children)[0];
-  if (firstChild && (firstChild.type === 'option' || firstChild.type === Options)) {
+  if (firstChild && (firstChild.type === 'option' || firstChild.type === <Options />.type)) {
     props.componentClass = 'select';
   }
 
