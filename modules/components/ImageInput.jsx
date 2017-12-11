@@ -31,7 +31,7 @@ class ImageInput extends React.Component {
   render () {
     return (
       <InputGroup>
-        <FormControl type="text" ref={control => this.control = control} />
+        <FormControl type="text" ref={control => this.control = control} {...this.props} />
         <InputGroup.Button>
           <Button><i className="fa fa-picture-o"/>{' '}选择图片</Button>
         </InputGroup.Button>

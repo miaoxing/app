@@ -6,7 +6,7 @@ class Options extends React.Component {
     const options = [];
 
     if (this.props.placeholder) {
-      options.push(<option key="">{this.props.placeholder}</option>)
+      options.push(<option key="" value="">{this.props.placeholder}</option>)
     }
 
     this.props.data.forEach((option) =>
