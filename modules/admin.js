@@ -4,12 +4,11 @@ import { AppContainer } from 'react-hot-loader'
 import modules from 'data/modules';
 
 const load = () => {
-  const name = location.pathname.substr($.baseUrl.length + 1);
-  if (!modules[name]) {
-    throw 'not found';
+  if (!modules[wei.reactContainer]) {
+    throw 'React container "' + wei.reactContainer + '" not found';
   }
 
-  modules[name]().then((Root) => {
+  modules[wei.reactContainer]().then((Root) => {
     render(Root.default)
   })
 };

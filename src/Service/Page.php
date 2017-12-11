@@ -4,11 +4,14 @@ namespace Miaoxing\App\Service;
 
 use miaoxing\plugin\BaseService;
 use Wei\Block;
+use Wei\View;
 
 /**
  * 页面
  *
- * @property Block $block
+ * @property-read View $view
+ * @property-read Block $block
+ * @property-read Asset $wpAsset
  * @method string wpAsset($file)
  */
 class Page extends BaseService
@@ -37,13 +40,23 @@ class Page extends BaseService
         return $this;
     }
 
-    public function addActionJs($name)
+    /**
+     * @param string $action
+     * @return Page
+     * @todo 逐步改为react-router来加载
+     */
+    public function addReactJs($action = 'index')
     {
         $path = dirname($this->app->getControllerAction());
-        $path = $this->dash($path);
+        $path = $this->dash($path . '/' . $action);
 
         // TODO 完善后再移到布局中
         //$this->addCss($this->wpAsset('admin.css'));
+
+        // 配合admin.js加载对应的容器
+        $js = $this->view->get('js');
+        $js['reactContainer'] = $path;
+        $this->view->assign('js', $js);
 
         return $this->addJs([
             $this->wpAsset('manifest.js'),
