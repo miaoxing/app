@@ -200,7 +200,7 @@ jQuery.fn.populate = function(obj, options) {
   // ------------------------------------------------------------------------------------------
   // convert hierarchical JSON to flat array
 
-  var arr	= [];
+  var arr	= {};
   parseJSON(obj);
 
   if(options.debug) {
