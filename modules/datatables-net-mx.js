@@ -18,7 +18,11 @@ $.extend(true, $.fn.dataTable.defaults, {
     {
       targets: ['_all'],
       sortable: false,
-      orderSequence: ['desc', 'asc', '']
+      orderSequence: ['desc', 'asc', ''],
+      defaultContent: '-',
+      render: function (data) {
+        return data === '' ? '-' : data;
+      }
     }
   ],
   order: [[0, 'desc']], // 默认第一栏改为倒序
