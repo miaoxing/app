@@ -1,3 +1,6 @@
+/**
+ * @deprecated 依赖了flash
+ */
 import React from 'react';
 import {findDOMNode} from 'react-dom';
 import {InputGroup, FormControl, Button} from 'react-bootstrap';
