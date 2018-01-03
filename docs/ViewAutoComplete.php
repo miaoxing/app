@@ -11,7 +11,7 @@ $view = wei()->view;
 /** @var \Wei\Block $block */
 $block = wei()->block;
 
-/** @var \services\Url $url */
+/** @var \Miaoxing\Order\Service\Url $url */
 $url = wei()->url;
 
 /** @var \Wei\Request $req */
