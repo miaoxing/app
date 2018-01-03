@@ -1,4 +1,4 @@
-import 'vendor/miaoxing/ueditor/modules/ueditor-config'
+import 'vendor/miaoxing/ueditor/modules/ueditor-config';
 import 'comps/ueditor/ueditor.all.min';
 import 'comps/ueditor/lang/zh-cn/zh-cn';
 
@@ -7,6 +7,7 @@ window.ueditors = [];
 
 $.fn.ueditor = function () {
   var id = $(this).attr('id');
+  /* global UE */
   var editor = new UE.ui.Editor();
   editor.render(id);
 
