@@ -3,9 +3,9 @@
 namespace MiaoxingDoc\App {
 
     /**
-     * @property    \Miaoxing\App\Service\Asset $asset
+     * @property    \Miaoxing\Plugin\Service\Asset $asset
      * @method      mixed asset($file, $version = true)
-     * @see         \Miaoxing\App\Service\Asset::__invoke
+     * @see         \Miaoxing\Plugin\Service\Asset::__invoke
      *
      * @property    \Miaoxing\App\Service\Captcha $captcha 图形验证码
      *
@@ -43,7 +43,7 @@ namespace {
     {
     }
 
-    /** @var Miaoxing\App\Service\Asset $asset */
+    /** @var \Miaoxing\Plugin\Service\Asset $asset */
     $asset = wei()->asset;
 
     /** @var Miaoxing\App\Service\Captcha $captcha */
