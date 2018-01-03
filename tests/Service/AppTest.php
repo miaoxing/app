@@ -18,7 +18,7 @@ class AppTest extends \Miaoxing\Plugin\Test\BaseTestCase
         //wei()->curUser->loginById(1);
 
         $app = wei()->app;
-        $app->setControllerMap(['test' => Test::className()]);
+        $app->setControllerMap(['test' => Test::class]);
 
         // 更改视图为测试的目录
         $origDirs = $app->view->getOption('dirs');

@@ -69,7 +69,7 @@ class Plugin extends \miaoxing\plugin\BasePlugin
     {
         // 除去 admin/login 页面
         if (substr($this->app->getController(), 0, 6) === 'admin/') {
-            $controller->middleware(CheckAppStatus::className());
+            $controller->middleware(CheckAppStatus::class);
         }
 
         $this->checkCli();

@@ -15,9 +15,9 @@ class Test extends \Wei\BaseController
     {
         parent::__construct($options);
 
-        $this->middleware(ReturnRet::className(), ['only' => 'returnRetInMiddleware']);
-        $this->middleware(ReturnString::className(), ['only' => 'returnStringInMiddleware']);
-        $this->middleware(ReturnResponse::className(), ['only' => 'returnResponseInMiddleware']);
+        $this->middleware(ReturnRet::class, ['only' => 'returnRetInMiddleware']);
+        $this->middleware(ReturnString::class, ['only' => 'returnStringInMiddleware']);
+        $this->middleware(ReturnResponse::class, ['only' => 'returnResponseInMiddleware']);
     }
 
     public function sucAction()
