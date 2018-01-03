@@ -21,7 +21,7 @@ class Page extends BaseService
     {
         $this->block->start('js');
 
-        foreach ((array)$src as $item) {
+        foreach ((array) $src as $item) {
             echo '<script src="' . $item . '"></script>', "\n";
         }
 
@@ -61,7 +61,7 @@ class Page extends BaseService
 
         return $this->addJs([
             $this->wpAsset('manifest.js'),
-            $this->wpAsset('admin.js')
+            $this->wpAsset('admin.js'),
         ]);
     }
 
