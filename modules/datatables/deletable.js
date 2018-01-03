@@ -6,15 +6,15 @@
  * @param message
  */
 $.fn.dataTableExt.oApi.deletable = function (setting, linkSelector, message) {
-  var $table = this;
+  var that = this;
   linkSelector = linkSelector || '.js-delete-record';
   message = message || '删除后将无法还原,确认删除?';
-  $table.on('click', linkSelector, function () {
+  that.on('click', linkSelector, function () {
     var $link = $(this);
     $.confirm(message, function () {
       $.post($link.data('href'), function (ret) {
         $.msg(ret);
-        $table.reload();
+        that.reload();
       }, 'json');
     });
   });

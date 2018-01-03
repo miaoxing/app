@@ -14,6 +14,7 @@ $(document).on('init.dt', (event, settings) => {
     return;
   }
 
+  // eslint-disable-next-line babel/new-cap
   var api = $.fn.dataTable.Api(settings);
   var options = api.init();
   if (!options.searchEl) {

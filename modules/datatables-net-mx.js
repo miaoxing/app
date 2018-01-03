@@ -1,18 +1,19 @@
-import 'datatables.net'
-import 'datatables.net-bs/js/dataTables.bootstrap'
+import 'datatables.net';
+import 'datatables.net-bs/js/dataTables.bootstrap';
 
-import './datatables/deletable'
-import './datatables/search'
-import './datatables/reload'
-import './datatables/external-search'
+import './datatables/deletable';
+import './datatables/search';
+import './datatables/reload';
+import './datatables/external-search';
 
 // 初始化默认配置
 $.extend(true, $.fn.dataTable.defaults, {
-  dom: "tr<'row'<'col-sm-4'i><'col-sm-8'pl>>",
+  dom: 'tr<\'row\'<\'col-sm-4\'i><\'col-sm-8\'pl>>',
   processing: true,
   serverSide: true,
   autoWidth: false,
   pagingType: 'full_numbers',
+  // eslint-disable-next-line no-magic-numbers
   lengthMenu: [10, 25, 50, 100, 500, 1000],
   columnDefs: [
     {
@@ -53,14 +54,14 @@ $.extend(true, $.fn.dataTable.defaults, {
           return;
         }
 
-        if (undefined == json.recordsTotal) {
+        if (undefined === json.recordsTotal) {
           json.recordsTotal = json.records;
         }
-        if (undefined == json.recordsFiltered) {
+        if (undefined === json.recordsFiltered) {
           json.recordsFiltered = json.records;
         }
-        origSuccess.apply(this, arguments)
-      }
+        origSuccess.apply(this, arguments);
+      };
     }
   },
   language: {

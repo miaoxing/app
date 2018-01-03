@@ -9,7 +9,7 @@
  */
 $.fn.dataTableExt.oApi.search = function (setting, params) {
   // 记录原始的URL,每次搜索使用原始URL,避免参数不断叠加
-  if (typeof setting.ajax.origUrl == 'undefined') {
+  if (typeof setting.ajax.origUrl === 'undefined') {
     setting.ajax.origUrl = setting.ajax.url;
   }
 
@@ -18,6 +18,7 @@ $.fn.dataTableExt.oApi.search = function (setting, params) {
     params = params.serializeArray();
   }
 
+  // eslint-disable-next-line babel/new-cap
   var table = this.DataTable();
   var url = $.appendUrl(setting.ajax.origUrl, params);
   table.ajax.url(url).load();
