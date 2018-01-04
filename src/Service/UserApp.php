@@ -2,7 +2,7 @@
 
 namespace Miaoxing\App\Service;
 
-class UserApp extends \miaoxing\plugin\BaseModel
+class UserApp extends \Miaoxing\Plugin\BaseModel
 {
     protected $table = 'userApps';
 
