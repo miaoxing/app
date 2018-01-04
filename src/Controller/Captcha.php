@@ -2,7 +2,7 @@
 
 namespace Miaoxing\App\Controller;
 
-use miaoxing\plugin\BaseController;
+use Miaoxing\Plugin\BaseController;
 
 class Captcha extends BaseController
 {

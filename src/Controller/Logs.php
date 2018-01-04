@@ -2,7 +2,7 @@
 
 namespace Miaoxing\App\Controller;
 
-class Logs extends \miaoxing\plugin\BaseController
+class Logs extends \Miaoxing\Plugin\BaseController
 {
     protected $guestPages = [
         'logs'

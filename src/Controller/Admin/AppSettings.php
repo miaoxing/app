@@ -2,7 +2,7 @@
 
 namespace Miaoxing\App\Controller\Admin;
 
-class AppSettings extends \miaoxing\plugin\BaseController
+class AppSettings extends \Miaoxing\Plugin\BaseController
 {
     protected $controllerName = '网站设置';
 

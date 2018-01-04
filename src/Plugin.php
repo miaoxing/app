@@ -3,7 +3,7 @@
 namespace Miaoxing\App;
 
 use Miaoxing\App\Middleware\CheckAppStatus;
-use miaoxing\plugin\BaseController;
+use Miaoxing\Plugin\BaseController;
 
 class Plugin extends \Miaoxing\Plugin\BasePlugin
 {

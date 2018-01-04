@@ -2,7 +2,7 @@
 
 namespace Miaoxing\App\Controller\Admin;
 
-class App extends \miaoxing\plugin\BaseController
+class App extends \Miaoxing\Plugin\BaseController
 {
     public function editAction()
     {
