@@ -5,7 +5,7 @@ namespace Miaoxing\App;
 use Miaoxing\App\Middleware\CheckAppStatus;
 use miaoxing\plugin\BaseController;
 
-class Plugin extends \miaoxing\plugin\BasePlugin
+class Plugin extends \Miaoxing\Plugin\BasePlugin
 {
     protected $name = '核心';
 
