@@ -6,7 +6,7 @@ namespace Miaoxing\App\Service;
  * @property \Wei\Db $db
  * @property \Wei\Redis $redis
  */
-class Seq extends \miaoxing\plugin\BaseService
+class Seq extends \Miaoxing\Plugin\BaseService
 {
     /**
      * @var string

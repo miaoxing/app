@@ -2,7 +2,7 @@
 
 namespace Miaoxing\App\Service;
 
-class Coll extends \miaoxing\plugin\BaseService
+class Coll extends \Miaoxing\Plugin\BaseService
 {
     /**
      * Specifies a field to be the key of the array

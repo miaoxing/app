@@ -7,7 +7,7 @@ use Wei\Record;
 /**
  * 状态
  */
-class Status extends \miaoxing\plugin\BaseService
+class Status extends \Miaoxing\Plugin\BaseService
 {
     /**
      * 根据模板创建一份新的状态配置,多出的状态会被移除

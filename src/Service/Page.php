@@ -2,7 +2,7 @@
 
 namespace Miaoxing\App\Service;
 
-use miaoxing\plugin\BaseService;
+use Miaoxing\Plugin\BaseService;
 use Miaoxing\Plugin\Service\Asset;
 use Wei\Block;
 use Wei\View;
