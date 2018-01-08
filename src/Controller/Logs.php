@@ -5,7 +5,7 @@ namespace Miaoxing\App\Controller;
 class Logs extends \Miaoxing\Plugin\BaseController
 {
     protected $guestPages = [
-        'logs'
+        'logs',
     ];
 
     public function createAction($req)
@@ -13,6 +13,7 @@ class Logs extends \Miaoxing\Plugin\BaseController
         if ($req['message']) {
             wei()->jsRaven->captureMessage($req['message']);
         }
+
         return $this->suc('ok');
     }
 }

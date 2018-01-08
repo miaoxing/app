@@ -17,7 +17,8 @@ class AppSettings extends \Miaoxing\Plugin\BaseController
 
     public function updateAction($req)
     {
-        wei()->setting->setValues((array)$req['settings'], ['site.', 'theme.']);
+        wei()->setting->setValues((array) $req['settings'], ['site.', 'theme.']);
+
         return $this->suc();
     }
 }

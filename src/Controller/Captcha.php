@@ -7,7 +7,7 @@ use Miaoxing\Plugin\BaseController;
 class Captcha extends BaseController
 {
     protected $guestPages = [
-        'captcha'
+        'captcha',
     ];
 
     public function indexAction()
