@@ -53,10 +53,10 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
         ];
     }
 
-    public function onPostPageCss()
+    public function onStyle()
     {
         if ($customCss = wei()->setting('site.customCss')) {
-            echo '<style>' . $customCss . '</style>';
+            $this->display(get_defined_vars());
         }
     }
 
