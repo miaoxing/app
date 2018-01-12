@@ -55,7 +55,7 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
 
     public function onStyle()
     {
-        if ($customCss = wei()->setting('site.customCss')) {
+        if (!$this->app->isAdmin() && $customCss = wei()->setting('site.customCss')) {
             $this->display(get_defined_vars());
         }
     }
