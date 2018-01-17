@@ -10,11 +10,11 @@ if (wei.webpackPublicPath) {
 
 const load = () => {
   import(/* webpackChunkName:'react-containers' */'data/react-containers').then(containers => {
-    if (!containers.default[wei.reactContainer]) {
-      throw new Error('React container "' + wei.reactContainer + '" not found');
+    if (!containers.default[wei.route]) {
+      throw new Error('Route "' + wei.route + '" not found');
     }
 
-    containers.default[wei.reactContainer]().then((Root) => {
+    containers.default[wei.route]().then((Root) => {
       render(Root.default);
     });
   });

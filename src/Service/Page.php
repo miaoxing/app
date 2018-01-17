@@ -42,22 +42,16 @@ class Page extends BaseService
     }
 
     /**
-     * @param string $action
+     * @param string|null $action
      * @return Page
      * @todo 逐步改为react-router来加载
      */
-    public function addReactJs($action = 'index')
+    public function addReactJs($action = null)
     {
-        $path = dirname($this->app->getControllerAction());
-        $path = $this->dash($path . '/' . $action);
+        $this->initRoute($action);
 
         // TODO 完善后再移到布局中
         //$this->addCss($this->wpAsset('admin.css'));
-
-        // 配合admin.js加载对应的容器
-        $js = $this->view->get('js');
-        $js['reactContainer'] = $path;
-        $this->view->assign('js', $js);
 
         return $this->addJs([
             $this->wpAsset('manifest.js'),
@@ -65,7 +59,30 @@ class Page extends BaseService
         ]);
     }
 
+    /**
+     * 增加插件的资源
+     *
+     * @param string|null $action
+     * @return $this
+     */
     public function addPluginAsset($action = null)
+    {
+        // 1. 设置路由
+        $this->initRoute($action);
+
+        // 2. 加载插件的版本映射表
+        // 目前正常只会加载一次，不用缓存
+        $plugin = $this->app->getPlugin();
+        $this->wpAsset->addRevFile('dist2/' . $plugin . '-assets-hash.json');
+
+        // 3. 加载css和js文件
+        $this->addCss($this->wpAsset($plugin . '.css'));
+        $this->addJs($this->wpAsset($plugin . '.js'));
+
+        return $this;
+    }
+
+    protected function initRoute($action)
     {
         $route = $this->app->getController() . '/' . ($action ?: $this->app->getAction());
 
@@ -73,17 +90,6 @@ class Page extends BaseService
         $js = $this->view->get('js');
         $js['route'] = $route;
         $this->view->assign('js', $js);
-
-        $plugin = $this->app->getPlugin();
-
-        // 目前正常只会加载一次，不用缓存
-        // 加载插件的版本映射表
-        $this->wpAsset->addRevFile('dist2/' . $plugin . '-assets-hash.json');
-
-        $this->addCss($this->wpAsset($plugin . '.css'));
-        $this->addJs($this->wpAsset($plugin . '.js'));
-
-        return $this;
     }
 
     /**
