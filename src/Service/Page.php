@@ -67,6 +67,13 @@ class Page extends BaseService
 
     public function addPluginAsset($action = null)
     {
+        $route = $this->app->getController() . '/' . ($action ?: $this->app->getAction());
+
+        // 配合admin.js加载对应的容器
+        $js = $this->view->get('js');
+        $js['route'] = $route;
+        $this->view->assign('js', $js);
+
         $plugin = $this->app->getPlugin();
 
         // 目前正常只会加载一次，不用缓存
