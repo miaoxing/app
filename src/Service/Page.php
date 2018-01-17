@@ -65,6 +65,20 @@ class Page extends BaseService
         ]);
     }
 
+    public function addPluginAsset($action = null)
+    {
+        $plugin = $this->app->getPlugin();
+
+        // 目前正常只会加载一次，不用缓存
+        // 加载插件的版本映射表
+        $this->wpAsset->addRevFile('dist2/' . $plugin . '-assets-hash.json');
+
+        $this->addCss($this->wpAsset($plugin . '.css'));
+        $this->addJs($this->wpAsset($plugin . '.js'));
+
+        return $this;
+    }
+
     /**
      * @param string $name
      * @return string
