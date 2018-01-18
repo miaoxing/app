@@ -85,6 +85,7 @@ class Page extends BaseService
     protected function initRoute($action)
     {
         $route = $this->app->getController() . '/' . ($action ?: $this->app->getAction());
+        $route = $this->dash($route);
 
         // 配合admin.js加载对应的容器
         $js = $this->view->get('js');
