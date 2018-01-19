@@ -29,7 +29,7 @@ class V20161030182708CreateAppsTable extends BaseMigration
             ->exec();
 
         $now = date('Y-m-d H:i:s');
-        $this->db->insertBatch($this->table, [[
+        $this->db->batchInsert($this->table, [[
             'userId' => 1,
             'name' => 'app',
             'title' => 'app',
