@@ -30,7 +30,7 @@ class WebpackConfig {
       options: {
         sourceMap: this.useSourcemaps
       }
-    }
+    };
   }
 
   getCssLoader() {
@@ -40,7 +40,7 @@ class WebpackConfig {
         sourceMap: this.useSourcemaps,
         minimize: this.isProd
       }
-    }
+    };
   }
 
   getSassLoader() {
@@ -132,11 +132,11 @@ class WebpackConfig {
           },
           {
             test: /\.css$/,
-            use: cssLoaders,
+            use: cssLoaders
           },
           {
             test: /\.scss$/,
-            use: sassLoaders,
+            use: sassLoaders
           },
           {
             test: /\.(jpg|png|gif|svg|json|ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -150,7 +150,7 @@ class WebpackConfig {
         ]
       },
       externals: {
-        'jquery': 'jQuery'
+        jquery: 'jQuery'
       },
       plugins: [
         new webpack.optimize.CommonsChunkPlugin({
@@ -161,7 +161,7 @@ class WebpackConfig {
         new ExtractTextPlugin({
           filename: useVersioning ? '[name]-[chunkhash:6].css' : '[name].css'
         }),
-        isProd ? new webpack.HashedModuleIdsPlugin() : new webpack.NamedModulesPlugin(),
+        isProd ? new webpack.HashedModuleIdsPlugin() : new webpack.NamedModulesPlugin()
         // new BundleAnalyzerPlugin(),
       ],
       // https://webpack.js.org/configuration/devtool/
@@ -196,14 +196,14 @@ class WebpackConfig {
   getWebpackDefinePlugin() {
     return new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('production')
-    })
+    });
   }
 
   getWebpackLoaderOptionsPlugin() {
     return new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
-    })
+    });
   }
 
   getUglifyJSPlugin() {
@@ -223,11 +223,11 @@ class WebpackConfig {
         var match = /(.+?)-\w{6}\.(js|css)$/.exec(filename);
         if (match) {
           return match[1] + '.' + match[2];
-        } else {
-          return filename;
         }
+
+        return filename;
       }
-    })
+    });
   }
 
   static build(options = {}) {
