@@ -73,9 +73,4 @@ class Test extends \Wei\BaseController
     {
         throw new \Exception('test error');
     }
-
-    public static function className()
-    {
-        return get_called_class();
-    }
 }
