@@ -34,18 +34,21 @@ class Test extends \Wei\BaseController
     {
         $code = 1;
         $message = 'returnCodeAndMessage';
+
         return get_defined_vars();
     }
 
     public function returnOnlyCodeAction()
     {
         $code = 1;
+
         return get_defined_vars();
     }
 
     public function returnOnlyMessageAction()
     {
         $message = 'message';
+
         return get_defined_vars();
     }
 
