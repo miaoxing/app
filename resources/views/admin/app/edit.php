@@ -38,7 +38,7 @@
 </div><!-- /.col -->
 <!-- /.row -->
 
-<?= $block('js') ?>
+<?= $block->js() ?>
 <script>
   require(['form'], function () {
     $('.js-app-form').ajaxForm({

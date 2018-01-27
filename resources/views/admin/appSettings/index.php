@@ -57,7 +57,7 @@ $view->layout();
 </div><!-- /.col -->
 <!-- /.row -->
 
-<?= $block('js') ?>
+<?= $block->js() ?>
 <script>
   require(['plugins/app/js/admin/app-settings'], function (appSettings) {
     appSettings.indexAction();

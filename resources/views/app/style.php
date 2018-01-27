@@ -1,3 +1,3 @@
-<?= $block('css') ?>
+<?= $block->css() ?>
 <?= '<style>', $customCss, '</style>' ?>
 <?= $block->end() ?>
