@@ -3,11 +3,6 @@
   $ || ($ = {});
 
   /**
-   * 前端素材的版本
-   */
-  $.version || ($.version = '5');
-
-  /**
    * 所有文件的基础路径
    */
   $.baseUrl || ($.baseUrl = '');
@@ -17,11 +12,20 @@
    *
    * @link http://stackoverflow.com/questions/901115/how-can-i-get-query-string-values-in-javascript
    */
-  $.req = function (name) {
-    name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
-    var regex = new RegExp('[\\?&]' + name + '=([^&#]*)'),
-      results = regex.exec(location.search);
-    return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+  $.req = function (name, url) {
+    if (!url) {
+      url = window.location.href;
+    }
+    name = name.replace(/[[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+      results = regex.exec(url);
+    if (!results) {
+      return null;
+    }
+    if (!results[2]) {
+      return '';
+    }
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
   };
 
   /**
@@ -80,13 +84,6 @@
     }
     $(window).resize(fixedHeight);
     return this;
-  };
-
-  /**
-   * 检查是否为安卓系统
-   */
-  $.isAndroid = function () {
-    return navigator.userAgent.toLowerCase().indexOf('android') > -1;
   };
 
   /**
