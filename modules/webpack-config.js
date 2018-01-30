@@ -110,7 +110,7 @@ class WebpackConfig {
     const config = {
       resolve: {
         modules: [
-          __dirname,
+          this.rootDir,
           'vendor/miaoxing/app/modules',
           'node_modules'
         ]
