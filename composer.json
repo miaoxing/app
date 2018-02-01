@@ -7,6 +7,9 @@
   "require": {
     "miaoxing/plugin": "dev-master@dev"
   },
+  "require-dev": {
+    "miaoxing/coding-standards": "0.9.6"
+  },
   "autoload": {
     "psr-4": {
       "Miaoxing\\App\\": "src"
