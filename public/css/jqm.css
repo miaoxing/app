@@ -1,3 +1,4 @@
+/* stylelint-disable */
 .iconfont {
   font-family: "iconfont";
   font-size: 16px;
@@ -11,9 +12,6 @@
 @media screen and (-webkit-min-device-pixel-ratio: 2) {
   .border-top {
     border-top: none;
-  }
-
-  .border-top {
     background-position: left top;
     background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.5, transparent), color-stop(0.5, #dedfe0), to(#dedfe0));
     background-repeat: repeat-x;
@@ -106,3 +104,4 @@
   -webkit-align-items: stretch;
   align-items: stretch
 }
+/* stylelint-enable */
