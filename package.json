@@ -4,7 +4,6 @@
   "repository": "https://github.com/miaoxing/app",
   "license": "MIT",
   "devDependencies": {
-    "miaoxing-coding-standards": "^1.0.0",
-    "miaoxing-htmllint-cli": "^0.7.0"
+    "miaoxing-coding-standards": "^2.0.0"
   }
 }
