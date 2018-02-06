@@ -7,6 +7,5 @@ export DataTable from './components/DataTable.jsx';
 export Form from './components/Form.jsx';
 export SearchForm from './components/SearchForm.jsx';
 export Options from './components/Options.jsx';
-export ImageInput from './components/ImageInput.jsx';
 export SearchItem from './components/SearchItem.jsx';
 export ImageUpload from './components/ImageUpload.jsx';
