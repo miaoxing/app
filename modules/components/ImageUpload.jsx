@@ -4,17 +4,14 @@ import rp from 'require-promise';
 
 class ImageUpload extends React.Component {
   componentDidMount() {
-    rp('plugins/admin/js/image-input').then(() => {
-      $(findDOMNode(this.control)).imageUploadInput();
+    rp('plugins/admin/js/image-upload').then(() => {
+      $(findDOMNode(this.control)).imageUpload();
     })
   }
 
   render() {
     return (
-      <div className="js-upload-container">
-        <input type="file" className="js-image-upload" ref={control => this.control = control}/>
-        <input type="hidden" className="js-image-url" {...this.props}/>
-      </div>
+      <input type="text" {...this.props} ref={control => this.control = control}/>
     )
   }
 }
