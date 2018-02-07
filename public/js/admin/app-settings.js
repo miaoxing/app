@@ -11,6 +11,9 @@ define(['form', 'validator', 'assets/spectrum'], function () {
         dataType: 'json',
         beforeSubmit: function (arr, $form) {
           return $form.valid();
+        },
+        success: function (ret) {
+          $.msg(ret);
         }
       })
       .validate();
