@@ -1,3 +1,3 @@
-import 'vendor/miaoxing/ueditor/modules/ueditor-config';
-import 'comps/ueditor/ueditor.all.min';
-import 'comps/ueditor/lang/zh-cn/zh-cn';
+import 'vendor/miaoxing/ueditor/public/js/neditor.config';
+import 'vendor/miaoxing/ueditor/public/libs/neditor/neditor.all.min';
+import 'vendor/miaoxing/ueditor/public/libs/neditor/i18n/zh-cn/zh-cn';
