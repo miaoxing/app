@@ -32,11 +32,11 @@ class Page extends BaseService
         return $this;
     }
 
-    public function addCss($src)
+    public function addCss($href)
     {
         $this->block->start('css');
 
-        echo ' <link rel="stylesheet" href="' . $src . '" />', "\n";
+        echo ' <link rel="stylesheet" href="' . $href . '" />', "\n";
 
         $this->block->end();
 
