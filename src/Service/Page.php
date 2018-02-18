@@ -4,6 +4,7 @@ namespace Miaoxing\App\Service;
 
 use Miaoxing\Plugin\BaseService;
 use Miaoxing\Plugin\Service\Asset;
+use Miaoxing\Plugin\Service\Str;
 use Wei\Block;
 use Wei\View;
 
@@ -13,6 +14,7 @@ use Wei\View;
  * @property-read View $view
  * @property-read Block $block
  * @property-read Asset $wpAsset
+ * @property-read Str $str
  * @method string wpAsset($file)
  */
 class Page extends BaseService
@@ -85,20 +87,11 @@ class Page extends BaseService
     protected function initRoute($action)
     {
         $route = $this->app->getController() . '/' . ($action ?: $this->app->getAction());
-        $route = $this->dash($route);
+        $route = $this->str->dash($route);
 
         // 配合admin.js加载对应的容器
         $js = $this->view->get('js');
         $js['route'] = $route;
         $this->view->assign('js', $js);
-    }
-
-    /**
-     * @param string $name
-     * @return string
-     */
-    protected function dash($name)
-    {
-        return strtolower(preg_replace('~(?<=\\w)([A-Z])~', '-$1', $name));
     }
 }
