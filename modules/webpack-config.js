@@ -3,6 +3,7 @@ const path = require('path');
 const HashAssetsPlugin = require('hash-assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 class WebpackConfig {
@@ -145,6 +146,13 @@ class WebpackConfig {
               // 只支持hash，相当于contenthash
               // https://github.com/webpack-contrib/file-loader/issues/177
               name: useVersioning ? '[path][name]-[hash:6].[ext]' : '[path][name].[ext]'
+            }
+          },
+          {
+            test: /\.ejs$/,
+            loader: 'underscore-template-strict-loader',
+            query: {
+              globals: ['$', 'wei']
             }
           }
         ]
