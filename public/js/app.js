@@ -69,23 +69,6 @@
     return $.appUrl + '/' + $.appendUrl(url, argsOrParam, params);
   };
 
-  // TODO 移到assets/swipe.js
-  $.fn.fixSwipeImgHeight = function () {
-    var images = this.find('img');
-    var first = images.eq(0);
-
-    var fixedHeight = function () {
-      images.slice(1).height(first.height());
-    };
-
-    first.one('load', fixedHeight);
-    if (first[0].complete) {
-      first.load();
-    }
-    $(window).resize(fixedHeight);
-    return this;
-  };
-
   /**
    * 检查是否为微信浏览器
    */
