@@ -19,5 +19,7 @@ CREATE TABLE `app`.`apps` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci ROW_FORMAT=DYNAMIC;
 
 BEGIN;
-INSERT INTO `app`.`apps` VALUES ('1', '0', '', 'app', 'app', '', '', '', 'site', '[]', '0000-00-00 00:00:00', '2016-07-22 15:51:57', '1', '1'), ('2', '0', '', 'test', 'test', '', '', '', 'site', '[]', '2015-04-02 23:42:04', '2016-06-16 14:51:42', '1', '1');
+INSERT INTO `app`.`apps` VALUES
+  ('1', '0', '', 'app', 'app', '', '', '', 'site', '1', '[]', '0000-00-00 00:00:00', '2016-07-22 15:51:57', '1', '1'),
+  ('2', '0', '', 'test', 'test', '', '', '', 'site', '1', '[]', '2015-04-02 23:42:04', '2016-06-16 14:51:42', '1', '1');
 COMMIT;
