@@ -9,6 +9,7 @@ CREATE TABLE `app`.`apps` (
   `domain` varchar(128) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `industry` varchar(16) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '' COMMENT '行业',
+  `status` tinyint(3) unsigned NOT NULL DEFAULT '1',
   `configs` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '',
   `createTime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
   `updateTime` datetime NOT NULL DEFAULT '0000-00-00 00:00:00',
