@@ -28,21 +28,6 @@ $view->layout();
         </label>
       </div>
 
-      <div class="form-group">
-        <label class="col-lg-2 control-label" for="custom-css">
-          自定CSS
-        </label>
-
-        <div class="col-lg-4">
-          <textarea class="js-custom-css form-control" id="custom-css" name="settings[site.customCss]"
-            rows="6"><?= $e($setting('site.customCss')) ?></textarea>
-        </div>
-
-        <label class="col-lg-4 help-text" for="custom-css">
-          为避免页面布局错误,请在开发人员的指导下填写
-        </label>
-      </div>
-
       <div class="clearfix form-actions form-group">
         <div class="col-lg-offset-2">
           <button class="btn btn-primary" type="submit">

@@ -53,13 +53,6 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
         ];
     }
 
-    public function onStyle()
-    {
-        if (!$this->app->isAdmin() && $customCss = wei()->setting('site.customCss')) {
-            $this->display(get_defined_vars());
-        }
-    }
-
     /**
      * 限制命令行控制器,只有在命令行下或超级管理员才可以访问
      *
