@@ -15,6 +15,8 @@ namespace MiaoxingDoc\App {
      * @property    \Miaoxing\App\Service\Seq $seq
      * @method      null|int seq($offset = 100)
      *
+     * @property    \Miaoxing\App\Service\Share $share
+     *
      * @property    \Miaoxing\App\Service\Status $status 状态
      *
      * @property    \Miaoxing\App\Service\UserApp $userApp
@@ -48,6 +50,9 @@ namespace {
 
     /** @var Miaoxing\App\Service\Seq $seq */
     $seq = wei()->seq;
+
+    /** @var Miaoxing\App\Service\Share $share */
+    $share = wei()->share;
 
     /** @var Miaoxing\App\Service\Status $status */
     $status = wei()->status;
