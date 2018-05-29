@@ -6,7 +6,7 @@ import trim from 'trim-character';
 
 import Required from './Required.jsx';
 
-function FormItem({ label, name, help, labelSize, controlSize, groupSize, ...props }) {
+function FormItem({ label, name, help, labelSize, controlSize, groupSize, helpSize, ...props }) {
   // 移除 name[] 后面的 []
   const id = trim(decamelize(name.replace(/\[\]/g, '-'), '-'), '-');
 
@@ -39,7 +39,7 @@ function FormItem({ label, name, help, labelSize, controlSize, groupSize, ...pro
         )}
       </Col>
       {help &&
-        <Col componentClass="label" sm={6} className="help-text">
+        <Col componentClass="label" sm={helpSize || 6} className="help-text">
           {help}
         </Col>
       }
