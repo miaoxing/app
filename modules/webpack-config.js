@@ -1,8 +1,8 @@
 const webpack = require('webpack');
 const path = require('path');
-const HashAssetsPlugin = require('hash-assets-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
@@ -20,7 +20,7 @@ class WebpackConfig {
     // 粗略通过命令行判断是否为热更新
     // xx/node xx/webpack-dev-server --hot --progress
     this.isHot = process.argv[2] === '--hot';
-    // HMR不支持chunkhash，只支持hash，而HashAssetsPlugin不支持hash
+    // HMR不支持chunkhash，只支持hash
     this.useVersioning = !this.isHot;
     this.publicPath = this.isProd ? '/' + this.distDir + '/' : 'http://localhost:8080/' + this.distDir + '/';
   }
@@ -167,7 +167,7 @@ class WebpackConfig {
           minChunks: 2
         }),
         new ExtractTextPlugin({
-          filename: useVersioning ? '[name]-[chunkhash:6].css' : '[name].css'
+          filename: useVersioning ? '[name]-[contenthash:6].css' : '[name].css'
         }),
         isProd ? new webpack.HashedModuleIdsPlugin() : new webpack.NamedModulesPlugin()
         // new BundleAnalyzerPlugin(),
@@ -189,7 +189,7 @@ class WebpackConfig {
     }
 
     if (useVersioning) {
-      config.plugins.push(this.getHashAssetsPluginConfig(this.buildDir));
+      config.plugins.push(this.getManifestPluginConfig(this.buildDir));
     }
 
     if (isProd) {
@@ -221,19 +221,16 @@ class WebpackConfig {
     });
   }
 
-  getHashAssetsPluginConfig() {
-    return new HashAssetsPlugin({
-      filename: this.name + '-assets-hash.json',
-      path: this.buildDir,
-      hashLength: 6,
-      prettyPrint: true,
-      keyTemplate: function (filename) {
-        var match = /(.+?)-\w{6}\.(js|css)$/.exec(filename);
+  getManifestPluginConfig() {
+    return new ManifestPlugin({
+      fileName: 'assets-hash.json',
+      map: function (obj) {
+        // path改为只要hash部分
+        var match = /(.+?)-(\w{6})\.(js|css)$/.exec(obj.path);
         if (match) {
-          return match[1] + '.' + match[2];
+          obj.path = match[2];
         }
-
-        return filename;
+        return obj;
       }
     });
   }
