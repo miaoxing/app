@@ -223,7 +223,7 @@ class WebpackConfig {
 
   getManifestPluginConfig() {
     return new ManifestPlugin({
-      fileName: 'assets-hash.json',
+      fileName: this.name + '-assets-hash.json',
       map: function (obj) {
         // path改为只要hash部分
         var match = /(.+?)-(\w{6})\.(js|css)$/.exec(obj.path);
