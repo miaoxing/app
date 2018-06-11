@@ -1,5 +1,18 @@
-import {Tabs} from 'react-bootstrap';
+import {Tabs as RbTabs} from 'react-bootstrap';
 import styled from "styled-components";
+import React from "react";
+
+class Tabs extends React.Component {
+  componentDidMount() {
+    // 样式美化
+    // TODO 改为styled覆盖
+    $('.js-tabs ul').removeClass('nav-tabs').addClass('tab-underline');
+  }
+
+  render() {
+    return <RbTabs {...this.props}/>
+  }
+}
 
 const UnderlineTabs = styled(Tabs)`
   > .tab-content {
