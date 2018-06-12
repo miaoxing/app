@@ -10,7 +10,7 @@ class Tabs extends React.Component {
   }
 
   render() {
-    return <RbTabs {...this.props}/>
+    return <RbTabs {...this.props} className={this.props.className + ' js-tabs'}/>
   }
 }
 
