@@ -10,3 +10,4 @@ export Options from './components/Options.jsx';
 export SearchItem from './components/SearchItem.jsx';
 export ImageUpload from './components/ImageUpload.jsx';
 export Tabs from './components/Tabs.jsx';
+export Img from './components/Img.jsx';
