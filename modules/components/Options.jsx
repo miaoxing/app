@@ -9,10 +9,14 @@ class Options extends React.Component {
       options.push(<option key="" value="">{this.props.placeholder}</option>)
     }
 
-    this.props.data.forEach((option) =>
-      options.push(<option key={option[this.props.valueKey]}
-        value={option[this.props.valueKey]}>{option[this.props.labelKey]}</option>)
-    );
+    $.map(this.props.data, (option, key) => {
+      if (typeof option === 'object') {
+        options.push(<option key={option[this.props.valueKey]}
+          value={option[this.props.valueKey]}>{option[this.props.labelKey]}</option>)
+      } else {
+        options.push(<option key={key} value={key}>{option}</option>)
+      }
+    });
 
     return options;
   }
@@ -25,7 +29,10 @@ Options.defaultProps = {
 };
 
 Options.propTypes = {
-  data: PropTypes.array,
+  data: PropTypes.oneOfType([
+    PropTypes.array,
+    PropTypes.object,
+  ]),
   labelKey: PropTypes.string,
   valueKey: PropTypes.string,
   placeholder: PropTypes.string
