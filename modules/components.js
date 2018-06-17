@@ -11,3 +11,4 @@ export SearchItem from './components/SearchItem.jsx';
 export ImageUpload from './components/ImageUpload.jsx';
 export Tabs from './components/Tabs.jsx';
 export Img from './components/Img.jsx';
+export TabNavs from './components/TabNavs.jsx';
