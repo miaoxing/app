@@ -116,14 +116,7 @@ class WebpackConfig {
         }),
         isProd ? new webpack.HashedModuleIdsPlugin() : new webpack.NamedModulesPlugin()
         // new BundleAnalyzerPlugin(),
-      ],
-      // https://webpack.js.org/configuration/devtool/
-      devtool: isProd ? '' : 'eval',
-      devServer: {
-        headers: {
-          'Access-Control-Allow-Origin': '*'
-        }
-      }
+      ]
     };
 
     if (this.manifest) {
