@@ -11,6 +11,9 @@ class WebpackConfig {
     this.name = options.name;
     this.manifest = options.manifest || false;
     this.distDir = options.distDir || 'dist2';
+    if (options.getEntries) {
+      this.getEntries = options.getEntries;
+    }
 
     // 基于当前目录
     this.rootDir = process.cwd();
@@ -161,6 +164,9 @@ class WebpackConfig {
       externals: {
         jquery: 'jQuery'
       },
+      optimization: {
+
+      },
       plugins: [
         // new webpack.optimize.CommonsChunkPlugin({
         //   async: 'async',
@@ -183,7 +189,9 @@ class WebpackConfig {
     };
 
     if (this.manifest) {
-      configs.optimization.runtimeChunk.name = (this.name ? this.name + '-' : '') + 'manifest';
+      config.optimization.runtimeChunk = {
+        name: (this.name ? this.name + '-' : '') + 'manifest',
+      };
     }
 
     if (useVersioning) {
