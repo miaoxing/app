@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 
@@ -27,7 +27,7 @@ class WebpackConfig {
 
   getStyleLoader() {
     return {
-      loader: 'style-loader',
+      loader: this.isProd ? MiniCssExtractPlugin.loader : 'style-loader',
       options: {
         sourceMap: this.useSourcemaps
       }
@@ -88,27 +88,28 @@ class WebpackConfig {
     const sassLoader = this.getSassLoader();
     const resolveUrlLoader = this.getResolveUrlLoader();
 
-    let cssLoaders = ExtractTextPlugin.extract({
+    let cssLoaders = {
       use: cssLoader,
       fallback: styleLoader
-    });
+    };
     if (this.isHot) {
       cssLoaders = ['css-hot-loader'].concat(cssLoaders);
     }
 
-    let sassLoaders = ExtractTextPlugin.extract({
+    let sassLoaders = {
       use: [
         cssLoader,
         resolveUrlLoader,
         sassLoader
       ],
       fallback: styleLoader
-    });
+    };
     if (this.isHot) {
       sassLoaders = ['css-hot-loader'].concat(sassLoaders);
     }
 
     const config = {
+      mode: this.isProd ? 'production' : 'development',
       resolve: {
         modules: [
           this.rootDir,
@@ -125,19 +126,19 @@ class WebpackConfig {
         chunkFilename: useVersioning ? '[name]-[chunkhash:6].js' : '[name].js'
       },
       module: {
-        loaders: [
+        rules: [
           {
             test: /\.(js|jsx)?/,
             exclude: /node_modules/,
             loader: 'babel-loader'
           },
           {
-            test: /\.css$/,
-            use: cssLoaders
-          },
-          {
-            test: /\.scss$/,
-            use: sassLoaders
+            test: /\.(sa|sc|c)ss$/,
+            use: [
+              this.isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+              'css-loader',
+              'sass-loader',
+            ],
           },
           {
             test: /\.(jpg|png|gif|svg|json|ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -161,12 +162,12 @@ class WebpackConfig {
         jquery: 'jQuery'
       },
       plugins: [
-        new webpack.optimize.CommonsChunkPlugin({
-          async: 'async',
-          children: true,
-          minChunks: 2
-        }),
-        new ExtractTextPlugin({
+        // new webpack.optimize.CommonsChunkPlugin({
+        //   async: 'async',
+        //   children: true,
+        //   minChunks: 2
+        // }),
+        new MiniCssExtractPlugin({
           filename: useVersioning ? '[name]-[contenthash:6].css' : '[name].css'
         }),
         isProd ? new webpack.HashedModuleIdsPlugin() : new webpack.NamedModulesPlugin()
