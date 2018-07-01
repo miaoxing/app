@@ -103,7 +103,7 @@ class WebpackConfig {
         jquery: 'jQuery'
       },
       optimization: {
-
+        minimizer: []
       },
       plugins: [
         // new webpack.optimize.CommonsChunkPlugin({
@@ -137,7 +137,7 @@ class WebpackConfig {
     }
 
     if (isProd) {
-      config.plugins.push(this.getUglifyJSPlugin());
+      config.optimization.minimizer.push(this.getUglifyJSPlugin());
       config.plugins.push(this.getWebpackLoaderOptionsPlugin());
       config.plugins.push(this.getWebpackDefinePlugin());
     }
