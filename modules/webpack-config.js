@@ -183,10 +183,7 @@ class WebpackConfig {
     };
 
     if (this.manifest) {
-      config.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-        name: (this.name ? this.name + '-' : '') + 'manifest',
-        minChunks: Infinity
-      }));
+      configs.optimization.runtimeChunk.name = (this.name ? this.name + '-' : '') + 'manifest';
     }
 
     if (useVersioning) {
