@@ -132,16 +132,9 @@ class WebpackConfig {
       config.optimization.minimizer.push(this.getUglifyJSPlugin());
       config.plugins.push(new webpack.HashedModuleIdsPlugin());
       config.plugins.push(this.getWebpackLoaderOptionsPlugin());
-      config.plugins.push(this.getWebpackDefinePlugin());
     }
 
     return config;
-  }
-
-  getWebpackDefinePlugin() {
-    return new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    });
   }
 
   getWebpackLoaderOptionsPlugin() {
