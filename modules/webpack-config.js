@@ -168,6 +168,9 @@ class WebpackConfig {
   getManifestPluginConfig() {
     return new ManifestPlugin({
       fileName: (this.name ? this.name + '-' : '') + 'assets-hash.json',
+      filter: function (obj) {
+        return obj.isInitial;
+      },
       map: function (obj) {
         // path改为只要hash部分
         var match = /(.+?)-(\w{6})\.(js|css)$/.exec(obj.path);
