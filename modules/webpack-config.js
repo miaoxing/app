@@ -114,7 +114,6 @@ class WebpackConfig {
         new MiniCssExtractPlugin({
           filename: useVersioning ? '[name]-[contenthash:6].css' : '[name].css'
         }),
-        isProd ? new webpack.HashedModuleIdsPlugin() : new webpack.NamedModulesPlugin()
         // new BundleAnalyzerPlugin(),
       ]
     };
@@ -131,6 +130,7 @@ class WebpackConfig {
 
     if (isProd) {
       config.optimization.minimizer.push(this.getUglifyJSPlugin());
+      config.plugins.push(new webpack.HashedModuleIdsPlugin());
       config.plugins.push(this.getWebpackLoaderOptionsPlugin());
       config.plugins.push(this.getWebpackDefinePlugin());
     }
