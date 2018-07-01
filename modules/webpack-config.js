@@ -28,43 +28,6 @@ class WebpackConfig {
     this.publicPath = this.isProd ? '/' + this.distDir + '/' : 'http://localhost:8080/' + this.distDir + '/';
   }
 
-  getStyleLoader() {
-    return {
-      loader: this.isProd ? MiniCssExtractPlugin.loader : 'style-loader',
-      options: {
-        sourceMap: this.useSourcemaps
-      }
-    };
-  }
-
-  getCssLoader() {
-    return {
-      loader: 'css-loader',
-      options: {
-        sourceMap: this.useSourcemaps,
-        minimize: this.isProd
-      }
-    };
-  }
-
-  getSassLoader() {
-    return {
-      loader: 'sass-loader',
-      options: {
-        sourceMap: this.useSourcemaps
-      }
-    };
-  }
-
-  getResolveUrlLoader() {
-    return {
-      loader: 'resolve-url-loader',
-      options: {
-        sourceMap: this.useSourcemaps
-      }
-    };
-  }
-
   getEntries() {
     const entries = {};
 
@@ -85,31 +48,6 @@ class WebpackConfig {
   getConfig() {
     const isProd = this.isProd;
     const useVersioning = this.useVersioning;
-
-    const styleLoader = this.getStyleLoader();
-    const cssLoader = this.getCssLoader();
-    const sassLoader = this.getSassLoader();
-    const resolveUrlLoader = this.getResolveUrlLoader();
-
-    let cssLoaders = {
-      use: cssLoader,
-      fallback: styleLoader
-    };
-    if (this.isHot) {
-      cssLoaders = ['css-hot-loader'].concat(cssLoaders);
-    }
-
-    let sassLoaders = {
-      use: [
-        cssLoader,
-        resolveUrlLoader,
-        sassLoader
-      ],
-      fallback: styleLoader
-    };
-    if (this.isHot) {
-      sassLoaders = ['css-hot-loader'].concat(sassLoaders);
-    }
 
     const config = {
       mode: this.isProd ? 'production' : 'development',
