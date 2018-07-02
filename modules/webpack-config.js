@@ -106,11 +106,6 @@ class WebpackConfig {
         minimizer: []
       },
       plugins: [
-        // new webpack.optimize.CommonsChunkPlugin({
-        //   async: 'async',
-        //   children: true,
-        //   minChunks: 2
-        // }),
         new MiniCssExtractPlugin({
           filename: useVersioning ? '[name]-[contenthash:6].css' : '[name].css'
         }),
