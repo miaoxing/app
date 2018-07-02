@@ -110,7 +110,12 @@ class WebpackConfig {
           filename: useVersioning ? '[name]-[contenthash:6].css' : '[name].css'
         }),
         // new BundleAnalyzerPlugin(),
-      ]
+      ],
+      devServer: {
+        headers: {
+          'Access-Control-Allow-Origin': '*'
+        }
+      }
     };
 
     if (this.manifest) {
