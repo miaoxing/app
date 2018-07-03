@@ -1,10 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from 'react';
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import Loading from 'components/Loading';
 import NoMatch from "components/NoMatch";
-import ucfirst from "ucfirst";
-import Loadable from "react-loadable";
+import ucfirst from 'ucfirst';
+import Loadable from 'react-loadable';
 
 class App extends React.Component {
   constructor(props) {
@@ -49,12 +48,12 @@ class App extends React.Component {
   }
 
   loadEvents() {
-    const events = require.context('vendor/miaoxing', true, /^\.\/.*\/resources\/events\/events\.(\w+)$/);
-    events.keys().forEach((key) => {
-      if (wei.pluginIds.indexOf(key.split('/')[1]) !== -1) {
-        events(key).default();
-      }
-    });
+    // const events = require.context('vendor/miaoxing', true, /^\.\/.*\/resources\/events\/events\.(\w+)$/);
+    // events.keys().forEach((key) => {
+    //   if (wei.pluginIds.indexOf(key.split('/')[1]) !== -1) {
+    //     events(key).default();
+    //   }
+    // });
   }
 
   render() {
