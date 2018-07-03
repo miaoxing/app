@@ -20,6 +20,15 @@ const getAction = (params) => {
   }
 };
 
+// WARNING: import需早于require.context,才能提前解析出webpackChunkName,否则webpackChunkName无效
+const importPage = (plugin, controller, action) => {
+  return import(
+    /* webpackChunkName: "[request]" */
+    /* webpackInclude: /resources\/pages/ */
+    `vendor/miaoxing/${plugin}/resources/pages/${controller}/${action}.js`
+    );
+};
+
 let controllerMap = {};
 const actions = require.context('vendor/miaoxing', true, /^\.\/.*\/resources\/pages\/(.+?)\/(.+?)\.js$/, 'lazy');
 actions.keys().forEach((key) => {
@@ -33,13 +42,7 @@ const Component = (props) => {
       const controller = getController(props.match.params);
       const action = getAction(props.match.params);
       const plugin = controllerMap[controller];
-
-      // TODO 查看的源码的实现,确认任何会加载到 loader-runner
-      return import(
-        /* webpackChunkName: "containers-[request]" */
-        /* webpackInclude: /resources\/pages/ */
-        `vendor/miaoxing/${plugin}/resources/pages/${controller}/${action}.js`
-        );
+      return importPage(plugin, controller, action)
     },
 
     loading: Loading,
