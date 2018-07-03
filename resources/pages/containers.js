@@ -24,7 +24,7 @@ let controllerMap = {};
 const actions = require.context('vendor/miaoxing', true, /^\.\/.*\/resources\/pages\/(.+?)\/(.+?)\.js$/, 'lazy');
 actions.keys().forEach((key) => {
   const parts = key.split('/');
-  controllerMap[parts[4]] = parts[1];
+  controllerMap[parts[4] + '/' + parts[5]] = key;
 });
 
 const Component = (props) => {
@@ -33,13 +33,9 @@ const Component = (props) => {
       const controller = getController(props.match.params);
       const action = getAction(props.match.params);
       const plugin = controllerMap[controller];
+      const path = controller + '/' + action + '.js';
 
-      // TODO 查看的源码的实现,确认任何会加载到 loader-runner
-      return import(
-        /* webpackInclude: /resources\/pages/ */
-        /* webpackExclude: /loader-runner/ */
-        `vendor/miaoxing/${plugin}/resources/pages/${controller}/${action}.js`
-      );
+      return actions(controllerMap[path]);
     },
 
     loading: Loading,
