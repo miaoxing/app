@@ -5,6 +5,7 @@ import Loading from 'components/Loading';
 import NoMatch from "components/NoMatch";
 import ucfirst from "ucfirst";
 import Loadable from "react-loadable";
+import {hot} from 'react-hot-loader';
 
 export default class App {
   constructor(options) {
@@ -14,7 +15,7 @@ export default class App {
     this.controllerMap = {};
     this.pages.keys().forEach((key) => {
       const parts = key.split('/');
-      this.controllerMap[parts[4]] = parts[1];
+      this.controllerMap[parts[5]] = parts[1];
     });
   }
 
@@ -40,10 +41,10 @@ export default class App {
     const Component = this.loadableComponent.bind(this);
     return <BrowserRouter>
       <Switch>
-        <Route exact path={$.url(':controller')} component={Component}/>
-        <Route exact path={$.url(':controller/:id(\\d+)')} component={Component}/>
-        <Route exact path={$.url(':controller/:action')} component={Component}/>
-        <Route exact path={$.url(':controller/:id(\\d+)/:action')} component={Component}/>
+        <Route exact path={$.url('admin/:controller')} component={Component}/>
+        <Route exact path={$.url('admin/:controller/:id(\\d+)')} component={Component}/>
+        <Route exact path={$.url('admin/:controller/:action')} component={Component}/>
+        <Route exact path={$.url('admin/:controller/:id(\\d+)/:action')} component={Component}/>
         <Route component={NoMatch}/>
       </Switch>
     </BrowserRouter>;
