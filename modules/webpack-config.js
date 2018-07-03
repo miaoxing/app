@@ -20,9 +20,7 @@ class WebpackConfig {
     this.buildDir = path.resolve(this.rootDir, this.distDir);
     this.isProd = process.env.NODE_ENV === 'production';
     this.useSourcemaps = !this.isProd;
-    // 粗略通过命令行判断是否为热更新
-    // xx/node xx/webpack-dev-server --hot --progress
-    this.isHot = process.argv[2] === '--hot';
+    this.isHot = path.basename(require.main.filename) === 'webpack-dev-server.js';
     // HMR不支持chunkhash，只支持hash
     this.useVersioning = !this.isHot;
     this.publicPath = this.isProd ? '/' + this.distDir + '/' : 'http://localhost:8080/' + this.distDir + '/';
