@@ -36,7 +36,7 @@ const Component = (props) => {
 
       // TODO 查看的源码的实现,确认任何会加载到 loader-runner
       return import(
-        /* webpackInclude: /resources\/containers/ */
+        /* webpackInclude: /resources\/pages/ */
         /* webpackExclude: /loader-runner/ */
         `vendor/miaoxing/${plugin}/resources/pages/${controller}/${action}.js`
       );
