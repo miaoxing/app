@@ -5,49 +5,15 @@ import Loading from 'components/Loading';
 import NoMatch from "components/NoMatch";
 import ucfirst from "ucfirst";
 import Loadable from "react-loadable";
-import {hot} from 'react-hot-loader';
 
-export default class App {
-  constructor(options) {
-    Object.assign(this, options);
-
+class App extends React.Component {
+  component(options) {
     // 解析出页面的插件和控制对应关系
     this.controllerMap = {};
     this.pages.keys().forEach((key) => {
       const parts = key.split('/');
       this.controllerMap[parts[5]] = parts[1];
     });
-  }
-
-  run() {
-    ReactDOM.render(this.getContainer(), document.getElementById('root'));
-  }
-
-  loadableComponent (props) {
-    const LoadableComponent = Loadable({
-      loader: () => {
-        const controller = this.getController(props.match.params);
-        const action = this.getAction(props.match.params);
-        const plugin = this.controllerMap[controller];
-        return this.importPage(plugin, controller, action)
-      },
-
-      loading: Loading,
-    });
-    return <LoadableComponent {...props}/>;
-  }
-
-  getContainer() {
-    const Component = this.loadableComponent.bind(this);
-    return <BrowserRouter>
-      <Switch>
-        <Route exact path={$.url('admin/:controller')} component={Component}/>
-        <Route exact path={$.url('admin/:controller/:id(\\d+)')} component={Component}/>
-        <Route exact path={$.url('admin/:controller/:action')} component={Component}/>
-        <Route exact path={$.url('admin/:controller/:id(\\d+)/:action')} component={Component}/>
-        <Route component={NoMatch}/>
-      </Switch>
-    </BrowserRouter>;
   }
 
   getController(params) {
@@ -64,6 +30,21 @@ export default class App {
     }
   }
 
+  loadableComponent (props) {
+    this.controllerMap = {};
+    const LoadableComponent = Loadable({
+      loader: () => {
+        const controller = this.getController(props.match.params);
+        const action = this.getAction(props.match.params);
+        const plugin = this.controllerMap[controller];
+        return this.props.importPage(plugin, controller, action);
+      },
+
+      loading: Loading,
+    });
+    return <LoadableComponent {...props}/>;
+  }
+
   loadEvents() {
     const events = require.context('vendor/miaoxing', true, /^\.\/.*\/resources\/events\/events\.(\w+)$/);
     events.keys().forEach((key) => {
@@ -72,4 +53,19 @@ export default class App {
       }
     });
   }
+
+  render() {
+    const Component = this.loadableComponent.bind(this);
+    return <BrowserRouter>
+      <Switch>
+        <Route exact path={$.url('admin/:controller')} component={Component}/>
+        <Route exact path={$.url('admin/:controller/:id(\\d+)')} component={Component}/>
+        <Route exact path={$.url('admin/:controller/:action')} component={Component}/>
+        <Route exact path={$.url('admin/:controller/:id(\\d+)/:action')} component={Component}/>
+        <Route component={NoMatch}/>
+      </Switch>
+    </BrowserRouter>;
+  }
 }
+
+export default App;
