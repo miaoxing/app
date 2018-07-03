@@ -41,7 +41,6 @@ class App extends React.Component {
         const plugin = this.controllerMap[controller];
         return this.props.importPage(plugin, controller, action);
       },
-
       loading: Loading,
     });
     return <LoadableComponent {...props}/>;
@@ -60,10 +59,8 @@ class App extends React.Component {
     const Component = this.loadableComponent;
     return <BrowserRouter>
       <Switch>
-        <Route exact path={$.url('admin/:controller')} component={Component}/>
-        <Route exact path={$.url('admin/:controller/:id(\\d+)')} component={Component}/>
-        <Route exact path={$.url('admin/:controller/:action')} component={Component}/>
-        <Route exact path={$.url('admin/:controller/:id(\\d+)/:action')} component={Component}/>
+        {/* TODO /admin/login */}
+        <Route exact path={$.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
         <Route component={NoMatch}/>
       </Switch>
     </BrowserRouter>;
