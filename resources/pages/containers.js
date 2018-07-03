@@ -32,7 +32,6 @@ const Component = (props) => {
     loader: () => {
       const controller = getController(props.match.params);
       const action = getAction(props.match.params);
-      const plugin = controllerMap[controller];
       const path = controller + '/' + action + '.js';
 
       return actions(controllerMap[path]);
