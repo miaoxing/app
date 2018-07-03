@@ -76,7 +76,7 @@ class WebpackConfig {
           {
             test: /\.(sa|sc|c)ss$/,
             use: [
-              this.isProd ? MiniCssExtractPlugin.loader : 'style-loader',
+              MiniCssExtractPlugin.loader,
               'css-loader',
               'sass-loader',
             ],
