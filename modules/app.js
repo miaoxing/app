@@ -9,11 +9,13 @@ class App extends React.Component {
   constructor(props) {
     super(props);
 
-    // 解析出页面的插件和控制对应关系
+    // 解析出页面路径中的插件和控制对应关系
+    // 如 ./article/resources/pages/articles/Edit.js => articles => article
+    // 如 ./user/resources/pages/admin/users/Edit.js => users => user
     this.controllerMap = {};
     this.props.pages.keys().forEach((key) => {
       const parts = key.split('/');
-      this.controllerMap[parts[5]] = parts[1];
+      this.controllerMap[parts[parts.length - 2]] = parts[1];
     });
 
     this.loadableComponent = this.loadableComponent.bind(this);
