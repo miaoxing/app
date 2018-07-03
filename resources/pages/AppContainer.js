@@ -6,8 +6,7 @@ class AppContainer extends React.Component {
   importPage(plugin, controller, action) {
     return import(
       /* webpackChunkName: "[request]" */
-      /* webpackInclude: /resources\/pages/ */
-      /* webpackExclude: /resources\/pages\/admin/ */
+      /* webpackInclude: /resources\/pages\/[^\/]+\/[^\/]+\.js$/ */
       `vendor/miaoxing/${plugin}/resources/pages/${controller}/${action}.js`
       );
   }
