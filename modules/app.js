@@ -7,13 +7,17 @@ import ucfirst from "ucfirst";
 import Loadable from "react-loadable";
 
 class App extends React.Component {
-  component(options) {
+  constructor(props) {
+    super(props);
+
     // 解析出页面的插件和控制对应关系
     this.controllerMap = {};
-    this.pages.keys().forEach((key) => {
+    this.props.pages.keys().forEach((key) => {
       const parts = key.split('/');
       this.controllerMap[parts[5]] = parts[1];
     });
+
+    this.loadableComponent = this.loadableComponent.bind(this);
   }
 
   getController(params) {
@@ -30,8 +34,7 @@ class App extends React.Component {
     }
   }
 
-  loadableComponent (props) {
-    this.controllerMap = {};
+  loadableComponent(props) {
     const LoadableComponent = Loadable({
       loader: () => {
         const controller = this.getController(props.match.params);
@@ -55,7 +58,7 @@ class App extends React.Component {
   }
 
   render() {
-    const Component = this.loadableComponent.bind(this);
+    const Component = this.loadableComponent;
     return <BrowserRouter>
       <Switch>
         <Route exact path={$.url('admin/:controller')} component={Component}/>
