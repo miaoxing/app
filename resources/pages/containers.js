@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from "react-dom";
+import {hot} from 'react-hot-loader';
 import Loadable from "react-loadable";
 import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import Loading from 'components/Loading';
@@ -62,4 +63,4 @@ const App = () => (
   </BrowserRouter>
 );
 
-export default App;
+export default hot(module)(App)
