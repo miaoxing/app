@@ -7,12 +7,13 @@ class AppContainer extends React.Component {
     return import(
       /* webpackChunkName: "[request]" */
       /* webpackInclude: /resources\/pages/ */
+      /* webpackExclude: /resources\/pages\/admin/ */
       `vendor/miaoxing/${plugin}/resources/pages/${controller}/${action}.js`
       );
   }
 
   getPages() {
-    return require.context('vendor/miaoxing', true, /^\.\/.*\/resources\/pages\/(.+?)\/(.+?)\.js$/, 'lazy');
+    return require.context('vendor/miaoxing', true, /^\.\/.*\/resources\/pages\/(?!admin).*\/(.+?)\.js$/, 'lazy');
   }
 
   render() {
