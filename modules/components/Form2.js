@@ -1,10 +1,14 @@
 import React from 'react';
 import {Form as RbForm} from 'react-bootstrap';
-import {Field, Formik} from 'formik';
+import {Field, Formik, withFormik} from 'formik';
 import { withRouter } from 'react-router-dom';
 
 class Form extends React.Component {
   render () {
+    if (Object.keys(this.props.initialValues).length === 0) {
+      return '';
+    }
+
     return (
       <Formik
         initialValues={this.props.initialValues}
