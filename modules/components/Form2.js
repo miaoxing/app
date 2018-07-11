@@ -17,7 +17,9 @@ class Form extends React.Component {
             dataType: 'json',
           }).done((ret) => {
             $.msg(ret, () => {
-              this.props.history.push(this.getRedirectUrl());
+              if (ret.code === 1) {
+                this.props.history.push(this.getRedirectUrl());
+              }
             });
           }).always(() => {
             actions.setSubmitting(false);
