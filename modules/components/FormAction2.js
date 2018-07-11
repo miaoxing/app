@@ -3,6 +3,10 @@ import {FormGroup, Button, Col} from 'react-bootstrap';
 import BtnLink from "components/BtnLink";
 
 function FormAction2({url}) {
+  if (!url) {
+    url = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/'));
+  }
+
   return (
     <FormGroup className="clearfix form-actions">
       <Col smOffset={2}>
