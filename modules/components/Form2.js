@@ -5,8 +5,6 @@ import { withRouter } from 'react-router-dom';
 
 class Form extends React.Component {
   render () {
-    console.log(React.Children.toArray(this.props.children));
-
     return (
       <Formik
         initialValues={this.props.initialValues}
