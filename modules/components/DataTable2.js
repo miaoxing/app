@@ -11,64 +11,58 @@ class DataTable2 extends React.Component {
     super(props);
 
     this.state = {
-      page: 1,
       data: [],
+      page: 1,
       totalSize: 0,
       sizePerPage: 10,
-      loading: true
+      loading: false,
+      noDataIndication: '暂无数据',
     };
     this.handleTableChange = this.handleTableChange.bind(this);
   }
 
   componentDidMount() {
-    this.load();
+    this.load({
+      page: this.state.page,
+      sizePerPage: this.state.sizePerPage
+    });
   }
 
-  load() {
+  load(params) {
+    this.setState({
+      loading: true,
+      noDataIndication: '加载中...'
+    });
+
     $.ajax({
-      url: this.props.url,
+      url: $.appendUrl(this.props.url, params),
       dataType: 'json',
     }).done(ret => {
       this.setState({
-        //page,
         data: ret.data,
         totalSize: ret.total,
-        noDataIndication: '加载中...'
-        //loading: false,
-        //sizePerPage
       });
     }).always(() => {
-      this.setState(() => ({ loading: false }));
+      this.setState({
+        loading: false,
+        noDataIndication: '暂无数据',
+      });
     })
   }
 
-  handleTableChange(type, { page, sizePerPage, filters, sortField, sortOrder }) {
-    this.setState(() => ({ loading: true }));
-    const currentIndex = (page - 1) * sizePerPage;
-    $.ajax({
-      url: $.appendUrl(this.props.url, {
-        page: page,
-        rows: sizePerPage,
-        sort: sortField,
-        order: sortOrder,
-      }),
-      dataType: 'json',
-    }).done(ret => {
-      this.setState(() => ({
-        page,
-        data: ret.data,
-        totalSize: ret.total,
-        loading: false,
-        sizePerPage
-      }));
-    }).always(() => {
-      this.setState(() => ({ loading: false }));
-    })
+  handleTableChange(type, {page, sizePerPage, sortField, sortOrder}) {
+    this.load({
+      page: page,
+      rows: sizePerPage,
+      sort: sortField,
+      order: sortOrder,
+    });
   }
 
   render() {
     const {columns} = this.props;
     const {page, sizePerPage, totalSize} = this.state;
+
     return <React.Fragment>
       <style>
         {`
@@ -84,7 +78,7 @@ class DataTable2 extends React.Component {
         columns={columns}
         hover
         classes="table-center"
-        noDataIndication='暂无记录'
+        noDataIndication={this.state.noDataIndication}
         loading={this.state.loading}
         overlay={overlayFactory({spinner: true, background: 'rgba(192,192,192,0.3)'})}
         pagination={paginationFactory({
