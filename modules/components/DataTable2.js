@@ -15,6 +15,8 @@ class DataTable2 extends React.Component {
       page: 1,
       totalSize: 0,
       sizePerPage: 10,
+      sortField: '',
+      sortOrder: '',
       loading: false,
       noDataIndication: '暂无数据',
     };
@@ -54,10 +56,24 @@ class DataTable2 extends React.Component {
     });
   }
 
-  load(params = {
-    page: this.state.page,
-    rows: this.state.sizePerPage,
-  }) {
+  load(params = {}) {
+    // 自身参数
+    let tableParams = {
+      page: this.state.page,
+      rows: this.state.sizePerPage,
+      sort: this.state.sortField,
+      order: this.state.sortOrder,
+    };
+
+    // 外部表单的参数
+    let filterParams = {};
+    $($('.search-form').serializeArray()).each((index, obj) => {
+      filterParams[obj.name] = obj.value;
+    });
+
+    // 外部的参数
+    params = Object.assign(params, tableParams, filterParams);
+
     this.enableLoading();
     $.ajax({
       url: $.appendUrl(this.props.url, params),
@@ -75,11 +91,16 @@ class DataTable2 extends React.Component {
   }
 
   handleTableChange(type, {page, sizePerPage, sortField, sortOrder}) {
-    this.load({
-      page: page,
-      rows: sizePerPage,
-      sort: sortField,
-      order: sortOrder,
+    this.setState({
+      sortField,
+      sortOrder,
+    }, () => {
+      this.load({
+        page: page,
+        rows: sizePerPage,
+        sort: sortField,
+        order: sortOrder,
+      });
     });
   }
 
@@ -98,6 +119,7 @@ class DataTable2 extends React.Component {
         }
        `}
       </style>
+      {this.props.filterRenderer && this.props.filterRenderer()}
       <BootstrapTable
         remote={{pagination: true}}
         keyField="id"
