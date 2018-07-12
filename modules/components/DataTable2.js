@@ -5,6 +5,7 @@ import React from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from "react-bootstrap-table2-paginator";
 import overlayFactory from 'react-bootstrap-table2-overlay';
+import {Link} from "react-router-dom";
 
 const DataTable2 = ({loading, data, page, sizePerPage, onTableChange, totalSize}) => (
   <BootstrapTable
