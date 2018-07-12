@@ -14,7 +14,7 @@ class DataTable2 extends React.Component {
       data: [],
       page: 1,
       totalSize: 0,
-      sizePerPage: 3,
+      sizePerPage: 10,
       loading: false,
       noDataIndication: '暂无数据',
     };
@@ -52,8 +52,9 @@ class DataTable2 extends React.Component {
     }).done(ret => {
       this.setState({
         data: ret.data,
-        page: params.page,
+        page: parseInt(params.page, 10),
         totalSize: ret.records,
+        sizePerPage: parseInt(ret.rows, 10),
       });
     }).always(() => {
       this.disableLoading();
@@ -93,7 +94,10 @@ class DataTable2 extends React.Component {
         classes="table-center"
         noDataIndication={this.state.noDataIndication}
         loading={this.state.loading}
-        overlay={overlayFactory({spinner: true, background: 'rgba(192,192,192,0.3)'})}
+        overlay={overlayFactory({
+          spinner: true,
+          background: 'rgba(192,192,192,0.3)',
+        })}
         pagination={paginationFactory({
           page,
           sizePerPage,
