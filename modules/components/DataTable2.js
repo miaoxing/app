@@ -18,21 +18,34 @@ class DataTable2 extends React.Component {
       loading: false,
       noDataIndication: '暂无数据',
     };
+    this.prevNoDataIndication = '';
     this.handleTableChange = this.handleTableChange.bind(this);
   }
 
   componentDidMount() {
     this.load({
       page: this.state.page,
-      sizePerPage: this.state.sizePerPage
+      rows: this.state.sizePerPage
+    });
+  }
+
+  enableLoading() {
+    this.prevNoDataIndication = this.state.noDataIndication;
+    this.setState({
+      loading: true,
+      noDataIndication: ' ',
+    });
+  }
+
+  disableLoading() {
+    this.setState({
+      loading: false,
+      noDataIndication: this.prevNoDataIndication,
     });
   }
 
   load(params) {
-    this.setState({
-      loading: true,
-      noDataIndication: '加载中...'
-    });
+    this.enableLoading();
 
     $.ajax({
       url: $.appendUrl(this.props.url, params),
@@ -43,10 +56,7 @@ class DataTable2 extends React.Component {
         totalSize: ret.total,
       });
     }).always(() => {
-      this.setState({
-        loading: false,
-        noDataIndication: '暂无数据',
-      });
+      this.disableLoading();
     })
   }
 
@@ -68,6 +78,9 @@ class DataTable2 extends React.Component {
         {`
         .react-bs-table-sizePerPage-dropdown.show {
           display:inline-block!important;
+        }
+        .react-bs-table-no-data {
+          height: 5rem;
         }
        `}
       </style>
