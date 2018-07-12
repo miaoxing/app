@@ -26,7 +26,7 @@ class DataTable2 extends React.Component {
 
   load() {
     $.ajax({
-      url: $.url('admin/pas-departments.json'),
+      url: this.props.url,
       dataType: 'json',
     }).done(ret => {
       this.setState({
@@ -46,7 +46,7 @@ class DataTable2 extends React.Component {
     this.setState(() => ({ loading: true }));
     const currentIndex = (page - 1) * sizePerPage;
     $.ajax({
-      url: $.url('admin/pas-departments.json', {
+      url: $.appendUrl(this.props.url, {
         page: page,
         rows: sizePerPage,
         sort: sortField,
@@ -67,7 +67,8 @@ class DataTable2 extends React.Component {
   }
 
   render() {
-    const {columns, page, sizePerPage, onTableChange, totalSize} = this.props;
+    const {columns} = this.props;
+    const {page, sizePerPage, totalSize} = this.state;
     return <React.Fragment>
       <style>
         {`
@@ -97,7 +98,7 @@ class DataTable2 extends React.Component {
             </span>
           )
         })}
-        onTableChange={onTableChange}
+        onTableChange={this.handleTableChange}
       />
     </React.Fragment>;
   }
