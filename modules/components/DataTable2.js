@@ -14,7 +14,7 @@ class DataTable2 extends React.Component {
       data: [],
       page: 1,
       totalSize: 0,
-      sizePerPage: 10,
+      sizePerPage: 3,
       loading: false,
       noDataIndication: '暂无数据',
     };
@@ -23,10 +23,7 @@ class DataTable2 extends React.Component {
   }
 
   componentDidMount() {
-    this.load({
-      page: this.state.page,
-      rows: this.state.sizePerPage
-    });
+    this.load();
   }
 
   enableLoading() {
@@ -44,16 +41,19 @@ class DataTable2 extends React.Component {
     });
   }
 
-  load(params) {
+  load(params = {
+    page: this.state.page,
+    rows: this.state.sizePerPage,
+  }) {
     this.enableLoading();
-
     $.ajax({
       url: $.appendUrl(this.props.url, params),
       dataType: 'json',
     }).done(ret => {
       this.setState({
         data: ret.data,
-        totalSize: ret.total,
+        page: params.page,
+        totalSize: ret.records,
       });
     }).always(() => {
       this.disableLoading();
@@ -101,7 +101,7 @@ class DataTable2 extends React.Component {
           showTotal: true,
           paginationTotalRenderer: (from, to, size) => (
             <span className="react-bootstrap-table-pagination-total">
-              &nbsp;显示第 {from} 至 {to} 项结果，共 {size} 项
+              &nbsp;显示第 {from} 至 {to+1} 项结果，共 {size} 项
             </span>
           )
         })}
