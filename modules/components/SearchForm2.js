@@ -15,9 +15,9 @@ class SearchForm2 extends React.Component {
       $this.loadQuery();
     }
 
-    // $this.on('update', () => {
-    //   this.props.onUpdate();
-    // });
+    $this.on('update', () => {
+      $(document).trigger('tableReload');
+    });
   }
 
   render () {
