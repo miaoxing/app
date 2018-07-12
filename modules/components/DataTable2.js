@@ -23,6 +23,7 @@ class DataTable2 extends React.Component {
     this.prevNoDataIndication = '';
 
     this.handleReload = this.handleReload.bind(this);
+    this.handleFilter = this.handleFilter.bind(this);
     this.handleTableChange = this.handleTableChange.bind(this);
   }
 
@@ -65,14 +66,14 @@ class DataTable2 extends React.Component {
       order: this.state.sortOrder,
     };
 
-    // 外部表单的参数
+    // TODO 外部表单的参数
     let filterParams = {};
     $($('.search-form').serializeArray()).each((index, obj) => {
       filterParams[obj.name] = obj.value;
     });
 
     // 外部的参数
-    params = Object.assign(params, tableParams, filterParams);
+    params = Object.assign({}, tableParams, filterParams, params);
 
     this.enableLoading();
     $.ajax({
@@ -90,13 +91,22 @@ class DataTable2 extends React.Component {
     })
   }
 
+  handleFilter() {
+    this.handleTableChange('filter', {
+      page: 1,
+      sizePerPage: this.state.sizePerPage,
+      sortField: this.state.sortField,
+      sortOrder: this.state.sortOrder
+    })
+  }
+
   handleTableChange(type, {page, sizePerPage, sortField, sortOrder}) {
     this.setState({
       sortField,
       sortOrder,
     }, () => {
       this.load({
-        page: page,
+        page: type === 'sort' ? 1 : page,
         rows: sizePerPage,
         sort: sortField,
         order: sortOrder,
@@ -119,7 +129,7 @@ class DataTable2 extends React.Component {
         }
        `}
       </style>
-      {this.props.filterRenderer && this.props.filterRenderer()}
+      {this.props.filterRenderer && this.props.filterRenderer(this.handleFilter)}
       <BootstrapTable
         remote={{pagination: true}}
         keyField="id"

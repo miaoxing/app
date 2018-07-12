@@ -16,7 +16,7 @@ class SearchForm2 extends React.Component {
     }
 
     $this.on('update', () => {
-      $(document).trigger('tableReload');
+      this.props.onFilter && this.props.onFilter();
     });
   }
 
