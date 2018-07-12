@@ -19,10 +19,23 @@ class DataTable2 extends React.Component {
       noDataIndication: '暂无数据',
     };
     this.prevNoDataIndication = '';
+
+    this.handleReload = this.handleReload.bind(this);
     this.handleTableChange = this.handleTableChange.bind(this);
   }
 
   componentDidMount() {
+    this.load();
+
+    // TODO 应该按React的通讯方式
+    $(document).on('tableReload', this.handleReload);
+  }
+
+  componentWillUnmount() {
+    $(document).off('tableReload', this.handleReload)
+  }
+
+  handleReload() {
     this.load();
   }
 
