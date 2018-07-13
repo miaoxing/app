@@ -11,9 +11,11 @@ function FormItem({ label, name, help, labelSize, controlSize, groupSize, helpSi
   const id = trim(decamelize(name.replace(/\[\]/g, '-'), '-'), '-');
 
   // 自动识别select类型
-  var firstChild = React.Children.toArray(props.children)[0];
-  if (firstChild && (firstChild.type === 'option' || firstChild.type === <Options />.type)) {
-    props.componentClass = 'select';
+  if (!props.componentClass) {
+    const firstChild = React.Children.toArray(props.children)[0];
+    if (firstChild && (firstChild.type === 'option' || firstChild.type === <Options />.type)) {
+      props.componentClass = 'select';
+    }
   }
 
   if (!props.type && props.componentClass !== 'select' && props.componentClass !== 'textarea') {
