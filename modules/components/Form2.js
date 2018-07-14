@@ -22,7 +22,7 @@ class Form extends React.Component {
           }).done((ret) => {
             $.msg(ret, () => {
               if (ret.code === 1) {
-                this.props.history.push(this.getRedirectUrl());
+                this.redirect(this.getRedirectUrl());
               }
             });
           }).always(() => {
@@ -36,6 +36,12 @@ class Form extends React.Component {
         )}
       />
     );
+  }
+
+  redirect(url) {
+    if (url !== this.props.history.location.pathname) {
+      this.props.history.push(url);
+    }
   }
 
   getRedirectUrl() {
