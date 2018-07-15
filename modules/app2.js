@@ -3,6 +3,7 @@ class App2 {
     this._namesapce = '';
     this._controller = '';
     this._action = '';
+    this._id = '';
   }
 
   url(...args) {
@@ -19,6 +20,10 @@ class App2 {
 
   curEditUrl(id) {
     return this.curIndexUrl() + '/' + id + '/edit';
+  }
+
+  curShowUrl(id = null) {
+    return this.curIndexUrl() + '/' + (id || this.id);
   }
 
   curDestroyUrl(id) {
@@ -48,8 +53,17 @@ class App2 {
   set action(action) {
     this._action = action;
   }
+
+  get id() {
+    return this._id;
+  };
+
+  set id(id) {
+    this._id = id;
+  }
 }
 
 const app2 = new App2();
 
 export default app2;
+export const url = app2.url;

@@ -45,6 +45,7 @@ class App extends React.Component {
         app2.namespace = props.match.params.namespace;
         app2.controller = controller;
         app2.action = action;
+        app2.id = props.match.params.id;
 
         return this.props.importPage(plugin, controller, action);
       },
