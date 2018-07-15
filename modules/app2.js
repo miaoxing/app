@@ -30,6 +30,10 @@ class App2 {
     return this.curIndexUrl() + '/' + id + '/destroy';
   }
 
+  curFormUrl() {
+    return this.curIndexUrl() + '/' + (this.id ? 'update' : 'create');
+  }
+
   get namespace() {
     return this._namespace;
   };
