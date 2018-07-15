@@ -1,7 +1,7 @@
 import React from 'react';
-import {withRouter} from "react-router-dom";
 import NewBtn from "components/NewBtn";
+import app2 from 'app2';
 
-const CNewBtn = ({id, ...props}) => <NewBtn href={props.match.params.controller + '/new'} {...props} />;
+const CNewBtn = ({...props}) => <NewBtn href={app2.curNewUrl()} {...props} />;
 
-export default withRouter(CNewBtn);
+export default CNewBtn;

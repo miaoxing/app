@@ -1,7 +1,7 @@
 import React from 'react';
-import EditLink from "components/EditLink";
-import {withRouter} from "react-router-dom";
+import EditLink from 'components/EditLink';
+import app2 from 'app2';
 
-const CEditLink = ({id, ...props}) => <EditLink href={props.match.params.controller + '/' + id + '/edit'} {...props} />;
+const CEditLink = ({id, ...props}) => <EditLink href={app2.curEditUrl(id)} {...props} />;
 
-export default withRouter(CEditLink);
+export default CEditLink;

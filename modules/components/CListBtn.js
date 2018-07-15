@@ -1,12 +1,9 @@
 import React from 'react';
-import {withRouter} from "react-router-dom";
-import ListBtn from "components/ListBtn";
+import ListBtn from 'components/ListBtn';
+import app2 from 'app2';
 
-const CListBtn = ({id, ...props}) => {
-  const namespace = props.match.params.namespace ? (props.match.params.namespace + '/') : '';
-  const url = $.baseUrl + '/' + namespace + props.match.params.controller;
-
-  return <ListBtn href={url} {...props} />;
+const CListBtn = (...props) => {
+  return <ListBtn href={app2.curIndexUrl()} {...props} />;
 };
 
-export default withRouter(CListBtn);
+export default CListBtn;

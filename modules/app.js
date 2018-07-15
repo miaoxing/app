@@ -4,6 +4,7 @@ import Loading from 'components/Loading';
 import NoMatch from "components/NoMatch";
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
+import app2 from 'app2';
 
 class App extends React.Component {
   constructor(props) {
@@ -41,6 +42,10 @@ class App extends React.Component {
         const controller = this.getController(props.match.params);
         const action = this.getAction(props.match.params);
         const plugin = this.controllerMap[controller];
+        app2.namespace = props.match.params.namespace;
+        app2.controller = controller;
+        app2.action = action;
+
         return this.props.importPage(plugin, controller, action);
       },
       loading: Loading,
