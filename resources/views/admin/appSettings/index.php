@@ -3,12 +3,6 @@
 $view->layout();
 ?>
 
-<div class="page-header">
-  <h1>
-    网站设置
-  </h1>
-</div>
-
 <div class="row">
   <div class="col-xs-12">
     <form action="<?= $url('admin/app-settings/update') ?>" class="js-setting-form form-horizontal" method="post"

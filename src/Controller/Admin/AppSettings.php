@@ -10,6 +10,8 @@ class AppSettings extends \Miaoxing\Plugin\BaseController
         'index,update' => '设置',
     ];
 
+    protected $displayPageHeader = true;
+
     public function indexAction()
     {
         return get_defined_vars();
