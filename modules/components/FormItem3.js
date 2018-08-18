@@ -15,7 +15,7 @@ const FormItem3 = ({name = '', label, ...props}) => {
       {props.required && <React.Fragment>{' '}<Required/></React.Fragment>}
     </ControlLabel>
     <div className="col-control">
-      <FormControl componentClass={Field} id={id} name={name} {...props} />
+      <FormControl componentClass={Field} name={name} {...props} />
     </div>
   </FormGroup>
 };
