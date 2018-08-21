@@ -10,10 +10,10 @@ const FormItem3 = ({name = '', label, ...props}) => {
   const id = trim(decamelize(name.replace(/\[\]/g, '-'), '-'), '-');
 
   return <FormGroup controlId={id}>
-    <ControlLabel>
+    {label && <ControlLabel>
       {label}
       {props.required && <React.Fragment>{' '}<Required/></React.Fragment>}
-    </ControlLabel>
+    </ControlLabel>}
     <div className="col-control">
       <FormControl componentClass={Field} name={name} {...props} />
     </div>
