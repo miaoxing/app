@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ListText = ({label, children}) => {
-  return <li className="list-item">
+const ListText = ({label, children, ...props}) => {
+  return <li className="list-item" {...props}>
     <h4 className="list-heading">
       <span className="text-muted">{label}</span>
       <span className="pull-right">{children}</span>
