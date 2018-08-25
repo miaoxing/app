@@ -1,10 +1,10 @@
 import React from 'react';
 import {Form as RbForm} from 'react-bootstrap';
 import {Field, Formik, withFormik} from 'formik';
-import { withRouter } from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
 
 class Form extends React.Component {
-  render () {
+  render() {
     if (Object.keys(this.props.initialValues).length === 0) {
       return '';
     }
@@ -12,6 +12,7 @@ class Form extends React.Component {
     return (
       <Formik
         initialValues={this.props.initialValues}
+        enableReinitialize={true}
         onSubmit={(values, actions) => {
           $.ajax({
             url: this.props.url,
