@@ -10,6 +10,10 @@ class App2 {
     return $.url(...args);
   }
 
+  curUrl() {
+    return window.location.pathname;
+  }
+
   curIndexUrl() {
     return this.url((this.namespace ? (this.namespace + '/') : '') + this.controller);
   }
