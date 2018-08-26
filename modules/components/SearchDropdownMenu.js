@@ -14,7 +14,7 @@ class SearchDropdownMenu extends React.Component {
   }
 
   render() {
-    return <DropdownMenu>
+    return <DropdownMenu rightLink={this.props.rightLink}>
       <form className="js-form form form-inset m-t-md">
         <div className="form-body">
           {this.props.children}
