@@ -1,6 +1,7 @@
 import React from "react";
 import DropdownMenu from "components/DropdownMenu";
 import {withRouter} from "react-router-dom";
+import 'load-query';
 
 class SearchDropdownMenu extends React.Component {
   componentDidMount() {
