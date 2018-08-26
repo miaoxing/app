@@ -2,6 +2,7 @@ import React from "react";
 import DropdownMenu from "components/DropdownMenu";
 import {withRouter} from "react-router-dom";
 import 'load-query';
+import PropTypes from 'prop-types';
 
 class SearchDropdownMenu extends React.Component {
   componentDidMount() {
@@ -29,5 +30,9 @@ class SearchDropdownMenu extends React.Component {
     </DropdownMenu>
   }
 }
+
+SearchDropdownMenu.propTypes = {
+  rightLink: PropTypes.PropTypes.node,
+};
 
 export default withRouter(SearchDropdownMenu);
