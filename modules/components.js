@@ -25,7 +25,7 @@ export SearchForm2 from './components/SearchForm2';
 export SearchItem from './components/SearchItem.jsx';
 
 export Tabs from './components/Tabs.jsx';
-export TabNavs from './components/TabNavs.jsx';
+export TabNavs from './components/TabNavs';
 
 export Img from './components/Img.jsx';
 export BtnLink from './components/BtnLink';
