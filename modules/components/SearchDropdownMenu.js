@@ -9,15 +9,20 @@ class SearchDropdownMenu extends React.Component {
     $('.js-form').loadQuery();
   }
 
-  handleClick(e) {
+  handleClick() {
     const location = this.props.history.location;
     const url = $.appendUrl(location.pathname + location.search, $('.js-form').serialize());
     this.props.history.push(url);
   }
 
+  handleSubmit(e) {
+    this.handleClick();
+    e.preventDefault();
+  }
+
   render() {
     return <DropdownMenu rightLink={this.props.rightLink}>
-      <form className="js-form form form-inset m-t-md">
+      <form className="js-form form form-inset m-t-md" onSubmit={this.handleSubmit.bind(this)}>
         <div className="form-body">
           {this.props.children}
         </div>
