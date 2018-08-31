@@ -20,6 +20,7 @@ class App extends React.Component {
     });
 
     this.loadableComponent = this.loadableComponent.bind(this);
+    this.deep = 1;
   }
 
   getController(params) {
@@ -47,11 +48,27 @@ class App extends React.Component {
         app2.action = action;
         app2.id = props.match.params.id;
 
+        // TODO Nav也升级为React
+        this.handleLoad(props);
+        if (this.deep > 0) {
+          $('.js-header-nav-item:first').css('display', 'flex');
+        } else {
+          $('.js-header-nav-item:first').hide();
+        }
+
         return this.props.importPage(plugin, controller, action);
       },
       loading: Loading,
     });
     return <LoadableComponent {...props}/>;
+  }
+
+  handleLoad(props) {
+    if (props.history.action === 'POP') {
+      this.deep--;
+    } else if (props.history.action === 'PUSH') {
+      this.deep++;
+    } // ignore REPLACE
   }
 
   loadEvents() {
@@ -68,7 +85,7 @@ class App extends React.Component {
     return <BrowserRouter>
       <Switch>
         {/* TODO /admin/login */}
-        <Route exact path={$.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
+        <Route exact path={app2.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
         <Route component={NoMatch}/>
       </Switch>
     </BrowserRouter>;
