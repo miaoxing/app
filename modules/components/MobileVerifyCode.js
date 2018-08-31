@@ -4,7 +4,9 @@ import {Field} from "formik";
 
 class MobileVerifyCode extends React.Component {
   componentDidUpdate() {
-    $('.js-verify-code-send').verifyCode();
+    $('.js-verify-code-send').verifyCode({
+      url: this.props.url || '',
+    });
   }
 
   render() {
@@ -13,6 +15,13 @@ class MobileVerifyCode extends React.Component {
     }
 
     return <div className="form-group">
+      <style>
+        {`
+        .text-primary.disabled {
+          color: #a6a6a6 !important;
+        }
+        `}
+      </style>
       <label htmlFor="verify-code" className="control-label">
         验证码
         <span className="text-warning">*</span>
