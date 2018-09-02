@@ -10,6 +10,8 @@ class SearchDropdownMenu extends React.Component {
   }
 
   handleSubmit(e) {
+    // 关闭搜索窗口
+    $('[data-toggle="dropdown"]').trigger('click.fancy.dropdownmenu.toggle');
     e.preventDefault();
 
     if (this.props.onSubmit) {
