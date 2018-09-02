@@ -29,7 +29,6 @@ class InfiniteList extends React.Component {
       loadMore={this.handleLoadMore.bind(this)}
       hasMore={this.state.hasMore}
       threshold={40}
-      pageStart={this.props.pageStart}
       loader={<div className="list-loading" key={0}>
         <span className="list-loading-spinner"/>努力加载中...
       </div>}
@@ -43,7 +42,6 @@ class InfiniteList extends React.Component {
 
 InfiniteList.defaultProps = {
   url: '',
-  pageStart: 0,
 };
 
 export default InfiniteList;
