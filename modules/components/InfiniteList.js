@@ -15,10 +15,11 @@ class InfiniteList extends React.Component {
         return $.msg(ret);
       }
 
+      // BUG: ajax加载期间hasMore为false会导致加载连续加载两页内容
       let data = this.state.data.concat(ret.data);
       this.setState({
         data: data,
-        hasMore: ret.page <= Math.ceil(ret.records / ret.rows),
+        hasMore: ret.page < (ret.records / ret.rows),
       });
     });
   }
@@ -27,6 +28,7 @@ class InfiniteList extends React.Component {
     return <InfiniteScroll
       loadMore={this.handleLoadMore.bind(this)}
       hasMore={this.state.hasMore}
+      threshold={40}
       loader={<div className="list-loading" key={0}>
         <span className="list-loading-spinner"/>努力加载中...
       </div>}
