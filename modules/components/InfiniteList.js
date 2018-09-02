@@ -28,7 +28,7 @@ class InfiniteList extends React.Component {
     return <InfiniteScroll
       loadMore={this.handleLoadMore.bind(this)}
       hasMore={this.state.hasMore}
-      threshold={40}
+      useWindow={false}
       loader={<div className="list-loading" key={0}>
         <span className="list-loading-spinner"/>努力加载中...
       </div>}
