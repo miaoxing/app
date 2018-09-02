@@ -9,15 +9,17 @@ class SearchDropdownMenu extends React.Component {
     $('.js-form').loadQuery();
   }
 
-  handleClick() {
+  handleSubmit(e) {
+    e.preventDefault();
+
+    if (this.props.onSubmit) {
+      this.props.onSubmit(e);
+      return;
+    }
+
     const location = this.props.history.location;
     const url = $.appendUrl(location.pathname + location.search, $('.js-form').serialize());
     this.props.history.push(url);
-  }
-
-  handleSubmit(e) {
-    this.handleClick();
-    e.preventDefault();
   }
 
   render() {
@@ -27,9 +29,7 @@ class SearchDropdownMenu extends React.Component {
           {this.props.children}
         </div>
         <div className="form-group form-footer">
-          <button type="button" className="btn btn-brand btn-primary btn-block"
-            onClick={this.handleClick.bind(this)}>搜索
-          </button>
+          <button type="submit" className="btn btn-brand btn-primary btn-block">搜索</button>
         </div>
       </form>
     </DropdownMenu>
