@@ -51,9 +51,9 @@ class App extends React.Component {
         // TODO Nav也升级为React
         this.handleLoad(props);
         if (this.deep > 0) {
-          $('.js-header-nav-item:first').css('display', 'flex');
+          $('.js-back').show();
         } else {
-          $('.js-header-nav-item:first').hide();
+          $('.js-back').hide();
         }
 
         return this.props.importPage(plugin, controller, action);
