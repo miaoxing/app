@@ -22,7 +22,7 @@ class App2 {
     return this.curIndexUrl() + '/new';
   }
 
-  curEditUrl(id) {
+  curEditUrl(id = null) {
     return this.curIndexUrl() + '/' + (id || this.id) + '/edit';
   }
 
@@ -30,8 +30,8 @@ class App2 {
     return this.curIndexUrl() + '/' + (id || this.id);
   }
 
-  curDestroyUrl(id) {
-    return this.curIndexUrl() + '/' + id + '/destroy';
+  curDestroyUrl(id = null) {
+    return this.curIndexUrl() + '/' + (id || this.id) + '/destroy';
   }
 
   curFormUrl() {
