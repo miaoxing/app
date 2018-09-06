@@ -6,8 +6,8 @@ class Tabs extends React.Component {
   componentDidMount() {
     // 样式美化
     // TODO 改为styled覆盖
-    $('.js-tabs ul').removeClass('nav-tabs').addClass('tab-underline header-tab border-bottom');
-    $('.js-tabs a').addClass('text-active-primary');
+    $('.js-tabs ul:first').removeClass('nav-tabs').addClass('tab-underline header-tab border-bottom')
+      .find('a').addClass('text-active-primary');
   }
 
   render() {
