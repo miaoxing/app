@@ -23,7 +23,7 @@ class App2 {
   }
 
   curEditUrl(id) {
-    return this.curIndexUrl() + '/' + id + '/edit';
+    return this.curIndexUrl() + '/' + (id || this.id) + '/edit';
   }
 
   curShowUrl(id = null) {
