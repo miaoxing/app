@@ -8,11 +8,9 @@ class DeleteLink extends React.Component {
   }
 
   handleDelete(e) {
-    const message = this.props.message || '删除后将无法还原,确认删除?';
-    const href = this.props.href;
-    $.confirm(message, () => {
+    $.confirm(this.props.message, () => {
       $.ajax({
-        url: href,
+        url: this.props.href,
         loading: true,
         dataType: 'json',
       }).done(ret => {
@@ -25,10 +23,15 @@ class DeleteLink extends React.Component {
   }
 
   render() {
-    return <a className="text-danger" href="javascript:" onClick={this.handleDelete}>
+    const {message, href, ...rest} = this.props;
+    return <a className="text-danger" href="javascript:" onClick={this.handleDelete} {...rest}>
       删除
     </a>
   }
 }
+
+DeleteLink.defaultProps = {
+  message: '删除后将无法还原,确认删除?',
+};
 
 export default DeleteLink;
