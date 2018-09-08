@@ -36,12 +36,14 @@ class InfiniteList extends React.Component {
       {this.props.render({
         data: this.state.data
       })}
+      {!this.state.hasMore && this.state.data.length === 0 && this.props.emptyMessage}
     </InfiniteScroll>
   }
 }
 
 InfiniteList.defaultProps = {
   url: '',
+  emptyMessage: <div className="list-empty">暂无记录</div>,
 };
 
 export default InfiniteList;
