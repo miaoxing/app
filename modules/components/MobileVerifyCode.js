@@ -23,7 +23,7 @@ class MobileVerifyCode extends React.Component {
         `}
       </style>
       <label htmlFor="verify-code" className="control-label">
-        验证码
+        验证码{' '}
         <span className="text-warning">*</span>
       </label>
       <div className="col-control">
