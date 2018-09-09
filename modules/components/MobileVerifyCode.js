@@ -4,9 +4,12 @@ import {Field} from "formik";
 
 class MobileVerifyCode extends React.Component {
   componentDidUpdate() {
-    $('.js-verify-code-send').verifyCode({
-      url: this.props.url || '',
-    });
+    let options = {};
+    if (this.props.url) {
+      options.url = this.props.url;
+    }
+
+    $('.js-verify-code-send').verifyCode(options);
   }
 
   render() {
