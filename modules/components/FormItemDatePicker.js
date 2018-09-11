@@ -28,6 +28,7 @@ class FromItemDatePicker extends React.Component {
     return <React.Fragment>
       <FormItem3 readOnly {...rest} onClick={this.handleCompletedDateClick.bind(this)}/>
       <DatePicker
+        value={this.props.formik.values[this.props.name] ? new Date(this.props.formik.values[this.props.name]) : new Date()}
         isOpen={this.state.isOpen}
         onSelect={this.handleDatePickerSelect.bind(this)}
         onCancel={this.handleDatePickerCancel.bind(this)}
