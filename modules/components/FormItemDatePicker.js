@@ -10,7 +10,7 @@ class FromItemDatePicker extends React.Component {
     isOpen: false,
   };
 
-  handleCompletedDateClick(e) {
+  handleDatePickerClick(e) {
     this.setState({isOpen: true});
   }
 
@@ -24,16 +24,15 @@ class FromItemDatePicker extends React.Component {
   }
 
   render() {
-    const {dateMin, dateMax, ...rest} = this.props;
+    const {...rest} = this.props;
     return <React.Fragment>
-      <FormItem3 readOnly {...rest} onClick={this.handleCompletedDateClick.bind(this)}/>
+      <FormItem3 readOnly {...rest} onClick={this.handleDatePickerClick.bind(this)}/>
       <DatePicker
-        value={this.props.formik.values[this.props.name] ? new Date(this.props.formik.values[this.props.name]) : new Date()}
+        value={this.props.formik.values[this.props.name] ?
+          new Date(this.props.formik.values[this.props.name]) : new Date()}
         isOpen={this.state.isOpen}
         onSelect={this.handleDatePickerSelect.bind(this)}
         onCancel={this.handleDatePickerCancel.bind(this)}
-        min={dateMin}
-        max={dateMax}
         theme="ios"
         showFormat="YYYY-MM-DD"/>
     </React.Fragment>
