@@ -6,11 +6,12 @@ class TabNavs extends React.Component {
   render() {
     const item = _.find(this.props.data, ['key', $.req(this.props.paramName)]);
     const cur = item ? item.key : 'all';
+    const baseUrl = this.props.baseUrl || window.location.pathname;
 
     return <ul className="header-tab nav tab-underline border-top-bottom">
       {_.map(this.props.data, (item) => {
         return <li key={item.id} className={'border-primary ' + (cur === item.key ? 'active' : '')}>
-          <Link to={$.appendUrl(this.props.baseUrl, {[this.props.paramName]: item.key})}
+          <Link to={$.appendUrl(baseUrl, {[this.props.paramName]: item.key})}
             className="text-active-primary">{item.name}</Link>
         </li>
       })}
@@ -21,7 +22,6 @@ class TabNavs extends React.Component {
 TabNavs.defaultProps = {
   data: [],
   paramName: 'status',
-  baseUrl: window.location.pathname,
 };
 
 export default TabNavs;
