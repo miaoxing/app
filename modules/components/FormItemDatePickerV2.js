@@ -60,7 +60,6 @@ class FormItemDatePickerV2 extends React.Component {
             orientation="vertical"
             noBorder={true}
             block={true}
-            readOnly={true}
             displayFormat="YYYY-MM-DD"
             showClearDate={true}
             isOutsideRange={() => false}
