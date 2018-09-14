@@ -49,6 +49,7 @@ class App extends React.Component {
         app2.id = props.match.params.id;
 
         // TODO Nav也升级为React
+        $(document).trigger('pageLoad', props);
         this.handleLoad(props);
         if (this.deep > 0) {
           $('.js-back').show();
