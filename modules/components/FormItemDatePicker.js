@@ -3,22 +3,7 @@ import {ControlLabel, FormGroup} from "react-bootstrap";
 import {connect} from "formik";
 import moment from 'moment';
 import Required from "components/Required.jsx";
-import DatePicker from "react-datepicker";
-import 'react-datepicker/dist/react-datepicker.css';
-import styled from "styled-components";
-
-const StyledDatePicker = styled.div`
-  .react-datepicker__input-container {
-    display: block;
-  }
-  .react-datepicker__close-icon::after {
-    background-color: transparent;
-    color: #d6d6d6;
-    font-size: 24px;
-    margin: -15px 0 0 0;
-    right: 15px;
-  }
-`;
+import DatePicker from "components/DatePicker";
 
 class FormItemDatePicker extends React.Component {
   handleChange(date) {
@@ -36,24 +21,13 @@ class FormItemDatePicker extends React.Component {
         {label}
         {this.props.required && <React.Fragment>{' '}<Required/></React.Fragment>}
       </ControlLabel>
-      <StyledDatePicker className="col-control">
+      <div className="col-control">
         <DatePicker
           selected={formik.values[name] ? moment(formik.values[name]) : null}
           onChange={this.handleChange.bind(this)}
-          className="form-control"
-          dateFormat="YYYY-MM-DD"
-          todayButton="今天"
-          withPortal
-          isClearable
-          peekNextMonth
-          showMonthDropdown
-          showYearDropdown
-          dropdownMode="select"
-          readOnly
-          locale="zh-cn"
           {...rest}
         />
-      </StyledDatePicker>
+      </div>
     </FormGroup>
   }
 }
