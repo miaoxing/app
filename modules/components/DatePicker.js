@@ -17,25 +17,48 @@ const StyledDatePicker = styled.div`
 `;
 
 class MyDatePicker extends React.Component {
+  state = {
+    isOpen: false
+  };
+
+  handleChange = date => {
+    this.props.onChangeDate && this.props.onChangeDate(date);
+    this.toggleCalendar();
+  };
+
+  toggleCalendar = e => {
+    e && e.preventDefault();
+    this.setState({isOpen: !this.state.isOpen});
+  };
+
   render() {
-    const {...rest} = this.props;
+    const {selected, onChangeDate, ...rest} = this.props;
 
     return <StyledDatePicker>
-        <DatePicker
-          className="form-control"
-          dateFormat="YYYY-MM-DD"
-          todayButton="今天"
-          withPortal
-          isClearable
-          peekNextMonth
-          showMonthDropdown
-          showYearDropdown
-          dropdownMode="select"
-          readOnly
-          locale="zh-cn"
-          {...rest}
-        />
-      </StyledDatePicker>
+      <input type="text"
+        className="form-control"
+        onClick={this.toggleCalendar}
+        readOnly
+        value={this.props.selected ? this.props.selected.format('YYYY-MM-DD') : ''}
+        onChange={() => {
+        }}
+      />
+      {this.state.isOpen && <DatePicker
+        selected={selected}
+        dateFormat="YYYY-MM-DD"
+        todayButton="今天"
+        withPortal
+        isClearable
+        peekNextMonth
+        showMonthDropdown
+        showYearDropdown
+        dropdownMode="select"
+        locale="zh-cn"
+        inline
+        onChange={this.handleChange}
+        {...rest}
+      />}
+    </StyledDatePicker>
   }
 }
 

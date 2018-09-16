@@ -24,7 +24,7 @@ class FormItemDatePicker extends React.Component {
       <div className="col-control">
         <DatePicker
           selected={formik.values[name] ? moment(formik.values[name]) : null}
-          onChange={this.handleChange.bind(this)}
+          onChangeDate={this.handleChange.bind(this)}
           {...rest}
         />
       </div>
