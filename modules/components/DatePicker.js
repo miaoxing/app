@@ -21,6 +21,7 @@ const CustomInput = (props) => {
   return <input
     type="text"
     onMouseDown={(e) => {e.preventDefault()}}
+    {...props}
   />
 };
 
