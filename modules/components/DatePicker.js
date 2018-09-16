@@ -18,11 +18,9 @@ const StyledDatePicker = styled.div`
 `;
 
 const CustomInput = (props) => {
-  const {onFocus, readOnly, ...rest} = props;
   return <input
     type="text"
-    readOnly={true}
-    {...rest}
+    onMouseDown={(e) => {e.preventDefault()}}
   />
 };
 
