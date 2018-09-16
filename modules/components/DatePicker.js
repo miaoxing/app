@@ -11,40 +11,25 @@ const StyledDatePicker = styled.div`
     background-color: transparent;
     color: #d6d6d6;
     font-size: 24px;
-    margin: -15px 0 0 0;
-    right: 15px;
+    margin: -14px 0 0 0;
+    right: 6px;
+    top: 50%;
   }
 `;
 
+const CustomInput = (props) => {
+  const {onFocus, readOnly, ...rest} = props;
+  return <input
+    type="text"
+    readOnly={true}
+    {...rest}
+  />
+};
+
 class MyDatePicker extends React.Component {
-  state = {
-    isOpen: false
-  };
-
-  handleChange = date => {
-    this.props.onChangeDate && this.props.onChangeDate(date);
-    this.toggleCalendar();
-  };
-
-  toggleCalendar = e => {
-    e && e.preventDefault();
-    this.setState({isOpen: !this.state.isOpen});
-  };
-
   render() {
-    const {selected, onChangeDate, ...rest} = this.props;
-
     return <StyledDatePicker>
-      <input type="text"
-        className="form-control"
-        onClick={this.toggleCalendar}
-        readOnly
-        value={this.props.selected ? this.props.selected.format('YYYY-MM-DD') : ''}
-        onChange={() => {
-        }}
-      />
-      {this.state.isOpen && <DatePicker
-        selected={selected}
+      <DatePicker
         dateFormat="YYYY-MM-DD"
         todayButton="今天"
         withPortal
@@ -54,10 +39,10 @@ class MyDatePicker extends React.Component {
         showYearDropdown
         dropdownMode="select"
         locale="zh-cn"
-        inline
-        onChange={this.handleChange}
-        {...rest}
-      />}
+        className="form-control"
+        customInput={<CustomInput/>}
+        {...this.props}
+      />
     </StyledDatePicker>
   }
 }
