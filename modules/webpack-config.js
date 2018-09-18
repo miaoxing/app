@@ -23,7 +23,7 @@ class WebpackConfig {
     this.isHot = path.basename(require.main.filename) === 'webpack-dev-server.js';
     // HMR不支持chunkhash，只支持hash
     this.useVersioning = !this.isHot;
-    this.publicPath = this.isProd ? '/' + this.distDir + '/' : 'http://localhost:8080/' + this.distDir + '/';
+    this.publicPath = this.isProd ? '/' + this.distDir + '/' : 'http://192.168.0.103:8080/' + this.distDir + '/';
   }
 
   getEntries() {
@@ -105,6 +105,8 @@ class WebpackConfig {
         // new BundleAnalyzerPlugin(),
       ],
       devServer: {
+        host: '0.0.0.0',
+        useLocalIp: true,
         headers: {
           'Access-Control-Allow-Origin': '*'
         }
