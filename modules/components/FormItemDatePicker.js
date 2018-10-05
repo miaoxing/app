@@ -2,7 +2,7 @@ import React from 'react';
 import {ControlLabel, FormGroup} from 'react-bootstrap';
 import {connect} from 'formik';
 import moment from 'moment';
-import Required from 'components/Required.jsx';
+import Required from 'components/Required';
 import DatePicker from 'components/DatePicker';
 
 class FormItemDatePicker extends React.Component {

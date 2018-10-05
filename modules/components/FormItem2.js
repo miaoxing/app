@@ -1,7 +1,7 @@
 import React from 'react';
-import FormItem from './FormItem.jsx';
+import FormItem from './FormItem';
 import {Field} from 'formik';
-import Options from 'components/Options.jsx';
+import Options from 'components/Options';
 
 function FormItem2({...props}) {
   // 自动识别select类型

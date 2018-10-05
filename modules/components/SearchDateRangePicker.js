@@ -1,6 +1,6 @@
 import React from 'react';
 import rp from 'require-promise';
-import SearchItem from 'components/SearchItem.jsx';
+import SearchItem from 'components/SearchItem';
 import decamelize from 'decamelize';
 
 const loader = Promise.all([

@@ -1,5 +1,5 @@
 import React from 'react';
-import PageHeader from './PageHeader.jsx';
+import PageHeader from './PageHeader';
 
 class Page extends React.Component {
   render () {

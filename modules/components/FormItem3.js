@@ -1,7 +1,7 @@
 import React from 'react';
 import {ControlLabel, FormControl, FormGroup} from 'react-bootstrap';
 import {Field} from 'formik';
-import Required from 'components/Required.jsx';
+import Required from 'components/Required';
 import decamelize from 'decamelize';
 import trim from 'trim-character';
 

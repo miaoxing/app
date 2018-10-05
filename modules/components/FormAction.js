@@ -1,5 +1,5 @@
 import React from 'react';
-import {FormGroup, Button, Col} from 'react-bootstrap';
+import {Button, Col, FormGroup} from 'react-bootstrap';
 
 function FormAction({url}) {
   return (

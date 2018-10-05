@@ -1,10 +1,10 @@
 import React from 'react';
-import {FormGroup, FormControl, ControlLabel, HelpBlock, Col} from 'react-bootstrap';
-import Options from './Options.jsx';
+import {Col, ControlLabel, FormControl, FormGroup} from 'react-bootstrap';
+import Options from './Options';
 import decamelize from 'decamelize';
 import trim from 'trim-character';
 
-import Required from './Required.jsx';
+import Required from './Required';
 
 function FormItem({ label, name, help, labelSize, controlSize, groupSize, helpSize, ...props }) {
   // 移除 name[] 后面的 []

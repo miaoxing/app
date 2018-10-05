@@ -2,8 +2,7 @@ import React from 'react';
 import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
 
-import Form from './Form.jsx';
-import loadQuery from 'load-query';
+import Form from './Form';
 import '../styles/_search-form.scss';
 
 class SearchForm extends React.Component {
