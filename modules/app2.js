@@ -4,6 +4,7 @@ class App2 {
     this._controller = '';
     this._action = '';
     this._id = '';
+    this._history = null;
   }
 
   url(...args) {
@@ -38,6 +39,14 @@ class App2 {
     return this.curIndexUrl() + '/' + (this.id ? 'update' : 'create');
   }
 
+  to(...args) {
+    this.history.push(this.url(...args))
+  }
+
+  reload() {
+    this.history.replace(this.history.location);
+  }
+
   get namespace() {
     return this._namespace;
   }
@@ -68,6 +77,14 @@ class App2 {
 
   set id(id) {
     this._id = id;
+  }
+
+  get history() {
+    return this._history;
+  }
+
+  set history(history) {
+    this._history = history;
   }
 }
 

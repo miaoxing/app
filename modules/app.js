@@ -47,6 +47,7 @@ class App extends React.Component {
         app2.controller = controller;
         app2.action = action;
         app2.id = props.match.params.id;
+        app2.history = props.history;
 
         // TODO Nav也升级为React
         $(document).trigger('pageLoad', props);
