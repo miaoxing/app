@@ -1,5 +1,5 @@
-import React from "react";
-import {Field} from "formik";
+import React from 'react';
+import {Field} from 'formik';
 
 /**
  * @link https://codesandbox.io/s/328038x19q
@@ -22,7 +22,7 @@ function Checkbox(props) {
             form.setFieldValue(props.name, nextValue);
           }
         }}
-      />
+      />;
     }}
   </Field>;
 }

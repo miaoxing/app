@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import {hot} from 'react-hot-loader';
 import App from 'vendor/miaoxing/app/modules/app';
 
@@ -8,7 +8,7 @@ class AppContainer extends React.Component {
       /* webpackChunkName: "[request]" */
       /* webpackInclude: /resources\/pages\/[^\/]+\/[^\/]+\.js$/ */
       `vendor/miaoxing/${plugin}/resources/pages/${controller}/${action}.js`
-      );
+    );
   }
 
   getPages() {
@@ -19,7 +19,7 @@ class AppContainer extends React.Component {
     return <App
       importPage={this.importPage}
       pages={this.getPages()}
-    />
+    />;
   }
 }
 

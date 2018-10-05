@@ -1,9 +1,9 @@
-import React from "react";
-import {ControlLabel, FormControl, FormGroup} from "react-bootstrap";
-import {Field} from "formik";
-import Required from "components/Required.jsx";
-import decamelize from "decamelize";
-import trim from "trim-character";
+import React from 'react';
+import {ControlLabel, FormControl, FormGroup} from 'react-bootstrap';
+import {Field} from 'formik';
+import Required from 'components/Required.jsx';
+import decamelize from 'decamelize';
+import trim from 'trim-character';
 
 const FormItem3 = ({name = '', label, ...props}) => {
   // 移除 name[] 后面的 []
@@ -17,6 +17,6 @@ const FormItem3 = ({name = '', label, ...props}) => {
     <div className="col-control">
       <FormControl componentClass={Field} name={name} {...props} />
     </div>
-  </FormGroup>
+  </FormGroup>;
 };
 export default FormItem3;

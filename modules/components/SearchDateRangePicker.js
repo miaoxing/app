@@ -1,10 +1,10 @@
 import React from 'react';
-import rp from "require-promise";
-import SearchItem from "components/SearchItem.jsx";
+import rp from 'require-promise';
+import SearchItem from 'components/SearchItem.jsx';
 import decamelize from 'decamelize';
 
 const loader = Promise.all([
-  rp('daterangepicker'),
+  rp('daterangepicker')
 ]);
 
 class SearchDateRangePicker extends React.Component {
@@ -28,7 +28,7 @@ class SearchDateRangePicker extends React.Component {
       <SearchItem label={this.props.label} className={'js-' + this.id} name={this.props.name} autoComplete="off"/>
       <input type="hidden" className={'js-' + this.id + '-min'} name={this.props.name + 'Min'}/>
       <input type="hidden" className={'js-' + this.id + '-max'} name={this.props.name + 'Max'}/>
-    </React.Fragment>
+    </React.Fragment>;
   }
 }
 

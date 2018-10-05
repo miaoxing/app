@@ -1,5 +1,5 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React from 'react';
+import {Link} from 'react-router-dom';
 import _ from 'lodash';
 
 class TabNavs extends React.Component {
@@ -13,15 +13,15 @@ class TabNavs extends React.Component {
         return <li key={item.id} className={'border-primary ' + (cur === item.key ? 'active' : '')}>
           <Link to={$.appendUrl(baseUrl, {[this.props.paramName]: item.key})}
             className="text-active-primary">{item.name}</Link>
-        </li>
+        </li>;
       })}
-    </ul>
+    </ul>;
   }
 }
 
 TabNavs.defaultProps = {
   data: [],
-  paramName: 'status',
+  paramName: 'status'
 };
 
 export default TabNavs;

@@ -1,7 +1,7 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 import Loading from 'components/Loading';
-import NoMatch from "components/NoMatch";
+import NoMatch from 'components/NoMatch';
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
 import app2 from 'app2';
@@ -59,7 +59,7 @@ class App extends React.Component {
 
         return this.props.importPage(plugin, controller, action);
       },
-      loading: Loading,
+      loading: Loading
     });
     return <LoadableComponent {...props}/>;
   }

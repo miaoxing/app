@@ -1,7 +1,7 @@
-import React from "react";
-import DatePicker from "react-datepicker";
+import React from 'react';
+import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const StyledDatePicker = styled.div`
   .react-datepicker__input-container {
@@ -20,9 +20,11 @@ const StyledDatePicker = styled.div`
 const CustomInput = (props) => {
   return <input
     type="text"
-    onMouseDown={(e) => {e.preventDefault()}}
+    onMouseDown={(e) => {
+      e.preventDefault();
+    }}
     {...props}
-  />
+  />;
 };
 
 class MyDatePicker extends React.Component {
@@ -42,7 +44,7 @@ class MyDatePicker extends React.Component {
         customInput={<CustomInput/>}
         {...this.props}
       />
-    </StyledDatePicker>
+    </StyledDatePicker>;
   }
 }
 

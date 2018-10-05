@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 
 class InfiniteList extends React.Component {
   state = {
     data: [],
-    hasMore: true,
+    hasMore: true
   };
 
   handleLoadMore(page) {
     $.ajax({
-      url: $.appendUrl(this.props.url, {page: page}),
+      url: $.appendUrl(this.props.url, {page: page})
     }).done(ret => {
       if (ret.code !== 1) {
         return $.msg(ret);
@@ -19,7 +19,7 @@ class InfiniteList extends React.Component {
       let data = this.state.data.concat(ret.data);
       this.setState({
         data: data,
-        hasMore: ret.page < (ret.records / ret.rows),
+        hasMore: ret.page < (ret.records / ret.rows)
       });
     });
   }
@@ -37,13 +37,13 @@ class InfiniteList extends React.Component {
         data: this.state.data
       })}
       {!this.state.hasMore && this.state.data.length === 0 && this.props.emptyMessage}
-    </InfiniteScroll>
+    </InfiniteScroll>;
   }
 }
 
 InfiniteList.defaultProps = {
   url: '',
-  emptyMessage: <div className="list-empty">暂无记录</div>,
+  emptyMessage: <div className="list-empty">暂无记录</div>
 };
 
 export default InfiniteList;

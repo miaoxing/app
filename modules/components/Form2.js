@@ -1,6 +1,6 @@
 import React from 'react';
 import {Form as RbForm} from 'react-bootstrap';
-import {Field, Formik, withFormik} from 'formik';
+import {Formik} from 'formik';
 import {withRouter} from 'react-router-dom';
 
 class Form extends React.Component {
@@ -19,7 +19,7 @@ class Form extends React.Component {
             type: 'post',
             loading: true,
             data: values,
-            dataType: 'json',
+            dataType: 'json'
           }).done((ret) => {
             $.msg(ret, () => {
               if (ret.code === 1) {

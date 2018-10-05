@@ -11,7 +11,7 @@ class FooterBar extends React.Component {
         `}
       </style>
       {this.props.children}
-    </div>
+    </div>;
   }
 }
 

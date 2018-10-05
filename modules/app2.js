@@ -40,7 +40,7 @@ class App2 {
 
   get namespace() {
     return this._namespace;
-  };
+  }
 
   set namespace(namespace) {
     this._namespace = namespace;
@@ -48,7 +48,7 @@ class App2 {
 
   get controller() {
     return this._controller;
-  };
+  }
 
   set controller(controller) {
     this._controller = controller;
@@ -56,7 +56,7 @@ class App2 {
 
   get action() {
     return this._action;
-  };
+  }
 
   set action(action) {
     this._action = action;
@@ -64,7 +64,7 @@ class App2 {
 
   get id() {
     return this._id;
-  };
+  }
 
   set id(id) {
     this._id = id;

@@ -1,6 +1,6 @@
 import React from 'react';
-import {FormGroup, Button, Col} from 'react-bootstrap';
-import CListBtn from "components/CListBtn";
+import {Button, Col, FormGroup} from 'react-bootstrap';
+import CListBtn from 'components/CListBtn';
 
 function FormAction2() {
   return (
@@ -16,4 +16,4 @@ function FormAction2() {
   );
 }
 
-export default FormAction2
+export default FormAction2;

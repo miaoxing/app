@@ -8,4 +8,4 @@ export default (props) => {
   } else {
     return <div className="text-center m-t">努力加载中...</div>;
   }
-}
+};

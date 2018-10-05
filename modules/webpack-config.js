@@ -71,8 +71,8 @@ class WebpackConfig {
             use: [
               MiniCssExtractPlugin.loader,
               'css-loader',
-              'sass-loader',
-            ],
+              'sass-loader'
+            ]
           },
           {
             test: /\.(jpg|png|gif|svg|json|ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
@@ -101,7 +101,7 @@ class WebpackConfig {
       plugins: [
         new MiniCssExtractPlugin({
           filename: useVersioning ? '[name]-[contenthash:6].css' : '[name].css'
-        }),
+        })
         // new BundleAnalyzerPlugin(),
       ],
       devServer: {
@@ -115,7 +115,7 @@ class WebpackConfig {
 
     if (this.manifest) {
       config.optimization.runtimeChunk = {
-        name: (this.name ? this.name + '-' : '') + 'manifest',
+        name: (this.name ? this.name + '-' : '') + 'manifest'
       };
     }
 

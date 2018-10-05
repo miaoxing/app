@@ -3,7 +3,7 @@ import 'react-bootstrap-table2-paginator/dist/react-bootstrap-table2-paginator.m
 
 import React from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
-import paginationFactory from "react-bootstrap-table2-paginator";
+import paginationFactory from 'react-bootstrap-table2-paginator';
 import overlayFactory from 'react-bootstrap-table2-overlay';
 
 class DataTable2 extends React.Component {
@@ -18,7 +18,7 @@ class DataTable2 extends React.Component {
       sortField: '',
       sortOrder: '',
       loading: false,
-      noDataIndication: '暂无数据',
+      noDataIndication: '暂无数据'
     };
     this.prevNoDataIndication = '';
 
@@ -35,7 +35,7 @@ class DataTable2 extends React.Component {
   }
 
   componentWillUnmount() {
-    $(document).off('tableReload', this.handleReload)
+    $(document).off('tableReload', this.handleReload);
   }
 
   handleReload() {
@@ -46,14 +46,14 @@ class DataTable2 extends React.Component {
     this.prevNoDataIndication = this.state.noDataIndication;
     this.setState({
       loading: true,
-      noDataIndication: ' ',
+      noDataIndication: ' '
     });
   }
 
   disableLoading() {
     this.setState({
       loading: false,
-      noDataIndication: this.prevNoDataIndication,
+      noDataIndication: this.prevNoDataIndication
     });
   }
 
@@ -63,7 +63,7 @@ class DataTable2 extends React.Component {
       page: this.state.page,
       rows: this.state.sizePerPage,
       sort: this.state.sortField,
-      order: this.state.sortOrder,
+      order: this.state.sortOrder
     };
 
     // TODO 外部表单的参数
@@ -78,17 +78,17 @@ class DataTable2 extends React.Component {
     this.enableLoading();
     $.ajax({
       url: $.appendUrl(this.props.url, params),
-      dataType: 'json',
+      dataType: 'json'
     }).done(ret => {
       this.setState({
         data: ret.data,
         page: parseInt(params.page, 10),
         totalSize: ret.records,
-        sizePerPage: parseInt(ret.rows, 10),
+        sizePerPage: parseInt(ret.rows, 10)
       });
     }).always(() => {
       this.disableLoading();
-    })
+    });
   }
 
   handleFilter() {
@@ -97,19 +97,19 @@ class DataTable2 extends React.Component {
       sizePerPage: this.state.sizePerPage,
       sortField: this.state.sortField,
       sortOrder: this.state.sortOrder
-    })
+    });
   }
 
   handleTableChange(type, {page, sizePerPage, sortField, sortOrder}) {
     this.setState({
       sortField,
-      sortOrder,
+      sortOrder
     }, () => {
       this.load({
         page: type === 'sort' ? 1 : page,
         rows: sizePerPage,
         sort: sortField,
-        order: sortOrder,
+        order: sortOrder
       });
     });
   }
@@ -141,7 +141,7 @@ class DataTable2 extends React.Component {
         loading={this.state.loading}
         overlay={overlayFactory({
           spinner: true,
-          background: 'rgba(192,192,192,0.3)',
+          background: 'rgba(192,192,192,0.3)'
         })}
         pagination={paginationFactory({
           page,

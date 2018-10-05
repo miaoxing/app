@@ -1,7 +1,7 @@
 import React from 'react';
 import FormItem from './FormItem.jsx';
-import {Field} from "formik";
-import Options from "components/Options.jsx";
+import {Field} from 'formik';
+import Options from 'components/Options.jsx';
 
 function FormItem2({...props}) {
   // 自动识别select类型
@@ -16,7 +16,7 @@ function FormItem2({...props}) {
     props.componentClass = Field;
   }
 
-  return <FormItem {...props}/>
+  return <FormItem {...props}/>;
 }
 
 export default FormItem2;

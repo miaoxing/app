@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import 'comps/dropdown-menu/dropdown-menu.css';
 import 'comps/dropdown-menu/dropdown-menu';
 
@@ -25,7 +25,7 @@ class DropdownMenu extends React.Component {
           </div>
         </div>
       </div>
-    </div>
+    </div>;
   }
 }
 

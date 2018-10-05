@@ -12,7 +12,7 @@ class DeleteLink extends React.Component {
       $.ajax({
         url: this.props.href,
         loading: true,
-        dataType: 'json',
+        dataType: 'json'
       }).done(ret => {
         $.msg(ret);
         if (ret.code === 1) {
@@ -26,12 +26,12 @@ class DeleteLink extends React.Component {
     const {message, href, ...rest} = this.props;
     return <a className="text-danger" href="javascript:" onClick={this.handleDelete} {...rest}>
       删除
-    </a>
+    </a>;
   }
 }
 
 DeleteLink.defaultProps = {
-  message: '删除后将无法还原,确认删除?',
+  message: '删除后将无法还原,确认删除?'
 };
 
 export default DeleteLink;

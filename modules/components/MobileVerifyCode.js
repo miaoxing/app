@@ -1,6 +1,6 @@
 import React from 'react';
-import 'plugins/verify-code/js/verify-code'
-import {Field} from "formik";
+import 'plugins/verify-code/js/verify-code';
+import {Field} from 'formik';
 
 class MobileVerifyCode extends React.Component {
   componentDidUpdate() {
@@ -39,7 +39,7 @@ class MobileVerifyCode extends React.Component {
           </span>
         </div>
       </div>
-    </div>
+    </div>;
   }
 }
 

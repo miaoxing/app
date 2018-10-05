@@ -1,6 +1,6 @@
-import React from "react";
-import DropdownMenu from "components/DropdownMenu";
-import {withRouter} from "react-router-dom";
+import React from 'react';
+import DropdownMenu from 'components/DropdownMenu';
+import {withRouter} from 'react-router-dom';
 import 'load-query';
 import PropTypes from 'prop-types';
 
@@ -34,12 +34,12 @@ class SearchDropdownMenu extends React.Component {
           <button type="submit" className="btn btn-brand btn-primary btn-block">搜索</button>
         </div>
       </form>
-    </DropdownMenu>
+    </DropdownMenu>;
   }
 }
 
 SearchDropdownMenu.propTypes = {
-  rightLink: PropTypes.PropTypes.node,
+  rightLink: PropTypes.PropTypes.node
 };
 
 export default withRouter(SearchDropdownMenu);

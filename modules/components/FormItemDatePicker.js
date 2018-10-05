@@ -1,9 +1,9 @@
-import React from "react";
-import {ControlLabel, FormGroup} from "react-bootstrap";
-import {connect} from "formik";
+import React from 'react';
+import {ControlLabel, FormGroup} from 'react-bootstrap';
+import {connect} from 'formik';
 import moment from 'moment';
-import Required from "components/Required.jsx";
-import DatePicker from "components/DatePicker";
+import Required from 'components/Required.jsx';
+import DatePicker from 'components/DatePicker';
 
 class FormItemDatePicker extends React.Component {
   handleChange(date) {
@@ -28,7 +28,7 @@ class FormItemDatePicker extends React.Component {
           {...rest}
         />
       </div>
-    </FormGroup>
+    </FormGroup>;
   }
 }
 
