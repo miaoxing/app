@@ -8,8 +8,11 @@ const loader = Promise.all([
 ]);
 
 class SearchDateRangePicker extends React.Component {
-  min = 'Min';
-  max = 'Max';
+  static defaultProps = {
+    min: 'Min',
+    max: 'Max',
+  };
+
   id = decamelize(this.props.name, '-');
 
   componentDidMount() {
