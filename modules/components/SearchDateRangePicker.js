@@ -8,16 +8,19 @@ const loader = Promise.all([
 ]);
 
 class SearchDateRangePicker extends React.Component {
+  min = 'Min';
+  max = 'Max';
   id = decamelize(this.props.name, '-');
 
   componentDidMount() {
+    const id = this.id;
     loader.then(() => {
       $('.js-' + this.id).daterangepicker({
         format: 'YYYY-MM-DD',
         separator: ' ~ '
       }, function (start, end) {
-        $('.js-' + this.element.attr('id') + '-min').val(start.format(this.format) + ' 00:00:00');
-        $('.js-' + this.element.attr('id') + '-max').val(end.format(this.format) + ' 23:59:59');
+        $('.js-' + id + '-min').val(start.format(this.format) + ' 00:00:00');
+        $('.js-' + id + '-max').val(end.format(this.format) + ' 23:59:59');
         this.element.trigger('change');
       });
     });
@@ -25,9 +28,9 @@ class SearchDateRangePicker extends React.Component {
 
   render() {
     return <React.Fragment>
-      <SearchItem label={this.props.label} className={'js-' + this.id} name={this.props.name} autoComplete="off"/>
-      <input type="hidden" className={'js-' + this.id + '-min'} name={this.props.name + 'Min'}/>
-      <input type="hidden" className={'js-' + this.id + '-max'} name={this.props.name + 'Max'}/>
+      <SearchItem label={this.props.label} className={'js-' + this.id} autoComplete="off"/>
+      <input type="hidden" className={'js-' + this.id + '-min'} name={this.props.name + this.props.min}/>
+      <input type="hidden" className={'js-' + this.id + '-max'} name={this.props.name + this.props.max}/>
     </React.Fragment>;
   }
 }
