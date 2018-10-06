@@ -8,7 +8,7 @@ import Required from './Required';
 
 function FormItem({ label, name, help, labelSize, controlSize, groupSize, helpSize, ...props }) {
   // 移除 name[] 后面的 []
-  const id = trim(decamelize(name.replace(/\[\]/g, '-'), '-'), '-');
+  const id = name ? trim(decamelize(name.replace(/\[\]/g, '-'), '-'), '-') : null;
 
   // 自动识别select类型
   if (!props.componentClass) {
