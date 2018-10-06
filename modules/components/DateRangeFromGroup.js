@@ -6,13 +6,21 @@ import 'jquery-unparam';
 import 'react-datepicker/dist/react-datepicker.css';
 
 class DateRangeFromGroup extends React.Component {
+  static defaultProps = {
+    min: 'Min',
+    max: 'Max'
+  };
+
+  minName = this.props.name + this.props.min;
+  maxName = this.props.name + this.props.max;
+
   constructor(props, context) {
     super(props, context);
 
     const params = $.unparam(location.search.substring(1));
     this.state = {
-      dateMin: params[this.props.name + 'Min'] ? moment(params[this.props.name + 'Min']) : null,
-      dateMax: params[this.props.name + 'Max'] ? moment(params[this.props.name + 'Max']) : null,
+      dateMin: params[this.minName] ? moment(params[this.minName]) : null,
+      dateMax: params[this.maxName] ? moment(params[this.maxName]) : null,
     };
   }
 
@@ -54,7 +62,7 @@ class DateRangeFromGroup extends React.Component {
             startDate={this.state.dateMin}
             endDate={this.state.dateMax}
             onChange={this.handleChangeStart.bind(this)}
-            name={this.props.name + 'Min'}
+            name={this.minName}
             placeholderText="请选择日期"
           />
         </div>
@@ -68,7 +76,7 @@ class DateRangeFromGroup extends React.Component {
             startDate={this.state.dateMin}
             endDate={this.state.dateMax}
             onChange={this.handleChangeEnd.bind(this)}
-            name={this.props.name + 'Max'}
+            name={this.maxName}
             placeholderText="请选择日期"
           />
         </div>
