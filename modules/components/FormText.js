@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, ControlLabel, FormControl, FormGroup} from 'react-bootstrap';
 
-const TextItem = ({label, children}) => {
+const FormText = ({label, children}) => {
   return <FormGroup>
     <Col componentClass={ControlLabel} sm={2}>
       {label}
@@ -12,4 +12,4 @@ const TextItem = ({label, children}) => {
   </FormGroup>;
 };
 
-export default TextItem;
+export default FormText;
