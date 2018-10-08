@@ -5,7 +5,7 @@ import moment from "moment";
 import 'jquery-unparam';
 import 'react-datepicker/dist/react-datepicker.css';
 
-class DateRangeFromGroup extends React.Component {
+class MFormItemDateRange extends React.Component {
   static defaultProps = {
     min: 'Min',
     max: 'Max'
@@ -85,4 +85,4 @@ class DateRangeFromGroup extends React.Component {
   }
 }
 
-export default DateRangeFromGroup;
+export default MFormItemDateRange;

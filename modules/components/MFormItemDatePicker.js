@@ -5,7 +5,7 @@ import moment from 'moment';
 import Required from 'components/Required';
 import DatePicker from 'components/DatePicker';
 
-class FormItemDatePicker extends React.Component {
+class MFormItemDatePicker extends React.Component {
   handleChange(date) {
     this.props.formik.setFieldValue(this.props.name, date ? date.format('YYYY-MM-DD') : '');
   }
@@ -32,4 +32,4 @@ class FormItemDatePicker extends React.Component {
   }
 }
 
-export default connect(FormItemDatePicker);
+export default connect(MFormItemDatePicker);
