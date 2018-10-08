@@ -3,17 +3,17 @@ import {Col, ControlLabel, FormControl, FormGroup} from 'react-bootstrap';
 import Options from './Options';
 import decamelize from 'decamelize';
 import trim from 'trim-character';
-
 import Required from './Required';
+import {connect, Field} from "formik";
 
-function FormItem({ label, name, help, labelSize, controlSize, groupSize, helpSize, ...props }) {
+function FormItem({label, name, help, labelSize, controlSize, groupSize, helpSize, ...props}) {
   // 移除 name[] 后面的 []
   const id = name ? trim(decamelize(name.replace(/\[\]/g, '-'), '-'), '-') : null;
 
   // 自动识别select类型
   if (!props.componentClass) {
     const firstChild = React.Children.toArray(props.children)[0];
-    if (firstChild && (firstChild.type === 'option' || firstChild.type === <Options />.type)) {
+    if (firstChild && (firstChild.type === 'option' || firstChild.type === <Options/>.type)) {
       props.componentClass = 'select';
     }
   }
@@ -27,10 +27,23 @@ function FormItem({ label, name, help, labelSize, controlSize, groupSize, helpSi
     groupProps = {bsSize: groupSize};
   }
 
+  if (props.formik.setFieldValue) {
+    // 自动识别select类型
+    if (!props.component) {
+      const firstChild = React.Children.toArray(props.children)[0];
+      if (firstChild && (firstChild.type === 'option' || firstChild.type === <Options/>.type)) {
+        props.component = 'select';
+      }
+    }
+    if (!props.componentClass) {
+      props.componentClass = Field;
+    }
+  }
+
   return (
     <FormGroup controlId={id} {...groupProps}>
       <Col componentClass={ControlLabel} sm={labelSize || 2}>
-        {props.required && <Required />}
+        {props.required && <Required/>}
         {label}
       </Col>
       <Col sm={controlSize || 4}>
@@ -41,12 +54,12 @@ function FormItem({ label, name, help, labelSize, controlSize, groupSize, helpSi
         )}
       </Col>
       {help &&
-        <Col componentClass="label" sm={helpSize || 6} className="help-text">
-          {help}
-        </Col>
+      <Col componentClass="label" sm={helpSize || 6} className="help-text">
+        {help}
+      </Col>
       }
     </FormGroup>
   );
 }
 
-export default FormItem
+export default connect(FormItem);

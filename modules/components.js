@@ -13,7 +13,6 @@ export Actions from './components/Actions';
 export Form from './components/Form';
 export FormAction from './components/FormAction';
 export FormItem from './components/FormItem';
-export FormItem2 from './components/FormItem2';
 export Options from './components/Options';
 export Required from './components/Required';
 export ImageUpload from './components/ImageUpload';
