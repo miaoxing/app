@@ -20,7 +20,6 @@ export Required from './components/Required';
 export ImageUpload from './components/ImageUpload';
 
 export SearchForm from './components/SearchForm';
-export SearchForm2 from './components/SearchForm2';
 export SearchItem from './components/SearchItem';
 
 export Tabs from './components/Tabs';

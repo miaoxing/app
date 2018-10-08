@@ -1,15 +1,23 @@
 import React from 'react';
 import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
+import 'jquery-update-event';
 import 'load-query';
+
 import '../styles/_search-form.scss';
 import {Form} from "react-bootstrap";
 
 class SearchForm extends React.Component {
   componentDidMount () {
+    const $this = $(findDOMNode(this));
+
     if (this.props.loadQuery) {
-      $(findDOMNode(this)).loadQuery();
+      $this.loadQuery();
     }
+
+    $this.on('update', () => {
+      this.props.onFilter && this.props.onFilter();
+    });
   }
 
   render () {
@@ -29,4 +37,4 @@ SearchForm.propTypes = {
   loadQuery: PropTypes.bool
 };
 
-export default SearchForm
+export default SearchForm;
