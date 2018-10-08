@@ -1,4 +1,4 @@
-class App2 {
+class App {
   constructor() {
     this._namesapce = '';
     this._controller = '';
@@ -88,7 +88,7 @@ class App2 {
   }
 }
 
-const app2 = new App2();
+const app = new App();
 
-export default app2;
-export const url = app2.url;
+export default app;
+export const url = app.url;

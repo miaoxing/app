@@ -1,7 +1,7 @@
 import React from 'react';
 import EditLink from 'components/EditLink';
-import app2 from 'app2';
+import app from 'app';
 
-const CEditLink = ({id, ...props}) => <EditLink href={app2.curEditUrl(id)} {...props} />;
+const CEditLink = ({id, ...props}) => <EditLink href={app.curEditUrl(id)} {...props} />;
 
 export default CEditLink;

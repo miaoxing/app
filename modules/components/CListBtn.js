@@ -1,9 +1,9 @@
 import React from 'react';
 import ListBtn from 'components/ListBtn';
-import app2 from 'app2';
+import app from 'app';
 
 const CListBtn = (...props) => {
-  return <ListBtn href={app2.curIndexUrl()} {...props} />;
+  return <ListBtn href={app.curIndexUrl()} {...props} />;
 };
 
 export default CListBtn;

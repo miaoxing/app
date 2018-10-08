@@ -1,7 +1,7 @@
 import React from 'react';
 import NewBtn from 'components/NewBtn';
-import app2 from 'app2';
+import app from 'app';
 
-const CNewBtn = ({...props}) => <NewBtn href={app2.curNewUrl()} {...props} />;
+const CNewBtn = ({...props}) => <NewBtn href={app.curNewUrl()} {...props} />;
 
 export default CNewBtn;

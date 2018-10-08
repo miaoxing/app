@@ -1,7 +1,7 @@
 import React from 'react';
 import DeleteLink from 'components/DeleteLink';
-import app2 from 'app2';
+import app from 'app';
 
-const CDeleteLink = ({id, ...props}) => <DeleteLink href={app2.curDestroyUrl(id)} {...props} />;
+const CDeleteLink = ({id, ...props}) => <DeleteLink href={app.curDestroyUrl(id)} {...props} />;
 
 export default CDeleteLink;

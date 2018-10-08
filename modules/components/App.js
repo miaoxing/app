@@ -4,7 +4,7 @@ import Loading from 'components/Loading';
 import NoMatch from 'components/NoMatch';
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
-import app2 from 'app2';
+import app from 'app';
 
 class App extends React.Component {
   constructor(props) {
@@ -43,11 +43,11 @@ class App extends React.Component {
         const controller = this.getController(props.match.params);
         const action = this.getAction(props.match.params);
         const plugin = this.controllerMap[controller];
-        app2.namespace = props.match.params.namespace;
-        app2.controller = controller;
-        app2.action = action;
-        app2.id = props.match.params.id;
-        app2.history = props.history;
+        app.namespace = props.match.params.namespace;
+        app.controller = controller;
+        app.action = action;
+        app.id = props.match.params.id;
+        app.history = props.history;
 
         // TODO Nav也升级为React
         $(document).trigger('pageLoad', props);
@@ -87,7 +87,7 @@ class App extends React.Component {
     return <BrowserRouter>
       <Switch>
         {/* TODO /admin/login */}
-        <Route exact path={app2.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
+        <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
         <Route component={NoMatch}/>
       </Switch>
     </BrowserRouter>;
