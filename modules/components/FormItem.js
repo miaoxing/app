@@ -2,13 +2,11 @@ import React from 'react';
 import {Col, ControlLabel, FormControl, FormGroup} from 'react-bootstrap';
 import Options from './Options';
 import decamelize from 'decamelize';
-import trim from 'trim-character';
 import Required from './Required';
 import {connect, Field} from "formik";
 
-function FormItem({label, name, help, labelSize, controlSize, groupSize, helpSize, ...props}) {
-  // 移除 name[] 后面的 []
-  const id = name ? trim(decamelize(name.replace(/\[\]/g, '-'), '-'), '-') : null;
+function FormItem({label, name, help, labelSize, controlSize, groupSize, helpSize, formik, ...props}) {
+  const id = name ? decamelize(name, '-') : null;
 
   // 自动识别select类型
   if (!props.componentClass) {
@@ -27,7 +25,7 @@ function FormItem({label, name, help, labelSize, controlSize, groupSize, helpSiz
     groupProps = {bsSize: groupSize};
   }
 
-  if (props.formik.setFieldValue) {
+  if (formik.setFieldValue) {
     // 自动识别select类型
     if (!props.component) {
       const firstChild = React.Children.toArray(props.children)[0];

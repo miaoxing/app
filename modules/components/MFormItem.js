@@ -3,11 +3,9 @@ import {ControlLabel, FormControl, FormGroup} from 'react-bootstrap';
 import {Field} from 'formik';
 import Required from 'components/Required';
 import decamelize from 'decamelize';
-import trim from 'trim-character';
 
-const MFormItem = ({name = '', label, ...props}) => {
-  // 移除 name[] 后面的 []
-  const id = trim(decamelize(name.replace(/\[\]/g, '-'), '-'), '-');
+const MFormItem = ({name, label, ...props}) => {
+  const id = name ? decamelize(name, '-') : null;
 
   return <FormGroup controlId={id}>
     {label && <ControlLabel>
