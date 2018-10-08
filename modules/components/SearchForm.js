@@ -1,9 +1,9 @@
 import React from 'react';
 import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
-import Form from './Form';
 import 'load-query';
 import '../styles/_search-form.scss';
+import {Form} from "react-bootstrap";
 
 class SearchForm extends React.Component {
   componentDidMount () {

@@ -10,7 +10,6 @@ export DataTable2 from './components/DataTable2';
 export Actions from './components/Actions';
 
 // 表单
-export Form from './components/Form';
 export Form2 from './components/Form2';
 export FormAction from './components/FormAction';
 export FormAction2 from './components/FormAction2';

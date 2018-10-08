@@ -3,8 +3,8 @@ import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
 import 'jquery-update-event';
 
-import Form from './Form';
 import '../styles/_search-form.scss';
+import {Form} from "react-bootstrap";
 
 class SearchForm2 extends React.Component {
   componentDidMount () {
