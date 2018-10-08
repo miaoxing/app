@@ -20,10 +20,16 @@ function handleFormik(props) {
     props.componentClass = Field;
   }
 
-  return porps;
+  return props;
 }
 
-function handleDefault(props) {
+function FormItem({label, name, help, labelSize, controlSize, helpSize, groupSize, formik, ...props}) {
+  const id = name ? decamelize(name, '-') : null;
+
+  if (formik.setFieldValue) {
+    props = handleFormik(props);
+  }
+
   // 自动识别select类型
   if (!props.componentClass && isSelect(props)) {
     props.componentClass = 'select';
@@ -33,14 +39,6 @@ function handleDefault(props) {
     props.type = 'text';
   }
 
-  return props;
-}
-
-function FormItem({label, name, help, labelSize, controlSize, groupSize, helpSize, formik, ...props}) {
-  const id = name ? decamelize(name, '-') : null;
-
-  props = formik.setFieldValue ? handleFormik(props) : handleDefault(props);
-
   return (
     <FormGroup controlId={id} bsSize={groupSize}>
       <Col componentClass={ControlLabel} sm={labelSize || 2}>
@@ -48,17 +46,13 @@ function FormItem({label, name, help, labelSize, controlSize, groupSize, helpSiz
         {label}
       </Col>
       <Col sm={controlSize || 4}>
-        {props.control ? (props.control) : (
-          <FormControl id={id} name={name} {...props}>
-            {props.children}
-          </FormControl>
-        )}
+        {props.control || <FormControl id={id} name={name} {...props}>
+          {props.children}
+        </FormControl>}
       </Col>
-      {help &&
-      <Col componentClass="label" sm={helpSize || 6} className="help-text">
+      {help && <Col componentClass="label" sm={helpSize || 6} className="help-text">
         {help}
-      </Col>
-      }
+      </Col>}
     </FormGroup>
   );
 }
