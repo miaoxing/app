@@ -5,41 +5,44 @@ import decamelize from 'decamelize';
 import Required from './Required';
 import {connect, Field} from "formik";
 
-function FormItem({label, name, help, labelSize, controlSize, groupSize, helpSize, formik, ...props}) {
-  const id = name ? decamelize(name, '-') : null;
+function isSelect(props) {
+  const firstChild = React.Children.toArray(props.children)[0];
+  return firstChild && (firstChild.type === 'option' || firstChild.type === <Options/>.type);
+}
 
+function handleFormik(props) {
   // 自动识别select类型
+  if (!props.component && isSelect(props)) {
+    props.component = 'select';
+  }
+
   if (!props.componentClass) {
-    const firstChild = React.Children.toArray(props.children)[0];
-    if (firstChild && (firstChild.type === 'option' || firstChild.type === <Options/>.type)) {
-      props.componentClass = 'select';
-    }
+    props.componentClass = Field;
+  }
+
+  return porps;
+}
+
+function handleDefault(props) {
+  // 自动识别select类型
+  if (!props.componentClass && isSelect(props)) {
+    props.componentClass = 'select';
   }
 
   if (!props.type && props.componentClass !== 'select' && props.componentClass !== 'textarea') {
     props.type = 'text';
   }
 
-  var groupProps = {};
-  if (groupSize) {
-    groupProps = {bsSize: groupSize};
-  }
+  return props;
+}
 
-  if (formik.setFieldValue) {
-    // 自动识别select类型
-    if (!props.component) {
-      const firstChild = React.Children.toArray(props.children)[0];
-      if (firstChild && (firstChild.type === 'option' || firstChild.type === <Options/>.type)) {
-        props.component = 'select';
-      }
-    }
-    if (!props.componentClass) {
-      props.componentClass = Field;
-    }
-  }
+function FormItem({label, name, help, labelSize, controlSize, groupSize, helpSize, formik, ...props}) {
+  const id = name ? decamelize(name, '-') : null;
+
+  props = formik.setFieldValue ? handleFormik(props) : handleDefault(props);
 
   return (
-    <FormGroup controlId={id} {...groupProps}>
+    <FormGroup controlId={id} bsSize={groupSize}>
       <Col componentClass={ControlLabel} sm={labelSize || 2}>
         {props.required && <Required/>}
         {label}
