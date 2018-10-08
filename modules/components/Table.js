@@ -6,7 +6,7 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import overlayFactory from 'react-bootstrap-table2-overlay';
 
-class DataTable2 extends React.Component {
+class Table extends React.Component {
   constructor(props) {
     super(props);
 
@@ -161,4 +161,4 @@ class DataTable2 extends React.Component {
   }
 }
 
-export default DataTable2;
+export default Table;

@@ -6,7 +6,7 @@ export Loading from './components/Loading';
 
 // 列表
 export DataTable from './components/DataTable';
-export DataTable2 from './components/DataTable2';
+export Table from './components/Table';
 export Actions from './components/Actions';
 
 // 表单
