@@ -1,6 +1,6 @@
 import React from 'react';
 import {hot} from 'react-hot-loader';
-import App from 'vendor/miaoxing/app/modules/app';
+import App from "components/App";
 
 class AppContainer extends React.Component {
   importPage(plugin, controller, action) {
