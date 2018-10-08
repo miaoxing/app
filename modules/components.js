@@ -12,7 +12,6 @@ export Actions from './components/Actions';
 // 表单
 export Form from './components/Form';
 export FormAction from './components/FormAction';
-export FormAction2 from './components/FormAction2';
 export FormItem from './components/FormItem';
 export FormItem2 from './components/FormItem2';
 export Options from './components/Options';
