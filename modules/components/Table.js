@@ -150,7 +150,7 @@ class Table extends React.Component {
           showTotal: true,
           paginationTotalRenderer: (from, to, size) => (
             <span className="react-bootstrap-table-pagination-total">
-              &nbsp;显示第 {from} 至 {to + 1} 项结果，共 {size} 项
+              &nbsp;显示第 {from} 至 {to} 项结果，共 {size} 项
             </span>
           )
         })}
