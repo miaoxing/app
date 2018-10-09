@@ -1,7 +1,13 @@
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 
-class InfiniteList extends React.Component {
+export default class InfiniteList extends React.Component {
+  static defaultProps = {
+    url: '',
+    emptyMessage: <div className="list-empty">暂无记录</div>,
+    useWindow: true,
+  };
+
   state = {
     data: [],
     hasMore: true,
@@ -31,7 +37,7 @@ class InfiniteList extends React.Component {
     return <InfiniteScroll
       loadMore={this.handleLoadMore.bind(this)}
       hasMore={this.state.hasMore && !this.state.loading}
-      useWindow={true}
+      useWindow={this.props.useWindow}
     >
       {this.props.render({
         data: this.state.data
@@ -43,10 +49,3 @@ class InfiniteList extends React.Component {
     </InfiniteScroll>;
   }
 }
-
-InfiniteList.defaultProps = {
-  url: '',
-  emptyMessage: <div className="list-empty">暂无记录</div>
-};
-
-export default InfiniteList;
