@@ -105,8 +105,6 @@ class WebpackConfig {
         // new BundleAnalyzerPlugin(),
       ],
       devServer: {
-        host: '0.0.0.0',
-        useLocalIp: true,
         headers: {
           'Access-Control-Allow-Origin': '*'
         }
