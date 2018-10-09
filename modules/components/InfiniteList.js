@@ -4,10 +4,13 @@ import InfiniteScroll from 'react-infinite-scroller';
 class InfiniteList extends React.Component {
   state = {
     data: [],
-    hasMore: true
+    hasMore: true,
+    loading: false,
   };
 
   handleLoadMore(page) {
+    this.setState({loading: true});
+
     $.ajax({
       url: $.appendUrl(this.props.url, {page: page})
     }).done(ret => {
@@ -15,11 +18,11 @@ class InfiniteList extends React.Component {
         return $.msg(ret);
       }
 
-      // BUG: ajax加载期间hasMore为false会导致加载连续加载两页内容
       let data = this.state.data.concat(ret.data);
       this.setState({
-        data: data,
-        hasMore: ret.page < (ret.records / ret.rows)
+        data,
+        hasMore: ret.page < (ret.records / ret.rows),
+        loading: false,
       });
     });
   }
@@ -27,15 +30,15 @@ class InfiniteList extends React.Component {
   render() {
     return <InfiniteScroll
       loadMore={this.handleLoadMore.bind(this)}
-      hasMore={this.state.hasMore}
-      useWindow={false}
-      loader={<div className="list-loading" key={0}>
-        <span className="list-loading-spinner"/>努力加载中...
-      </div>}
+      hasMore={this.state.hasMore && !this.state.loading}
+      useWindow={true}
     >
       {this.props.render({
         data: this.state.data
       })}
+      {this.state.loading && this.state.hasMore && <div className="list-loading" key={0}>
+        <span className="list-loading-spinner"/>努力加载中...
+      </div>}
       {!this.state.hasMore && this.state.data.length === 0 && this.props.emptyMessage}
     </InfiniteScroll>;
   }
