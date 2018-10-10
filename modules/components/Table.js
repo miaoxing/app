@@ -95,9 +95,9 @@ class Table extends React.Component {
       order: this.node.sortContext.state.sortOrder,
     };
 
+    // 外部搜索参数
     const searchParams = this.props.table.search;
 
-    // 外部的参数
     params = Object.assign({}, tableParams, searchParams, params);
 
     this.enableLoading();
@@ -116,12 +116,10 @@ class Table extends React.Component {
     });
   }
 
-  handleTableChange = (type, {page, sizePerPage, sortField, sortOrder}) => {
+  handleTableChange = (type, {page, sizePerPage}) => {
     this.load({
       page: type === 'sort' ? 1 : page,
-      rows: sizePerPage,
-      sort: sortField,
-      order: sortOrder
+      rows: sizePerPage
     });
   };
 
