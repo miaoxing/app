@@ -37,19 +37,18 @@ class Table extends React.Component {
   };
 
   node = null;
+  noDataIndication = '暂无数据';
+  state = {
+    data: [],
+    page: 1,
+    totalSize: 0,
+    sizePerPage: 10,
+    loading: false,
+    noDataIndication: this.noDataIndication,
+  };
 
   constructor(props) {
     super(props);
-
-    this.state = {
-      data: [],
-      page: 1,
-      totalSize: 0,
-      sizePerPage: 10,
-      loading: false,
-      noDataIndication: '暂无数据',
-    };
-    this.prevNoDataIndication = '';
 
     // 将Provider中的方法指向当前组件
     this.props.table.reload = this.reload.bind(this);
@@ -68,17 +67,16 @@ class Table extends React.Component {
   }
 
   enableLoading() {
-    this.prevNoDataIndication = this.state.noDataIndication;
     this.setState({
       loading: true,
-      noDataIndication: ' '
+      noDataIndication: ' ',
     });
   }
 
   disableLoading() {
     this.setState({
       loading: false,
-      noDataIndication: this.prevNoDataIndication
+      noDataIndication: this.noDataIndication,
     });
   }
 
