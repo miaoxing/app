@@ -1,4 +1,5 @@
 import React from 'react';
+import {withTable} from "components/Table";
 
 class DeleteLink extends React.Component {
   constructor(props) {
@@ -16,14 +17,14 @@ class DeleteLink extends React.Component {
       }).done(ret => {
         $.msg(ret);
         if (ret.code === 1) {
-          this.props.tableRef.current.reload();
+          this.props.table && this.props.table.reload();
         }
       });
     });
   }
 
   render() {
-    const {message, href, tableRef, ...rest} = this.props;
+    const {message, href, ...rest} = this.props;
     return <a className="text-danger" onClick={this.handleDelete} {...rest}>
       删除
     </a>;
@@ -32,7 +33,6 @@ class DeleteLink extends React.Component {
 
 DeleteLink.defaultProps = {
   message: '删除后将无法还原,确认删除?',
-  tableRef: null,
 };
 
-export default DeleteLink;
+export default withTable(DeleteLink);

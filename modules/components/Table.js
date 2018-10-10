@@ -15,6 +15,7 @@ class TableProvider extends React.Component {
     this.state = {
       search: {},
       handleSearch: this.handleSearch,
+      reload: this.reload,
     };
   }
 
@@ -22,9 +23,7 @@ class TableProvider extends React.Component {
     this.setState({search: search});
   };
 
-  reload = () => {
-
-  };
+  reload = () => {};
 
   render() {
     return <TableContext.Provider value={this.state}>{this.props.children}</TableContext.Provider>
@@ -55,6 +54,9 @@ class Table extends React.Component {
 
     this.handleFilter = this.handleFilter.bind(this);
     this.handleTableChange = this.handleTableChange.bind(this);
+
+    // 
+    this.props.table.reload = this.reload.bind(this);
   }
 
   componentDidMount() {
