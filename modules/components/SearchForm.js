@@ -5,11 +5,9 @@ import PropTypes from 'prop-types';
 import 'jquery-update-event';
 import 'load-query';
 import {Form} from "react-bootstrap";
-import {TableContext} from "components/Table";
+import {withTable} from "components/Table";
 
 class SearchForm extends React.Component {
-  handleSearch = () => {};
-
   componentDidMount() {
     const $this = $(findDOMNode(this));
 
@@ -29,19 +27,14 @@ class SearchForm extends React.Component {
 
       // this.props.onFilter(params);
 
-      this.handleSearch(params);
+      this.props.table && this.props.table.handleSearch(params);
     });
   }
 
   render() {
-    return <TableContext.Consumer>
-      {({handleSearch}) => {
-        this.handleSearch = handleSearch;
-        return <Form horizontal className={this.props.className + ' search-form well'}>
-          {this.props.children}
-        </Form>;
-      }}
-    </TableContext.Consumer>;
+    return <Form horizontal className={(this.props.className ? this.props.className + ' ' : '') + 'search-form well'}>
+      {this.props.children}
+    </Form>;
   }
 }
 
@@ -53,4 +46,4 @@ SearchForm.propTypes = {
   loadQuery: PropTypes.bool
 };
 
-export default SearchForm;
+export default withTable(SearchForm);

@@ -191,7 +191,7 @@ class Table extends React.Component {
   }
 }
 
-function withTable(Component) {
+function withTable2(Component) {
   return function TableComponent(props) {
     return (
       <TableContext.Consumer>
@@ -201,5 +201,15 @@ function withTable(Component) {
   };
 }
 
-export default withTable(Table);
-export {TableContext, TableProvider};
+function withTable(Component) {
+  return function TableComponent(props) {
+    return (
+      <TableContext.Consumer>
+        {(table) => <Component table={table} {...props} />}
+      </TableContext.Consumer>
+    );
+  };
+}
+
+export default withTable2(Table);
+export {TableContext, TableProvider, withTable};
