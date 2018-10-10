@@ -29,7 +29,7 @@ class Table extends React.Component {
     };
     this.prevNoDataIndication = '';
 
-    this.handleReload = this.handleReload.bind(this);
+    this.reload = this.reload.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
     this.handleTableChange = this.handleTableChange.bind(this);
   }
@@ -38,7 +38,7 @@ class Table extends React.Component {
     this.load();
 
     // TODO 应该按React的通讯方式
-    $(document).on('tableReload', this.handleReload);
+    $(document).on('tableReload', this.reload);
   }
 
   componentDidUpdate(prevProps) {
@@ -49,10 +49,10 @@ class Table extends React.Component {
   }
 
   componentWillUnmount() {
-    $(document).off('tableReload', this.handleReload);
+    $(document).off('tableReload', this.reload);
   }
 
-  handleReload() {
+  reload() {
     this.load();
   }
 
