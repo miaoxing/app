@@ -51,8 +51,6 @@ class Table extends React.Component {
     };
     this.prevNoDataIndication = '';
 
-    this.handleTableChange = this.handleTableChange.bind(this);
-
     // 将Provider中的方法指向当前组件
     this.props.table.reload = this.reload.bind(this);
   }
@@ -65,7 +63,7 @@ class Table extends React.Component {
     if (this.props.url !== prevProps.url
       || this.props.table.search !== prevProps.table.search
     ) {
-      this.load();
+      this.load({page: 1});
     }
   }
 
@@ -118,14 +116,14 @@ class Table extends React.Component {
     });
   }
 
-  handleTableChange(type, {page, sizePerPage, sortField, sortOrder}) {
+  handleTableChange = (type, {page, sizePerPage, sortField, sortOrder}) => {
     this.load({
       page: type === 'sort' ? 1 : page,
       rows: sizePerPage,
       sort: sortField,
       order: sortOrder
     });
-  }
+  };
 
   render() {
     const {columns, ...restProps} = this.props;
