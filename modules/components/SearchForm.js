@@ -16,17 +16,10 @@ class SearchForm extends React.Component {
     }
 
     $this.on('update', () => {
-      // if (!this.props.onFilter) {
-      //   return;
-      // }
-
       let params = {};
       $($this.serializeArray()).each((index, obj) => {
         params[obj.name] = obj.value;
       });
-
-      // this.props.onFilter(params);
-
       this.props.table && this.props.table.handleSearch(params);
     });
   }
