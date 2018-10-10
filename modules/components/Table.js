@@ -6,6 +6,9 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import overlayFactory from 'react-bootstrap-table2-overlay';
 
+const TableContext = React.createContext({});
+const TableProvider = TableContext.Provider;
+
 class Table extends React.Component {
   static defaultProps = {
     url: null,
@@ -170,4 +173,15 @@ class Table extends React.Component {
   }
 }
 
-export default Table;
+function withTable(Component) {
+  return function TableComponent(props) {
+    return (
+      <TableContext.Consumer>
+        {({search}) => <Component search={search} {...props} />}
+      </TableContext.Consumer>
+    );
+  };
+}
+
+export default withTable(Table);
+export {TableContext, TableProvider};

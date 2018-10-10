@@ -1,14 +1,16 @@
+import '../styles/_search-form.scss';
 import React from 'react';
 import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
 import 'jquery-update-event';
 import 'load-query';
-
-import '../styles/_search-form.scss';
 import {Form} from "react-bootstrap";
+import {TableContext} from "components/Table";
 
 class SearchForm extends React.Component {
-  componentDidMount () {
+  handleSearch = () => {};
+
+  componentDidMount() {
     const $this = $(findDOMNode(this));
 
     if (this.props.loadQuery) {
@@ -16,25 +18,30 @@ class SearchForm extends React.Component {
     }
 
     $this.on('update', () => {
-      if (!this.props.onFilter) {
-        return;
-      }
+      // if (!this.props.onFilter) {
+      //   return;
+      // }
 
       let params = {};
       $($this.serializeArray()).each((index, obj) => {
         params[obj.name] = obj.value;
       });
 
-      this.props.onFilter(params);
+      // this.props.onFilter(params);
+
+      this.handleSearch(params);
     });
   }
 
-  render () {
-    return (
-      <Form horizontal className={this.props.className + ' search-form well'}>
-        {this.props.children}
-      </Form>
-    );
+  render() {
+    return <TableContext.Consumer>
+      {({handleSearch}) => {
+        this.handleSearch = handleSearch;
+        return <Form horizontal className={this.props.className + ' search-form well'}>
+          {this.props.children}
+        </Form>;
+      }}
+    </TableContext.Consumer>;
   }
 }
 
