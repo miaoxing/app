@@ -26,8 +26,19 @@ class TableProvider extends React.Component {
   reload = () => {
   };
 
+  getContent() {
+    const {children, component, render} = this.props;
+    if (render) {
+      return render(this.state);
+    }
+    if (typeof children === 'function') {
+      return children(this.state);
+    }
+    return children;
+  }
+
   render() {
-    return <TableContext.Provider value={this.state}>{this.props.children}</TableContext.Provider>
+    return <TableContext.Provider value={this.state}>{this.getContent()}</TableContext.Provider>
   }
 }
 
