@@ -23,7 +23,8 @@ class TableProvider extends React.Component {
     this.setState({search: search});
   };
 
-  reload = () => {};
+  reload = () => {
+  };
 
   render() {
     return <TableContext.Provider value={this.state}>{this.props.children}</TableContext.Provider>
@@ -45,17 +46,14 @@ class Table extends React.Component {
       page: 1,
       totalSize: 0,
       sizePerPage: 10,
-      sortField: '',
-      sortOrder: '',
       loading: false,
       noDataIndication: '暂无数据',
     };
     this.prevNoDataIndication = '';
 
-    this.handleFilter = this.handleFilter.bind(this);
     this.handleTableChange = this.handleTableChange.bind(this);
 
-    // 
+    // 将Provider中的方法指向当前组件
     this.props.table.reload = this.reload.bind(this);
   }
 
@@ -95,8 +93,8 @@ class Table extends React.Component {
     let tableParams = {
       page: this.state.page,
       rows: this.state.sizePerPage,
-      sort: this.state.sortField,
-      order: this.state.sortOrder
+      sort: this.node.sortContext.state.sortColumn,
+      order: this.node.sortContext.state.sortOrder,
     };
 
     const searchParams = this.props.table.search;
@@ -120,31 +118,17 @@ class Table extends React.Component {
     });
   }
 
-  handleFilter() {
-    this.handleTableChange('filter', {
-      page: 1,
-      sizePerPage: this.state.sizePerPage,
-      sortField: this.state.sortField,
-      sortOrder: this.state.sortOrder
-    });
-  }
-
   handleTableChange(type, {page, sizePerPage, sortField, sortOrder}) {
-    this.setState({
-      sortField,
-      sortOrder
-    }, () => {
-      this.load({
-        page: type === 'sort' ? 1 : page,
-        rows: sizePerPage,
-        sort: sortField,
-        order: sortOrder
-      });
+    this.load({
+      page: type === 'sort' ? 1 : page,
+      rows: sizePerPage,
+      sort: sortField,
+      order: sortOrder
     });
   }
 
   render() {
-    const {columns, filterRenderer, ...restProps} = this.props;
+    const {columns, ...restProps} = this.props;
     const {page, sizePerPage, totalSize} = this.state;
 
     return <React.Fragment>
@@ -158,7 +142,6 @@ class Table extends React.Component {
         }
        `}
       </style>
-      {filterRenderer && filterRenderer(this.handleFilter)}
       <BootstrapTable
         ref={n => this.node = n}
         remote={{pagination: true}}
