@@ -56,19 +56,15 @@ class Table extends React.Component {
   }
 
   componentDidMount() {
-    this.load();
+    this.reload();
   }
 
   componentDidUpdate(prevProps) {
     if (this.props.url !== prevProps.url
       || this.props.table.search !== prevProps.table.search
     ) {
-      this.load({page: 1});
+      this.reload({page: 1});
     }
-  }
-
-  reload() {
-    this.load();
   }
 
   enableLoading() {
@@ -86,7 +82,7 @@ class Table extends React.Component {
     });
   }
 
-  load(params = {}) {
+  reload(params = {}) {
     // 自身参数
     let tableParams = {
       page: this.state.page,
@@ -117,7 +113,7 @@ class Table extends React.Component {
   }
 
   handleTableChange = (type, {page, sizePerPage}) => {
-    this.load({
+    this.reload({
       page: type === 'sort' ? 1 : page,
       rows: sizePerPage
     });
