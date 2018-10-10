@@ -61,8 +61,8 @@ class Table extends React.Component {
     let tableParams = {
       page: this.state.page,
       rows: this.state.sizePerPage,
-      sort: this.node.sortContext.state.sortColumn,
-      order: this.node.sortContext.state.sortOrder,
+      sort: this.node.sortContext ? this.node.sortContext.state.sortColumn : '',
+      order: this.node.sortContext ?  this.node.sortContext.state.sortOrder : '',
     };
 
     // 外部搜索参数
