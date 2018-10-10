@@ -29,16 +29,12 @@ class Table extends React.Component {
     };
     this.prevNoDataIndication = '';
 
-    this.reload = this.reload.bind(this);
     this.handleFilter = this.handleFilter.bind(this);
     this.handleTableChange = this.handleTableChange.bind(this);
   }
 
   componentDidMount() {
     this.load();
-
-    // TODO 应该按React的通讯方式
-    $(document).on('tableReload', this.reload);
   }
 
   componentDidUpdate(prevProps) {
@@ -46,10 +42,6 @@ class Table extends React.Component {
       || this.props.search !== prevProps.search) {
       this.load();
     }
-  }
-
-  componentWillUnmount() {
-    $(document).off('tableReload', this.reload);
   }
 
   reload() {
