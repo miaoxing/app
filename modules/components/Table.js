@@ -7,6 +7,13 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import overlayFactory from 'react-bootstrap-table2-overlay';
 
 class Table extends React.Component {
+  static defaultProps = {
+    url: null,
+    search: {},
+  };
+
+  node = null;
+
   constructor(props) {
     super(props);
 
@@ -18,7 +25,7 @@ class Table extends React.Component {
       sortField: '',
       sortOrder: '',
       loading: false,
-      noDataIndication: '暂无数据'
+      noDataIndication: '暂无数据',
     };
     this.prevNoDataIndication = '';
 
@@ -32,6 +39,13 @@ class Table extends React.Component {
 
     // TODO 应该按React的通讯方式
     $(document).on('tableReload', this.handleReload);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.url !== prevProps.url
+      || this.props.search !== prevProps.search) {
+      this.load();
+    }
   }
 
   componentWillUnmount() {
@@ -66,14 +80,16 @@ class Table extends React.Component {
       order: this.state.sortOrder
     };
 
-    // TODO 外部表单的参数
-    let filterParams = {};
-    $($('.search-form').serializeArray()).each((index, obj) => {
-      filterParams[obj.name] = obj.value;
-    });
+    let searchParams = this.props.search;
+    // NOTE: 兼容旧的方法
+    if ($.isEmptyObject(searchParams)) {
+      $($('.search-form').serializeArray()).each((index, obj) => {
+        searchParams[obj.name] = obj.value;
+      });
+    }
 
     // 外部的参数
-    params = Object.assign({}, tableParams, filterParams, params);
+    params = Object.assign({}, tableParams, searchParams, params);
 
     this.enableLoading();
     $.ajax({
@@ -131,6 +147,7 @@ class Table extends React.Component {
       </style>
       {filterRenderer && filterRenderer(this.handleFilter)}
       <BootstrapTable
+        ref={n => this.node = n}
         remote={{pagination: true}}
         keyField="id"
         data={this.state.data}
