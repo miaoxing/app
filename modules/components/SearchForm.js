@@ -20,7 +20,7 @@ class SearchForm extends React.Component {
       $($this.serializeArray()).each((index, obj) => {
         params[obj.name] = obj.value;
       });
-      this.props.table && this.props.table.handleSearch(params);
+      this.props.table.handleSearch && this.props.table.handleSearch(params);
     });
   }
 
