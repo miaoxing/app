@@ -22,6 +22,10 @@ class TableProvider extends React.Component {
     this.setState({search: search});
   };
 
+  reload = () => {
+
+  };
+
   render() {
     return <TableContext.Provider value={this.state}>{this.props.children}</TableContext.Provider>
   }
@@ -29,8 +33,7 @@ class TableProvider extends React.Component {
 
 class Table extends React.Component {
   static defaultProps = {
-    url: null,
-    search: {},
+    url: null
   };
 
   node = null;
@@ -60,7 +63,8 @@ class Table extends React.Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.url !== prevProps.url
-      || this.props.search !== prevProps.search) {
+      || this.props.table.search !== prevProps.table.search
+    ) {
       this.load();
     }
   }
@@ -93,13 +97,7 @@ class Table extends React.Component {
       order: this.state.sortOrder
     };
 
-    let searchParams = this.props.search;
-    // NOTE: 兼容旧的方法
-    if ($.isEmptyObject(searchParams)) {
-      $($('.search-form').serializeArray()).each((index, obj) => {
-        searchParams[obj.name] = obj.value;
-      });
-    }
+    const searchParams = this.props.table.search;
 
     // 外部的参数
     params = Object.assign({}, tableParams, searchParams, params);
@@ -191,16 +189,6 @@ class Table extends React.Component {
   }
 }
 
-function withTable2(Component) {
-  return function TableComponent(props) {
-    return (
-      <TableContext.Consumer>
-        {({search}) => <Component search={search} {...props} />}
-      </TableContext.Consumer>
-    );
-  };
-}
-
 function withTable(Component) {
   return function TableComponent(props) {
     return (
@@ -211,5 +199,5 @@ function withTable(Component) {
   };
 }
 
-export default withTable2(Table);
+export default withTable(Table);
 export {TableContext, TableProvider, withTable};
