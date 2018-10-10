@@ -1,5 +1,5 @@
 import React from 'react';
-import {withTable} from "components/Table";
+import {withTable} from "components/TableProvider";
 
 class DeleteLink extends React.Component {
   constructor(props) {

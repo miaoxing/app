@@ -5,42 +5,7 @@ import React from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import overlayFactory from 'react-bootstrap-table2-overlay';
-
-const TableContext = React.createContext({});
-
-class TableProvider extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      search: {},
-      handleSearch: this.handleSearch,
-      reload: this.reload,
-    };
-  }
-
-  handleSearch = (search) => {
-    this.setState({search: search});
-  };
-
-  reload = () => {
-  };
-
-  getContent() {
-    const {children, component, render} = this.props;
-    if (render) {
-      return render(this.state);
-    }
-    if (typeof children === 'function') {
-      return children(this.state);
-    }
-    return children;
-  }
-
-  render() {
-    return <TableContext.Provider value={this.state}>{this.getContent()}</TableContext.Provider>
-  }
-}
+import {withTable} from "components/TableProvider";
 
 class Table extends React.Component {
   static defaultProps = {
@@ -175,15 +140,4 @@ class Table extends React.Component {
   }
 }
 
-function withTable(Component) {
-  return function TableComponent(props) {
-    return (
-      <TableContext.Consumer>
-        {(table) => <Component table={table} {...props} />}
-      </TableContext.Consumer>
-    );
-  };
-}
-
 export default withTable(Table);
-export {TableContext, TableProvider, withTable};
