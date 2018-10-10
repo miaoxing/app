@@ -7,7 +7,25 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import overlayFactory from 'react-bootstrap-table2-overlay';
 
 const TableContext = React.createContext({});
-const TableProvider = TableContext.Provider;
+
+class TableProvider extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      search: {},
+      handleSearch: this.handleSearch,
+    };
+  }
+
+  handleSearch = (search) => {
+    this.setState({search: search});
+  };
+
+  render() {
+    return <TableContext.Provider value={this.state}>{this.props.children}</TableContext.Provider>
+  }
+}
 
 class Table extends React.Component {
   static defaultProps = {
