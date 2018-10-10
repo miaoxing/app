@@ -21,7 +21,7 @@ export default class TableProvider extends React.Component {
   };
 
   getContent() {
-    const {children, component, render} = this.props;
+    const {children, render} = this.props;
     if (render) {
       return render(this.state);
     }
