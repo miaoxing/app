@@ -42,7 +42,7 @@ class SearchFormik extends React.Component {
   };
 
   render() {
-    const {className, loadQuery, ...rest} = this.props;
+    const {className, loadQuery, table, ...rest} = this.props;
     return <Formik
       initialValues={this.values}
       onSubmit={this.handleSubmit}
