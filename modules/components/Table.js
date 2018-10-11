@@ -23,11 +23,22 @@ class Table extends React.Component {
     noDataIndication: this.noDataIndication,
   };
 
+  columns = [];
+
   constructor(props) {
     super(props);
 
     // 将Provider中的方法指向当前组件
     this.props.table.reload = this.reload.bind(this);
+
+    this.props.columns.forEach((column) => {
+      if (typeof column.dataField === 'undefined') {
+        column.dataField = column.text;
+      }
+      if (typeof column.formatter === 'undefined') {
+        column.formatter = this.defaultFormatter;
+      }
+    });
   }
 
   componentDidMount() {
@@ -40,6 +51,10 @@ class Table extends React.Component {
     ) {
       this.reload({page: 1});
     }
+  }
+
+  defaultFormatter(value) {
+    return value || <span className="text-muted">-</span>;
   }
 
   enableLoading() {
