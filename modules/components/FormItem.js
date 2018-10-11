@@ -3,7 +3,8 @@ import {Col, ControlLabel, FormControl, FormGroup} from 'react-bootstrap';
 import Options from './Options';
 import decamelize from 'decamelize';
 import Required from './Required';
-import {connect, Field} from "formik";
+import {connect} from "formik";
+import Field from "components/Field";
 
 function isSelect(props) {
   const firstChild = React.Children.toArray(props.children)[0];
