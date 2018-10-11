@@ -1,12 +1,11 @@
 import '../styles/_search-form.scss';
 import React from 'react';
-import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
-import 'load-query';
 import {Form} from "react-bootstrap";
 import {withTable} from "components/TableProvider";
 import {Formik} from "formik";
 import _ from 'lodash';
+import parseStr from "locutus/php/strings/parse_str";
 
 class SearchFormik extends React.Component {
   static defaultProps = {
@@ -18,13 +17,14 @@ class SearchFormik extends React.Component {
   };
 
   delay = 300;
+  values = {};
 
-  componentDidMount() {
-    const $this = $(findDOMNode(this));
+  constructor(props) {
+    super(props);
 
-    /*if (this.props.loadQuery) {
-      $this.loadQuery();
-    }*/
+    if (this.props.loadQuery) {
+      parseStr(location.search.substr(1), this.values);
+    }
   }
 
   handleChange = (submitForm, e) => {
@@ -44,6 +44,7 @@ class SearchFormik extends React.Component {
   render() {
     const {className, loadQuery, ...rest} = this.props;
     return <Formik
+      initialValues={this.values}
       onSubmit={this.handleSubmit}
       render={({submitForm}) => (
         <Form horizontal
