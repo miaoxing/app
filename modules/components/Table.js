@@ -72,7 +72,7 @@ class Table extends React.Component {
 
     this.enableLoading();
     $.ajax({
-      url: $.appendUrl(this.props.url, params),
+      url: $.appendUrl(this.getUrl(), params),
       dataType: 'json'
     }).done(ret => {
       this.setState({
@@ -84,6 +84,14 @@ class Table extends React.Component {
     }).always(() => {
       this.disableLoading();
     });
+  }
+
+  getUrl() {
+    if (this.props.url) {
+      return this.props.url;
+    }
+
+    return location.pathname + '.json' + location.search;
   }
 
   handleTableChange = (type, {page, sizePerPage}) => {
