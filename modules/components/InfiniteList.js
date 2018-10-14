@@ -18,7 +18,7 @@ export default class InfiniteList extends React.Component {
     this.setState({loading: true});
 
     $.ajax({
-      url: $.appendUrl(this.props.url, {page: page})
+      url: $.appendUrl(this.getUrl(), {page: page})
     }).done(ret => {
       if (ret.code !== 1) {
         return $.msg(ret);
@@ -31,6 +31,14 @@ export default class InfiniteList extends React.Component {
         loading: false,
       });
     });
+  }
+
+  getUrl() {
+    if (this.props.url) {
+      return this.props.url;
+    }
+
+    return location.pathname + '.json' + location.search;
   }
 
   render() {
