@@ -1,44 +1,11 @@
 import React from 'react';
-import {Col, ControlLabel, FormControl, FormGroup} from 'react-bootstrap';
-import Options from './Options';
+import {Col, ControlLabel, FormGroup} from 'react-bootstrap';
 import decamelize from 'decamelize';
 import Required from './Required';
-import {connect} from "formik";
-import Field from "components/Field";
+import FormControl from "components/FormControl";
 
-function isSelect(props) {
-  const firstChild = React.Children.toArray(props.children)[0];
-  return firstChild && (firstChild.type === 'option' || firstChild.type === <Options/>.type);
-}
-
-function handleFormik(props) {
-  // 自动识别select类型
-  if (!props.component && isSelect(props)) {
-    props.component = 'select';
-  }
-
-  if (!props.componentClass) {
-    props.componentClass = Field;
-  }
-
-  return props;
-}
-
-function FormItem({label, name, help, labelSize, controlSize, helpSize, groupSize, formik, ...props}) {
+function FormItem({label, name, help, labelSize, controlSize, helpSize, groupSize, ...props}) {
   const id = name ? decamelize(name, '-') : null;
-
-  if (formik.setFieldValue) {
-    props = handleFormik(props);
-  }
-
-  // 自动识别select类型
-  if (!props.componentClass && isSelect(props)) {
-    props.componentClass = 'select';
-  }
-
-  if (!props.type && props.componentClass !== 'select' && props.componentClass !== 'textarea') {
-    props.type = 'text';
-  }
 
   return (
     <FormGroup controlId={id} bsSize={groupSize}>
@@ -58,4 +25,4 @@ function FormItem({label, name, help, labelSize, controlSize, helpSize, groupSiz
   );
 }
 
-export default connect(FormItem);
+export default FormItem;

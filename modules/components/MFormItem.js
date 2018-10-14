@@ -1,8 +1,8 @@
 import React from 'react';
-import {ControlLabel, FormControl, FormGroup} from 'react-bootstrap';
-import {Field} from 'formik';
+import {ControlLabel, FormGroup} from 'react-bootstrap';
 import Required from 'components/Required';
 import decamelize from 'decamelize';
+import FormControl from "components/FormControl";
 
 const MFormItem = ({name, label, ...props}) => {
   const id = name ? decamelize(name, '-') : null;
@@ -13,7 +13,9 @@ const MFormItem = ({name, label, ...props}) => {
       {props.required && <React.Fragment>{' '}<Required/></React.Fragment>}
     </ControlLabel>}
     <div className="col-control">
-      <FormControl componentClass={Field} name={name} {...props} />
+      {props.control || <FormControl id={id} name={name} {...props}>
+        {props.children}
+      </FormControl>}
     </div>
   </FormGroup>;
 };
