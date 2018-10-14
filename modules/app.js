@@ -39,6 +39,10 @@ class App {
     return this.curIndexUrl() + '/' + (this.id ? 'update' : 'create');
   }
 
+  actionUrl(action) {
+    return this.curIndexUrl() + '/' + action;
+  }
+
   to(...args) {
     this.history.push(this.url(...args))
   }
