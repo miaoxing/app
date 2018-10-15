@@ -60,6 +60,7 @@ class App {
       if (ret.code !== 1) {
         return $.msg(ret);
       }
+      return ret;
     });
   }
 
