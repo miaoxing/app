@@ -51,19 +51,6 @@ class App {
     this.history.replace(this.history.location);
   }
 
-  get(url) {
-    return $.ajax({
-      url: url,
-      loading: true,
-      dataType: 'json',
-    }).then(ret => {
-      if (ret.code !== 1) {
-        return $.msg(ret);
-      }
-      return ret;
-    });
-  }
-
   get namespace() {
     return this._namespace;
   }
