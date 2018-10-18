@@ -17,7 +17,7 @@ class MobileVerifyCode extends React.Component {
       return '';
     }
 
-    return <div className="form-group">
+    return <div className="js-verify-code-from-group form-group">
       <style>
         {`
         .text-primary.disabled {
