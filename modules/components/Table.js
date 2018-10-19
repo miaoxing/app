@@ -45,7 +45,7 @@ class Table extends React.Component {
   }
 
   defaultFormatter(value) {
-    if (value === null || typeof value === 'undefined') {
+    if (typeof value === 'undefined' || value === '' || value === null) {
       return <span className="text-muted">-</span>;
     } else {
       return value;
