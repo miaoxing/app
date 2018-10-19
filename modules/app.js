@@ -51,6 +51,29 @@ class App {
     this.history.replace(this.history.location);
   }
 
+  get(url) {
+    return $.ajax({
+      url: url,
+      loading: true,
+      dataType: 'json',
+    }).then(ret => {
+      if (ret.code !== 1) {
+        return $.msg(ret);
+      }
+      return ret;
+    });
+  }
+
+  post(url, data = {}) {
+    return $.ajax({
+      url: url,
+      loading: true,
+      dataType: 'json',
+      type: 'post',
+      data: data,
+    })
+  }
+
   get namespace() {
     return this._namespace;
   }
