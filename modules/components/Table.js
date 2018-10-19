@@ -30,15 +30,6 @@ class Table extends React.Component {
 
     // 将Provider中的方法指向当前组件
     this.props.table.reload = this.reload.bind(this);
-
-    this.props.columns.forEach((column) => {
-      if (typeof column.dataField === 'undefined') {
-        column.dataField = column.text;
-      }
-      if (typeof column.formatter === 'undefined') {
-        column.formatter = this.defaultFormatter;
-      }
-    });
   }
 
   componentDidMount() {
@@ -123,6 +114,15 @@ class Table extends React.Component {
   render() {
     const {columns, ...restProps} = this.props;
     const {page, sizePerPage, totalSize} = this.state;
+
+    columns.forEach((column) => {
+      if (typeof column.dataField === 'undefined') {
+        column.dataField = column.text;
+      }
+      if (typeof column.formatter === 'undefined') {
+        column.formatter = this.defaultFormatter;
+      }
+    });
 
     return <React.Fragment>
       <style>
