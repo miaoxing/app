@@ -8,6 +8,9 @@ const StyledDatePicker = styled.div`
   .react-datepicker__input-container {
     display: block;
   }
+  .react-datepicker-popper {
+    z-index: 100;
+  }
   .react-datepicker__close-icon::after {
     background-color: transparent;
     color: #d6d6d6;
