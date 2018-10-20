@@ -39,8 +39,8 @@ class App {
     return this.curIndexUrl() + '/' + (this.id ? 'update' : 'create');
   }
 
-  actionUrl(action) {
-    return this.curIndexUrl() + '/' + action;
+  actionUrl(action, argsOrParam, params) {
+    return $.appendUrl(this.curIndexUrl() + '/' + action, argsOrParam, params);
   }
 
   to(...args) {
