@@ -6,13 +6,21 @@ import rp from 'require-promise';
 const loader = rp('ueditor');
 
 class FormItemUeditor extends React.Component {
+  editor;
+
   componentDidMount() {
     loader.then(() => {
-      const editor = UE.getEditor(this.props.name);
-      editor.addListener('contentChange', () => {
-        this.props.formik.setFieldValue(this.props.name, editor.getContent());
+      this.editor = UE.getEditor(this.props.name);
+      this.editor.addListener('contentChange', () => {
+        this.props.formik.setFieldValue(this.props.name, this.editor.getContent());
       });
     });
+  }
+
+  componentWillUnmount() {
+    if (this.editor) {
+      this.editor.destroy();
+    }
   }
 
   render() {
