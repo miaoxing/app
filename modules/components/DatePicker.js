@@ -4,6 +4,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
 
 const StyledDatePicker = styled.div`
+  .react-datepicker-wrapper,
   .react-datepicker__input-container {
     display: block;
   }
