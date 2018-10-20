@@ -24,7 +24,7 @@ class FormItemDateTimeRange extends React.Component {
   }
 
   handleChangeStart(dateMin) {
-    const dateValue = dateMin.format('YY-MM-DD HH:mm:ss');
+    const dateValue = dateMin ? dateMin.format('YY-MM-DD HH:mm:ss') : '';
     let state = {dateMin};
 
     if (dateMin && dateMin.isAfter(this.state.dateMax)) {
@@ -37,7 +37,7 @@ class FormItemDateTimeRange extends React.Component {
   }
 
   handleChangeEnd(dateMax) {
-    const dateValue = dateMax.format('YY-MM-DD HH:mm:ss');
+    const dateValue = dateMax ? dateMax.format('YY-MM-DD HH:mm:ss') : '';
     let state = {dateMax};
 
     if (dateMax && dateMax.isBefore(this.state.dateMin)) {
