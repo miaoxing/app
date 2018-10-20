@@ -20,7 +20,7 @@ class FormItemImage extends React.Component {
     }
 
     const imageUpload = this.$el.data('image-upload');
-    imageUpload.setImages(this.props.formik.values.images);
+    imageUpload && imageUpload.setImages(this.props.formik.values.images);
   }
 
   componentDidMount() {

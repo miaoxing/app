@@ -44,6 +44,7 @@ class FormItemDateTimeRange extends React.Component {
   }
 
   render() {
+    const {label, minName, maxName, formik, ...rest} = this.props;
     const dateMin = this.moment(this.props.formik.values[this.props.minName]);
     const dateMax = this.moment(this.props.formik.values[this.props.maxName]);
 
@@ -63,7 +64,9 @@ class FormItemDateTimeRange extends React.Component {
           timeIntervals={10}
           withPortal={false}
           timeCaption="时间"
+          {...rest}
         />}
+        {...rest}
       />
       <FormItem
         label={'结束' + this.props.label + '时间'}
@@ -80,7 +83,9 @@ class FormItemDateTimeRange extends React.Component {
           timeIntervals={10}
           withPortal={false}
           timeCaption="时间"
+          {...rest}
         />}
+        {...rest}
       />
     </React.Fragment>
   }
