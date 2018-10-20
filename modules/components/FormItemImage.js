@@ -30,6 +30,7 @@ class FormItemImage extends React.Component {
     loader.then(() => {
       this.$el.imageUpload({
         max: 10,
+        images: this.props.formik.values.images,
         onChange: () => {
           let images = [];
           $(dom).find('.js-image-item').each(function () {
