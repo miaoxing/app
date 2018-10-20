@@ -16,7 +16,7 @@ class FormItemDateTimeRange extends React.Component {
   handleChangeStart(dateMin) {
     const formik = this.props.formik;
     const dateValue = this.format(dateMin);
-    const dateMax = this.moment(formik.values[this.props.dateMax]);
+    const dateMax = this.moment(formik.values[this.props.maxName]);
 
     if (dateMin && dateMin.isAfter(dateMax)) {
       formik.setFieldValue(this.props.maxName, dateValue);
@@ -28,7 +28,7 @@ class FormItemDateTimeRange extends React.Component {
   handleChangeEnd(dateMax) {
     const formik = this.props.formik;
     const dateValue = this.format(dateMax);
-    const dateMin = this.moment(formik.values[this.props.dateMin]);
+    const dateMin = this.moment(formik.values[this.props.minName]);
 
     if (dateMax && dateMax.isBefore(dateMin)) {
       formik.setFieldValue(this.props.minName, dateValue);
