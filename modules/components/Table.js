@@ -33,6 +33,7 @@ class Table extends React.Component {
   }
 
   componentDidMount() {
+    window.tableNode = this.node;
     this.reload();
   }
 
@@ -72,7 +73,7 @@ class Table extends React.Component {
       page: this.state.page,
       rows: this.state.sizePerPage,
       sort: this.node.sortContext ? this.node.sortContext.state.sortColumn : '',
-      order: this.node.sortContext ?  this.node.sortContext.state.sortOrder : '',
+      order: this.node.sortContext ? this.node.sortContext.state.sortOrder : '',
     };
 
     // 外部搜索参数
