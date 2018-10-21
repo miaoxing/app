@@ -9,11 +9,13 @@ import parseStr from "locutus/php/strings/parse_str";
 
 class SearchFormik extends React.Component {
   static defaultProps = {
-    loadQuery: true
+    loadQuery: true,
+    realTime: true,
   };
 
   static propTypes = {
-    loadQuery: PropTypes.bool
+    loadQuery: PropTypes.bool,
+    realTime: PropTypes.bool,
   };
 
   delay = 300;
@@ -42,14 +44,14 @@ class SearchFormik extends React.Component {
   };
 
   render() {
-    const {className, loadQuery, table, ...rest} = this.props;
+    const {className, loadQuery, realTime, table, ...rest} = this.props;
     return <Formik
       initialValues={this.values}
       onSubmit={this.handleSubmit}
       render={({submitForm}) => (
         <Form horizontal
           className={(className ? className + ' ' : '') + 'search-form well'}
-          onChange={this.handleChange.bind(this, submitForm)}
+          onChange={realTime ? this.handleChange.bind(this, submitForm) : null}
           {...rest}
         >
           {this.props.children}
