@@ -40,6 +40,13 @@ class MFormItemImage extends React.Component {
   render() {
     return <div>
       <div className="form-group js-upload-container"/>
+      <style>
+        {`
+        .wx-upload-image-cells {
+          margin-left: -47px;
+        }
+        `}
+      </style>
       <script type="text/html" id="wx-upload-image-tpl">
         {`
             <div class="wx-upload-image js-wx-upload-image">
