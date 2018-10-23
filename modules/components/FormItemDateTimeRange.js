@@ -4,7 +4,7 @@ import moment from "moment";
 import 'jquery-unparam';
 import 'react-datepicker/dist/react-datepicker.css';
 import FormItem from "components/FormItem";
-import {connect} from "formik";
+import {connect, getIn} from "formik";
 
 class FormItemDateTimeRange extends React.Component {
   static defaultProps = {
@@ -16,7 +16,7 @@ class FormItemDateTimeRange extends React.Component {
   handleChangeStart(dateMin) {
     const formik = this.props.formik;
     const dateValue = this.format(dateMin);
-    const dateMax = this.moment(formik.values[this.props.maxName]);
+    const dateMax = this.moment(getIn(formik.values, this.props.maxName));
 
     if (dateMin && dateMin.isAfter(dateMax)) {
       formik.setFieldValue(this.props.maxName, dateValue);
@@ -28,7 +28,7 @@ class FormItemDateTimeRange extends React.Component {
   handleChangeEnd(dateMax) {
     const formik = this.props.formik;
     const dateValue = this.format(dateMax);
-    const dateMin = this.moment(formik.values[this.props.minName]);
+    const dateMin = this.moment(getIn(formik.values, this.props.minName));
 
     if (dateMax && dateMax.isBefore(dateMin)) {
       formik.setFieldValue(this.props.minName, dateValue);
@@ -47,8 +47,8 @@ class FormItemDateTimeRange extends React.Component {
 
   render() {
     const {label, minName, maxName, formik, ...rest} = this.props;
-    const dateMin = this.moment(formik.values[this.props.minName]);
-    const dateMax = this.moment(formik.values[this.props.maxName]);
+    const dateMin = this.moment(getIn(formik.values, this.props.minName));
+    const dateMax = this.moment(getIn(formik.values, this.props.maxName));
 
     return <React.Fragment>
       <FormItem
