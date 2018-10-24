@@ -19,6 +19,8 @@ class Table extends React.Component {
     page: 1,
     totalSize: 0,
     sizePerPage: 10,
+    sortField: '',
+    sortOrder: '',
     loading: false,
     noDataIndication: this.noDataIndication,
   };
@@ -72,8 +74,8 @@ class Table extends React.Component {
     let tableParams = {
       page: this.state.page,
       rows: this.state.sizePerPage,
-      sort: this.node.sortContext ? this.node.sortContext.state.sortColumn : '',
-      order: this.node.sortContext ? this.node.sortContext.state.sortOrder : '',
+      sort: this.state.sortField,
+      order: this.state.sortOrder,
     };
 
     // 外部搜索参数
@@ -105,10 +107,17 @@ class Table extends React.Component {
     return location.pathname + '.json' + location.search;
   }
 
-  handleTableChange = (type, {page, sizePerPage}) => {
-    this.reload({
-      page: type === 'sort' ? 1 : page,
-      rows: sizePerPage
+  handleTableChange = (type, {page, sizePerPage, sortField, sortOrder}) => {
+    this.setState({
+      sortField,
+      sortOrder
+    }, () => {
+      this.reload({
+        page: type === 'sort' ? 1 : page,
+        rows: sizePerPage,
+        sort: sortField,
+        order: sortOrder
+      });
     });
   };
 
