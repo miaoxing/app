@@ -1,8 +1,12 @@
 import React from 'react';
 import 'plugins/verify-code/js/verify-code';
-import {Field} from 'formik';
+import Field from "components/Field";
 
 class MobileVerifyCode extends React.Component {
+  static defaultProps = {
+    name: 'verifyCode',
+  };
+
   componentDidUpdate() {
     let options = {};
     if (this.props.url) {
@@ -31,7 +35,7 @@ class MobileVerifyCode extends React.Component {
       </label>
       <div className="col-control">
         <div className="input-group">
-          <Field type="tel" className="form-control" id="verify-code" name="verifyCode" placeholder="请输入验证码"/>
+          <Field type="tel" className="form-control" id="verify-code" name={this.props.name} placeholder="请输入验证码"/>
           <span className="input-group-btn border-left">
             <button type="button" className="js-verify-code-send text-primary btn btn-default form-link">
               获取验证码
