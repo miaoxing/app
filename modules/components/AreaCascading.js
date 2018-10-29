@@ -9,6 +9,7 @@ class AreaCascading extends React.Component {
     provinceName: 'province',
     cityName: 'city',
     areaName: 'area',
+    required: true,
     component: FormItem,
   };
 
@@ -58,17 +59,17 @@ class AreaCascading extends React.Component {
 
   render() {
     return <React.Fragment>
-      <this.props.component component="select" label="省份" name={this.props.provinceName} required
+      <this.props.component component="select" label="省份" name={this.props.provinceName} required={this.props.required}
         onChange={this.handleChangeProvince}>
         <Options data={this.state.provinces} valueKey="label"/>
       </this.props.component>
 
-      <this.props.component component="select" label="城市" name={this.props.cityName} required
+      <this.props.component component="select" label="城市" name={this.props.cityName} required={this.props.required}
         onChange={this.handleChangeCity}>
         <Options data={this.state.cities} valueKey="label"/>
       </this.props.component>
 
-      <this.props.component component="select" label="区域" name={this.props.areaName} required>
+      <this.props.component component="select" label="区域" name={this.props.areaName} required={this.props.required}>
         <Options data={this.state.areas} valueKey="label"/>
       </this.props.component>
     </React.Fragment>
