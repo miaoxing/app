@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'plugins/wechat-image/css/wechat-image.css';
-import _ from "lodash";
 
 class MFormItemImage extends React.Component {
   componentWillMount() {
@@ -26,7 +25,7 @@ class MFormItemImage extends React.Component {
       const img = new image.constructor;
       img.init({
         $container: $('.js-upload-container .js-wx-upload-image', dom),
-        images: _.map(this.props.images, 'url'),
+        images: this.props.images,
         wx: wx,
         max: 10,
         uploadUrl: $.url('wechat-image/get-wechat-image'),
