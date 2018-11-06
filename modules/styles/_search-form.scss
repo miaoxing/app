@@ -18,13 +18,15 @@
   display: none;
 }
 
-.search-form .control-label {
-  padding-right: 0;
-  padding-left: 0;
-}
-
 /* 表单项换行时，上下留出空白 */
 .search-form > .form-group .control-label,
 .search-form > .form-group div {
   margin-bottom: 10px;
+}
+
+@media (min-width: 767px) {
+  .search-form .control-label {
+    padding-right: 0;
+    padding-left: 0;
+  }
 }
