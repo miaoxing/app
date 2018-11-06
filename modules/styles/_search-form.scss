@@ -24,9 +24,12 @@
   margin-bottom: 10px;
 }
 
+.search-form .control-label {
+  padding-right: 0;
+}
+
 @media (min-width: 767px) {
   .search-form .control-label {
-    padding-right: 0;
     padding-left: 0;
   }
 }
