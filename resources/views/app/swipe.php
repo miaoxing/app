@@ -1,7 +1,7 @@
 <?php
 
 if (!$images) {
-  return;
+    return;
 }
 $wei->page->addAsset('plugins/app/css/swipe.css');
 ?>
@@ -10,7 +10,7 @@ $wei->page->addAsset('plugins/app/css/swipe.css');
   <div class="js-images-preview swipe-wrap">
     <?php foreach ($images as $index => $image) : ?>
       <div>
-        <img src="<?= $image ?>"/>
+        <img src="<?= wei()->asset->thumb($image, 750) ?>"/>
       </div>
     <?php endforeach ?>
   </div>

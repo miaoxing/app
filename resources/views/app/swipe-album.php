@@ -12,7 +12,7 @@ $wei->page->addAsset('plugins/app/css/swipe.css');
     <?php foreach ($images as $index => $image) : ?>
       <div>
         <a href="<?= $image['linkTo'] ? wei()->linkTo->getUrl($image['linkTo']) : '' ?>">
-          <img src="<?= wei()->asset->thumb($image['image'], 640) ?>"/>
+          <img src="<?= wei()->asset->thumb($image['image'], 750) ?>"/>
         </a>
       </div>
     <?php endforeach ?>
