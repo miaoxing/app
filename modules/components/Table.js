@@ -134,7 +134,7 @@ class Table extends React.Component {
       }
     });
 
-    return <React.Fragment>
+    return <>
       <style>
         {`
         .react-bs-table-sizePerPage-dropdown.show {
@@ -173,7 +173,7 @@ class Table extends React.Component {
         onTableChange={this.handleTableChange}
         {...restProps}
       />
-    </React.Fragment>;
+    </>;
   }
 }
 

@@ -10,7 +10,7 @@ const MFormItem = ({name, label, ...props}) => {
   return <FormGroup controlId={id}>
     {label && <ControlLabel>
       {label}
-      {props.required && <React.Fragment>{' '}<Required/></React.Fragment>}
+      {props.required && <>{' '}<Required/></>}
     </ControlLabel>}
     <div className="col-control">
       {props.control || <FormControl id={id} name={name} {...props}>

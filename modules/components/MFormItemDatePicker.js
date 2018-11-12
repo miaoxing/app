@@ -19,7 +19,7 @@ class MFormItemDatePicker extends React.Component {
     return <FormGroup>
       <ControlLabel>
         {label}
-        {this.props.required && <React.Fragment>{' '}<Required/></React.Fragment>}
+        {this.props.required && <>{' '}<Required/></>}
       </ControlLabel>
       <div className="col-control">
         <DatePicker

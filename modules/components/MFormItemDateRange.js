@@ -45,7 +45,7 @@ class MFormItemDateRange extends React.Component {
   }
 
   render() {
-    return <React.Fragment>
+    return <>
       <style>
         {`
           .form .control-label {
@@ -81,7 +81,7 @@ class MFormItemDateRange extends React.Component {
           />
         </div>
       </FormGroup>
-    </React.Fragment>
+    </>
   }
 }
 

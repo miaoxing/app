@@ -10,8 +10,7 @@ class FormItemDateTimeRange extends React.Component {
   static defaultProps = {
     label: '',
     minName: 'startedAt',
-    maxName: 'endedAt',
-    component: FormItem,
+    maxName: 'endedAt'
   };
 
   handleChangeStart(dateMin) {
@@ -51,8 +50,8 @@ class FormItemDateTimeRange extends React.Component {
     const dateMin = this.moment(getIn(formik.values, this.props.minName));
     const dateMax = this.moment(getIn(formik.values, this.props.maxName));
 
-    return <React.Fragment>
-      <this.props.component
+    return <>
+      <FormItem
         label={'开始' + label + '时间'}
         control={<DatePicker
           selected={dateMin}
@@ -71,7 +70,7 @@ class FormItemDateTimeRange extends React.Component {
         />}
         {...rest}
       />
-      <this.props.component
+      <FormItem
         label={'结束' + label + '时间'}
         control={<DatePicker
           selected={dateMax}
@@ -90,7 +89,7 @@ class FormItemDateTimeRange extends React.Component {
         />}
         {...rest}
       />
-    </React.Fragment>
+    </>
   }
 }
 
