@@ -1,4 +1,4 @@
-require.config({
+window.requirejs.config({
   baseUrl: $.baseUrl || '/',
   waitSeconds: 120,
   paths: {
