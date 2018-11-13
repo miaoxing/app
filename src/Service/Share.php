@@ -107,4 +107,14 @@ class Share extends BaseService
             'url' => $this->url,
         ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
     }
+
+    public function toWechatJson()
+    {
+        return json_encode([
+            'title' => $this->title,
+            'desc' => $this->description,
+            'link' => $this->url,
+            'imgUrl' => $this->image,
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+    }
 }
