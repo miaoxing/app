@@ -108,6 +108,12 @@ class WebpackConfig {
         headers: {
           'Access-Control-Allow-Origin': '*'
         }
+      },
+      watchOptions: {
+        ignored: [
+          /node_modules/,
+          /\.php$/,
+        ]
       }
     };
 
