@@ -11,7 +11,6 @@ class WebpackConfig {
     this.name = options.name;
     this.manifest = options.manifest || false;
     this.distDir = options.distDir || 'dist2';
-    this.externals = options.externals || {jquery: 'jQuery'};
     if (options.getEntries) {
       this.getEntries = options.getEntries;
     }
@@ -93,7 +92,9 @@ class WebpackConfig {
           }
         ]
       },
-      externals: this.externals,
+      externals: {
+        jquery: 'jQuery'
+      },
       optimization: {
         minimizer: []
       },
