@@ -1,4 +1,4 @@
-import jQuery from 'jquery';
+import $ from 'jquery';
 
 (function (root, $) {
   // 兼容没有加载jQuery的情况
@@ -90,4 +90,4 @@ import jQuery from 'jquery';
       // 留空以便不弹出提示
     });
   };
-}(window, jQuery));
+}(window, $));

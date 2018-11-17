@@ -1,3 +1,5 @@
+import $ from 'jquery';
+
 (function (root, $) {
   var showDuration = 350;
   var hideDuration = 100;
