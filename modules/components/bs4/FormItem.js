@@ -4,21 +4,22 @@ import decamelize from 'decamelize';
 import FormControl from "components/FormControl";
 import Required from "components/Required";
 
-function FormItem({label, name, help, labelSize, controlSize, helpSize, groupSize, ...props}) {
+function FormItem({label, name, help, labelSize = 2, controlSize = 4, helpSize = 6, groupSize, ...props}) {
   const id = name ? decamelize(name, '-') : null;
 
   return (
-    <Form.Group as={Row} controlId={id} bsSize={groupSize}>
-      <Form.Label column sm={labelSize || 2} className="text-right">
+    <Form.Group as={Row} controlId={id}>
+      <Form.Label column sm={labelSize} className={'text-right' + (groupSize ? ' col-form-label-' + groupSize : '')}>
         {props.required && <Required/>}
         {label}
       </Form.Label>
-      <Col sm={controlSize || 4}>
-        {props.control || <FormControl id={id} name={name} {...props}>
+      <Col sm={controlSize}>
+        {props.control || <FormControl id={id} name={name} className={(groupSize && ' form-control-' + groupSize)}
+          {...props}>
           {props.children}
         </FormControl>}
       </Col>
-      {help && <Col componentClass="label" sm={helpSize || 6} className="help-text">
+      {help && <Col componentClass="label" sm={helpSize} className="help-text">
         {help}
       </Col>}
     </Form.Group>
