@@ -9,7 +9,8 @@ function FormItem({label, name, help, labelSize = 2, controlSize = 4, helpSize =
 
   return (
     <Form.Group as={Row} controlId={id}>
-      <Form.Label column sm={labelSize} className={'text-right' + (groupSize ? ' col-form-label-' + groupSize : '')}>
+      <Form.Label column sm={labelSize}
+        className={'text-sm-right ' + (groupSize ? ' col-form-label-' + groupSize : '')}>
         {props.required && <Required/>}
         {label}
       </Form.Label>
