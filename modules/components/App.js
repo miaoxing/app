@@ -4,7 +4,6 @@ import Loading from 'components/Loading';
 import NoMatch from 'components/NoMatch';
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
-import app from 'app';
 
 class App extends React.Component {
   constructor(props) {
@@ -62,6 +61,12 @@ class App extends React.Component {
       },
       loading: Loading
     });
+
+    // TODO 由modal组件处理
+    props.history.listen((location, action) => {
+      $('.modal').modal('hide');
+    });
+
     return <LoadableComponent {...props}/>;
   }
 
