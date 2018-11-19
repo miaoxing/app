@@ -5,6 +5,8 @@
  * http://bootboxjs.com/license.txt
  */
 
+import $ from 'jquery';
+
 (function ($) {
     "use strict";
 
