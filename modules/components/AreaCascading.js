@@ -9,6 +9,7 @@ class AreaCascading extends React.Component {
     provinceName: 'province',
     cityName: 'city',
     areaName: 'area',
+    required: true,
     component: FormItem,
   };
 
@@ -19,17 +20,17 @@ class AreaCascading extends React.Component {
   };
 
   componentDidMount() {
-    this.get().then(ret => this.setState({provinces: ret.data}));
-
-    const province = getIn(this.props.formik.values, this.props.provinceName);
-    if (province) {
-      this.loadCities(province);
-    }
-
-    const city = getIn(this.props.formik.values, this.props.cityName);
-    if (city) {
-      this.loadAreas(city);
-    }
+    this.get().then(ret => this.setState({provinces: ret.data}, () => {
+      const province = getIn(this.props.formik.values, this.props.provinceName);
+      if (province) {
+        this.loadCities(province, () => {
+          const city = getIn(this.props.formik.values, this.props.cityName);
+          if (city) {
+            this.loadAreas(city);
+          }
+        });
+      }
+    }));
   }
 
   handleChangeProvince = (e) => {
@@ -42,14 +43,14 @@ class AreaCascading extends React.Component {
     this.loadAreas(e.target.value);
   };
 
-  loadCities(province) {
+  loadCities(province, cb) {
     return this.get(province).then(ret => {
-      this.setState({cities: ret.data, areas: []});
+      this.setState({cities: ret.data, areas: []}, cb);
     });
   }
 
-  loadAreas(city) {
-    return this.get(city).then(ret => this.setState({areas: ret.data}));
+  loadAreas(city, cb) {
+    return this.get(city).then(ret => this.setState({areas: ret.data}, cb));
   }
 
   get(value = '') {
@@ -57,21 +58,21 @@ class AreaCascading extends React.Component {
   }
 
   render() {
-    return <>
-      <this.props.component component="select" label="省份" name={this.props.provinceName} required
+    return <React.Fragment>
+      <this.props.component component="select" label="省份" name={this.props.provinceName} required={this.props.required}
         onChange={this.handleChangeProvince}>
         <Options data={this.state.provinces} valueKey="label"/>
       </this.props.component>
 
-      <this.props.component component="select" label="城市" name={this.props.cityName} required
+      <this.props.component component="select" label="城市" name={this.props.cityName} required={this.props.required}
         onChange={this.handleChangeCity}>
         <Options data={this.state.cities} valueKey="label"/>
       </this.props.component>
 
-      <this.props.component component="select" label="区域" name={this.props.areaName} required>
+      <this.props.component component="select" label="区域" name={this.props.areaName} required={this.props.required}>
         <Options data={this.state.areas} valueKey="label"/>
       </this.props.component>
-    </>
+    </React.Fragment>
   }
 }
 
