@@ -9,7 +9,8 @@ import {withTable} from "components/TableProvider";
 
 class Table extends React.Component {
   static defaultProps = {
-    url: null
+    url: null,
+    onLoad: null,
   };
 
   node = null;
@@ -94,6 +95,7 @@ class Table extends React.Component {
         totalSize: ret.records,
         sizePerPage: parseInt(ret.rows, 10)
       });
+      this.props.onLoad && this.props.onLoad(this.state);
     }).always(() => {
       this.disableLoading();
     });
