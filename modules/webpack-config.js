@@ -11,6 +11,7 @@ class WebpackConfig {
     this.name = options.name;
     this.manifest = options.manifest || false;
     this.distDir = options.distDir || 'dist2';
+    this.externals = options.externals || {jquery: 'jQuery'};
     if (options.getEntries) {
       this.getEntries = options.getEntries;
     }
@@ -64,7 +65,7 @@ class WebpackConfig {
           {
             test: /\.(js|jsx)?/,
             exclude: /node_modules/,
-            loader: 'babel-loader'
+            loader: 'babel-loader?cacheDirectory'
           },
           {
             test: /\.(sa|sc|c)ss$/,
@@ -92,9 +93,7 @@ class WebpackConfig {
           }
         ]
       },
-      externals: {
-        jquery: 'jQuery'
-      },
+      externals: this.externals,
       optimization: {
         minimizer: []
       },
