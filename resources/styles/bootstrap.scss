@@ -56,29 +56,10 @@ $secondary: #fff;
 @import "../../../../../node_modules/bootstrap/scss/utilities/visibility";
 //@import "print";
 
-// hairline
-@import '../../../../../node_modules/blear.scss.hairline/src/_index.scss';
-.border {
-  @include hairline($border-color);
+// 附加自定义的移动端样式
+@import "comps/bootstrap-mobile4/scss/bootstrap-mobile.scss";
 
-  &-top {
-    @include hairline-top($border-color);
-  }
-
-  &-right {
-    @include hairline-right($border-color);
-  }
-
-  &-bottom {
-    @include hairline-bottom($border-color);
-  }
-
-  &-left {
-    @include hairline-left($border-color);
-  }
-}
-
-/* 覆盖自动生成的黑色 */
+// 覆盖自动生成的黑色
 .badge-info {
   color: #fff;
 }
