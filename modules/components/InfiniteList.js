@@ -50,7 +50,7 @@ export default class InfiniteList extends React.Component {
       {this.props.render({
         data: this.state.data
       })}
-      {this.state.loading && this.state.hasMore && <div className="list-loading" key={0}>
+      {this.state.loading && this.state.hasMore && <div className="text-center list-loading" key={0}>
         <span className="list-loading-spinner"/>努力加载中...
       </div>}
       {!this.state.hasMore && this.state.data.length === 0 && this.props.emptyMessage}
