@@ -76,6 +76,13 @@ class WebpackConfig {
             ]
           },
           {
+            test: /\.less$/,
+            use: [
+              MiniCssExtractPlugin.loader,
+              'less-loader',
+            ]
+          },
+          {
             test: /\.(jpg|png|gif|svg|json|ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
             loader: 'file-loader',
             options: {
