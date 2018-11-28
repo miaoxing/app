@@ -84,6 +84,10 @@ class App {
     return message.danger(...args);
   }
 
+  ret(ret, duration, callback) {
+    return message[ret.code === 1 ? 'success' : 'danger'](ret.message, duration, callback);
+  }
+
   loading(...args) {
     return message.loading(...args);
   }
