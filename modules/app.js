@@ -1,3 +1,5 @@
+import message from 'comps/react-bootstrap-message/js/react-bootstrap-message';
+
 class App {
   constructor() {
     this._namesapce = '';
@@ -72,6 +74,18 @@ class App {
       type: 'post',
       data: data,
     })
+  }
+
+  suc(...args) {
+    return message.success(...args);
+  }
+
+  err(...args) {
+    return message.danger(...args);
+  }
+
+  loading(...args) {
+    return message.loading(...args);
   }
 
   get namespace() {
