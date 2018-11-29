@@ -65,8 +65,8 @@ class ActionButton extends React.Component {
 
 const ConfirmDialog = (props) => {
   const {
-    onCancel,
     onOk,
+    onCancel,
     close,
     afterClose,
     show,
@@ -116,12 +116,21 @@ function confirm(config) {
 
   let currentConfig = {...config, close, show: true};
 
+  let callback;
+  const closePromise = new Promise((resolve) => {
+    callback = resolve;
+  });
+  const then = (filled, rejected) => {
+    return closePromise.then(filled, rejected);
+  };
+
   function close(...args) {
     currentConfig = {
       ...currentConfig,
       show: false,
       afterClose: destroy.bind(this, ...args),
     };
+    callback();
     render(currentConfig);
   }
 
@@ -153,6 +162,7 @@ function confirm(config) {
   return {
     destroy: close,
     update,
+    then,
   };
 }
 
