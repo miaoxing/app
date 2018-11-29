@@ -119,10 +119,9 @@ function confirm(config) {
 
   let currentConfig = addPromise({...config, close, show: true});
 
-  let callback;
-
   let ok;
   let cancel;
+  let callback;
   const result = new Promise(resolve => {
     callback = resolve
   });
@@ -139,15 +138,17 @@ function confirm(config) {
     const onOk = config.onOk;
     config.onOk = () => {
       callback(true);
-      ok && ok();
-      return onOk && onOk();
+      const result = ok && ok();
+      const result2 = onOk && onOk();
+      return result || result2;
     };
 
     const onCancel = config.onCancel;
     config.onCancel = () => {
       callback(false);
-      cancel && cancel();
-      return onCancel && onCancel();
+      const result = cancel && cancel();
+      const result2 = onCancel && onCancel();
+      return result || result2;
     };
 
     return config;
