@@ -65,7 +65,7 @@ class App extends React.Component {
 
     // TODO 由modal组件处理
     props.history.listen((location, action) => {
-      $('.modal').modal('hide');
+      $.fn.modal && $('.modal').modal('hide');
     });
 
     return <LoadableComponent {...props}/>;
