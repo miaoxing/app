@@ -67,15 +67,22 @@ class ActionButton extends React.Component {
 }
 
 const ConfirmDialog = (props) => {
-  const {onCancel, onOk, close, afterClose, visible, keyboard, centered = true, okButtonProps, cancelButtonProps} = props;
-  const okType = props.okType || 'primary';
-  // 默认为 true，保持向下兼容
-  const okCancel = ('okCancel' in props) ? !props.okCancel : true;
-  // 默认为 false，保持旧版默认行为
-  const maskClosable = props.maskClosable === undefined ? false : props.maskClosable;
-  const okText = props.okText || '确认';
-  const cancelText = props.cancelText || '取消';
-  const autoFocusButton = props.autoFocusButton === null ? false : props.autoFocusButton || 'ok';
+  const {
+    onCancel,
+    onOk,
+    close,
+    afterClose,
+    visible,
+    centered = true,
+    okButtonProps,
+    cancelButtonProps,
+    okType = 'primary',
+    okText = '确认',
+    cancelText = '取消',
+    okCancel = true,
+    autoFocusButton = 'ok',
+    ...rest
+  } = props;
 
   const cancelButton = okCancel && (
     <ActionButton type="dark" actionFn={onCancel} closeModal={close}
@@ -90,8 +97,9 @@ const ConfirmDialog = (props) => {
       show={visible}
       backdrop="static"
       centered={centered}
-      keyboard={keyboard}
+      autoFocus={false}
       className="modal-prompt modal-zoom"
+      {...rest}
     >
       <Modal.Body>{props.content}</Modal.Body>
       <Modal.Footer className="border-top">
@@ -104,14 +112,7 @@ const ConfirmDialog = (props) => {
     </Modal>
 
     /*<Dialog
-      className={classString}
-      wrapClassName={classNames({ [`${contentPrefixCls}-centered`]: !!props.centered })}
       onCancel={close.bind(this, { triggerCancel: true })}
-      title=""
-      transitionName="zoom"
-      footer=""
-      maskTransitionName="fade"
-      maskClosable={maskClosable}
       afterClose={afterClose}
     >
     </Dialog>*/
