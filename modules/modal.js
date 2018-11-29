@@ -72,7 +72,7 @@ const ConfirmDialog = (props) => {
     onOk,
     close,
     afterClose,
-    visible,
+    show,
     centered = true,
     okButtonProps,
     cancelButtonProps,
@@ -94,7 +94,7 @@ const ConfirmDialog = (props) => {
 
   return (
     <Modal
-      show={visible}
+      show={show}
       backdrop="static"
       centered={centered}
       autoFocus={false}
@@ -110,25 +110,19 @@ const ConfirmDialog = (props) => {
         </ActionButton>
       </Modal.Footer>
     </Modal>
-
-    /*<Dialog
-      onCancel={close.bind(this, { triggerCancel: true })}
-      afterClose={afterClose}
-    >
-    </Dialog>*/
   );
 };
 
-export default function confirm(config) {
+function confirm(config) {
   var div = document.createElement('div');
   document.body.appendChild(div);
 
-  let currentConfig = {...config, close, visible: true};
+  let currentConfig = {...config, close, show: true};
 
   function close(...args) {
     currentConfig = {
       ...currentConfig,
-      visible: false,
+      show: false,
       afterClose: destroy.bind(this, ...args),
     };
     if (IS_REACT_16) {
@@ -168,3 +162,12 @@ export default function confirm(config) {
     update,
   };
 }
+
+confirm.alert = (config) => {
+  return confirm({
+    okCancel: false,
+    ...config,
+  })
+};
+
+export default confirm;
