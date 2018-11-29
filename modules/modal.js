@@ -68,7 +68,6 @@ const ConfirmDialog = (props) => {
     onOk,
     onCancel,
     close,
-    afterClose,
     show,
     centered = true,
     okButtonProps,
@@ -118,14 +117,26 @@ function confirm(config) {
   var div = document.createElement('div');
   document.body.appendChild(div);
 
-  let currentConfig = {...config, close, show: true};
+  let currentConfig = addPromise({...config, close, show: true});
 
-  let ok;
-  let cancel;
-  const result = new Promise((resolve, reject) => {
-    ok = resolve;
-    cancel = reject;
-  });
+  let callback;
+  const result = new Promise(resolve => {callback = resolve});
+
+  function addPromise(config) {
+    const onOk = config.onOk;
+    config.onOk = () => {
+      callback(true);
+      return onOk && onOk();
+    };
+
+    const onCancel = config.onCancel;
+    config.onCancel = () => {
+      callback(false);
+      return onCancel && onCancel();
+    };
+
+    return config;
+  }
 
   function close(...args) {
     currentConfig = {
@@ -133,11 +144,11 @@ function confirm(config) {
       show: false,
       onExited: destroy.bind(this, ...args),
     };
-    ok();
     render(currentConfig);
   }
 
   function update(newConfig) {
+    newConfig = addPromise(newConfig);
     currentConfig = {
       ...currentConfig,
       ...newConfig,
