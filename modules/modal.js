@@ -111,26 +111,29 @@ const ConfirmDialog = (props) => {
 };
 
 function confirm(config) {
+  if (typeof config !== 'object') {
+    config = {content: config};
+  }
+
   var div = document.createElement('div');
   document.body.appendChild(div);
 
   let currentConfig = {...config, close, show: true};
 
-  let callback;
-  const closePromise = new Promise((resolve) => {
-    callback = resolve;
+  let ok;
+  let cancel;
+  const result = new Promise((resolve, reject) => {
+    ok = resolve;
+    cancel = reject;
   });
-  const then = (filled, rejected) => {
-    return closePromise.then(filled, rejected);
-  };
 
   function close(...args) {
     currentConfig = {
       ...currentConfig,
       show: false,
-      afterClose: destroy.bind(this, ...args),
+      onExited: destroy.bind(this, ...args),
     };
-    callback();
+    ok();
     render(currentConfig);
   }
 
@@ -159,11 +162,10 @@ function confirm(config) {
   }
 
   render(currentConfig);
-  return {
-    destroy: close,
-    update,
-    then,
-  };
+
+  result.destroy = close;
+  result.update = update;
+  return result;
 }
 
 confirm.alert = (config) => {
