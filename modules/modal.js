@@ -8,18 +8,14 @@ import {Button, Modal} from "react-bootstrap4";
 var IS_REACT_16 = !!ReactDOM.createPortal;
 
 const ConfirmDialog = (props) => {
-  const {onCancel, onOk, close, zIndex, afterClose, visible, keyboard, centered = true, maskStyle, okButtonProps, cancelButtonProps} = props;
+  const {onCancel, onOk, close, afterClose, visible, keyboard, centered = true, okButtonProps, cancelButtonProps} = props;
   const okType = props.okType || 'primary';
   // 默认为 true，保持向下兼容
   const okCancel = ('okCancel' in props) ? !props.okCancel : true;
-  const width = props.width || 416;
-  const style = props.style || {};
   // 默认为 false，保持旧版默认行为
   const maskClosable = props.maskClosable === undefined ? false : props.maskClosable;
-  const runtimeLocale = {};
-  const okText = props.okText ||
-    (okCancel ? runtimeLocale.okText : runtimeLocale.justOkText);
-  const cancelText = props.cancelText || runtimeLocale.cancelText;
+  const okText = props.okText || '确认';
+  const cancelText = props.cancelText || '取消';
   const autoFocusButton = props.autoFocusButton === null ? false : props.autoFocusButton || 'ok';
 
   const cancelButton = okCancel && (
@@ -34,6 +30,7 @@ const ConfirmDialog = (props) => {
       show={visible}
       backdrop="static"
       centered={centered}
+      keyboard={keyboard}
       className="modal-prompt modal-zoom"
     >
       <Modal.Body>{props.content}</Modal.Body>
@@ -56,12 +53,7 @@ const ConfirmDialog = (props) => {
       footer=""
       maskTransitionName="fade"
       maskClosable={maskClosable}
-      maskStyle={maskStyle}
-      style={style}
-      width={width}
-      zIndex={zIndex}
       afterClose={afterClose}
-      keyboard={keyboard}
     >
       <div className={`${contentPrefixCls}-body-wrapper`}>
         <div className={`${contentPrefixCls}-body`}>
