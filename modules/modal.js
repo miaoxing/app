@@ -98,7 +98,7 @@ const ConfirmDialog = (props) => {
       {...rest}
     >
       <Modal.Body>{props.content}</Modal.Body>
-      <Modal.Footer className="border-top">
+      <Modal.Footer>
         {cancelButton}
         <ActionButton type={okType} actionFn={onOk} closeModal={close} autoFocus={autoFocusButton === 'ok'}
           buttonProps={okButtonProps}>
