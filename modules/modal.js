@@ -7,6 +7,66 @@ import {Button, Modal} from "react-bootstrap4";
 
 var IS_REACT_16 = !!ReactDOM.createPortal;
 
+class ActionButton extends React.Component {
+  timeoutId;
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+    };
+  }
+
+  componentDidMount() {
+    if (this.props.autoFocus) {
+      const $this = ReactDOM.findDOMNode(this);
+      this.timeoutId = setTimeout(() => $this.focus());
+    }
+  }
+
+  componentWillUnmount() {
+    clearTimeout(this.timeoutId);
+  }
+
+  onClick = () => {
+    const {actionFn, closeModal} = this.props;
+    if (actionFn) {
+      let ret;
+      if (actionFn.length) {
+        ret = actionFn(closeModal);
+      } else {
+        ret = actionFn();
+        if (!ret) {
+          closeModal();
+        }
+      }
+      if (ret && ret.then) {
+        this.setState({loading: true});
+        ret.then((...args) => {
+          // It's unnecessary to set loading=false, for the Modal will be unmounted after close.
+          // this.setState({ loading: false });
+          closeModal(...args);
+        }, () => {
+          // See: https://github.com/ant-design/ant-design/issues/6183
+          this.setState({loading: false});
+        });
+      }
+    } else {
+      closeModal();
+    }
+  };
+
+  render() {
+    const {type, children, buttonProps} = this.props;
+    const loading = this.state.loading;
+    return (
+      <Button variant={type} onClick={this.onClick} loading={loading} {...buttonProps}>
+        {children}
+      </Button>
+    );
+  }
+}
+
 const ConfirmDialog = (props) => {
   const {onCancel, onOk, close, afterClose, visible, keyboard, centered = true, okButtonProps, cancelButtonProps} = props;
   const okType = props.okType || 'primary';
@@ -19,10 +79,10 @@ const ConfirmDialog = (props) => {
   const autoFocusButton = props.autoFocusButton === null ? false : props.autoFocusButton || 'ok';
 
   const cancelButton = okCancel && (
-    <Button actionFn={onCancel} closeModal={close} autoFocus={autoFocusButton === 'cancel'}
+    <ActionButton actionFn={onCancel} closeModal={close} autoFocus={autoFocusButton === 'cancel'}
       buttonProps={cancelButtonProps}>
       {cancelText}
-    </Button>
+    </ActionButton>
   );
 
   return (
@@ -35,12 +95,17 @@ const ConfirmDialog = (props) => {
     >
       <Modal.Body>{props.content}</Modal.Body>
       <Modal.Footer className="border-top">
-        <Button className="border-right text-dark">
-          取消
-        </Button>
-        <Button className="text-primary">
-          确认
-        </Button>
+        {cancelButton}
+        <ActionButton type={okType} actionFn={onOk} closeModal={close} autoFocus={autoFocusButton === 'ok'}
+          buttonProps={okButtonProps}>
+          {okText}
+        </ActionButton>
+        {/*<Button className="border-right text-dark">*/}
+          {/*取消*/}
+        {/*</Button>*/}
+        {/*<Button className="text-primary">*/}
+          {/*确认*/}
+        {/*</Button>*/}
       </Modal.Footer>
     </Modal>
 
