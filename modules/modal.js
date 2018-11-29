@@ -1,10 +1,7 @@
 // From https://github.com/ant-design/ant-design/blob/master/components/modal
-
 import React from "react";
 import ReactDOM from 'react-dom';
 import {Button, Modal} from "react-bootstrap4";
-
-var IS_REACT_16 = !!ReactDOM.createPortal;
 
 class ActionButton extends React.Component {
   timeoutId;
@@ -59,7 +56,7 @@ class ActionButton extends React.Component {
     const {type, children, buttonProps} = this.props;
     const loading = this.state.loading;
     return (
-      <Button className={'text-' + type} onClick={this.onClick} loading={loading} {...buttonProps}>
+      <Button className={'text-' + type} onClick={this.onClick} disabled={loading} {...buttonProps}>
         {children}
       </Button>
     );
@@ -125,11 +122,7 @@ function confirm(config) {
       show: false,
       afterClose: destroy.bind(this, ...args),
     };
-    if (IS_REACT_16) {
-      render(currentConfig);
-    } else {
-      destroy(...args);
-    }
+    render(currentConfig);
   }
 
   function update(newConfig) {
