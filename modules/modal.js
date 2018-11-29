@@ -2,7 +2,6 @@
 import React from "react";
 import ReactDOM from 'react-dom';
 import {Button, Modal} from "react-bootstrap4";
-import app from 'app';
 
 class ActionButton extends React.Component {
   timeoutId;
@@ -98,9 +97,7 @@ const ConfirmDialog = (props) => {
       className="modal-prompt modal-zoom"
       {...rest}
     >
-      <Modal.Body>
-        <div onClick={() => {app.to('foods/new')}}>12 OK 3123123</div>
-      </Modal.Body>
+      <Modal.Body>{props.content}</Modal.Body>
       <Modal.Footer>
         {cancelButton}
         <ActionButton type={okType} actionFn={onOk} closeModal={close} autoFocus={autoFocusButton === 'ok'}
