@@ -167,6 +167,10 @@ function confirm(config) {
 }
 
 confirm.alert = (config) => {
+  if (typeof config !== 'object') {
+    config = {content: config};
+  }
+
   return confirm({
     okCancel: false,
     ...config,
