@@ -1,4 +1,5 @@
 import message from 'comps/react-bootstrap-message/js/react-bootstrap-message';
+import modal from 'modal';
 
 class App {
   constructor() {
@@ -90,6 +91,14 @@ class App {
 
   loading(...args) {
     return message.loading(...args);
+  }
+
+  alert(...args) {
+    return modal.alert(...args);
+  }
+
+  confirm(...args) {
+    return modal(...args);
   }
 
   get namespace() {
