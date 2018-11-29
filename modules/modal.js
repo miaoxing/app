@@ -2,7 +2,6 @@
 
 import React from "react";
 import ReactDOM from 'react-dom';
-// import ActionButton from './ActionButton';
 import {Button, Modal} from "react-bootstrap4";
 
 var IS_REACT_16 = !!ReactDOM.createPortal;
@@ -60,7 +59,7 @@ class ActionButton extends React.Component {
     const {type, children, buttonProps} = this.props;
     const loading = this.state.loading;
     return (
-      <Button variant={type} onClick={this.onClick} loading={loading} {...buttonProps}>
+      <Button className={'text-' + type} onClick={this.onClick} loading={loading} {...buttonProps}>
         {children}
       </Button>
     );
@@ -79,7 +78,8 @@ const ConfirmDialog = (props) => {
   const autoFocusButton = props.autoFocusButton === null ? false : props.autoFocusButton || 'ok';
 
   const cancelButton = okCancel && (
-    <ActionButton actionFn={onCancel} closeModal={close} autoFocus={autoFocusButton === 'cancel'}
+    <ActionButton type="dark" actionFn={onCancel} closeModal={close}
+      autoFocus={autoFocusButton === 'cancel'}
       buttonProps={cancelButtonProps}>
       {cancelText}
     </ActionButton>
@@ -100,12 +100,6 @@ const ConfirmDialog = (props) => {
           buttonProps={okButtonProps}>
           {okText}
         </ActionButton>
-        {/*<Button className="border-right text-dark">*/}
-          {/*取消*/}
-        {/*</Button>*/}
-        {/*<Button className="text-primary">*/}
-          {/*确认*/}
-        {/*</Button>*/}
       </Modal.Footer>
     </Modal>
 
@@ -120,18 +114,6 @@ const ConfirmDialog = (props) => {
       maskClosable={maskClosable}
       afterClose={afterClose}
     >
-      <div className={`${contentPrefixCls}-body-wrapper`}>
-        <div className={`${contentPrefixCls}-body`}>
-          <span className={`${contentPrefixCls}-title`}>{props.title}</span>
-          <div className={`${contentPrefixCls}-content`}>{props.content}</div>
-        </div>
-        <div className={`${contentPrefixCls}-btns`}>
-          {cancelButton}
-          <ActionButton type={okType} actionFn={onOk} closeModal={close} autoFocus={autoFocusButton === 'ok'} buttonProps={okButtonProps}>
-            {okText}
-          </ActionButton>
-        </div>
-      </div>
     </Dialog>*/
   );
 };
