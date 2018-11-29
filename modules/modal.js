@@ -2,18 +2,14 @@
 
 import React from "react";
 import ReactDOM from 'react-dom';
-import classNames from 'classnames';
 // import ActionButton from './ActionButton';
 import {Button, Modal} from "react-bootstrap4";
 
 var IS_REACT_16 = !!ReactDOM.createPortal;
 
 const ConfirmDialog = (props) => {
-  const {onCancel, onOk, close, zIndex, afterClose, visible, keyboard, centered, getContainer, maskStyle, okButtonProps, cancelButtonProps} = props;
-  const iconType = props.iconType || 'question-circle';
+  const {onCancel, onOk, close, zIndex, afterClose, visible, keyboard, centered = true, maskStyle, okButtonProps, cancelButtonProps} = props;
   const okType = props.okType || 'primary';
-  const prefixCls = props.prefixCls || 'ant-modal';
-  const contentPrefixCls = `${prefixCls}-confirm`;
   // 默认为 true，保持向下兼容
   const okCancel = ('okCancel' in props) ? !props.okCancel : true;
   const width = props.width || 416;
@@ -26,12 +22,6 @@ const ConfirmDialog = (props) => {
   const cancelText = props.cancelText || runtimeLocale.cancelText;
   const autoFocusButton = props.autoFocusButton === null ? false : props.autoFocusButton || 'ok';
 
-  const classString = classNames(
-    contentPrefixCls,
-    `${contentPrefixCls}-${props.type}`,
-    props.className,
-  );
-
   const cancelButton = okCancel && (
     <Button actionFn={onCancel} closeModal={close} autoFocus={autoFocusButton === 'cancel'}
       buttonProps={cancelButtonProps}>
@@ -40,8 +30,13 @@ const ConfirmDialog = (props) => {
   );
 
   return (
-    <Modal centered backdrop="static" show className="modal-prompt modal-zoom">
-      <Modal.Body>Woohoo, you're reading this text in a modal!</Modal.Body>
+    <Modal
+      show={visible}
+      backdrop="static"
+      centered={centered}
+      className="modal-prompt modal-zoom"
+    >
+      <Modal.Body>{props.content}</Modal.Body>
       <Modal.Footer className="border-top">
         <Button className="border-right text-dark">
           取消
@@ -53,11 +48,9 @@ const ConfirmDialog = (props) => {
     </Modal>
 
     /*<Dialog
-      prefixCls={prefixCls}
       className={classString}
       wrapClassName={classNames({ [`${contentPrefixCls}-centered`]: !!props.centered })}
       onCancel={close.bind(this, { triggerCancel: true })}
-      visible={visible}
       title=""
       transitionName="zoom"
       footer=""
@@ -69,12 +62,9 @@ const ConfirmDialog = (props) => {
       zIndex={zIndex}
       afterClose={afterClose}
       keyboard={keyboard}
-      centered={centered}
-      getContainer={getContainer}
     >
       <div className={`${contentPrefixCls}-body-wrapper`}>
         <div className={`${contentPrefixCls}-body`}>
-          <Icon type={iconType!} />
           <span className={`${contentPrefixCls}-title`}>{props.title}</span>
           <div className={`${contentPrefixCls}-content`}>{props.content}</div>
         </div>
