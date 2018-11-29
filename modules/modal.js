@@ -120,18 +120,33 @@ function confirm(config) {
   let currentConfig = addPromise({...config, close, show: true});
 
   let callback;
-  const result = new Promise(resolve => {callback = resolve});
+
+  let ok;
+  let cancel;
+  const result = new Promise(resolve => {
+    callback = resolve
+  });
+  result.ok = fn => {
+    ok = fn;
+    return result;
+  };
+  result.cancel = fn => {
+    cancel = fn;
+    return result;
+  };
 
   function addPromise(config) {
     const onOk = config.onOk;
     config.onOk = () => {
       callback(true);
+      ok && ok();
       return onOk && onOk();
     };
 
     const onCancel = config.onCancel;
     config.onCancel = () => {
       callback(false);
+      cancel && cancel();
       return onCancel && onCancel();
     };
 
