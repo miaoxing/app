@@ -14,11 +14,18 @@ function showLoading() {
 };
 
 function hideLoading() {
-  count--;
+  if (count > 0) {
+    count--;
+  }
   if (count === 0) {
     loading();
   }
 };
+
+function showError(error) {
+  app.err('很抱歉，请求出错，请稍后再试');
+  // TODO log
+}
 
 axios.interceptors.request.use(config => {
   config.loading && showLoading();
@@ -28,6 +35,10 @@ axios.interceptors.request.use(config => {
 axios.interceptors.response.use(response => {
   hideLoading();
   return response;
+}, error => {
+  hideLoading();
+  showError(error);
+  return Promise.reject(error)
 });
 
 export default axios;
