@@ -56,7 +56,7 @@ class ActionButton extends React.Component {
     const {type, children, buttonProps} = this.props;
     const loading = this.state.loading;
     return (
-      <Button className={'text-' + type} onClick={this.onClick} disabled={loading} {...buttonProps}>
+      <Button variant={type} onClick={this.onClick} disabled={loading} {...buttonProps}>
         {children}
       </Button>
     );
@@ -73,7 +73,7 @@ const ConfirmDialog = (props) => {
     okButtonProps,
     cancelButtonProps,
     okType = 'primary',
-    okText = '确认',
+    okText = '确定',
     cancelText = '取消',
     okCancel = true,
     autoFocusButton = 'ok',
@@ -81,7 +81,7 @@ const ConfirmDialog = (props) => {
   } = props;
 
   const cancelButton = okCancel && (
-    <ActionButton type="dark" actionFn={onCancel} closeModal={close}
+    <ActionButton type="secondary" actionFn={onCancel} closeModal={close}
       autoFocus={autoFocusButton === 'cancel'}
       buttonProps={cancelButtonProps}>
       {cancelText}
