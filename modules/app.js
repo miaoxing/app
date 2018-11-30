@@ -145,4 +145,3 @@ class App {
 const app = new App();
 
 export default app;
-export const url = app.url;
