@@ -69,10 +69,12 @@ const ConfirmDialog = (props) => {
     onCancel,
     close,
     show,
-    centered = true,
     okButtonProps,
     cancelButtonProps,
+    content,
+    centered = true,
     okType = 'primary',
+    title = '提示',
     okText = '确定',
     cancelText = '取消',
     okCancel = true,
@@ -97,7 +99,10 @@ const ConfirmDialog = (props) => {
       className="modal-prompt modal-zoom"
       {...rest}
     >
-      <Modal.Body>{props.content}</Modal.Body>
+      <Modal.Header>
+        <Modal.Title>{title}</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>{content}</Modal.Body>
       <Modal.Footer>
         {cancelButton}
         <ActionButton type={okType} actionFn={onOk} closeModal={close} autoFocus={autoFocusButton === 'ok'}
