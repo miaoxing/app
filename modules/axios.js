@@ -14,6 +14,10 @@ function showLoading() {
 };
 
 function hideLoading() {
+  if (!loading) {
+    return;
+  }
+
   if (count > 0) {
     count--;
   }
