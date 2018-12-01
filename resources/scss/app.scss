@@ -1,3 +1,4 @@
+@import 'variables';
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
@@ -48,7 +49,6 @@
 @import "~bootstrap/scss/utilities/text";
 @import "~bootstrap/scss/utilities/visibility";
 //@import "~bootstrap/scss/print";
-
 // 附加自定义的移动端样式
 @import 'comps/react-bootstrap-message/scss/react-bootstrap-message';
 @import "comps/bootstrap-mobile4/scss/bootstrap-mobile";
