@@ -50,12 +50,14 @@ class App extends React.Component {
         app.history = props.history;
 
         // TODO Nav也升级为React
-        $(document).trigger('pageLoad', props);
-        this.handleLoad(props);
-        if (this.deep > 0) {
-          $('.js-back').show();
-        } else {
-          $('.js-back').hide();
+        if (typeof $ !== 'undefined') {
+          $(document).trigger('pageLoad', props);
+          this.handleLoad(props);
+          if (this.deep > 0) {
+            $('.js-back').show();
+          } else {
+            $('.js-back').hide();
+          }
         }
 
         return this.props.importPage(plugin, controller, action);
