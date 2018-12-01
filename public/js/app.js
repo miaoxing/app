@@ -72,13 +72,6 @@ import $ from 'jquery';
   };
 
   /**
-   * 检查是否为微信浏览器
-   */
-  $.isWechat = function () {
-    return navigator.userAgent.indexOf('MicroMessenger') > -1;
-  };
-
-  /**
    * 记录日志到后台
    */
   $.log = function (message, level) {
