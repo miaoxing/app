@@ -1,6 +1,6 @@
 window.requirejs.config({
-  baseUrl: $.baseUrl || '/',
-  waitSeconds: 120,
+  baseUrl: '/',
+  waitSeconds: 30,
   paths: {
     css: 'comps/require-css/css.min',
     'jquery-form': 'comps/jquery-form/jquery.form'
