@@ -67,7 +67,7 @@ class App extends React.Component {
 
     // TODO 由modal组件处理
     props.history.listen((location, action) => {
-      $.fn.modal && $('.modal').modal('hide');
+      typeof $ !== 'undefined' && $('.modal').modal('hide');
     });
 
     return <LoadableComponent {...props}/>;
