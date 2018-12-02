@@ -3,6 +3,7 @@ const WebpackConfig = require('../app/modules/webpack-config');
 
 module.exports = WebpackConfig.build({
   name: 'app-bs4',
+  manifest: true,
   externals: {},
   getEntries() {
     return {
