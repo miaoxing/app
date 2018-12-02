@@ -7,6 +7,11 @@ body {
   color: #333;
 }
 
+.ios,
+.ios * {
+  cursor: pointer;
+}
+
 .iconfont {
   font-family: "iconfont";
   font-size: 16px;
