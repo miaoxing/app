@@ -1,14 +1,6 @@
 import $ from 'jquery';
 
 (function (root, $) {
-  // 兼容没有加载jQuery的情况
-  $ || ($ = {});
-
-  /**
-   * 所有文件的基础路径
-   */
-  $.baseUrl || ($.baseUrl = '');
-
   /**
    * 获取URL中的参数
    *
@@ -29,13 +21,6 @@ import $ from 'jquery';
     }
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
   };
-
-  /**
-   * 当前项目的基础路径
-   */
-  if (typeof $.appUrl === 'undefined') {
-    $.appUrl = $.baseUrl + '/' + ($.req('app') !== '' ? $.req('app') : window.location.pathname.split('/')[1]);
-  }
 
   /**
    * 附加参数到指定地址上
@@ -68,7 +53,7 @@ import $ from 'jquery';
    * 以appUrl为基础生成URL地址
    */
   $.url = function (url, argsOrParam, params) {
-    return $.appUrl + '/' + $.appendUrl(url, argsOrParam, params);
+    return wei.appUrl + '/' + $.appendUrl(url, argsOrParam, params);
   };
 
   /**
