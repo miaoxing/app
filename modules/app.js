@@ -68,7 +68,7 @@ class App {
   }
 
   actionUrl(action, argsOrParam, params) {
-    return $.appendUrl(this.curIndexUrl() + '/' + action, argsOrParam, params);
+    return this.appendUrl(this.curIndexUrl() + '/' + action, argsOrParam, params);
   }
 
   to(...args) {
