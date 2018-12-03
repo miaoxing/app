@@ -8,10 +8,12 @@ export default (props) => {
       return '';
     }
 
-    return <div className="m-t">很抱歉,加载出错! <button className="btn btn-default btn-sm" onClick={props.retry}>重试</button>
-      <div className="hide">{props.error.toString()}</div>
+    console.log(props.error);
+    return <div className="m-t mt-3">
+      很抱歉,加载出错! <button className="btn btn-default btn-sm" onClick={props.retry}>重试</button>
+      <div className="d-none hide">{props.error.toString()}</div>
     </div>;
   } else {
-    return <div className="text-center m-t">努力加载中...</div>;
+    return <div className="text-center m-t mt-3">努力加载中...</div>;
   }
 };
