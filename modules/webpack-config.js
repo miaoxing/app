@@ -3,7 +3,7 @@ const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
-
+const HappyPack = require('happypack');
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 class WebpackConfig {
@@ -63,9 +63,9 @@ class WebpackConfig {
       module: {
         rules: [
           {
-            test: /\.(js|jsx)?/,
+            test: /.js$/,
+            use: 'happypack/loader',
             exclude: /node_modules/,
-            loader: 'babel-loader?cacheDirectory'
           },
           {
             test: /\.(sa|sc|c)ss$/,
@@ -105,6 +105,9 @@ class WebpackConfig {
         minimizer: []
       },
       plugins: [
+        new HappyPack({
+          loaders: ['babel-loader?cacheDirectory']
+        }),
         new MiniCssExtractPlugin({
           filename: useVersioning ? '[name]-[contenthash:6].css' : '[name].css'
         })
