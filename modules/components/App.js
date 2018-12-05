@@ -96,6 +96,7 @@ class App extends React.Component {
       <Switch>
         {/* TODO /admin/login */}
         <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
+        <Route exact path={wei.appUrl} component={Component}/>
         <Route component={NoMatch}/>
       </Switch>
     </BrowserRouter>;
