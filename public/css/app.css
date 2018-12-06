@@ -7,6 +7,11 @@ body {
   color: #333;
 }
 
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
 .ios,
 .ios * {
   cursor: pointer;
@@ -373,6 +378,7 @@ body {
   padding-top: 3rem !important;
   padding-bottom: 3rem !important;
 }
+
 /* stylelint-enable declaration-no-important */
 
 /* 头部的选项卡 */
