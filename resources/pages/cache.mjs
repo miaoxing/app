@@ -8,7 +8,7 @@ const files = glob.sync(prefix + '/*/resources/pages/*/*.js');
 
 let pages = "export default {\n";
 files.forEach(file => {
-  pages += `  '${file.substr(length)}': import('${file}'),\n`;
+  pages += `  '${file.substr(length)}': () => import('${file}'),\n`;
 });
 pages += '}';
 
