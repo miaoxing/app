@@ -14,7 +14,15 @@ class App extends React.Component {
     // 如 ./article/resources/pages/articles/Edit.js => articles => article
     // 如 ./user/resources/pages/admin/users/Edit.js => users => user
     this.controllerMap = {};
-    this.props.pages.keys().forEach((key) => {
+
+    let keys = {};
+    if (this.props.pages.keys) {
+      keys = this.props.pages.keys();
+    } else {
+      keys = Object.keys(this.props.pages);
+    }
+
+    keys.forEach((key) => {
       const parts = key.split('/');
       this.controllerMap[parts[parts.length - 2]] = parts[1];
     });
