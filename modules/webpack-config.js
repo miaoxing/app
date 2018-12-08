@@ -4,8 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const HappyPack = require('happypack');
-const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
+// const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+// const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 class WebpackConfig {
@@ -186,8 +186,8 @@ class WebpackConfig {
   static build(options = {}) {
     // const smp = new SpeedMeasurePlugin();
     const config = new WebpackConfig(options);
-    return config.getConfig();
     // return smp.wrap(config.getConfig());
+    return config.getConfig();
   }
 }
 
