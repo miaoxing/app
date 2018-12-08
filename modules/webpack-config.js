@@ -4,6 +4,8 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const HappyPack = require('happypack');
+const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
+const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 class WebpackConfig {
@@ -58,7 +60,8 @@ class WebpackConfig {
         path: this.buildDir,
         publicPath: this.publicPath,
         filename: useVersioning ? '[name]-[chunkhash:6].js' : '[name].js',
-        chunkFilename: useVersioning ? '[name]-[chunkhash:6].js' : '[name].js'
+        chunkFilename: useVersioning ? '[name]-[chunkhash:6].js' : '[name].js',
+        pathinfo: false,
       },
       module: {
         rules: [
@@ -102,6 +105,9 @@ class WebpackConfig {
       },
       externals: this.externals,
       optimization: {
+        removeAvailableModules: this.isProd,
+        removeEmptyChunks: this.isProd,
+        splitChunks: this.isProd,
         minimizer: []
       },
       plugins: [
@@ -110,7 +116,8 @@ class WebpackConfig {
         }),
         new MiniCssExtractPlugin({
           filename: useVersioning ? '[name]-[contenthash:6].css' : '[name].css'
-        })
+        }),
+        // new HardSourceWebpackPlugin(),
         // new BundleAnalyzerPlugin(),
       ],
       devServer: {
@@ -177,8 +184,10 @@ class WebpackConfig {
   }
 
   static build(options = {}) {
+    // const smp = new SpeedMeasurePlugin();
     const config = new WebpackConfig(options);
     return config.getConfig();
+    // return smp.wrap(config.getConfig());
   }
 }
 
