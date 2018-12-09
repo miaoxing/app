@@ -107,7 +107,7 @@ class WebpackConfig {
       optimization: {
         removeAvailableModules: this.isProd,
         removeEmptyChunks: this.isProd,
-        splitChunks: this.isProd ? {} : false,
+        // splitChunks: this.isProd ? {} : false,
         minimizer: []
       },
       plugins: [

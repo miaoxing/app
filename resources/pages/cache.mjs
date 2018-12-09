@@ -11,7 +11,11 @@ console.log(chalk.green(`Founds ${files.length} files.`));
 
 let pages = "export default {\n";
 files.forEach(file => {
-  pages += `  '${file.substr(length)}': () => import('${file}'),\n`;
+  const parts = file.split('/');
+  const last = parts[parts.length - 1];
+  // vendor/miaoxing/plugin/resources/pages/controller/action.js
+  // => plugin/controller/action
+  pages += `  '${parts[2]}/${parts[parts.length - 2]}/${last.substring(0, last.length - 3)}': () => import('${file}'),\n`;
 });
 pages += '}';
 
