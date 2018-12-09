@@ -6,7 +6,7 @@ const ManifestPlugin = require('webpack-manifest-plugin');
 const HappyPack = require('happypack');
 // const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 // const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 class WebpackConfig {
   constructor(options) {
@@ -107,7 +107,7 @@ class WebpackConfig {
       optimization: {
         removeAvailableModules: this.isProd,
         removeEmptyChunks: this.isProd,
-        splitChunks: this.isProd,
+        splitChunks: this.isProd ? {} : false,
         minimizer: []
       },
       plugins: [
@@ -118,7 +118,7 @@ class WebpackConfig {
           filename: useVersioning ? '[name]-[contenthash:6].css' : '[name].css'
         }),
         // new HardSourceWebpackPlugin(),
-        new BundleAnalyzerPlugin(),
+        // new BundleAnalyzerPlugin(),
       ],
       devServer: {
         headers: {
