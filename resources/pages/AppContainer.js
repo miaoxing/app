@@ -5,8 +5,7 @@ import pages from 'data/cache/app-pages';
 
 class AppContainer extends React.Component {
   importPage(plugin, controller, action) {
-    console.log('dd', plugin,  controller, action);
-    return pages[`/${plugin}/resources/pages/${controller}/${action}.js`]();
+    return pages[`${plugin}/${controller}/${action}`]();
   }
 
   render() {
