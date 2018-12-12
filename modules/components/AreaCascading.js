@@ -44,13 +44,26 @@ class AreaCascading extends React.Component {
   };
 
   loadCities(province, cb) {
-    return this.get(province).then(ret => {
+    return this.get(this.getParentId('provinces', province)).then(ret => {
       this.setState({cities: ret.data, areas: []}, cb);
     });
   }
 
   loadAreas(city, cb) {
-    return this.get(city).then(ret => this.setState({areas: ret.data}, cb));
+    return this.get(this.getParentId('cities', city)).then(ret => {
+      this.setState({areas: ret.data}, cb);
+    });
+  }
+
+  getParentId(types, name) {
+    let parentId;
+    this.state[types].forEach(item => {
+      if (item.label === name) {
+        parentId = item.value;
+        return false;
+      }
+    });
+    return parentId;
   }
 
   get(value = '') {
