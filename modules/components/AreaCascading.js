@@ -35,6 +35,7 @@ class AreaCascading extends React.Component {
 
   handleChangeProvince = (e) => {
     this.props.formik.handleChange(e);
+    this.props.formik.setFieldValue(this.props.cityName, '');
     this.loadCities(e.target.value);
   };
 
