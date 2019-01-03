@@ -17,6 +17,7 @@ const RetV2 = ({ret, history, children}) => {
 
   if (ret.next) {
     window.location = ret.next;
+    return '';
   }
 
   return <Ret>
