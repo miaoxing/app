@@ -30,9 +30,7 @@ class MFormItemImage extends React.Component {
         wx: wx,
         max: 10,
         uploadUrl: $.url('wechat-image/get-wechat-image'),
-        chooseImageOptions: {
-          sizeType: ['original'],
-        }
+        chooseImageOptions: this.props.chooseImageOptions,
       });
     });
   }
