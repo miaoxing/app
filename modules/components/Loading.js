@@ -8,7 +8,7 @@ export default (props) => {
       return '';
     }
 
-    console.log(props.error);
+    $.log(props.error.toString(), {stack: props.error.stack});
     return <div className="m-t mt-3">
       很抱歉,加载出错! <button className="btn btn-default btn-sm" onClick={props.retry}>重试</button>
       <div className="d-none hide">{props.error.toString()}</div>

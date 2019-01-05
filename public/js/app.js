@@ -59,13 +59,12 @@ import $ from 'jquery';
   /**
    * 记录日志到后台
    */
-  $.log = function (message, level) {
+  $.log = function (message, params, level) {
     typeof message !== 'string' && (message = JSON.stringify(message));
     $.post($.url('logs.json'), {
       message: message,
-      level: level || 'error'
-    }, function () {
-      // 留空以便不弹出提示
+      params: params || {},
+      level: level || 'error',
     });
   };
 }(window, $));
