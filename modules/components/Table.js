@@ -7,6 +7,9 @@ import paginationFactory from 'react-bootstrap-table2-paginator';
 import overlayFactory from 'react-bootstrap-table2-overlay';
 import {withTable} from "components/TableProvider";
 
+const Empty = () => <span className="text-muted">-</span>;
+
+@withTable
 class Table extends React.Component {
   static defaultProps = {
     url: null,
@@ -50,7 +53,7 @@ class Table extends React.Component {
 
   defaultFormatter(value) {
     if (typeof value === 'undefined' || value === '' || value === null) {
-      return <span className="text-muted">-</span>;
+      return <Empty/>;
     } else {
       return value;
     }
@@ -179,4 +182,6 @@ class Table extends React.Component {
   }
 }
 
-export default withTable(Table);
+Table.Empty = Empty;
+
+export default Table;
