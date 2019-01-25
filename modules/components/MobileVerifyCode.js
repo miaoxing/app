@@ -5,6 +5,7 @@ import Field from "components/Field";
 class MobileVerifyCode extends React.Component {
   static defaultProps = {
     name: 'verifyCode',
+    maxLength: 6,
   };
 
   componentDidUpdate() {
@@ -35,7 +36,8 @@ class MobileVerifyCode extends React.Component {
       </label>
       <div className="col-control">
         <div className="input-group">
-          <Field type="tel" className="form-control" id="verify-code" name={this.props.name} placeholder="请输入验证码"/>
+          <Field type="tel" className="form-control" id="verify-code" name={this.props.name} placeholder="请输入验证码"
+            maxLength={this.props.maxLength}/>
           <span className="input-group-btn border-left">
             <button type="button" className="js-verify-code-send text-primary btn btn-default form-link">
               获取验证码
