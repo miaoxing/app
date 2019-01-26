@@ -42,9 +42,6 @@ class App extends React.Component {
         const controller = this.getController(props.match.params);
         const action = this.getAction(props.match.params);
         const plugin = this.controllerMap[controller];
-        if (typeof plugin === 'undefined') {
-          return import('components/NoMatch');
-        }
 
         app.namespace = props.match.params.namespace;
         app.controller = controller;
