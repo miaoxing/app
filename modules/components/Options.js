@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import map from 'lodash/map';
 
 class Options extends React.Component {
   render () {
@@ -9,10 +10,13 @@ class Options extends React.Component {
       options.push(<option key="" value="">{this.props.placeholder}</option>)
     }
 
-    $.map(this.props.data, (option, key) => {
+    const isArray = Array.isArray(this.props.data);
+    map(this.props.data, (option, key) => {
       if (typeof option === 'object') {
         options.push(<option key={option[this.props.valueKey]}
           value={option[this.props.valueKey]}>{option[this.props.labelKey]}</option>)
+      } else if (isArray) {
+        options.push(<option key={option} value={option}>{option}</option>)
       } else {
         options.push(<option key={key} value={key}>{option}</option>)
       }
