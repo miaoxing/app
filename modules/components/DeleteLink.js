@@ -24,7 +24,7 @@ class DeleteLink extends React.Component {
   }
 
   render() {
-    const {message, href, ...rest} = this.props;
+    const {message, href, table, ...rest} = this.props;
     return <a className="text-danger" onClick={this.handleDelete} {...rest}>
       删除
     </a>;
