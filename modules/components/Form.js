@@ -2,6 +2,7 @@ import React from 'react';
 import {Form as RbForm} from 'react-bootstrap';
 import {Formik} from 'formik';
 import {withRouter} from 'react-router-dom';
+import mapValues from 'lodash/mapValues';
 
 class Form extends React.Component {
   render() {
@@ -9,9 +10,13 @@ class Form extends React.Component {
       return '';
     }
 
+    // Warning: `value` prop on `input` should not be null.
+    // Consider using an empty string to clear the component or `undefined` for uncontrolled components.
+    const initialValues = mapValues(this.props.initialValues, value => value === null ? '' : value);
+
     return (
       <Formik
-        initialValues={this.props.initialValues}
+        initialValues={initialValues}
         enableReinitialize={true}
         onSubmit={(values, actions) => {
           $.ajax({
