@@ -6,7 +6,7 @@ $cyan: #6fb3e0;
 $secondary: #fff;
 
 $grid-breakpoints: (
-  xs: 0,
+xs: 0,
 );
 
 // Links
@@ -16,3 +16,9 @@ $grid-breakpoints: (
 $link-hover-decoration: none;
 
 $mobile-only: true;
+
+// Bootstrap 3
+$brand-primary: $blue;
+$brand-warning: $yellow;
+$brand-danger: $red;
+$body-bg: #f8f8f8;
