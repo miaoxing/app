@@ -20,7 +20,7 @@
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/type";
 //@import "~bootstrap-sass/assets/stylesheets/bootstrap/code";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/grid";
-@import "~bootstrap-sass/assets/stylesheets/bootstrap/tables";
+//@import "~bootstrap-sass/assets/stylesheets/bootstrap/tables"; // bs4替代
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/forms";
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/buttons";
 
@@ -56,3 +56,10 @@
 // Utility classes
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/utilities";
 //@import "~bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
+
+// Reboot
+th {
+  // Matches default `<td>` alignment by inheriting from the `<body>`, or the
+  // closest parent with a set `text-align`.
+  text-align: inherit;
+}
