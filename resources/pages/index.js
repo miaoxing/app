@@ -16,6 +16,7 @@ import 'vendor/miaoxing/app/public/js/bootstrap-popup';
 import 'vendor/miaoxing/app/public/js/bootstrap-ajax-tips';
 
 import 'vendor/miaoxing/app/resources/scss/bs3.scss';
+import 'vendor/miaoxing/app/resources/scss/bs4.scss';
 import 'comps/bootstrap-mobile/scss/bootstrap-mobile.scss';
 import 'vendor/miaoxing/app/public/css/tips.css';
 import 'vendor/miaoxing/app/public/css/app.css';
