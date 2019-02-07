@@ -58,3 +58,13 @@
   // Generate the caret automatically
   @include caret;
 }
+
+.caret-right {
+  // Generate the caret automatically
+  @include caret(right);
+}
+
+.caret-left {
+  // Generate the caret automatically
+  @include caret(left);
+}
