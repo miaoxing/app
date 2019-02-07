@@ -52,19 +52,3 @@
 //// 附加自定义的移动端样式
 //@import 'comps/react-bootstrap-message/scss/react-bootstrap-message';
 //@import "comps/bootstrap-antd-mobile/scss/bootstrap-antd-mobile";
-
-// 兼容BS3
-.caret {
-  // Generate the caret automatically
-  @include caret;
-}
-
-.caret-right {
-  // Generate the caret automatically
-  @include caret(right);
-}
-
-.caret-left {
-  // Generate the caret automatically
-  @include caret(left);
-}
