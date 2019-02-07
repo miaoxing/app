@@ -56,10 +56,3 @@
 // Utility classes
 @import "~bootstrap-sass/assets/stylesheets/bootstrap/utilities";
 //@import "~bootstrap-sass/assets/stylesheets/bootstrap/responsive-utilities";
-
-// Reboot
-th {
-  // Matches default `<td>` alignment by inheriting from the `<body>`, or the
-  // closest parent with a set `text-align`.
-  text-align: inherit;
-}
