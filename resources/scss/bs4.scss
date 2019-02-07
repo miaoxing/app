@@ -4,7 +4,7 @@
 @import "~bootstrap/scss/mixins";
 ////@import "~bootstrap/scss/root";
 @import "~bootstrap/scss/reboot";
-//@import "~bootstrap/scss/type";
+@import "~bootstrap/scss/type";
 //@import "~bootstrap/scss/images";
 ////@import "~bootstrap/scss/code";
 @import "~bootstrap/scss/grid";
@@ -26,7 +26,7 @@
 ////@import "~bootstrap/scss/alert";
 ////@import "~bootstrap/scss/progress";
 ////@import "~bootstrap/scss/media";
-////@import "~bootstrap/scss/list-group";
+//@import "~bootstrap/scss/list-group";
 @import "~bootstrap/scss/close";
 //@import "~bootstrap/scss/modal";
 ////@import "~bootstrap/scss/tooltip";
@@ -34,7 +34,7 @@
 ////@import "~bootstrap/scss/carousel";
 ////@import "~bootstrap/scss/utilities";
 //@import "~bootstrap/scss/utilities/align";
-//@import "~bootstrap/scss/utilities/background";
+@import "~bootstrap/scss/utilities/background";
 @import "~bootstrap/scss/utilities/borders";
 //@import "~bootstrap/scss/utilities/clearfix";
 @import "~bootstrap/scss/utilities/display";
@@ -52,4 +52,3 @@
 //// 附加自定义的移动端样式
 //@import 'comps/react-bootstrap-message/scss/react-bootstrap-message';
 //@import "comps/bootstrap-antd-mobile/scss/bootstrap-antd-mobile";
-
