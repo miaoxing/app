@@ -51,12 +51,13 @@
 //@import "~bootstrap/scss/utilities/screenreaders";
 ////@import "~bootstrap/scss/utilities/shadows";
 @import "~bootstrap/scss/utilities/sizing";
-//@import "~bootstrap/scss/utilities/spacing";
+@import "~bootstrap/scss/utilities/spacing";
 @import "~bootstrap/scss/utilities/text";
 //@import "~bootstrap/scss/utilities/visibility";
 ////@import "~bootstrap/scss/print";
 
 @import "bs3-utilities";
+@import "spacing-deprecated";
 @import "comps/bootstrap-mobile/scss/bootstrap-mobile.scss";
 
 //// 附加自定义的移动端样式
