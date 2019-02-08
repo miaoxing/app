@@ -23,4 +23,5 @@ import 'vendor/miaoxing/app/resources/scss/bs4.scss';
 import 'vendor/miaoxing/app/public/css/tips.css';
 import 'vendor/miaoxing/app/public/css/app.css';
 
+$.tips.defaults.baseClass = 'badge';
 ReactDOM.render(<AppContainer/>, document.getElementById('root'));
