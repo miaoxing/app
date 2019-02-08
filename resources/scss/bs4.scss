@@ -42,7 +42,7 @@
 //@import "~bootstrap/scss/utilities/align";
 @import "~bootstrap/scss/utilities/background";
 @import "~bootstrap/scss/utilities/borders";
-//@import "~bootstrap/scss/utilities/clearfix";
+@import "~bootstrap/scss/utilities/clearfix";
 @import "~bootstrap/scss/utilities/display";
 //@import "~bootstrap/scss/utilities/embed";
 @import "~bootstrap/scss/utilities/flex";
@@ -55,6 +55,10 @@
 @import "~bootstrap/scss/utilities/text";
 //@import "~bootstrap/scss/utilities/visibility";
 ////@import "~bootstrap/scss/print";
+
+@import "bs3-utilities";
+@import "comps/bootstrap-mobile/scss/bootstrap-mobile.scss";
+
 //// 附加自定义的移动端样式
 //@import 'comps/react-bootstrap-message/scss/react-bootstrap-message';
 //@import "comps/bootstrap-antd-mobile/scss/bootstrap-antd-mobile";
