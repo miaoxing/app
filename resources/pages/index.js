@@ -8,10 +8,8 @@ import 'script-loader!comps/jquery/jquery.min';
 
 import 'comps/jquery-list/jquery-list';
 import 'bootstrap/js/dist/modal';
-import 'comps/bootstrap-mobile/js/form';
 import 'comps/bootstrap-mobile/js/loading';
 import 'comps/bootstrap-mobile/js/modal';
-import 'comps/bootstrap-mobile/js/spinner';
 import 'vendor/miaoxing/app/public/js/app';
 import 'vendor/miaoxing/app/public/js/require-config';
 import 'vendor/miaoxing/app/public/js/tips';
