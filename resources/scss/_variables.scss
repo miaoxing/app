@@ -1,3 +1,7 @@
+//
+// Color system
+//
+
 $blue: #1cb7f0;
 $green: #5cb85c;
 $yellow: #f28c48;
@@ -5,24 +9,29 @@ $red: #fa5b50;
 $cyan: #5bc0de;
 $secondary: #fff;
 
-$grid-breakpoints: (
-xs: 0,
-);
-
 // Links
 //
 // Style anchor elements.
 
 $link-hover-decoration: none;
 
-$mobile-only: true;
+// Grid breakpoints
+//
+// Define the minimum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
 
-// Bootstrap 3
-$brand-primary: $blue;
-$brand-warning: $yellow;
-$brand-danger: $red;
-$body-bg: #f8f8f8;
-$state-warning-text:$yellow;
-$state-danger-text:$red;
+$grid-breakpoints: (
+  xs: 0,
+);
+
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+
 $font-family-sans-serif:"Helvetica Neue", Helvetica, Arial, "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
-$gray-light:lighten(#000, 65%);
+
+// Custom
+//
+// Font, line-height, and color for body text, headings, and more.
+
+$mobile-only: true;
