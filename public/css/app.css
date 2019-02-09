@@ -147,8 +147,9 @@ a:focus {
   line-height: 32px; /* 链接需要指定高度才能上下居中,按钮无需 */
 }
 
-.modal-footer .btn-fluid + .btn-fluid {
-  margin-left: 0;
+.modal-footer-fluid > .btn-fluid {
+  margin-left: 0; /* 抵消.modal-footer > :not(:first-child) */
+  margin-right: 0; /* 抵消.modal-footer > :not(:last-child) */
 }
 
 /* 解决被生成的text-primary覆盖 */
