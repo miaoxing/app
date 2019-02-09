@@ -10,12 +10,6 @@
 @import "~bootstrap/scss/grid";
 @import "~bootstrap/scss/tables";
 @import "~bootstrap/scss/forms";
-
-/* 兼容没有btn-default的情况 */
-.btn {
-  background-color: #fff;
-}
-
 @import "~bootstrap/scss/buttons";
 @import "~bootstrap/scss/transitions";
 //@import "~bootstrap/scss/dropdown";
@@ -68,4 +62,9 @@
 // TODO 解决覆盖 https://mobile.ant.design/docs/react/customize-theme
 body {
   background-color: #f8f8f8 !important;
+}
+
+/* 兼容没有btn-default的情况 */
+.btn-default {
+  @extend .btn-secondary;
 }
