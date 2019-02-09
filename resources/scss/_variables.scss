@@ -30,8 +30,11 @@ $grid-breakpoints: (
 
 $font-family-sans-serif:"Helvetica Neue", Helvetica, Arial, "WenQuanYi Micro Hei", "Microsoft YaHei", sans-serif;
 
+// Forms
+
+$input-group-addon-bg: transparent;
+$input-group-addon-border-color: transparent;
+
 // Custom
-//
-// Font, line-height, and color for body text, headings, and more.
 
 $mobile-only: true;
