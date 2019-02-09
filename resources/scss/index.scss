@@ -53,18 +53,12 @@
 @import "bs3-utilities";
 @import "spacing-deprecated";
 @import "components";
+@import "tips";
 @import "comps/bootstrap-mobile/scss/bootstrap-mobile";
 
 //// 附加自定义的移动端样式
 //@import 'comps/react-bootstrap-message/scss/react-bootstrap-message';
 @import "comps/bootstrap-antd-mobile/scss/bootstrap-antd-mobile";
 
-// TODO 解决覆盖 https://mobile.ant.design/docs/react/customize-theme
-body {
-  background-color: #f8f8f8 !important;
-}
-
-/* 兼容没有btn-default的情况 */
-.btn-default {
-  @extend .btn-secondary;
-}
+// 自定义常用的样式
+@import "app";
