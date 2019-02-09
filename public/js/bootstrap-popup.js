@@ -25,7 +25,7 @@ import $ from 'jquery';
                 "<h4 class='modal-title'></h4>" +
                 "</div>",
         footer:
-            "<div class='modal-footer border-top'></div>",
+            "<div class='modal-footer'></div>",
         closeButton:
             "<button type='button' class='bootbox-close-button close hairline' data-dismiss='modal' aria-hidden='true'>&times;</button>"
     };
