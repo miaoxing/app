@@ -11,7 +11,7 @@ class DropdownMenu extends React.Component {
     return <div className="filter-dropdown nav-dropdown">
       <ul className="nav-tabs tabs-justified border-top-bottom">
         <li className="dropdown">
-          <a className="text-active-primary" href="#" data-toggle="dropdown" data-target="#search">
+          <a className="text-active-primary" data-toggle="dropdown" data-target="#search">
             <span>搜索</span>&nbsp;&nbsp;
             <i className="icon small icon-chevron-down"/>
           </a>
