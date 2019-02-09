@@ -1,5 +1,5 @@
 import React from 'react';
-import {Col, Form, Row} from 'react-bootstrap4';
+import {Col, Form, Row} from 'react-bootstrap';
 import decamelize from 'decamelize';
 import FormControl from "components/FormControl";
 import Required from "components/Required";

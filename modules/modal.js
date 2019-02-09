@@ -1,7 +1,7 @@
 // From https://github.com/ant-design/ant-design/blob/master/components/modal
 import React from "react";
 import ReactDOM from 'react-dom';
-import {Button, Modal} from "react-bootstrap4";
+import {Button, Modal} from "react-bootstrap";
 
 class ActionButton extends React.Component {
   timeoutId;

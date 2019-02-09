@@ -1,5 +1,5 @@
 import React from 'react';
-import {Button, Col, Form, Row} from 'react-bootstrap4';
+import {Button, Col, Form, Row} from 'react-bootstrap';
 import CListBtn from 'components/bs4/CListBtn';
 
 function FormAction({url, list = true}) {
