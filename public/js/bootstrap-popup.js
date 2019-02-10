@@ -27,7 +27,7 @@ import $ from 'jquery';
         footer:
             "<div class='modal-footer'></div>",
         closeButton:
-            "<button type='button' class='bootbox-close-button close hairline' data-dismiss='modal' aria-hidden='true'>&times;</button>"
+            "<button type='button' class='bootbox-close-button close' data-dismiss='modal' aria-hidden='true'>&times;</button>"
     };
 
     var defaults = {
@@ -321,7 +321,7 @@ import $ from 'jquery';
             // @TODO I don't like this string appending to itself; bit dirty. Needs reworking
             // can we just build up button elements instead? slower but neater. Then button
             // can just become a template too
-            buttonStr += "<button data-bb-handler='" + key + "' type='button' class='btn " + button.className + " hairline'>" + button.label + "</button>";
+            buttonStr += "<button data-bb-handler='" + key + "' type='button' class='btn " + button.className + "'>" + button.label + "</button>";
             callbacks[key] = button.callback;
         });
 

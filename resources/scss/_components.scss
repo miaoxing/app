@@ -3,7 +3,7 @@
 /* 兼容没有btn-default的情况 */
 .btn-default {
   @extend .btn-secondary;
-  @include hairline($border-color, $btn-border-radius);
+  @include($border-color, $btn-border-radius);
 }
 
 .btn-md {
