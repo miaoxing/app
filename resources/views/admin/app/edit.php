@@ -7,7 +7,7 @@
 </div>
 
 <div class="row">
-  <div class="col-xs-12">
+  <div class="col-12">
     <!-- PAGE CONTENT BEGINS -->
     <form action="<?= $url('admin/app/update') ?>" class="js-app-form form-horizontal" method="post" role="form">
       <div class="form-group">
@@ -25,7 +25,7 @@
       </div>
 
       <div class="clearfix form-actions form-group">
-        <div class="col-lg-offset-2">
+        <div class="offset-lg-2">
           <button class="btn btn-primary" type="submit">
             <i class="fa fa-check bigger-110"></i>
             保存
