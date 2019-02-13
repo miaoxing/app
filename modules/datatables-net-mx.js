@@ -1,5 +1,5 @@
 import 'datatables.net';
-import 'datatables.net-bs/js/dataTables.bootstrap';
+import 'datatables.net-bs4/js/dataTables.bootstrap4.min';
 
 import './datatables/deletable';
 import './datatables/search';
