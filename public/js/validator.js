@@ -2,7 +2,7 @@ define(['jquery-validation', 'jquery-validation-zh'], function () {
   // http://stackoverflow.com/a/19006517
   $.validator.setDefaults({
     errorElement: 'span',
-    errorClass: 'help-block',
+    errorClass: 'form-text',
     highlight: function (element) {
       $(element).closest('.form-group').addClass('has-error');
     },
