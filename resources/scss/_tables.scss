@@ -1,0 +1,25 @@
+.table-responsive > .table {
+  white-space: nowrap;
+}
+
+.table {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.table > thead > tr {
+  color: #707070;
+  background: #f6f6f6;
+}
+
+.table > thead > tr > th {
+  border-bottom-width: 1px;
+}
+
+.table-center {
+  text-align: center;
+
+  th, td {
+    vertical-align: middle;
+  }
+}
