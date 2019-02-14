@@ -3,7 +3,7 @@
 }
 
 .table {
-  word-wrap: break-word;
+  word-wrap: break-word; // 数字字母（如 URL）超长能正确换行
   overflow-wrap: break-word;
 }
 
@@ -20,6 +20,10 @@
   text-align: center;
 
   th, td {
+    vertical-align: middle;
+  }
+
+  thead th {
     vertical-align: middle;
   }
 }
