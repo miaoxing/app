@@ -1,13 +1,12 @@
 import React from 'react';
-import {Col, FormGroup} from 'react-bootstrap';
+import {Col} from 'react-bootstrap';
+import classNames from 'classnames';
 
-function SearchAction(props) {
+function SearchAction({className, ...props}) {
   return (
-    <FormGroup>
-      <Col md={11} mdOffset={1} className="m-b-0">
-        {props.children}
-      </Col>
-    </FormGroup>
+    <Col sm={{span: 11, offset: 1}} className={classNames("mb-0", className)} {...props}>
+      {props.children}
+    </Col>
   );
 }
 
