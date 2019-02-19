@@ -1,6 +1,7 @@
 @import "variables";
 @import "comps/bootstrap-mobile/scss/mixins/hairline";
 
+// Bootstrap 样式
 @import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
@@ -52,14 +53,17 @@
 //@import "~bootstrap/scss/utilities/visibility";
 //@import "~bootstrap/scss/print";
 
+// 自定义样式
 @import "comps/bootstrap-mobile/scss/bootstrap-mobile";
 @import "bs3-utilities";
 @import "font-sizes";
-@import "components";
+@import "buttons";
+@import "modal";
 @import "tips";
-
-// 附加自定义的移动端样式
 //@import 'comps/react-bootstrap-message/scss/react-bootstrap-message';
+
+// Deprecated
+@import "bootbox";
 @import "comps/bootstrap-antd-mobile/scss/bootstrap-antd-mobile";
 
 // 自定义常用的样式

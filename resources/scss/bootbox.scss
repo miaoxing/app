@@ -1,0 +1,12 @@
+
+
+// Bootbox(deprecated)
+
+/* Bootbox支持在modal上弹窗 */
+.bootbox {
+  z-index: $zindex-modal+1;
+}
+
+.bootbox + .modal-backdrop {
+  z-index: $zindex-modal;
+}

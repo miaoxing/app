@@ -1,0 +1,26 @@
+// Buttons
+
+.btn-secondary {
+  @include hairline($border-color, $btn-border-radius);
+}
+
+/* 兼容没有btn-default的情况 */
+.btn-default {
+  @extend .btn-secondary;
+}
+
+.btn-md {
+  font-size: 16px;
+  padding-top: 9px;
+  padding-bottom: 9px;
+}
+
+.btn-fluid {
+  border-radius: 0;
+  border: 0;
+  width: 100%;
+  font-size: 16px;
+  height: 44px;
+  display: block;
+  line-height: 32px; /* 链接需要指定高度才能上下居中,按钮无需 */
+}
