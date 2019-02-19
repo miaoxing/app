@@ -41,7 +41,7 @@ class FormItemUeditor extends React.Component {
   render() {
     const {...rest} = this.props;
 
-    return <FormItem component="textarea" controlSize={6} bsClass="" {...rest}/>;
+    return <FormItem component="textarea" controlSize={6} bsPrefix="" {...rest}/>;
   }
 }
 
