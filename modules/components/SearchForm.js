@@ -26,8 +26,10 @@ class SearchForm extends React.Component {
 
   render() {
     const {className, loadQuery, table, ...rest} = this.props;
-    return <Form horizontal className={(className ? className + ' ' : '') + 'search-form well'} {...rest}>
-      {this.props.children}
+    return <Form className={(className ? className + ' ' : '') + 'search-form well'} {...rest}>
+      <div className="form-row">
+        {this.props.children}
+      </div>
     </Form>;
   }
 }

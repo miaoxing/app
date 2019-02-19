@@ -4,11 +4,12 @@ import decamelize from 'decamelize';
 import Required from './Required';
 import FormControl from "components/FormControl";
 
-function FormItem({label, name, help, labelSize, controlSize, helpSize, groupSize, ...props}) {
+function FormItem({component = FormGroup, label, name, help, labelSize, controlSize, helpSize, groupSize, ...props}) {
   const id = name ? decamelize(name, '-') : null;
+  const Component = component; // 大写字母开头才会识别为组件
 
   return (
-    <FormGroup controlId={id} bsSize={groupSize}>
+    <Component controlId={id} bsSize={groupSize}>
       <Col componentClass={ControlLabel} sm={labelSize || 2}>
         {props.required && <Required/>}
         {label}
@@ -21,7 +22,7 @@ function FormItem({label, name, help, labelSize, controlSize, helpSize, groupSiz
       {help && <Col componentClass="label" sm={helpSize || 6} className="help-text">
         {help}
       </Col>}
-    </FormGroup>
+    </Component>
   );
 }
 

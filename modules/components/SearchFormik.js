@@ -49,12 +49,14 @@ class SearchFormik extends React.Component {
       initialValues={this.values}
       onSubmit={this.handleSubmit}
       render={({submitForm}) => (
-        <Form horizontal
+        <Form
           className={(className ? className + ' ' : '') + 'search-form well'}
           onChange={realTime ? this.handleChange.bind(this, submitForm) : null}
           {...rest}
         >
-          {this.props.children}
+          <div className="form-row">
+            {this.props.children}
+          </div>
         </Form>
       )}
     />;
