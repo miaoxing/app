@@ -30,7 +30,7 @@ class Form extends React.Component {
           });
         }}
         render={({handleSubmit, isSubmitting}) => (
-          <RbForm horizontal onSubmit={handleSubmit}>
+          <RbForm onSubmit={handleSubmit}>
             {this.props.children}
           </RbForm>
         )}
