@@ -21,8 +21,8 @@ const RetV2 = ({ret, history, children}) => {
   }
 
   return <Ret>
-    <img className="m-b" width="120" src={types[ret.retType || 'error']}/>
-    <Ret.Title className="m-b-lg">{ret.message}</Ret.Title>
+    <img className="mb-3" width="120" src={types[ret.retType || 'error']}/>
+    <Ret.Title className="mb-5">{ret.message}</Ret.Title>
   </Ret>
 };
 

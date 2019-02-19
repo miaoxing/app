@@ -17,7 +17,7 @@ class DropdownMenu extends React.Component {
           </a>
         </li>
       </ul>
-      {this.props.rightLink && <span className="center-right m-r">{this.props.rightLink}</span>}
+      {this.props.rightLink && <span className="center-right mr-3">{this.props.rightLink}</span>}
       <div className="menu-content">
         <div id="search" className="dropdown-menu fade border-bottom">
           <div className="menu sub">

@@ -26,7 +26,7 @@ class SearchDropdownMenu extends React.Component {
 
   render() {
     return <DropdownMenu rightLink={this.props.rightLink}>
-      <form className="js-form form form-inset m-t-md" onSubmit={this.handleSubmit.bind(this)}>
+      <form className="js-form form form-inset mt-4" onSubmit={this.handleSubmit.bind(this)}>
         <div className="form-body">
           {this.props.children}
         </div>
