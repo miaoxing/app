@@ -16,14 +16,14 @@ class Captcha extends BaseService
     use RetTrait;
 
     /**
-     * @var int the width of the generated CAPTCHA image. Defaults to 120
+     * @var int the width of the generated CAPTCHA image. Defaults to 75
      */
     protected $width = 75;
 
     /**
-     * @var int the height of the generated CAPTCHA image. Defaults to 50
+     * @var int the height of the generated CAPTCHA image. Defaults to 31
      */
-    protected $height = 32;
+    protected $height = 31;
 
     /**
      * @var int padding around the text. Defaults to 2
