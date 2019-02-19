@@ -1,21 +1,16 @@
 import React from 'react';
-import {Button, Col, FormGroup} from 'react-bootstrap';
+import {Button, Col, Form, Row} from 'react-bootstrap';
 import CListBtn from 'components/CListBtn';
 
 function FormAction({url, list = true}) {
   return (
-    <FormGroup className="clearfix form-actions">
-      <Col smOffset={2}>
-        <Button bsStyle="primary" type="submit">
-          提交
-        </Button>
-        &nbsp; &nbsp; &nbsp;
-        {list && (url ? <Button href={url}>
-          <i className="fa fa-undo bigger-110"/>
-          {' '}返回列表
-        </Button> : <CListBtn/>)}
+    <Form.Group as={Row} className="form-actions">
+      <Col sm={{offset: 2}}>
+        <Button type="submit">提交</Button>
+        &nbsp; &nbsp; &nbsp;{/*todo bs4: m-l*/}
+        {list && (url ? <Button href={url} variant="secondary">返回列表</Button> : <CListBtn/>)}
       </Col>
-    </FormGroup>
+    </Form.Group>
   );
 }
 

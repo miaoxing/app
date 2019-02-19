@@ -1,5 +1,5 @@
 import React from 'react';
-import {ControlLabel, FormGroup} from 'react-bootstrap';
+import {FormLabel, FormGroup} from 'react-bootstrap';
 import {connect} from 'formik';
 import moment from 'moment';
 import Required from 'components/Required';
@@ -17,10 +17,10 @@ class MFormItemDatePicker extends React.Component {
     }
 
     return <FormGroup>
-      <ControlLabel>
+      <FormLabel>
         {label}
         {this.props.required && <>{' '}<Required/></>}
-      </ControlLabel>
+      </FormLabel>
       <div className="col-control">
         <DatePicker
           selected={formik.values[name] ? moment(formik.values[name]) : null}

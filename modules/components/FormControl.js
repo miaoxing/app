@@ -15,8 +15,8 @@ function handleFormik(props) {
     props.component = 'select';
   }
 
-  if (!props.componentClass) {
-    props.componentClass = Field;
+  if (!props.as) {
+    props.as = Field;
   }
 
   return props;
@@ -28,11 +28,11 @@ const FormControl = ({formik, ...props}) => {
   }
 
   // 自动识别select类型
-  if (!props.componentClass && isSelect(props)) {
-    props.componentClass = 'select';
+  if (!props.as && isSelect(props)) {
+    props.as = 'select';
   }
 
-  if (!props.type && props.componentClass !== 'select' && props.componentClass !== 'textarea') {
+  if (!props.type && props.as !== 'select' && props.as !== 'textarea') {
     props.type = 'text';
   }
 

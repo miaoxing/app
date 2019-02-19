@@ -1,5 +1,7 @@
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
+import axios from 'axios';
+import app from 'app';
 
 export default class InfiniteList extends React.Component {
   static defaultProps = {
@@ -17,11 +19,9 @@ export default class InfiniteList extends React.Component {
   handleLoadMore(page) {
     this.setState({loading: true});
 
-    $.ajax({
-      url: $.appendUrl(this.getUrl(), {page: page})
-    }).done(ret => {
+    axios(app.appendUrl(this.getUrl(), {page: page})).then(({data: ret}) => {
       if (ret.code !== 1) {
-        return $.msg(ret);
+        return app.ret(ret);
       }
 
       let data = this.state.data.concat(ret.data);

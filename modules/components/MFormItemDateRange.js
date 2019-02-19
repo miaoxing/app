@@ -1,5 +1,5 @@
 import React from "react";
-import {ControlLabel, FormGroup} from "react-bootstrap";
+import {FormLabel, FormGroup} from "react-bootstrap";
 import DatePicker from 'components/DatePicker'
 import moment from "moment";
 import 'jquery-unparam';
@@ -54,7 +54,7 @@ class MFormItemDateRange extends React.Component {
         `}
       </style>
       <FormGroup>
-        <ControlLabel>开始{this.props.label}日期</ControlLabel>
+        <FormLabel>开始{this.props.label}日期</FormLabel>
         <div className="col-control">
           <DatePicker
             selected={this.state.dateMin}
@@ -68,7 +68,7 @@ class MFormItemDateRange extends React.Component {
         </div>
       </FormGroup>
       <FormGroup>
-        <ControlLabel>结束{this.props.label}日期</ControlLabel>
+        <FormLabel>结束{this.props.label}日期</FormLabel>
         <div className="col-control">
           <DatePicker
             selected={this.state.dateMax}

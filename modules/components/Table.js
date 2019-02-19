@@ -6,6 +6,8 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import overlayFactory from 'react-bootstrap-table2-overlay';
 import {withTable} from "components/TableProvider";
+import axios from 'axios';
+import app from 'app';
 
 const Empty = () => <span className="text-muted">-</span>;
 
@@ -53,7 +55,7 @@ class Table extends React.Component {
 
   defaultFormatter(value) {
     if (typeof value === 'undefined' || value === '' || value === null) {
-      return <Empty/>;
+      return <span className="text-muted">-</span>;
     } else {
       return value;
     }
@@ -88,18 +90,17 @@ class Table extends React.Component {
     params = Object.assign({}, tableParams, searchParams, params);
 
     this.enableLoading();
-    $.ajax({
-      url: $.appendUrl(this.getUrl(), params),
+    axios({
+      url: app.appendUrl(this.getUrl(), params),
       dataType: 'json'
-    }).done(ret => {
+    }).then(({data}) => {
       this.setState({
-        data: ret.data,
+        data: data.data,
         page: parseInt(params.page, 10),
-        totalSize: ret.records,
-        sizePerPage: parseInt(ret.rows, 10)
+        totalSize: data.records,
+        sizePerPage: parseInt(data.rows, 10)
       });
       this.props.onLoad && this.props.onLoad(this.state);
-    }).always(() => {
       this.disableLoading();
     });
   }
@@ -157,6 +158,7 @@ class Table extends React.Component {
         data={this.state.data}
         columns={columns}
         hover
+        bootstrap4
         classes="table-center"
         noDataIndication={this.state.noDataIndication}
         loading={this.state.loading}

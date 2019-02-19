@@ -2,7 +2,8 @@ import React from 'react';
 import {Form as RbForm} from 'react-bootstrap';
 import {Formik} from 'formik';
 import {withRouter} from 'react-router-dom';
-import mapValues from 'lodash/mapValues';
+import app from 'app';
+import axios from 'axios';
 
 class Form extends React.Component {
   render() {
@@ -10,29 +11,22 @@ class Form extends React.Component {
       return '';
     }
 
-    // Warning: `value` prop on `input` should not be null.
-    // Consider using an empty string to clear the component or `undefined` for uncontrolled components.
-    const initialValues = mapValues(this.props.initialValues, value => value === null ? '' : value);
-
     return (
       <Formik
-        initialValues={initialValues}
+        initialValues={this.props.initialValues}
         enableReinitialize={true}
         onSubmit={(values, actions) => {
-          $.ajax({
+          axios({
             url: this.props.url,
-            type: 'post',
-            loading: true,
+            method: 'post',
             data: values,
-            dataType: 'json'
-          }).done((ret) => {
-            $.msg(ret, () => {
-              if (ret.code === 1) {
+            loading: true,
+          }).then((res) => {
+            app.ret(res.data, () => {
+              if (res.data.code === 1) {
                 this.redirect(this.getRedirectUrl());
               }
             });
-          }).always(() => {
-            actions.setSubmitting(false);
           });
         }}
         render={({handleSubmit, isSubmitting}) => (

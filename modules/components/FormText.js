@@ -1,9 +1,9 @@
 import React from 'react';
-import {Col, ControlLabel, FormControl, FormGroup} from 'react-bootstrap';
+import {Col, FormLabel, FormControl, FormGroup} from 'react-bootstrap';
 
 const FormText = ({label, children}) => {
   return <FormGroup>
-    <Col componentClass={ControlLabel} sm={2}>
+    <Col as={FormLabel} sm={2}>
       {label}
     </Col>
     <Col sm={10}>
