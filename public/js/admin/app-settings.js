@@ -1,4 +1,4 @@
-define(['form', 'validator', 'assets/spectrum'], function () {
+define(['form', 'plugins/app/js/validation', 'assets/spectrum'], function () {
   var AppSettings = function () {
     // do nothings.
   };
