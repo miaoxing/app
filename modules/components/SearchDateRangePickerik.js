@@ -6,7 +6,7 @@ import {connect} from "formik";
 import Field from "components/Field";
 
 const loader = Promise.all([
-  rp('daterangepicker')
+  rp('plugins/admin/js/date-range-picker')
 ]);
 
 @connect

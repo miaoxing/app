@@ -4,7 +4,7 @@ import SearchItem from 'components/SearchItem';
 import decamelize from 'decamelize';
 
 const loader = Promise.all([
-  rp('daterangepicker')
+  rp('plugins/admin/js/date-range-picker')
 ]);
 
 class SearchDateRangePicker extends React.Component {
