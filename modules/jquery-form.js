@@ -1,1 +1,1 @@
-export default from 'comps/jquery-form/jquery.form';
+export default from 'plugins/app/libs/jquery-form/jquery.form';
