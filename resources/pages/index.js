@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppContainer from './AppContainer';
 
-import 'comps/requirejs/require';
+import '../modules/requirejs-custom/require';
 import 'script-loader!comps/jquery/jquery.min';
 
 import 'comps/jquery-list/jquery-list';
