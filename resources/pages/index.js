@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 import AppContainer from './AppContainer';
 
 import '../modules/requirejs-custom/require';
-import 'script-loader!comps/jquery/jquery.min';
+import 'script-loader!jquery/dist/jquery.min';
 
 import 'comps/jquery-list/jquery-list';
 import 'bootstrap/js/dist/modal';
