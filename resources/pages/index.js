@@ -15,7 +15,7 @@ import '../modules/app';
 import '../modules/require-config';
 import '../modules/bootstrap-popup';
 import '../modules/bootstrap-ajax-tips';
-import 'vendor/miaoxing/app/resources/scss/index.scss';
+import '../scss/index.scss';
 
 $.tips.defaults.baseClass = 'badge';
 ReactDOM.render(<AppContainer/>, document.getElementById('root'));
