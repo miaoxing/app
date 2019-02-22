@@ -10,7 +10,7 @@ import 'bootstrap/js/dist/modal';
 import '../modules/bootstrap-mobile/js/loading';
 import '../modules/bootstrap-mobile/js/modal';
 import '../modules/bootstrap-tips/bootstrap-tips';
-import '../modules/app';
+import '../modules/wei';
 import '../modules/require-config';
 import '../modules/bootstrap-popup';
 import '../modules/bootstrap-ajax-tips';
