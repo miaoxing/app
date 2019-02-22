@@ -3,6 +3,9 @@ window.requirejs.config({
   waitSeconds: 30,
   paths: {
     css: 'plugins/app/libs/require-css/css.min',
-    'jquery-form': 'plugins/app/libs/jquery-form/jquery.form'
+    'jquery-form': 'plugins/app/libs/jquery-form/jquery.form',
+    'jquery-unparam': 'comps/jquery-unparam/jquery-unparam.min',
+    template: 'plugins/app/libs/artTemplate/template.min',
+    form: 'plugins/admin/js/form',
   }
 });
