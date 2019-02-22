@@ -9,7 +9,6 @@ import 'script-loader!jquery/dist/jquery.min';
 import 'bootstrap/js/dist/modal';
 import '../modules/bootstrap-mobile/js/loading';
 import '../modules/bootstrap-mobile/js/modal';
-import 'vendor/miaoxing/app/public/libs/jquery-list/jquery-list';
 import '../modules/tips';
 import '../modules/app';
 import '../modules/require-config';
