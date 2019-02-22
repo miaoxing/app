@@ -1,5 +1,3 @@
-/* TODO 待ajaxTips移除autoMsg?功能后,合并到ajaxTips */
-
 import $ from 'jquery';
 
 (function (window, $) {
