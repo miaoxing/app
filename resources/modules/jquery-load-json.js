@@ -1,1 +1,1 @@
-export default from 'comps/jquery.loadJSON';
+export default from 'plugins/app/libs/jquery.loadJSON';
