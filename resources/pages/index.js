@@ -10,9 +10,9 @@ import 'bootstrap/js/dist/modal';
 import '../modules/bootstrap-mobile/js/loading';
 import '../modules/bootstrap-mobile/js/modal';
 import 'vendor/miaoxing/app/public/libs/jquery-list/jquery-list';
+import 'vendor/miaoxing/app/public/js/tips';
 import 'vendor/miaoxing/app/public/js/app';
 import 'vendor/miaoxing/app/public/js/require-config';
-import 'vendor/miaoxing/app/public/js/tips';
 import 'vendor/miaoxing/app/public/js/bootstrap-popup';
 import 'vendor/miaoxing/app/public/js/bootstrap-ajax-tips';
 
