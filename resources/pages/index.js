@@ -16,5 +16,4 @@ import '../modules/bootstrap-popup';
 import '../modules/bootstrap-ajax-tips';
 import '../scss/index.scss';
 
-$.tips.defaults.baseClass = 'badge';
 ReactDOM.render(<AppContainer/>, document.getElementById('root'));

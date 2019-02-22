@@ -71,7 +71,7 @@ import $ from 'jquery';
    */
   $.tips.defaults = {
     ele: 'body',
-    baseClass: 'label',
+    baseClass: 'badge',
     type: 'info',
     valign: 'middle',
     delay: 2000,
