@@ -1,0 +1,10 @@
+// Bootprompt
+
+// 支持在 modal 上弹窗
+.bootprompt {
+  z-index: $zindex-modal+1;
+}
+
+.bootprompt + .modal-backdrop {
+  z-index: $zindex-modal;
+}
