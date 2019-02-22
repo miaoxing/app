@@ -7,8 +7,8 @@ import '../modules/requirejs-custom/require';
 import 'script-loader!jquery/dist/jquery.min';
 
 import 'bootstrap/js/dist/modal';
-import 'comps/bootstrap-mobile/js/loading';
-import 'comps/bootstrap-mobile/js/modal';
+import '../modules/bootstrap-mobile/js/loading';
+import '../modules/bootstrap-mobile/js/modal';
 import 'vendor/miaoxing/app/public/libs/jquery-list/jquery-list';
 import 'vendor/miaoxing/app/public/js/app';
 import 'vendor/miaoxing/app/public/js/require-config';

@@ -1,0 +1,26 @@
+@each $color, $value in $theme-colors {
+  .btn-#{$color} {
+    border-width: 0;
+  }
+
+  .btn-outline-#{$color} {
+    @include hairline($value, $btn-border-radius);
+  }
+}
+
+.btn-lg {
+  &:after {
+    @include hairline-border-radius($btn-border-radius-lg);
+  }
+}
+
+.btn-sm {
+  &:after {
+    @include hairline-border-radius($btn-border-radius-sm);
+  }
+}
+
+/* Fluid布局 */
+.footer-bar-fluid {
+  padding: 0;
+}

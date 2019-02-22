@@ -1,0 +1,337 @@
+.list {
+  font-size: 16px;
+  padding-left: 0;
+  list-style: none;
+  background-color: #fff;
+  border-top: #dedfe0 1px solid;
+  border-bottom: #dedfe0 1px solid;
+}
+
+.list > li {
+  border-top: 1px solid #dedfe0; /* 在list-intended时,点击高亮整行背景,和下一行的上边框,因此只能用border-top */
+  position: relative;
+}
+
+.list > li:first-child {
+  border: none;
+  background-image: none;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  .list {
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0.5, transparent), color-stop(0.5, #dedfe0), to(#dedfe0)) left top repeat-x, -webkit-gradient(linear, left top, left bottom, color-stop(0.5, transparent), color-stop(0.5, #dedfe0), to(#dedfe0)) left bottom repeat-x;
+    background-color: #fff;
+    border-top: 0;
+    border-bottom: 0;
+    -webkit-background-size: 100% 1px;
+  }
+
+  .list > li, .list > li:first-child.list-divider {
+    border-top: 0;
+    background-repeat: repeat-x;
+    -webkit-background-size: 100% 1px;
+    background-position: left top;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.5, transparent), color-stop(0.5, #e0e0e0), to(#e0e0e0));
+  }
+}
+
+/* 列表全局配置 */
+.list .list-item:not([class*="text-"]) {
+  color: inherit;
+}
+
+.list a:hover, .list a:focus {
+  text-decoration: none;
+}
+
+/* 列表项目,可以加到li或a标签中 */
+.list-item {
+  padding: 10px 15px;
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* 列表分割线 */
+.list-divider {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  background-color: #f8f9fa;
+}
+
+.list-divider .list-heading {
+  font-size: 14px;
+}
+
+/* 点击高亮背景, list-link用于整个ul的所有li, list-item-link用与单独一个li */
+.list-link > li:not(.list-divider):active, .list-link > li:not(.list-divider).active,
+.list-item-link:active, .list-item-link.active {
+  background-color: #e5e6e7;
+}
+
+/* 应用在li标签上,使用手型鼠标提示用户可以点击 */
+.list-link > li:not(.list-divider), .list-item-link {
+  cursor: pointer;
+}
+
+/* 列表栏目,相当于td */
+.list-col {
+  display: table-cell;
+  width: 100%;
+  vertical-align: top;
+}
+
+.list-col + .list-col {
+  padding-left: 15px;
+}
+
+.list-row + .list-row {
+  margin-top: 10px;
+}
+
+.list-col > a > img,
+.list-col > img,
+.list-row > a > img,
+.list-row > img {
+  width: 100%;
+}
+
+/* 用于.list-col定位 */
+.list-middle {
+  vertical-align: middle;
+}
+
+.list-bottom {
+  vertical-align: bottom;
+}
+
+/* 列表标题 */
+.list-heading {
+  font-size: 16px;
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.5;
+  position: relative;
+}
+
+/* 标题下面的文案,一般用于简介,子标题 */
+.list-body {
+  font-size: 12px;
+  margin-top: 8px;
+  color: #808080;
+}
+
+/* 带左右边框*/
+.list-bordered {
+  border-left: 1px solid #dedfe0;
+  border-right: 1px solid #dedfe0;
+}
+
+/* 斑马纹 */
+.list-striped li:nth-child(odd) {
+  background-color: #f8f9fa;
+}
+
+/* 鼠标移过更改背景颜色 */
+.list-hover > li:hover {
+  background-color: #f5f5f5;
+}
+
+/* 缩进列表 */
+.list-indented {
+  overflow: hidden;
+}
+
+.list-indented > li {
+  margin-left: 15px;
+}
+
+.list-indented .list-item {
+  padding-left: 0;
+}
+
+/* 修复缩进后右边内边距丢失的问题 */
+.list-indented > li.list-item {
+  padding-right: 30px;
+}
+
+/* 缩进列表点击时,本行和下一行的的上边框占满整格 */
+.list-indented.list-link > li:active, .list-indented > .list-item-link:active,
+.list-indented.list-link > li.active, .list-indented > .list-item-link.active,
+.list-indented.list-link > li:active + li, .list-indented > .list-item-link:active + li,
+.list-indented.list-link > li.active + li, .list-indented > .list-item-link.active + li {
+  padding-left: 15px;
+  margin-left: 0;
+}
+
+/* 缩进列表点击时,修复下一行缩进错误 */
+.list-indented.list-link > li:active + li.list-item, .list-indented > .list-item-link:active + li.list-item,
+.list-indented.list-link > li.active + li.list-item, .list-indented > .list-item-link.active + li.list-item {
+  padding-right: 15px;
+}
+
+/* 缩进列表不更改divider样式 */
+.list-indented > .list-divider {
+  margin-left: 0;
+  padding-left: 15px;
+}
+
+.list-indented > .list-divider.list-item {
+  padding-right: 15px;
+}
+
+.list-indented > .list-divider + li {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: 0;
+}
+
+/* 嵌入列表 */
+.list-inset {
+  margin-left: 15px;
+  margin-right: 15px;
+  border: 1px solid #dedfe0;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  .list-inset, .list-bordered {
+    position: relative;
+    border: none;
+  }
+
+  .list-inset:before, .list-bordered:before {
+    content: "";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid #dedfe0;
+    -webkit-transform: scale(0.5);
+    -webkit-transform-origin: -50% -50%;
+  }
+}
+
+/* 紧凑列表 */
+.list-condensed .list-item {
+  padding: 5px 8px;
+}
+
+/* 无边框列表 */
+.list-borderless > li {
+  border-bottom: 0;
+  background-image: none;
+}
+
+/* 左右布局列表 */
+.list-label {
+  padding-left: 0;
+  padding-right: 0;
+  font-weight: normal; /* bs */
+  margin-bottom: 0; /* bs */
+}
+
+.list-content {
+  padding-left: 0;
+}
+
+/* 列表头部 */
+.list-header {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+  color: #222
+}
+
+.list-header .list-heading {
+  font-size: 20px;
+}
+
+.list-header .small {
+  margin-top: 8px;
+}
+
+/* 列表右边的图标 */
+.list-item.has-feedback {
+  padding-right: 30px;
+}
+
+.list-feedback {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: block;
+  text-align: center;
+  width: 30px;
+  height: 32px;
+  line-height: 32px;
+  overflow: auto;
+  margin: auto;
+}
+
+/* 显示列表加载中和加载完成样式 */
+.list-loading, .list-finished {
+  text-align: center;
+  padding: 1em;
+}
+
+/* 列表为空的提示文案 */
+.list-empty {
+  text-align: center;
+  padding: 6em 0;
+}
+
+.list-loading-top {
+  overflow: hidden;
+  position: relative;
+  height: 0;
+  padding: 0;
+  line-height: 40px;
+  /* 开启硬件加速 */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.list-loading-transition {
+  -webkit-transition: all 300ms;
+  transition: all 300ms;
+}
+
+.list-loading-spinner {
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border-radius: 100%;
+  margin: 6px;
+  border: 2px solid;
+  border-bottom-color: transparent;
+  vertical-align: middle;
+  -webkit-animation: list-rotate 0.75s linear infinite;
+  animation: list-rotate 0.75s linear infinite;
+}
+
+@-webkit-keyframes list-rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes list-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

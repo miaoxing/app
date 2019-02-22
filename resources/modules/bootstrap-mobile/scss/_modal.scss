@@ -1,0 +1,130 @@
+.modal-content {
+  border: 0;
+}
+
+.modal-header {
+  @include hairline-bottom($border-color);
+}
+
+.modal-body {
+  font-size: 1rem;
+  overflow-y: auto;
+}
+
+.modal-title {
+  font-size: 1rem;
+}
+
+.modal-footer {
+  @include hairline-top($border-color);
+}
+
+/* 底部弹出Modal窗口 */
+.modal.fade .modal-dialog {
+  transform: translate3d(0, 25%, 0);
+}
+
+.modal-bottom .modal-dialog {
+  margin: 0;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+}
+
+.modal-bottom .close {
+  font-size: 40px;
+  font-weight: 100;
+  padding: 0 1rem 0 0;
+  position: relative;
+  top: 4px;
+}
+
+.modal-bottom .modal-content {
+  border-radius: 0;
+}
+
+/* 解决iOS底部弹窗后可以继续往下滚动的问题 */
+.modal-fixfixed {
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+}
+
+.modal-fixfixed .modal-backdrop.in {
+  opacity: .8;
+  filter: alpha(opacity=80);
+}
+
+// 实现缩放动画效果
+.modal-zoom {
+  transform: scale(0.8);
+  transition: all .15s linear;
+}
+
+.modal-zoom.show {
+  transform: scale(1);
+}
+
+.modal.modal-zoom .modal-dialog {
+  transform: translate(0, 0);
+}
+
+// 简化弹窗
+.modal-prompt {
+  .modal-dialog {
+    width: 300px;
+    margin: auto;
+  }
+
+  .modal-content {
+    border: 0;
+    overflow: hidden;
+  }
+
+  .modal-header {
+    display: none; /* 暂不支持 */
+  }
+
+  .modal-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 6rem;
+    padding: 1.5rem;
+  }
+
+  .modal-footer {
+    border: 0;
+    padding: 0;
+    @include hairline-top($border-color);
+  }
+
+  .modal-footer > .btn {
+    flex: 1 1 0;
+    background: transparent;
+    border: none;
+    min-height: 3rem;
+    font-size: 1.125rem;
+    margin: 0;
+    border-radius: 0;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    &:active,
+    &:active:focus {
+      background-color: $gray-300;
+      border: none;
+      box-shadow: none;
+    }
+  }
+
+  .modal-footer > .btn + .btn {
+    @include hairline-left($border-color);
+  }
+
+  .modal-footer > .btn-primary {
+    color: $primary;
+  }
+}

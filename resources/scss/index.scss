@@ -1,5 +1,5 @@
 @import "variables";
-@import "comps/bootstrap-mobile/scss/mixins/hairline";
+@import "../modules/bootstrap-mobile/scss/mixins/hairline";
 
 // Bootstrap 样式
 @import "~bootstrap/scss/functions";
@@ -54,7 +54,7 @@
 //@import "~bootstrap/scss/print";
 
 // 自定义样式
-@import "comps/bootstrap-mobile/scss/bootstrap-mobile";
+@import "../modules/bootstrap-mobile/scss/bootstrap-mobile";
 @import "bs3-utilities";
 @import "font-sizes";
 @import "buttons";

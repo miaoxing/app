@@ -1,0 +1,311 @@
+/* 组合表单 */
+.form {
+  border-top: 1px solid #dedfe0;
+  background-color: #fff;
+}
+
+.form .form-group {
+  font-size: 16px;
+  position: relative;
+  padding-left: 15px;
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  margin-bottom: 0; /* bs */
+  border-bottom: 1px solid #dedfe0;
+}
+
+.form legend, .form-legend {
+  color: #666;
+  margin-bottom: 0;
+  background: #f8f9fa;
+  padding: 6px 15px;
+  font-size: 14px;
+  border-bottom: 1px solid #dedfe0;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  .form {
+    border-top: none;
+    background-position: left top;
+    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.5, transparent), color-stop(0.5, #dedfe0), to(#dedfe0));
+    background-repeat: repeat-x;
+    -webkit-background-size: 100% 1px;
+  }
+
+  .form .form-group, .form legend, .form-legend {
+    border-bottom: none;
+    background-position: left bottom;
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, transparent), color-stop(0.5, #dedfe0), to(#dedfe0));
+    background-repeat: repeat-x;
+    -webkit-background-size: 100% 1px;
+  }
+
+  /* 首个legend需要加上border-top */
+  .form > fieldset:first-child > legend,
+  .form > .form-legend:first-child,
+  .form > .form-body > .form-legend:first-child {
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0.5, transparent), color-stop(0.5, #dedfe0), to(#dedfe0)) left top repeat-x, -webkit-gradient(linear, left top, left bottom, color-stop(0.5, transparent), color-stop(0.5, #dedfe0), to(#dedfe0)) left bottom repeat-x;
+    background-color: #f8f8f8;
+    border-top: 0;
+    border-bottom: 0;
+    -webkit-background-size: 100% 1px;
+  }
+}
+
+.form-link:active {
+  background-color: #e5e6e7;
+}
+
+.form .control-label,
+.form-group > .col-control {
+  display: table-cell;
+  line-height: 44px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  vertical-align: middle; /* input-group 上下居中 */
+}
+
+.form .control-label {
+  width: 95px;
+  vertical-align: top;
+  font-weight: normal; /* bs */
+  margin-bottom: 0; /* bs */
+}
+
+/* label显示右边框,则input自动缩进 */
+.control-label.border-right + .col-control input {
+  padding-left: 20px;
+}
+
+.form .form-control {
+  border: none;
+  background: none;
+  -webkit-appearance: none;
+  outline: none;
+  font-size: 16px; /* bs */
+  box-shadow: none; /* bs */
+  display: inline-block; /* bs */
+  padding-left: 0; /* bs */
+  padding-right: 15px;
+}
+
+.form .form-control:focus {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: none; /* bs */
+}
+
+.form textarea.form-control {
+  margin-top: 11px;
+  padding-left: 0;
+  padding-top: 0;
+}
+
+.form .input-group .form-control {
+  height: auto; /* 自动拉伸 */
+}
+
+.form .has-feedback .form-control {
+  padding-right: 44px;
+}
+
+.form .form-control-feedback {
+  height: 44px;
+  line-height: 44px;
+  width: 44px;
+  color: #a6a6a6;
+  pointer-events: visible; /* bs */
+}
+
+.form .form-control-feedback:hover {
+  text-decoration: none;
+}
+
+/* 输入框右边的文案,如"元","个" */
+.col-control .input-group-addon {
+  background: transparent;
+}
+
+.col-control .input-group-btn .btn {
+  width: 110px; /* TODO rm */
+  height: 100%;
+  font-size: 16px;
+  padding: 0;
+  color: #00a5e0;
+  border: none;
+  background: none;
+  -webkit-appearance: none;
+  outline: none;
+  vertical-align: baseline; // why?
+}
+
+.col-control .input-group-btn .btn::after {
+  border-width: 0;
+}
+
+.col-control .input-group-addon:last-child {
+  border-width: 0;
+  background: transparent;
+}
+
+/* 底部提交按钮组 */
+.form .form-footer {
+  padding: 15px;
+  background: #f8f8f8;
+  border: 0;
+}
+
+.form-footer .btn {
+  font-size: 16px;
+  padding-top: 9px; /* 高度调到44px */
+  padding-bottom: 9px;
+}
+
+/* Checkbox + Radio */
+.form .checkbox, .form .radio {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.form .checkbox label, .form .radio label {
+  line-height: normal;
+  padding-left: 20px;
+}
+
+.form .checkbox-sm label, .form-sm .radio label {
+  padding-left: 5px;
+}
+
+.form .checkbox span::before, .form .radio span::before {
+  width: 21px;
+  height: 21px;
+}
+
+.form .checkbox span::after {
+  padding-top: 0;
+  padding-left: 4px;
+  font-size: 13px;
+  line-height: 21px;
+}
+
+.form .radio span::after {
+  margin-top: 2px;
+  margin-left: -18px;
+}
+
+/* 改bootstrap配置 */
+.col-control .input-group-btn .btn.disabled {
+  color: #a6a6a6;
+  opacity: 1;
+}
+
+/* 嵌入表单 */
+.form-inset {
+  margin-left: 15px;
+  margin-right: 15px;
+  border: none;
+  background: none;
+}
+
+.form-inset::before {
+  background: none;
+  border: none;
+}
+
+.form-inset .form-body {
+  border-radius: 7px;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+}
+
+.form-inset .form-body > .form-group:last-child {
+  border-bottom: none;
+  background-image: none;
+}
+
+.form-inset .form-footer {
+  padding-left: 0;
+  padding-right: 0;
+  background: none;
+}
+
+.form-inset .form-legend:first-child {
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+  .form-inset .form-body {
+    position: relative;
+    border: none;
+  }
+
+  .form-inset .form-body:before {
+    content: "";
+    width: 200%;
+    height: 200%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border: 1px solid #dedfe0;
+    -webkit-transform: scale(0.5);
+    -webkit-transform-origin: -50% -50%;
+    border-radius: 14px;
+  }
+
+  /*.form-inset .form-body .form-legend:first-child {
+      background-image: none;
+  }*/
+}
+
+/* select优化 */
+.select-wrapper {
+  font-weight: normal;
+  margin-bottom: 0;
+  width: 100%;
+  position: relative;
+}
+
+.select-wrapper::before {
+  position: absolute;
+  content: '';
+  right: 6px;
+  top: 50%;
+  border-top: 4px solid;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+  margin-top: -2px;
+}
+
+.select-wrapper select {
+  -webkit-appearance: none;
+  line-height: normal;
+}
+
+/* 点击select右边的图标可显示select选项 */
+.form select + .bm-angle-right {
+  pointer-events: none;
+}
+
+/* 内联Radio */
+.col-control .radio-inline {
+  margin-left: 4px;
+}
+
+.col-control .radio-inline + .radio-inline {
+  margin-left: 10px;
+}
+
+.col-control .radio-inline .radio-label::before {
+  margin-top: 11px;
+  margin-left: -3px;
+}
+
+.col-control .radio-inline .radio-label::after {
+  margin-top: 13px !important;
+  margin-left: -1px !important;
+}
+
+/* 按钮禁用颜色 #a6a6a6, 点击背景颜色 #e5e6e7 */

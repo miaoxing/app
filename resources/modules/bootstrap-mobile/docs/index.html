@@ -1,0 +1,1856 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="format-detection" content="telephone=yes">
+    <title>Bootstrap Mobile</title>
+
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!--
+    <link rel="stylesheet" href="../dist/css/bootstrap-mobile.min.css">
+  <!---->
+    <!---->
+    <link rel="stylesheet" href="../css/utilities.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/icon.css">
+    <link rel="stylesheet" href="../css/border.css">
+    <link rel="stylesheet" href="../css/button.css">
+    <link rel="stylesheet" href="../css/modal.css">
+    <link rel="stylesheet" href="../css/loading.css">
+    <link rel="stylesheet" href="../css/tab.css">
+    <link rel="stylesheet" href="../css/form.css">
+    <link rel="stylesheet" href="../css/list.css">
+    <link rel="stylesheet" href="../css/checkbox.css">
+    <link rel="stylesheet" href="../css/switch.css">
+    <!---->
+    <link rel="stylesheet" href="css/example.css">
+    <script type="text/javascript" src="jquery/jquery.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-8 col-md-offset-2 example-list">
+
+            <div class="example-nav">
+                <div class="btn-group btn-group-justified tab-btn-group">
+                    <a class="btn btn-default active" href="#example-list">
+                        列表
+                    </a>
+
+                    <a class="btn btn-default" href="#example-form">
+                        表单
+                    </a>
+
+                    <a class="btn btn-default" href="#example-loading">
+                        加载中
+                    </a>
+
+                    <a class="btn btn-default" href="#example-tab">
+                        选项卡
+                    </a>
+
+                    <a class="btn btn-default" href="#example-text">
+                        文本
+                    </a>
+
+                    <a class="btn btn-default" href="#example-btn">
+                        按钮
+                    </a>
+
+                    <a class="btn btn-default" href="#example-modal">
+                        对话框
+                    </a>
+
+                    <a class="btn btn-default" href="#example-flex">
+                        Flex布局
+                    </a>
+                </div>
+            </div>
+
+            <!--<style type="text/css">
+                .click-handlers a {
+                    display: inline-block;
+                    padding: 12px 16px;
+                    margin: 4px;
+                }
+            </style>
+
+            <div class="click-handlers">
+                <a href="#" id="click" class="bg-warning">$().click()</a>
+                <a href="#" id="bind-click" class="bg-warning">$().bind('click')</a>
+                <a href="#" id="on-click" class="bg-warning">$().on('click')</a>
+                <a href="#" id="trigger-click" class="bg-warning">$().trigger('click')</a>
+            </div>
+
+            <script>
+                // 将Click
+                if (1) {
+                    var oldBind = $.fn.bind,
+                        oldUnbind = $.fn.unbind;
+                    $.fn.bind = function( evt ){
+                        if( /(^| )click( |$)/.test( evt ) ){
+                            evt = evt.replace('click', 'tap');
+                        }
+                        return oldBind.apply( this, arguments );
+                    };
+                    $.fn.unbind = function( evt ){
+                        if( /(^| )tap( |$)/.test( evt ) ){
+                            evt = evt.replace('click', 'tap');
+                        }
+                        return oldUnbind.apply( this, arguments );
+                    };
+                }
+
+                $('#click').click(function () {
+                    alert(1);
+                });
+                $('#bind-click').bind('click', function () {
+                    alert(2);
+                });
+                $('#on-click').on('click', function () {
+                    alert(3);
+                });
+                $('#trigger-click').click(function () {
+                    $('#on-click').trigger('click');
+                });
+            </script>-->
+
+            <h3 id="example-list">列表</h3>
+
+            <p>文字列表</p>
+            <div class="example">
+                <ul class="list">
+                    <li class="list-item">
+                        <h4 class="list-heading">
+                            标题标题标题标题标题标题标题标题
+                        </h4>
+                    </li>
+                    <li class="list-item">
+                        <h4 class="list-heading">
+                            标题标题标题标题标题标题标题标题
+                        </h4>
+                    </li>
+                </ul>
+            </div>
+
+            <p>链接列表</p>
+            <div class="example">
+                <ul class="list list-link">
+                    <li>
+                        <a href="javascript:;" class="list-item has-feedback">
+                            <h4 class="list-heading">
+                                标题标题标题标题标题标题标题标题
+                            </h4>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+                    <li>
+                      <a href="javascript:;" class="list-item has-feedback">
+                        <h4 class="list-heading">
+                          标题标题标题标题标题标题标题标题
+                        </h4>
+                        <i class="bm-angle-right list-feedback"></i>
+                      </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="list-item has-feedback">
+                            <h4 class="list-heading">
+                                标题标题标题标题标题标题标题标题
+                            </h4>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <p>右边显示自定义图标</p>
+            <div class="example">
+                <ul class="list list-link">
+                    <li class="has-feedback">
+                        <a href="javascript:;" class="list-item has-feedback text-primary">
+                            <h4 class="list-heading">
+                                标题标题标题标题标题标题标题标题
+                            </h4>
+                            <i class="bm-ok list-feedback"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="list-item has-feedback">
+                            <h4 class="list-heading">
+                                标题标题标题标题标题标题标题标题
+                            </h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <p>右边显示badge</p>
+            <p>注意: Bootstrap badge用作未读消息数量,暂时只有一种颜色</p>
+            <div class="example">
+                <ul class="list list-link">
+                    <li>
+                        <a href="javascript:;" class="list-item">
+                            <h4 class="list-heading">
+                                标题标题标题标题标题标
+                                <span class="badge center-right">14</span>
+                            </h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a  href="javascript:;" class="list-item">
+                            <h4 class="list-heading">
+                                标题标题标题标题标题标
+                                <span class="badge center-right">5</span>
+                            </h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+          <p>右边显示文字,如状态</p>
+          <div class="example">
+            <ul class="list list-link">
+              <li>
+                <a href="javascript:;" class="list-item">
+                  <h4 class="list-heading">
+                    标题标题标题标题标题标
+                    <span class="pull-right text-warning">待支付</span>
+                  </h4>
+                </a>
+              </li>
+              <li>
+                <a  href="javascript:;" class="list-item">
+                  <h4 class="list-heading">
+                    标题标题标题标题标题标
+                    <span class="pull-right">待发货</span>
+                  </h4>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+            <p>li标签,但是可以点击</p>
+            <div class="example">
+                <ul class="list list-link">
+                    <li class="list-item">
+                        <h4 class="list-heading">
+                            标题标题标题标题标题标
+                        </h4>
+                    </li>
+                    <li class="list-item">
+                        <h4 class="list-heading">
+                            标题标题标题标题标题标
+                        </h4>
+                    </li>
+                </ul>
+            </div>
+
+          <p>换行</p>
+          <div class="example">
+            <ul class="list list-link">
+              <li class="list-item">
+                <h4 class="list-heading">
+                  不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行不换行
+                </h4>
+              </li>
+              <li class="list-item">
+                <h4 class="list-heading truncate">
+                  一行一行一行一行一行一行一行一行一行一行一行一行一行一行一行一行一行
+                </h4>
+              </li>
+              <li class="list-item">
+                <h4 class="list-heading truncate-2">
+                  两行两行两行两行两行两行两行两行两行两行两行两行两行两行两行两行两行两行两行
+                </h4>
+              </li>
+            </ul>
+          </div>
+
+            <p>标题和内容</p>
+            <div class="example">
+                <ul class="list list-link">
+                    <li>
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                                <div class="list-body">
+                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                                </div>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                                <div class="list-body">
+                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                                </div>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <p>标题和左边图片</p>
+            <p>注意: 需指定图片父元素宽度</p>
+            <div class="example">
+                <ul class="list list-link">
+                    <li>
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col list-col-left" style="width: 28px">
+                                <img class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                            <div class="list-col list-middle">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col list-col-left" style="width: 28px">
+                                <img class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                            <div class="list-col list-middle">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <p>标题和左边大图</p>
+            <div class="example">
+                <ul class="list list-link">
+                    <li>
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col list-col-left" style="width: 100px">
+                                <img class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                            <div class="list-col list-middle">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col list-col-left" style="width: 100px">
+                                <img class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                            <div class="list-col list-middle">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <p>标题和右边图</p>
+            <div class="example">
+                <ul class="list list-link">
+                    <li>
+                        <a class="list-item" href="javascript:;">
+                            <div class="list-col list-middle">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                            </div>
+                            <div class="list-col" style="width: 79px">
+                                <img class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="list-item" href="javascript:;">
+                            <div class="list-col list-middle">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                            </div>
+                            <div class="list-col" style="width: 79px">
+                                <img class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <p>标题和圆形图片</p>
+            <p>注意: 需指定图片父元素宽度</p>
+            <div class="example">
+                <ul class="list list-link">
+                    <li>
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col list-col-left" style="width: 28px">
+                                <img class="img-circle" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                            <div class="list-col list-middle">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col list-col-left" style="width: 28px">
+                                <img class="img-circle" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                            <div class="list-col list-middle">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <p>标题,内容和图片</p>
+            <div class="example">
+                <ul class="list list-link">
+                    <li>
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col" style="width: 65px">
+                                <img src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                            <div class="list-col">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                                <div class="list-body">
+                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                                </div>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col" style="width: 65px">
+                                <img src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                            <div class="list-col">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                                <div class="list-body">
+                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                                </div>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <p>控制只有标题和图片可点击</p>
+            <div class="example">
+                <ul class="list">
+                    <li class="list-item">
+                        <div class="list-col">
+                            <h4 class="list-heading">
+                                <a href="javascript:;">只有标题和图片可以点击</a>
+                            </h4>
+                            <div class="list-body">
+                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                            </div>
+                        </div>
+                        <div class="list-col" style="width: 79px">
+                            <a href="javascript:;"><img class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" /></a>
+                        </div>
+                    </li>
+                    <li class="list-item">
+                        <div class="list-col">
+                            <h4 class="list-heading">
+                                <a href="javascript:;">只有标题和图片可以点击</a>
+                            </h4>
+                            <div class="list-body">
+                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                            </div>
+                        </div>
+                        <div class="list-col" style="width: 79px">
+                            <a href="javascript:;"><img class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" /></a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <p>列表项目激活状态</p>
+            <div class="example" style="background: #f8f9fa; padding-left: 0; padding-right: 0">
+              <ul class="list list-link">
+                <li>
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading">
+                      标题标题标题标题标题标题标题标题
+                    </h4>
+                  </a>
+                </li>
+                <li class="active">
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading">
+                      标题标题标题标题标题标题标题标题
+                    </h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading">
+                      标题标题标题标题标题标题标题标题
+                    </h4>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <p>列表分割线 .list-divider</p>
+            <div class="example" style="background: #f8f9fa; padding-left: 0; padding-right: 0">
+              <ul class="list list-link">
+                <li class="list-divider list-item">
+                    <h3 class="list-heading">
+                      分类1
+                    </h3>
+                </li>
+                <li>
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading">
+                      标题标题标题标题标题标题标题标题
+                    </h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading">
+                      标题标题标题标题标题标题标题标题
+                    </h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading">
+                      标题标题标题标题标题标题标题标题
+                    </h4>
+                  </a>
+                </li>
+                <li class="list-divider list-item">
+                  <h3 class="list-heading">
+                    分类2
+                  </h3>
+                </li>
+                <li>
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading">
+                      标题标题标题标题标题标题标题标题
+                    </h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading">
+                      标题标题标题标题标题标题标题标题
+                    </h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading">
+                      标题标题标题标题标题标题标题标题
+                    </h4>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <p>list-indented</p>
+            <div class="example">
+              <ul class="list list-link list-indented">
+                <li class="list-divider list-item">
+                  <h3 class="list-heading">
+                    个人中心
+                  </h3>
+                </li>
+                <li>
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading">
+                      我的产品
+                    </h4>
+                  </a>
+                </li>
+                <li class="list-divider list-item">
+                  <h3 class="list-heading">
+
+                  </h3>
+                </li>
+                <li>
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading">
+                      修改资料
+                    </h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading">
+                      修改密码
+                    </h4>
+                  </a>
+                </li>
+                <li>
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading">
+                      忘记密码
+                    </h4>
+                  </a>
+                </li>
+                <li class="list-divider list-item">
+                  <h3 class="list-heading">
+
+                  </h3>
+                </li>
+                <li>
+                  <a href="javascript:;" class="list-item">
+                    <h4 class="list-heading text-danger">
+                      解除绑定
+                    </h4>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <p>各类样式汇总</p>
+            <div class="example">
+                <ul class="list" id="list-1">
+                    <li class="list-item-link">
+                        <a class="list-item" href="javascript:;">
+                            <div class="list-row">
+                                <img src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                            <div class="list-row">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                                <div class="list-body">
+                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="list-item-link">
+                        <a class="list-item" href="javascript:;">
+                            <div class="list-col" style="width: 100px">
+                                <img class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                            <div class="list-col">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                                <div class="list-body">
+                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="list-item-link">
+                        <a class="list-item" href="javascript:;">
+                            <div class="list-col">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                                <div class="list-body">
+                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                                </div>
+                            </div>
+                            <div class="list-col" style="width: 79px">
+                                <img class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                        </a>
+                    </li>
+
+                    <li class="list-item">
+                        <div class="list-col">
+                            <h4 class="list-heading">
+                                <a href="javascript:;">只有标题和图片可以点击</a>
+                            </h4>
+                            <div class="list-body">
+                                内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                            </div>
+                        </div>
+                        <div class="list-col" style="width: 79px">
+                            <a href="javascript:;"><img class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" /></a>
+                        </div>
+                    </li>
+
+                    <li class="list-item-link">
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col" style="width: 65px">
+                                <img class="img-circle" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                            <div class="list-col">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                                <div class="list-body">
+                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                                </div>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+
+                    <li class="list-item-link">
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col" style="width: 65px">
+                                <img src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                            <div class="list-col">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+
+                    <li class="list-item-link">
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col list-col-left" style="width: 44px">
+                                <img class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                            </div>
+                            <div class="list-col list-middle">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+
+                    <li class="list-item-link">
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                                <div class="list-body">
+                                    内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容
+                                </div>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+
+                    <li class="list-item-link">
+                        <a class="list-item has-feedback" href="javascript:;">
+                            <div class="list-col">
+                                <h4 class="list-heading">
+                                    标题标题标题标题标题标题标题标题标题
+                                </h4>
+                            </div>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+
+                    <li class="list-item">
+                        <div class="list-col">
+                            <h4 class="list-heading">
+                                没有设置list-item-link,点击无效果
+                            </h4>
+                        </div>
+                    </li>
+
+                    <li class="list-item list-item-link">
+                        <div class="list-col">
+                            <h4 class="list-heading">
+                                可点击的li标签
+                            </h4>
+                        </div>
+                    </li>
+
+                    <li class="list-item-link">
+                        <a href="javascript:;" class="list-item has-feedback">
+                            <h4 class="list-heading">
+                                标题标题标题标题标题标题标题标题
+                            </h4>
+                            <i class="bm-angle-right list-feedback"></i>
+                        </a>
+                    </li>
+
+                    <li class="list-item">
+                        <h4 class="list-heading">
+                            标题标题标题标题标题标题标题标题
+                        </h4>
+                    </li>
+
+                    <li class="list-item-link">
+                        <a href="javascript:;" class="list-item">
+                            <h4 class="list-heading">
+                                标题标题标题标题标题标
+                                <span class="badge pull-right">14</span>
+                            </h4>
+                        </a>
+                    </li>
+                </ul>
+
+                <div id="list-styles" style="padding:15px">
+                    <button type="button" id="list-indented" class="btn btn-default">.list-indented</button>
+                    <button type="button" id="list-inset" class="btn btn-default">.list-inset</button>
+                    <button type="button" id="list-bordered" class="btn btn-default">.list-bordered</button>
+                    <button type="button" id="list-striped" class="btn btn-default">.list-striped</button>
+                    <button type="button" id="list-hover" class="btn btn-default">.list-hover</button>
+                    <button type="button" id="list-condensed" class="btn btn-default">.list-condensed</button>
+                    <button type="button" id="list-borderless" class="btn btn-default">.list-borderless</button>
+                </div>
+
+                <script>
+                    $('#list-styles button').click(function(){
+                        $('#list-1').toggleClass(this.id);
+                        $(this).toggleClass('active');
+                    });
+                </script>
+            </div>
+
+            <p>小缩略图+链接+简介列表</p>
+            <div class="example">
+                <style type="text/css">
+                    #list-2 .list-col img {
+                        width: 100px;
+                        height: 80px;
+                        border-radius: 3px;
+                    }
+
+                    #list-2 .list-heading {
+                        white-space: normal;
+                        line-height: normal;
+                    }
+
+                    #list-2 .price {
+                        font-size: 18px;
+                        color: #ff3a00
+                    }
+
+                    #list-2 .orig-price {
+                        text-decoration: line-through;
+                        color: #999;
+                    }
+
+                    #list-2 .promotion {
+                        border: 1px solid #FF764E;
+                        border-radius: 3px;
+                        display: inline-block;
+                        color: #FF764E;
+                        padding: 0 2px;
+                    }
+                </style>
+                <ul class="list list-indented" id="list-2">
+                    <li class="list-item">
+                        <h4 class="list-heading">
+                            千味涮(广富百货店)
+                            <small class="pull-right">650m</small>
+                        </h4>
+                    </li>
+                    <li class="list-item-link">
+                        <a href="javascript:;" class="list-item">
+                            <div class="list-col" style="width: 100px">
+                                <img src="http://i1.s2.dpfile.com/pc/mc/6442aa66be8fd42b66e555eb92ff15c8(246c184)/thumb.jpg">
+                            </div>
+                            <div class="list-col list-middle">
+                                <h4 class="list-heading">代金券，不限时段通用，可累积使用</h4>
+                                <div class="list-body">
+                                    <span class="price">￥78</span>
+                                    <span class="orig-price">￥100</span>
+                                    <span class="promotion">返现1%</span>
+                                    <span class="like pull-right text-muted">
+                                        <i class="bm-thumbs-up"></i>1199
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="list-item-link">
+                        <a href="javascript:;" class="list-item">
+                            <div class="list-col" style="width: 100px">
+                                <img src="http://i1.s2.dpfile.com/pc/mc/6442aa66be8fd42b66e555eb92ff15c8(246c184)/thumb.jpg">
+                            </div>
+                            <div class="list-col list-middle">
+                                <h4 class="list-heading">代金券，不限时段通用，可累积使用</h4>
+                                <div class="list-body">
+                                    <span class="price">￥78</span>
+                                    <span class="orig-price">￥100</span>
+                                    <span class="promotion">返现1%</span>
+                                    <span class="like pull-right text-muted">
+                                        <i class="bm-thumbs-up"></i>1199
+                                    </span>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <h3 id="example-form">表单</h3>
+
+            <p>支持控件概览</p>
+            <div class="example">
+                <form action="#" class="form" id="form-1">
+                  <div class="form-body">
+                    <div class="form-legend">基础设置</div>
+
+                    <div class="form-group">
+                        <label for="email" class="control-label">
+                            邮箱
+                        </label>
+
+                        <div class="col-control">
+                            <input type="text" id="email" class="form-control" placeholder="请输入邮箱">
+                        </div>
+                    </div>
+
+                    <fieldset>
+                        <legend>基础设置</legend>
+
+                        <div class="form-group">
+                            <label for="email-readonly" class="control-label">
+                                邮箱(只读)
+                            </label>
+
+                            <div class="col-control">
+                                <input type="text" id="email-readonly" value="twinhuang@qq.com" class="form-control" readonly>
+                            </div>
+                        </div>
+
+                        <div class="form-group has-feedback has-clear">
+                            <label for="idCard" class="control-label">
+                                身份证号码
+                            </label>
+
+                            <div class="col-control">
+                                <input type="text" id="idCard" class="form-control" placeholder="18位身份证号码" value="123456789">
+                                <a href="javascript:;" class="bm-times-circle form-control-feedback"></a>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>详细设置</legend>
+
+                        <div class="form-group">
+                            <label for="sex2" class="control-label">
+                                性别
+                            </label>
+
+                            <div class="col-control">
+                                <select class="form-control" id="sex2">
+                                    <option>男</option>
+                                    <option>女</option>
+                                </select>
+                                <a href="javascript:;" class="bm-angle-right form-control-feedback"></a>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label">
+                                性别
+                            </label>
+
+                            <div class="col-control">
+                                <div class="radio radio-info border-bottom">
+                                  <label for="radio3">
+                                    <input id="radio3" type="radio" name="radio3" checked>
+                                    <span class="radio-label">男</span>
+                                  </label>
+                                </div>
+                                <div class="radio radio-info">
+                                  <label for="radio4">
+                                    <input id="radio4" type="radio" name="radio3">
+                                    <span class="radio-label">女</span>
+                                  </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="gender2" class="control-label">
+                                性别
+                                <span class="text-warning">*</span>
+                            </label>
+
+                            <div class="col-control">
+                                <label class="radio radio-inline">
+                                    <input type="radio" id="gender2" name="gender2" value="1" checked>
+                                    <span class="radio-label">男</span>
+                                </label>
+                                <label class="radio radio-inline">
+                                    <input type="radio" name="gender2" value="2">
+                                    <span class="radio-label">女</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="#" class="control-label">
+                                详细地址
+                            </label>
+
+                            <div class="col-control">
+                                <textarea placeholder="街道等详细地址" class="form-control" rows="2"></textarea>
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <div class="form-group">
+                        <div class="col-control">
+                            <input type="password" class="form-control" placeholder="密码">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label text-primary text-center border-right" for="phone">中国 +86</label>
+
+                        <div class="col-control">
+                            <input type="text" class="form-control" id="phone" placeholder="请输入手机号码">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label for="#" class="control-label">
+                        金额
+                      </label>
+                      <div class="col-control">
+                        <div class="input-group">
+                          <input type="tel" class="form-control" id="money" name="money" value="10.00">
+                          <span class="input-group-addon border-left">元</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-control">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="请输入验证码">
+                                <span class="input-group-btn border-left">
+                                    <button class="text-primary btn btn-default form-link" type="button">重新发送</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-control">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="请输入验证码">
+                                    <span class="input-group-btn border-left">
+                                      <button class="text-primary btn btn-default form-link disabled" type="button">重新发送</button>
+                                    </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="checkbox1" style="width: auto">对附近的人可见</label>
+
+                        <div class="col-control">
+                            <label for="#" class="switch">
+                                <input type="checkbox" id="checkbox1" checked/>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-link">
+                        <div class="col-control">
+                            <a href="javascript:;">清空消息列表</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                      <div class="col-control">
+                        单独一行文本
+                      </div>
+                    </div>
+
+                    <div class="form-group form-link">
+                        <label for="#" class="control-label">账号</label>
+
+                        <div class="col-control">
+                            <input type="text" class="form-control" value="421205351" readonly>
+                        </div>
+                    </div>
+                  </div>
+                    <div class="form-group form-footer">
+                        <button type="submit" class="btn btn-primary btn-block">保存</button>
+                    </div>
+                </form>
+
+                <div id="form-styles" style="padding:15px">
+                  <button type="button" id="form-inset" class="btn btn-default">.form-inset</button>
+                </div>
+
+                <script>
+                  $('#form-styles button').click(function(){
+                    $('#form-1').toggleClass(this.id);
+                    $(this).toggleClass('active');
+                  });
+                </script>
+            </div>
+
+            <p>Radio</p>
+            <div class="example">
+                <form action="#" class="form">
+                    <div class="form-legend">性别</div>
+                    <div class="form-group">
+                      <div class="col-control">
+                        <div class="radio radio-info border-bottom">
+                          <label for="radio5">
+                            <input id="radio5" type="radio" name="radio5" checked>
+                            <span class="radio-label">男</span>
+                          </label>
+                        </div>
+                        <div class="radio radio-info">
+                          <label for="radio6">
+                            <input id="radio6" type="radio" name="radio5">
+                            <span class="radio-label">女</span>
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-control">
+                            <div class="radio radio-danger">
+                              <label for="radio2">
+                                <input id="radio2" type="radio" name="radio1" checked>
+                                <span class="radio-label">用于一般单选或多选普通操作</span>
+                              </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-control">
+                            <div class="radio radio-danger">
+                              <label for="radio1">
+                                <input id="radio1" type="radio" name="radio1">
+                                <span class="radio-label">内容内容内容内容内容内容内容内容内容内容内容内容内容内容</span>
+                              </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <p>Checkbox,每个一行</p>
+            <div class="example">
+                <form class="form">
+                    <fieldset>
+                        <legend>爱好</legend>
+
+                        <div class="form-group">
+                            <div class="col-control">
+                                <div class="checkbox checkbox-circle checkbox-info">
+                                  <label for="checkbox5">
+                                    <input id="checkbox5" type="checkbox" name="checkbox5" checked>
+                                    <span class="checkbox-label">运动</span>
+                                  </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-control">
+                                <div class="checkbox checkbox-circle checkbox-info">
+                                  <label for="checkbox6">
+                                    <input id="checkbox6" type="checkbox" name="checkbox6">
+                                    <span class="checkbox-label">唱歌</span>
+                                  </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-control">
+                                <div class="checkbox checkbox-circle checkbox-info">
+                                  <label for="checkbox7">
+                                    <input id="checkbox7" type="checkbox" name="checkbox7">
+                                    <span class="checkbox-label">吃吃吃</span>
+                                  </label>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <p>Checkbox带左边label</p>
+            <div class="example">
+                <form class="form border-top">
+                    <div class="form-group">
+                        <label class="control-label">爱好</label>
+                        <div class="col-control">
+                            <div class="checkbox checkbox-circle checkbox-info border-bottom">
+                              <label for="checkbox8">
+                                <input id="checkbox8" type="checkbox" name="checkbox5" checked>
+                                <span class="checkbox-label">运动</span>
+                              </label>
+                            </div>
+                            <div class="checkbox checkbox-circle checkbox-info border-bottom">
+                              <label for="checkbox9">
+                                <input id="checkbox9" type="checkbox" name="checkbox5">
+                                <span class="checkbox-label">唱歌</span>
+                              </label>
+                            </div>
+                            <div class="checkbox checkbox-circle checkbox-info">
+                              <label for="checkbox10">
+                                <input id="checkbox10" type="checkbox" name="checkbox10">
+                                <span class="checkbox-label">吃吃吃</span>
+                              </label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <p>Checkbox</p>
+            <div class="example" style="background: #f8f9fa">
+                <form class="form">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="control-label">账号</label>
+                        <div class="col-control">
+                            <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword3" class="control-label">密码</label>
+                        <div class="col-control">
+                            <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-control">
+                            <div class="checkbox checkbox-circle checkbox-info checkbox-sm">
+                              <label for="checkbox11">
+                                <input id="checkbox11" type="checkbox" name="checkbox5" checked>
+                                <span class="checkbox-label">记住账号</span>
+                              </label>
+                            </div>
+                        </div>
+                        <label class="control-label">
+                            <a href="javascript:;">无法登录?</a>
+                        </label>
+                    </div>
+                </form>
+            </div>
+
+            <p>开关</p>
+            <div class="example">
+                <form class="form">
+                    <div class="form-group">
+                        <label class="control-label" for="checkbox2" style="width: auto">对附近的人可见</label>
+                        <div class="col-control">
+                            <label for="#" class="switch">
+                                <input type="checkbox" id="checkbox2"/>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="checkbox3" style="width: auto">对附近的人可见</label>
+                        <div class="col-control">
+                            <label for="#" class="switch">
+                                <input type="checkbox" id="checkbox3" checked/>
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <p>表单命令项</p>
+            <div class="example">
+                <form action="#" class="form">
+                    <div class="form-group form-link">
+                        <div class="col-control">
+                            <a href="javascript:;">清空消息列表</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-link">
+                        <div class="col-control">
+                            <a href="javascript:;">清空所有聊天记录</a>
+                        </div>
+                    </div>
+
+                    <div class="form-group form-link">
+                        <div class="col-control">
+                            <a href="javascript:;">清空缓存数据</a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <p>表单输入项</p>
+            <div class="example">
+                <form action="#" class="form">
+                    <div class="form-group has-feedback has-clear">
+                        <label for="idCard" class="control-label">
+                            身份证号码
+                        </label>
+
+                        <div class="col-control">
+                            <input type="text" id="idCard" class="form-control" placeholder="18位身份证号码" value="123456789">
+                            <a href="javascript:;" class="bm-times-circle form-control-feedback"></a>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="#" class="control-label">
+                            详细地址
+                        </label>
+
+                        <div class="col-control">
+                            <textarea placeholder="街道等详细地址" class="form-control" rows="2"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <p>整行</p>
+            <div class="example">
+              <form action="#" class="form">
+                <div class="form-group has-feedback has-clear">
+                  <div class="col-control">
+                    <input type="text" class="form-control" placeholder="QQ号/手机号/邮箱">
+                  </div>
+                </div>
+                <div class="form-group has-feedback has-clear">
+                  <div class="col-control">
+                    <input type="password" class="form-control" placeholder="密码">
+                  </div>
+                </div>
+                <div class="form-group form-footer">
+                  <button type="submit" class="btn btn-primary btn-block">保存</button>
+                </div>
+              </form>
+            </div>
+
+          <p>其他风格按钮</p>
+          <div class="example">
+            <form action="#" class="form">
+              <div class="form-body">
+                <div class="form-group has-feedback has-clear">
+                  <div class="col-control">
+                    <input type="text" class="form-control" placeholder="QQ号/手机号/邮箱">
+                  </div>
+                </div>
+                <div class="form-group has-feedback has-clear">
+                  <div class="col-control">
+                    <input type="password" class="form-control" placeholder="密码">
+                  </div>
+                </div>
+              </div>
+              <div class="form-group form-footer">
+                <button type="submit" class="btn btn-warning btn-block">保存</button>
+              </div>
+            </form>
+          </div>
+
+            <p>Inset form</p>
+            <div class="example" style="background: #f7f8fa; padding-left: 0; padding-right: 0;">
+              <form action="#" class="form form-inset">
+                <div class="form-body">
+                  <div class="form-group has-feedback has-clear">
+                    <div class="col-control">
+                      <input type="text" class="form-control" placeholder="QQ号/手机号/邮箱">
+                    </div>
+                  </div>
+                  <div class="form-group has-feedback has-clear">
+                    <div class="col-control">
+                      <input type="password" class="form-control" placeholder="密码">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group form-footer">
+                  <button type="submit" class="btn btn-primary btn-block">保存</button>
+                </div>
+              </form>
+            </div>
+
+            <p>Horizontal form</p>
+            <div class="example">
+              <form class="form-horizontal">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-xs-2 control-label">Email</label>
+                  <div class="col-xs-10">
+                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-xs-2 control-label">Password</label>
+                  <div class="col-xs-10">
+                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-offset-2 col-xs-10">
+                    <div class="checkbox">
+                      <label>
+                        <input type="checkbox" checked>
+                        <span class="checkbox-label">Remember me</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="col-xs-offset-2 col-xs-10">
+                    <button type="submit" class="btn btn-default">Sign in</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <p>表单输入项2</p>
+            <div class="example">
+                <form action="#" class="form">
+                    <div class="form-group has-feedback has-clear">
+                        <div class="col-control">
+                            <input type="text" class="form-control" placeholder="QQ号/手机号/邮箱">
+                            <a href="javascript:;" class="bm-times-circle form-control-feedback"></a>
+                        </div>
+                    </div>
+                    <div class="form-group has-feedback has-clear">
+                        <div class="col-control">
+                            <input type="password" class="form-control" placeholder="密码">
+                            <a href="javascript:;" class="bm-times-circle form-control-feedback"></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <p>表单输入项3</p>
+            <div class="example">
+                <form action="#" class="form">
+                    <div class="form-group">
+                        <label class="control-label text-primary text-center border-right" for="phone">中国 +86</label>
+
+                        <div class="col-control">
+                            <input type="text" class="form-control" id="phone" placeholder="请输入手机号码">
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <p>右边按钮</p>
+            <div class="example">
+                <form action="#" class="form">
+                    <div class="form-group">
+                        <div class="col-control">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="请输入验证码">
+                                <span class="input-group-btn border-left">
+                                    <button class="text-primary btn btn-default form-link" type="button">重新发送</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <p>只读</p>
+            <div class="example">
+                <form class="form">
+                    <div class="form-group">
+                        <label for="#" class="control-label">账号</label>
+
+                        <div class="col-control">
+                            <input type="text" value="421205351" class="form-control" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="#" class="control-label">身份证号码</label>
+
+                        <div class="col-control">
+                            <input type="text" value="445331199401055317" class="form-control" readonly>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <h3 id="example-loading">加载中</h3>
+
+            <div class="example">
+                <!-- 区块 -->
+                <div class="loading-block loading-wrap">
+                    <p>加载中</p>
+                    <i class="loading-spinner"></i>
+                </div>
+
+                <button class="btn btn-primary" id="loading">显示loading</button>
+
+                <button class="btn btn-primary" id="loading-with-content">显示自定义文案loading</button>
+
+                <script>
+                    $('#loading').click(function () {
+                        $.loading('show');
+                        setTimeout(function () {
+                            $.loading('hide');
+                        }, 2000);
+                    });
+
+                    $('#loading-with-content').click(function () {
+                        $.loading({content: '当前时间是' + new Date()}).loading('show');
+                        setTimeout(function () {
+                            $.loading('hide');
+                        }, 2000);
+                    });
+                </script>
+            </div>
+
+            <h3 id="example-tab">选项卡</h3>
+
+            <div class="example">
+                <ul class="nav tab-underline border-bottom">
+                    <li class="active">
+                        <a href="javascript:;">热门推荐</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">限时免费</a>
+                    </li>
+                </ul>
+
+                <br>
+
+                <ul class="nav tab-underline border-bottom">
+                    <li class="active">
+                        <a href="javascript:;">热门推荐</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">限时免费</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;">全部表情</a>
+                    </li>
+                </ul>
+
+                <br>
+
+                <div class="btn-group btn-group-justified tab-btn-group">
+                    <a class="btn btn-default active" href="#Tab1">Tab 1
+                    </a>
+
+                    <a class="btn btn-default" href="#Tab2">Tab 2
+                    </a>
+
+                    <a class="btn btn-default" href="#Tab3">Tab 3
+                    </a>
+                </div>
+
+                <script>
+                    $(document).on('click', '.tab-underline a', function () {
+                        $(this).parent().addClass('active').siblings().removeClass('active');
+                    });
+                    $(document).on('click', '.btn-group-justified a', function () {
+                        $(this).addClass('active').siblings().removeClass('active');
+                    });
+                </script>
+            </div>
+
+          <h3 id="example-footer-bar">底部</h3>
+          <div class="example example-footer-bar">
+            <div class="footer-bar border-top">
+              <button class="btn btn-warning">立即购买</button>
+            </div>
+          </div>
+
+            <h3 id="example-text">文本</h3>
+
+            <div class="example">
+                <p class="text-muted">Fusce dapibus, tellus ac cursus.</p>
+                <p class="text-primary">Nullam id dolor id nibh.</p>
+                <p class="text-success">Duis mollis, est non commodo.</p>
+                <p class="text-info">Maecenas sed diam eget risus.</p>
+                <p class="text-warning">Etiam porta sem malesuada.</p>
+                <p class="text-danger">Donec ullamcorper nulla non.</p>
+            </div>
+
+            <h3 id="example-btn">按钮</h3>
+
+            <div class="example">
+                <!-- Standard button -->
+                <button type="button" class="btn btn-default btn-sm">Default</button>
+
+                <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                <button type="button" class="btn btn-primary btn-sm">Primary</button>
+
+                <!-- Indicates a successful or positive action -->
+                <button type="button" class="btn btn-success btn-sm">Success</button>
+
+                <!-- Contextual button for informational alert messages -->
+                <button type="button" class="btn btn-info btn-sm">Info</button>
+
+                <!-- Indicates caution should be taken with this action -->
+                <button type="button" class="btn btn-warning btn-sm">Warning</button>
+
+                <!-- Indicates a dangerous or potentially negative action -->
+                <button type="button" class="btn btn-danger btn-sm">Danger</button>
+
+                <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+                <button type="button" class="btn btn-link btn-sm">Link</button>
+
+                <div>
+                  <!-- Standard button -->
+                  <button type="button" class="btn btn-default btn-sm">Default</button>
+
+                  <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                  <button type="button" class="btn btn-primary btn-sm">Primary</button>
+
+                  <!-- Indicates a successful or positive action -->
+                  <button type="button" class="btn btn-success btn-sm">Success</button>
+
+                  <!-- Contextual button for informational alert messages -->
+                  <button type="button" class="btn btn-info btn-sm">Info</button>
+
+                  <!-- Indicates caution should be taken with this action -->
+                  <button type="button" class="btn btn-warning btn-sm">Warning</button>
+
+                  <!-- Indicates a dangerous or potentially negative action -->
+                  <button type="button" class="btn btn-danger btn-sm">Danger</button>
+
+                  <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+                  <button type="button" class="btn btn-link btn-sm">Link</button>
+                </div>
+            </div>
+
+            <h3 id="example-modal">对话框</h3>
+
+            <p>$.alert</p>
+
+            <div class="example">
+                <button type="button" class="btn btn-primary btn-sm" id="js-alert">
+                    $.alert
+                </button>
+
+
+                <script type="text/javascript">
+                    $('#js-alert').on('click', function() {
+                        $.alert('xxx');
+                    });
+                </script>
+            </div>
+
+            <p>$.confirm</p>
+
+            <div class="example">
+                <button type="button" class="btn btn-primary btn-sm" id="js-confirm">
+                    $.confirm
+                </button>
+
+
+                <script type="text/javascript">
+                    $('#js-confirm').on('click', function() {
+                        $.confirm('xxx', function (result) {
+                            alert(result)
+                        });
+                    });
+                </script>
+            </div>
+
+            <p>alert</p>
+
+            <div class="example">
+                <button type="button" class="btn btn-primary btn-sm" id="alert">
+                    打开对话框
+                </button>
+
+                <!-- Modal -->
+                <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                开通年费QQ会员即可领取欢乐斗地主感恩节回馈礼包！
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    $('#alert').on('click', function(){
+                        $('#myModal').modal();
+                    });
+                </script>
+            </div>
+
+            <p>confirm</p>
+
+            <div class="example">
+                <button type="button" class="btn btn-primary btn-sm" id="confirm">
+                    打开对话框
+                </button>
+
+                <!-- Modal -->
+                <div class="modal" id="confirm-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-body">
+                                开通年费QQ会员即可领取欢乐斗地主感恩节回馈礼包！
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary">开通</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    $('#confirm').on('click', function(){
+                        $('#confirm-modal').modal();
+                    });
+                </script>
+            </div>
+
+            <p>带标题</p>
+
+            <div class="example">
+                <button type="button" class="btn btn-primary btn-sm" id="titled">
+                    打开对话框
+                </button>
+
+                <!-- Modal -->
+                <div class="modal" id="titled-modal" tabindex="-1" role="dialog" aria-labelledby="titled-modal-label" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="titled-modal-label">温馨提示</h4>
+                            </div>
+                            <div class="modal-body">
+                                开通年费QQ会员即可领取欢乐斗地主感恩节回馈礼包！
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                <button type="button" class="btn btn-primary">开通</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <script type="text/javascript">
+                    $('#titled').on('click', function(){
+                        $('#titled-modal').modal();
+                    });
+                </script>
+            </div>
+
+            <h3 id="example-flex">Flex布局</h3>
+
+            <style>
+                .flex-item {
+                    background: tomato;
+                    padding: 5px;
+                    width: 100px;
+                    height: 100px;
+                    margin: 10px;
+                    color: white;
+                    font-weight: bold;
+                    font-size: 2em;
+                    text-align: center;
+                }
+            </style>
+
+            <p>justify-center</p>
+
+            <div class="example">
+
+
+                <div class="flex justify-center">
+                    <div class="flex-item">1</div>
+                    <div class="flex-item">2</div>
+                    <div class="flex-item">3</div>
+                    <div class="flex-item">4</div>
+                    <div class="flex-item">5</div>
+                    <div class="flex-item">6</div>
+                    <div class="flex-item">7</div>
+                    <div class="flex-item">8</div>
+                </div>
+            </div>
+
+            <p>align-center</p>
+
+            <div class="example">
+                <div class="flex align-center">
+                    <div class="flex-item" style="height: 40px">1</div>
+                    <div class="flex-item" style="height: 50px">2</div>
+                    <div class="flex-item" style="height: 60px">3</div>
+                </div>
+            </div>
+
+            <p>align-center</p>
+
+            <div class="example">
+                <div class="flex justify-between">
+                    <div class="flex-item">1</div>
+                    <div class="flex-item">2</div>
+                    <div class="flex-item">3</div>
+                </div>
+            </div>
+
+            <p>.flex-center</p>
+
+            <div class="example">
+                <div class="flex justify-between align-stretch">
+                    <div class="flex-item" style="height: 40px">1</div>
+                    <div class="flex-item" style="height: 50px">2</div>
+                    <div class="flex-item" style="height: 60px">3</div>
+                </div>
+            </div>
+
+            <a href="#" class="top bg-info">TOP</a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="bootstrap/js/bootstrap.js"></script>
+<script type="text/javascript" src="../dist/js/bootstrap-mobile.min.js"></script>
+
+<script>
+    $('.example').each(function (i) {
+        var lines = $(this).html().split("\n");
+        // 移除前后的空行
+        lines.shift();
+        lines.pop();
+
+        // 移除剩下行前面的空白
+        var spaceLength = lines[0].length - $.trim(lines[0]).length;
+        for (var i in lines) {
+            lines[i] = lines[i].substr(spaceLength);
+        }
+
+        var el = this;
+        var code = $('<pre class="highlight"></pre>');
+        code.text(lines.join("\n")).insertAfter(el);
+    });
+</script>
+</body>
+</html>
