@@ -1,5 +1,5 @@
-import {alert, confirm} from 'bootprompt';
+import modal from 'modal';
 import $ from 'jquery';
 
-$.alert = alert;
-$.confirm = confirm;
+$.alert = modal.alert;
+$.confirm = modal;

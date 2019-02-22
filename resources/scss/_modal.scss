@@ -1,8 +1,15 @@
 // Modal
 
-.modal-dialog {
-  max-width: 100%;
-  margin: $modal-dialog-margin-y-sm-up;
+// 在 modal 上再次弹出 modal 能覆盖原 modal
+.modal-backdrop ~ .modal-backdrop {
+  z-index: $zindex-modal;
+}
+
+@media (max-width: 576px) {
+  .modal-dialog {
+    max-width: 100%;
+    margin: $modal-dialog-margin-y-sm-up;
+  }
 }
 
 .modal-body-fluid {
