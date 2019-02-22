@@ -50,7 +50,7 @@ class WebpackConfig {
       resolve: {
         modules: [
           this.rootDir,
-          'vendor/miaoxing/app/modules',
+          'vendor/miaoxing/app/resources/modules',
           'node_modules'
         ]
       },
