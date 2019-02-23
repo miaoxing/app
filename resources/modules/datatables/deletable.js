@@ -11,7 +11,11 @@ $.fn.dataTableExt.oApi.deletable = function (setting, linkSelector, message) {
   message = message || '删除后将无法还原,确认删除?';
   that.on('click', linkSelector, function () {
     var $link = $(this);
-    $.confirm(message, function () {
+    $.confirm(message, function (result) {
+      if (!result) {
+        return;
+      }
+
       $.post($link.data('href'), function (ret) {
         $.msg(ret);
         that.reload();

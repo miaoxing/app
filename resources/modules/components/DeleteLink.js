@@ -9,7 +9,11 @@ class DeleteLink extends React.Component {
   }
 
   handleDelete(e) {
-    $.confirm(this.props.message, () => {
+    $.confirm(this.props.message, (result) => {
+      if (!result) {
+        return;
+      }
+
       $.ajax({
         url: this.props.href,
         loading: true,
