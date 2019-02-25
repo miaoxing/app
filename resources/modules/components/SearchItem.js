@@ -4,7 +4,7 @@ import FormItem from './FormItem';
 class SearchItem extends React.Component {
   render() {
     return (
-      <FormItem as={React.Fragment} labelSize={1} controlSize={3} {...this.props} />
+      <FormItem container={React.Fragment} labelSize={1} controlSize={3} {...this.props} />
     );
   }
 }

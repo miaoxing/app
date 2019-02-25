@@ -8,9 +8,9 @@ function FormGroup({children}) {
   return <Form.Group as={Row}>{children}</Form.Group>
 }
 
-function FormItem({as = FormGroup, label, name, help, labelSize = 2, controlSize = 4, helpSize = 6, groupSize, ...props}) {
+function FormItem({container = FormGroup, label, name, help, labelSize = 2, controlSize = 4, helpSize = 6, groupSize, ...props}) {
   const id = name ? decamelize(name, '-') : null;
-  const Component = as; // 大写字母开头才会识别为组件
+  const Component = container; // 大写字母开头才会识别为组件
 
   return (
     <Component>
