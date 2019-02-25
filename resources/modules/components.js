@@ -20,7 +20,6 @@ export ImageUpload from './components/ImageUpload';
 export SearchForm from './components/SearchForm';
 export SearchItem from './components/SearchItem';
 
-export Tabs from './components/Tabs';
 export TabNavs from './components/TabNavs';
 
 export Img from './components/Img';
