@@ -4,9 +4,9 @@ import decamelize from 'decamelize';
 import FormControl from "components/FormControl";
 import Required from "components/Required";
 
-function FormItem({component = Form.Group, label, name, help, labelSize = 2, controlSize = 4, helpSize = 6, groupSize, ...props}) {
+function FormItem({as = Form.Group, label, name, help, labelSize = 2, controlSize = 4, helpSize = 6, groupSize, ...props}) {
   const id = name ? decamelize(name, '-') : null;
-  const Component = component; // 大写字母开头才会识别为组件
+  const Component = as; // 大写字母开头才会识别为组件
 
   return (
     <Component as={Row}>
