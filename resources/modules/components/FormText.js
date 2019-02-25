@@ -7,7 +7,7 @@ const FormText = ({label, children}) => {
       {label}
     </Col>
     <Col sm={10}>
-      <FormControl.Static>{children || '-'}</FormControl.Static>
+      <div className="form-control-plaintext">{children || '-'}</div>
     </Col>
   </FormGroup>;
 };
