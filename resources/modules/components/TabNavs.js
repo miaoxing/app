@@ -1,7 +1,8 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import _ from 'lodash';
+import map from 'lodash/map';
 import classNames from 'classnames';
+import {Nav} from "react-bootstrap";
 
 class TabNavs extends React.Component {
   render() {
@@ -16,14 +17,20 @@ class TabNavs extends React.Component {
     const cur = item ? item.key : 'all';
     const baseUrl = this.props.baseUrl || window.location.pathname;
 
-    return <ul className={classNames('header-tab nav tab-underline border-top-bottom', this.props.className)}>
-      {_.map(this.props.data, (item) => {
-        return <li key={item.key} className={'nav-item border-primary'}>
-          <Link to={$.appendUrl(baseUrl, item.key === 'all' ? {} : {[this.props.paramName]: item.key})}
-            className={"nav-link text-active-primary " + (cur === item.key ? 'active' : '')}>{item.name}</Link>
-        </li>;
+    return <Nav className={classNames('header-tab tab-underline border-top-bottom', this.props.className)}>
+      {map(this.props.data, (item) => {
+        return <Nav.Item key={item.key}>
+          <Nav.Link
+            as={Link}
+            to={$.appendUrl(baseUrl, item.key === 'all' ? {} : {[this.props.paramName]: item.key})}
+            active={cur === item.key}
+            className="text-active-primary border-active-primary"
+          >
+            {item.name}
+          </Nav.Link>
+        </Nav.Item>;
       })}
-    </ul>;
+    </Nav>;
   }
 }
 

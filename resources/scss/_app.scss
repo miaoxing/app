@@ -25,6 +25,19 @@ body {
 /* 头部的选项卡 */
 .header-tab {
   margin-bottom: 10px;
+  background-color: #fff;
+  @include hairline-bottom($border-color);
+
+  .nav-item {
+    flex: 1 1 auto;
+    text-align: center;
+  }
+
+  // 下边框不被hairline边框挡住
+  .nav-link {
+    position: relative;
+    bottom: 1px;
+  }
 }
 
 .header-tab > li {

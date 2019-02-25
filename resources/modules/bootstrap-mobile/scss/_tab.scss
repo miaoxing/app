@@ -1,77 +1,23 @@
-/**
- * 选项卡
- */
+// Tab underline
+
 .tab-underline {
-  width: 100%;
-  overflow: scroll;
-  -webkit-overflow-scrolling: touch;
-  background-color: #fff;
-  display: flex;
-}
+  border-bottom: 1px solid $border-color;
 
-// 解决border—bottom被clearfix覆盖
-.nav.tab-underline:after {
-  display: block;
-}
+  .nav-item {
+    margin-bottom: -1px;
+  }
 
-.tab-underline::-webkit-scrollbar {
-  height: 0;
-  width: 0;
-}
+  .nav-link {
+    color: $text-muted;
+    border: 0;
 
-.tab-underline > li {
-  flex: 1;
-  text-align: center;
-}
+    &:hover {
+      border-bottom: 3px solid $gray-400;
+    }
 
-.tab-underline > li.active {
-  border-bottom: 3px #00a5e0 solid;
-  opacity: .8;
-}
-
-.tab-underline > li > a {
-  color: #808080;
-  font-size: 16px;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-.tab-underline > li.active > a {
-  color: #00a5e0;
-}
-
-.nav > li > a:hover, .nav > li > a:focus {
-  background: transparent;
-}
-
-.tab-btn-group > .btn.active, .tab-btn-group > .btn.active:active, .tab-btn-group > .btn.active:focus {
-  box-shadow: none
-}
-
-.tab-btn-group > .btn:not(:last-child) {
-  border-right-width: 0
-}
-
-.tab-btn-group > .btn.active, .tab-btn-group > .btn:last-child {
-  border-right-width: 1px
-}
-
-.tab-btn-group > .btn:not(:last-child).active + .btn {
-  border-left-width: 0
-}
-
-.tab-btn-group > .btn-default.active, .tab-btn-group > .btn-default.active:focus {
-  color: #fff;
-  background-color: #00a5e0;
-  border-color: #00a5e0;
-}
-
-.tab-underline-sm > li > a {
-  font-size: 14px;
-  padding-top: 6px;
-  padding-bottom: 4px;
-}
-
-.tab-underline-sm > li.active {
-  border-bottom-width: 2px;
+    &.active {
+      color: $link-color;
+      border-bottom: 3px $link-color solid;
+    }
+  }
 }
