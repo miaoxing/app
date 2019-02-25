@@ -18,9 +18,9 @@ class TabNavs extends React.Component {
 
     return <ul className={classNames('header-tab nav tab-underline border-top-bottom', this.props.className)}>
       {_.map(this.props.data, (item) => {
-        return <li key={item.key} className={'nav-item border-primary ' + (cur === item.key ? 'active' : '')}>
+        return <li key={item.key} className={'nav-item border-primary'}>
           <Link to={$.appendUrl(baseUrl, item.key === 'all' ? {} : {[this.props.paramName]: item.key})}
-            className="nav-link text-active-primary">{item.name}</Link>
+            className={"nav-link text-active-primary " + (cur === item.key ? 'active' : '')}>{item.name}</Link>
         </li>;
       })}
     </ul>;
