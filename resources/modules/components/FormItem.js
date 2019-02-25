@@ -9,8 +9,8 @@ function FormItem({component = Form.Group, label, name, help, labelSize = 2, con
   const Component = component; // 大写字母开头才会识别为组件
 
   return (
-    <Component as={Row} controlId={id}>
-      <Form.Label column sm={labelSize}
+    <Component as={Row}>
+      <Form.Label column sm={labelSize} htmlFor={id}
         className={'text-sm-right ' + (groupSize ? ' col-form-label-' + groupSize : '')}>
         {props.required && <Required/>}
         {label}
