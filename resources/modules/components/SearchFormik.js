@@ -1,4 +1,3 @@
-import '../styles/_search-form.scss';
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Form} from "react-bootstrap";
