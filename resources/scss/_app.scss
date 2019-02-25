@@ -49,15 +49,6 @@ body {
   padding: 6px;
 }
 
-/* 可以左右滚动的选项卡 */
-.scrollable-tab::-webkit-scrollbar {
-  display: none;
-}
-
-.scrollable-tab > li {
-  min-width: 75px;
-}
-
 /* 统计栏 */
 .stat-nav {
   padding-left: 0;
