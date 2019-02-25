@@ -4,7 +4,7 @@ class PageHeader extends React.Component {
   render () {
     return (
       <div className="page-header">
-        {this.props.children && <div className="pull-right">{this.props.children}</div>}
+        {this.props.children && <div className="float-right">{this.props.children}</div>}
         <h1>
           {this.props.parentTitle || wei.page.controllerTitle}
           <small>
