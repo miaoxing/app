@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import map from 'lodash/map';
+import find from 'lodash/find';
 import classNames from 'classnames';
 import {Nav} from "react-bootstrap";
 
@@ -13,7 +14,7 @@ class TabNavs extends React.Component {
       };
     }
 
-    const item = _.find(this.props.data, ['key', $.req(this.props.paramName)]);
+    const item = find(this.props.data, ['key', $.req(this.props.paramName)]);
     const cur = item ? item.key : 'all';
     const baseUrl = this.props.baseUrl || window.location.pathname;
 
