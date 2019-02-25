@@ -13,7 +13,7 @@ import '../modules/bootstrap-tips/bootstrap-tips';
 import '../modules/wei';
 import '../modules/require-config';
 import '../modules/bootstrap-popup';
-import '../modules/bootstrap-ajax-tips';
+import '../modules/jquery-ajax-tips';
 
 import '../scss/index.scss';
 
