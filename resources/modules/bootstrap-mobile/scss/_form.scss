@@ -265,30 +265,6 @@
   }*/
 }
 
-/* select优化 */
-.select-wrapper {
-  font-weight: normal;
-  margin-bottom: 0;
-  width: 100%;
-  position: relative;
-}
-
-.select-wrapper::before {
-  position: absolute;
-  content: '';
-  right: 6px;
-  top: 50%;
-  border-top: 4px solid;
-  border-right: 4px solid transparent;
-  border-left: 4px solid transparent;
-  margin-top: -2px;
-}
-
-.select-wrapper select {
-  -webkit-appearance: none;
-  line-height: normal;
-}
-
 /* 点击select右边的图标可显示select选项 */
 .form select + .bm-angle-right {
   pointer-events: none;
