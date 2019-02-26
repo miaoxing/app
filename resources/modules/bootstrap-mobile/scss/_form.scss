@@ -14,7 +14,9 @@
   .control-label, // 兼容bs3
   .col-form-label {
     width: 95px;
-    margin-bottom: 0; /* bs */
+    line-height: 44px;
+    padding-top: 0;
+    padding-bottom: 0;
   }
 
   .form-control {
@@ -32,16 +34,21 @@
 }
 
 .form-legend {
-  color: #666;
-  margin-bottom: 0;
+  color: $text-muted;
   background: $body-bg;
-  padding: 6px 15px;
-  font-size: 14px;
+  padding: .5rem 1rem;
+  font-size: .875rem;
   @include hairline-bottom($border-color);
 }
 
 .col-control {
+  display: flex; /* input-group 上下居中 */
   flex: 1;
+  line-height: 44px;
+}
+
+.input-group .form-control {
+  height: auto; /* 上下自动拉伸 */
 }
 
 .form-footer {
@@ -51,43 +58,6 @@
   .btn {
     @extend .btn-md;
   }
-}
-
-.form .control-label,
-.form .col-form-label,
-.form-group > .col-control {
-  @include text-truncate();
-  line-height: 44px;
-  vertical-align: middle; /* input-group 上下居中 */
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.form .input-group .form-control {
-  height: auto; /* 自动拉伸 */
-}
-
-.col-control .input-group-btn .btn {
-  width: 110px; /* TODO rm */
-  height: 100%;
-  font-size: 16px;
-  padding: 0;
-  color: #00a5e0;
-  border: none;
-  background: none;
-  -webkit-appearance: none;
-  outline: none;
-  vertical-align: baseline; // why?
-}
-
-.col-control .input-group-btn .btn::after {
-  border-width: 0;
-}
-
-/* 改bootstrap配置 */
-.col-control .input-group-btn .btn.disabled {
-  color: #a6a6a6;
-  opacity: 1;
 }
 
 /* 嵌入表单 */
