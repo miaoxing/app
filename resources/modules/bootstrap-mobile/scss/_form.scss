@@ -2,17 +2,41 @@
 .form {
   @include hairline-top($border-color);
   background-color: #fff;
+
+  .form-group {
+    display: flex;
+    font-size: 16px;
+    padding-left: 15px;
+    margin-bottom: 0; /* bs */
+    @include hairline-bottom($border-color);
+  }
+
+  .control-label, // 兼容bs3
+  .col-form-label {
+    width: 95px;
+    vertical-align: top;
+    font-weight: normal; /* bs */
+    margin-bottom: 0; /* bs */
+  }
+
+  .form-control {
+    border: none;
+    -webkit-appearance: none;
+    display: inline-block; /* bs */
+    padding-left: 0; /* bs */
+  }
+
+  .form-footer {
+    padding: 15px;
+    background: #f8f8f8;
+    border: 0;
+
+    .btn {
+      @extend .btn-md;
+    }
+  }
 }
 
-.form .form-group {
-  display: flex;
-  font-size: 16px;
-  padding-left: 15px;
-  margin-bottom: 0; /* bs */
-  @include hairline-bottom($border-color);
-}
-
-.form legend,
 .form-legend {
   color: #666;
   margin-bottom: 0;
@@ -36,10 +60,8 @@
 .form .control-label,
 .form .col-form-label,
 .form-group > .col-control {
+  @include text-truncate();
   line-height: 44px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
   vertical-align: middle; /* input-group 上下居中 */
   padding-top: 0;
   padding-bottom: 0;
@@ -49,36 +71,10 @@
   flex: 1;
 }
 
-.form .control-label,
-.form .col-form-label {
-  width: 95px;
-  vertical-align: top;
-  font-weight: normal; /* bs */
-  margin-bottom: 0; /* bs */
-}
-
 /* label显示右边框,则input自动缩进 */
 .control-label.border-right + .col-control input,
 .col-form-label.border-right + .col-control input {
   padding-left: 20px;
-}
-
-.form .form-control {
-  border: none;
-  background: none;
-  -webkit-appearance: none;
-  outline: none;
-  font-size: 16px; /* bs */
-  box-shadow: none; /* bs */
-  display: inline-block; /* bs */
-  padding-left: 0; /* bs */
-  padding-right: 15px;
-}
-
-.form .form-control:focus {
-  outline: none;
-  -webkit-tap-highlight-color: transparent;
-  box-shadow: none; /* bs */
 }
 
 .form textarea.form-control {
@@ -132,19 +128,6 @@
 .col-control .input-group-addon:last-child {
   border-width: 0;
   background: transparent;
-}
-
-/* 底部提交按钮组 */
-.form .form-footer {
-  padding: 15px;
-  background: #f8f8f8;
-  border: 0;
-}
-
-.form-footer .btn {
-  font-size: 16px;
-  padding-top: 9px; /* 高度调到44px */
-  padding-bottom: 9px;
 }
 
 /* Checkbox + Radio */
