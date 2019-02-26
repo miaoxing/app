@@ -5,8 +5,8 @@
 
   .form-group {
     display: flex;
-    font-size: 16px;
-    padding-left: 15px;
+    font-size: 1rem;
+    padding-left: 1rem;
     margin-bottom: 0; /* bs */
     @include hairline-bottom($border-color);
   }
@@ -14,26 +14,33 @@
   .control-label, // 兼容bs3
   .col-form-label {
     width: 95px;
-    vertical-align: top;
-    font-weight: normal; /* bs */
     margin-bottom: 0; /* bs */
   }
 
   .form-control {
     border: none;
-    -webkit-appearance: none;
+    appearance: none;
     display: inline-block; /* bs */
     padding-left: 0; /* bs */
   }
 
-  .form-footer {
-    padding: 15px;
-    background: #f8f8f8;
-    border: 0;
+  textarea.form-control {
+    margin-top: 11px;
+    padding-left: 0;
+    padding-top: 0;
+  }
+}
 
-    .btn {
-      @extend .btn-md;
-    }
+.col-control {
+  flex: 1;
+}
+
+.form-footer {
+  padding: 1rem;
+  background: #f8f8f8;
+
+  .btn {
+    @extend .btn-md;
   }
 }
 
@@ -44,13 +51,6 @@
   padding: 6px 15px;
   font-size: 14px;
   @include hairline-bottom($border-color);
-}
-
-/* 首个legend需要加上border-top */
-.form > fieldset:first-child > legend,
-.form > .form-legend:first-child,
-.form > .form-body > .form-legend:first-child {
-  @include hairline-top($border-color);
 }
 
 .form-link:active {
@@ -67,20 +67,10 @@
   padding-bottom: 0;
 }
 
-.col-control {
-  flex: 1;
-}
-
 /* label显示右边框,则input自动缩进 */
 .control-label.border-right + .col-control input,
 .col-form-label.border-right + .col-control input {
   padding-left: 20px;
-}
-
-.form textarea.form-control {
-  margin-top: 11px;
-  padding-left: 0;
-  padding-top: 0;
 }
 
 .form .input-group .form-control {
