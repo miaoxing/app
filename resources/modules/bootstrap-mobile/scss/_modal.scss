@@ -6,13 +6,13 @@
   @include hairline-bottom($border-color);
 }
 
+.modal-title {
+  font-size: 1rem;
+}
+
 .modal-body {
   font-size: 1rem;
   overflow-y: auto;
-}
-
-.modal-title {
-  font-size: 1rem;
 }
 
 .modal-footer {
@@ -20,27 +20,33 @@
 }
 
 /* 底部弹出Modal窗口 */
-.modal.fade .modal-dialog {
-  transform: translate3d(0, 25%, 0);
-}
+.modal-bottom {
+  .modal-dialog {
+    margin: 0;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+  }
 
-.modal-bottom .modal-dialog {
-  margin: 0;
-  bottom: 0;
-  position: absolute;
-  width: 100%;
-}
+  &.fade .modal-dialog {
+    transform: translate3d(0, 25%, 0);
+  }
 
-.modal-bottom .close {
-  font-size: 40px;
-  font-weight: 100;
-  padding: 0 1rem 0 0;
-  position: relative;
-  top: 4px;
-}
+  &.show .modal-dialog {
+    transform: none;
+  }
 
-.modal-bottom .modal-content {
-  border-radius: 0;
+  .close {
+    font-size: 40px;
+    font-weight: 100;
+    padding: 0 1rem 0 0;
+    position: relative;
+    top: 4px;
+  }
+
+  .modal-content {
+    border-radius: 0;
+  }
 }
 
 /* 解决iOS底部弹窗后可以继续往下滚动的问题 */
@@ -50,9 +56,8 @@
   height: 100%;
 }
 
-.modal-fixfixed .modal-backdrop.in {
+.modal-fixfixed .modal-backdrop.show {
   opacity: .8;
-  filter: alpha(opacity=80);
 }
 
 // 实现缩放动画效果
