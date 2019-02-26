@@ -37,7 +37,7 @@
 
 .form-footer {
   padding: 1rem;
-  background: #f8f8f8;
+  background: $body-bg;
 
   .btn {
     @extend .btn-md;
@@ -47,7 +47,7 @@
 .form-legend {
   color: #666;
   margin-bottom: 0;
-  background: #f8f9fa;
+  background: $body-bg;
   padding: 6px 15px;
   font-size: 14px;
   @include hairline-bottom($border-color);
