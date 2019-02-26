@@ -31,6 +31,15 @@
   }
 }
 
+.form-legend {
+  color: #666;
+  margin-bottom: 0;
+  background: $body-bg;
+  padding: 6px 15px;
+  font-size: 14px;
+  @include hairline-bottom($border-color);
+}
+
 .col-control {
   flex: 1;
 }
@@ -42,15 +51,6 @@
   .btn {
     @extend .btn-md;
   }
-}
-
-.form-legend {
-  color: #666;
-  margin-bottom: 0;
-  background: $body-bg;
-  padding: 6px 15px;
-  font-size: 14px;
-  @include hairline-bottom($border-color);
 }
 
 .form .control-label,
