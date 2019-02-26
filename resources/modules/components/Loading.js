@@ -10,7 +10,7 @@ export default (props) => {
 
     $.log(props.error.toString(), {stack: props.error.stack});
     return <div className="mt-3 mt-3">
-      很抱歉,加载出错! <button className="btn btn-default btn-sm" onClick={props.retry}>重试</button>
+      很抱歉,加载出错! <button className="btn btn-secondary btn-sm" onClick={props.retry}>重试</button>
       <div className="d-none hide">{props.error.toString()}</div>
     </div>;
   } else {

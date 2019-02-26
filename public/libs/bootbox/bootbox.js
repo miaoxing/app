@@ -1040,7 +1040,7 @@
           // always add a primary to the main option in a one or two-button dialog
           button.className = 'btn-primary';
         } else {
-          button.className = 'btn-secondary btn-default';
+          button.className = 'btn-secondary btn-secondary';
         }
       }
     });

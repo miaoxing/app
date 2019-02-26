@@ -597,7 +597,7 @@
     border-left-width: 0
 }
 
-.tab-btn-group > .btn-default.active, .tab-btn-group > .btn-default.active:focus {
+.tab-btn-group > .btn-secondary.active, .tab-btn-group > .btn-secondary.active:focus {
     color: #fff;
     background-color: #00a5e0;
     border-color: #00a5e0;
