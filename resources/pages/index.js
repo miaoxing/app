@@ -9,7 +9,7 @@ import 'script-loader!jquery/dist/jquery.min';
 import 'bootstrap/js/dist/modal';
 import '../modules/bootstrap-mobile/js/modal';
 
-import '../modules/bootstrap-tips/bootstrap-tips';
+import '../modules/bootstrap-tips';
 import '../modules/bootstrap-popup';
 import '../modules/loading';
 
