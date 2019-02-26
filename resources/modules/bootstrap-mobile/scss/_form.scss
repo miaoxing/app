@@ -5,14 +5,11 @@
 }
 
 .form .form-group {
+  display: flex;
   font-size: 16px;
-  position: relative;
   padding-left: 15px;
-  display: table;
-  width: 100%;
-  table-layout: fixed;
   margin-bottom: 0; /* bs */
-  border-bottom: 1px solid #dedfe0;
+  @include hairline-bottom($border-color);
 }
 
 .form legend,
@@ -32,16 +29,6 @@
   @include hairline-top($border-color);
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 2) {
-  .form .form-group {
-    border-bottom: none;
-    background-position: left bottom;
-    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0.5, transparent), color-stop(0.5, #dedfe0), to(#dedfe0));
-    background-repeat: repeat-x;
-    -webkit-background-size: 100% 1px;
-  }
-}
-
 .form-link:active {
   background-color: #e5e6e7;
 }
@@ -49,7 +36,6 @@
 .form .control-label,
 .form .col-form-label,
 .form-group > .col-control {
-  display: table-cell;
   line-height: 44px;
   white-space: nowrap;
   overflow: hidden;
@@ -57,6 +43,10 @@
   vertical-align: middle; /* input-group 上下居中 */
   padding-top: 0;
   padding-bottom: 0;
+}
+
+.col-control {
+  flex: 1;
 }
 
 .form .control-label,
