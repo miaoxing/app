@@ -136,7 +136,7 @@ api.loading = (options = 'show') => {
       break;
 
     case 'hide':
-      return loadingResult();
+      return loadingResult && loadingResult();
 
     default:
       if (typeof options === 'string' || React.isValidElement(options)) {
@@ -145,6 +145,7 @@ api.loading = (options = 'show') => {
   }
 
   options = {...loadingOptions, ...options};
+  loadingResult && loadingResult();
   loadingResult = api.open(options);
   return loadingResult;
 };

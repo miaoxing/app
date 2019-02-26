@@ -1,5 +1,4 @@
 @import "variables";
-@import "../modules/bootstrap-mobile/scss/mixins/hairline";
 
 // Bootstrap 样式
 @import "~bootstrap/scss/functions";
@@ -54,9 +53,27 @@
 //@import "~bootstrap/scss/utilities/visibility";
 //@import "~bootstrap/scss/print";
 
+// Bootstrap Mobile 样式
+//@import "../modules/bootstrap-mobile/scss/variables";
+@import "../modules/bootstrap-mobile/scss/mixins/hairline";
+@import "../modules/bootstrap-mobile/scss/border";
+@import "../modules/bootstrap-mobile/scss/modal";
+@import "../modules/bootstrap-mobile/scss/utilities";
+@import "../modules/bootstrap-mobile/scss/layout";
+@import "../modules/bootstrap-mobile/scss/icon";
+@import "../modules/bootstrap-mobile/scss/button";
+//@import "../modules/bootstrap-mobile/scss/loading";
+@import "../modules/bootstrap-mobile/scss/tab";
+@import "../modules/bootstrap-mobile/scss/form";
+@import "../modules/bootstrap-mobile/scss/list";
+@import "../modules/bootstrap-mobile/scss/table";
+//@import "../modules/bootstrap-mobile/scss/switch";
+@import "../modules/bootstrap-mobile/scss/checkbox";
+//@import "../modules/bootstrap-mobile/scss/spinner";
+//@import "../modules/bootstrap-mobile/scss/notice";
+
 // 自定义样式
 @import "../modules/bootstrap-tips/bootstrap-tips";
-@import "../modules/bootstrap-mobile/scss/bootstrap-mobile";
 @import '../modules/react-bootstrap-message/scss/react-bootstrap-message';
 @import "bs3-utilities";
 @import "font-sizes";
