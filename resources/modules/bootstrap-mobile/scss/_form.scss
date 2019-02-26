@@ -63,12 +63,6 @@
   padding-bottom: 0;
 }
 
-/* label显示右边框,则input自动缩进 */
-.control-label.border-right + .col-control input,
-.col-form-label.border-right + .col-control input {
-  padding-left: 20px;
-}
-
 .form .input-group .form-control {
   height: auto; /* 自动拉伸 */
 }
