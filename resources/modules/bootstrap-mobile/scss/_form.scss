@@ -67,22 +67,6 @@
   height: auto; /* 自动拉伸 */
 }
 
-.form .has-feedback .form-control {
-  padding-right: 44px;
-}
-
-.form .form-control-feedback {
-  height: 44px;
-  line-height: 44px;
-  width: 44px;
-  color: #a6a6a6;
-  pointer-events: visible; /* bs */
-}
-
-.form .form-control-feedback:hover {
-  text-decoration: none;
-}
-
 /* 输入框右边的文案,如"元","个" */
 .col-control .input-group-addon {
   background: transparent;
@@ -207,11 +191,6 @@
   }*/
 }
 
-/* 点击select右边的图标可显示select选项 */
-.form select + .bm-angle-right {
-  pointer-events: none;
-}
-
 /* 内联Radio */
 .col-control .radio-inline {
   margin-left: 4px;
@@ -232,3 +211,18 @@
 }
 
 /* 按钮禁用颜色 #a6a6a6, 点击背景颜色 #e5e6e7 */
+
+// Deprecated
+
+// 右边展示图标
+.form-control-feedback {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 44px;
+  line-height: 44px;
+  width: 44px;
+  color: #a6a6a6;
+  text-align: center;
+  pointer-events: none;
+}
