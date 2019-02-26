@@ -56,10 +56,6 @@
     border-left: 4px solid;
 }
 
-.no-shadow {
-    -webkit-box-shadow: none;
-    box-shadow: none;
-}
 .flex {
     display: -webkit-box;
     display: -webkit-flex;
