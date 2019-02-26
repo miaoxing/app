@@ -39,7 +39,7 @@ class MobileVerifyCode extends React.Component {
           <Field type="tel" className="form-control" id="verify-code" name={this.props.name} placeholder="请输入验证码"
             maxLength={this.props.maxLength}/>
           <span className="input-group-btn border-left">
-            <button type="button" className="js-verify-code-send text-primary btn btn-secondary form-link">
+            <button type="button" className="js-verify-code-send text-primary btn btn-secondary">
               获取验证码
             </button>
           </span>
