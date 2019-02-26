@@ -17,3 +17,5 @@ $.msg = function (result, delay, callback) {
 });
 $.suc = message.success;
 $.err = message.danger;
+
+window.message = message;
