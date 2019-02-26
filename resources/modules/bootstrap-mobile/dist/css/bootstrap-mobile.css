@@ -56,7 +56,7 @@
     border-left: 4px solid;
 }
 
-.flex {
+.d-flex{
     display: -webkit-box;
     display: -webkit-flex;
     display: flex;
@@ -69,7 +69,7 @@
     flex-direction: row
 }
 
-.flex-y {
+.flex-column {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
     -webkit-flex-direction: column;
