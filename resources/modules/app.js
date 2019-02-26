@@ -1,4 +1,4 @@
-import message from 'comps/react-bootstrap-message/js/react-bootstrap-message';
+import message from 'react-bootstrap-message/js/react-bootstrap-message';
 import modal from 'modal';
 import param from 'jquery-param';
 

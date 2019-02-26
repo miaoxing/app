@@ -1,6 +1,6 @@
 import axios from 'node_modules/axios';
 import app from 'app';
-import message from 'comps/react-bootstrap-message/js/react-bootstrap-message';
+import message from 'react-bootstrap-message/js/react-bootstrap-message';
 import React from "react";
 
 let count = 0;
