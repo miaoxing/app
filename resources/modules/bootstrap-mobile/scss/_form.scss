@@ -57,6 +57,7 @@
   background-color: #e5e6e7;
 }
 
+.form .control-label,
 .form .col-form-label,
 .form-group > .col-control {
   display: table-cell;
@@ -69,6 +70,7 @@
   padding-bottom: 0;
 }
 
+.form .control-label,
 .form .col-form-label {
   width: 95px;
   vertical-align: top;
@@ -77,6 +79,7 @@
 }
 
 /* label显示右边框,则input自动缩进 */
+.control-label.border-right + .col-control input,
 .col-form-label.border-right + .col-control input {
   padding-left: 20px;
 }
