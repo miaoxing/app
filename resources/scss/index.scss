@@ -58,8 +58,7 @@
 @import "../modules/bootstrap-mobile/scss/mixins/hairline";
 @import "../modules/bootstrap-mobile/scss/border";
 @import "../modules/bootstrap-mobile/scss/modal";
-@import "../modules/bootstrap-mobile/scss/utilities";
-@import "../modules/bootstrap-mobile/scss/layout";
+@import "../modules/bootstrap-mobile/scss/flex";
 @import "../modules/bootstrap-mobile/scss/icon";
 @import "../modules/bootstrap-mobile/scss/button";
 //@import "../modules/bootstrap-mobile/scss/loading";
@@ -71,6 +70,7 @@
 @import "../modules/bootstrap-mobile/scss/checkbox";
 //@import "../modules/bootstrap-mobile/scss/spinner";
 //@import "../modules/bootstrap-mobile/scss/notice";
+@import "../modules/bootstrap-mobile/scss/utilities";
 
 // 自定义样式
 @import '../modules/react-bootstrap-message/scss/react-bootstrap-message';
