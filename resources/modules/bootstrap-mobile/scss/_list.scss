@@ -9,33 +9,44 @@
   list-style: none;
 }
 
-.list > li,
-.list-item {
-  @include hairline-top($border-color); /* 在list-intended时,点击高亮整行背景,和下一行的上边框,因此只能用border-top */
-}
-
-.list > li:first-child,
-.list-item:first-child {
-  @include hairline-none();
-}
-
-.list > li:first-child.list-divider {
-  @include hairline-top($border-color);
-}
-
-/* 列表项目,可以加到li或a标签中 */
+// 列表项目,可以加到li或a标签中
+.list li, // 兼容旧版本
 .list-item {
   display: flex;
   color: inherit;
   padding: .625rem 1rem;
 
+  /* 在list-intended时,点击高亮整行背景,和下一行的上边框,使用 border-top 效果更美观 */
+  @include hairline-top($border-color);
+
+  &:first-child {
+    @include hairline-none();
+  }
+
   &:hover {
     color: inherit;
     text-decoration: none;
   }
+
+  @at-root a.list-item:active {
+    background-color: $gray-300;
+  }
+}
+
+// 设置单个item为可点击状态
+.list-item-link {
+  cursor: pointer;
+
+  &:active {
+    background-color: $gray-300;
+  }
 }
 
 /* 列表分割线 */
+.list li:first-child.list-divider {
+  @include hairline-top($border-color);
+}
+
 .list-divider {
   padding-top: 6px;
   padding-bottom: 6px;
@@ -44,17 +55,6 @@
 
 .list-divider .list-heading {
   font-size: 14px;
-}
-
-/* 点击高亮背景, list-item-link用与单独一个li */
-a.list-item:active,
-.list-item-link:active {
-  background-color: $gray-300;
-}
-
-/* 应用在li标签上,使用手型鼠标提示用户可以点击 */
-.list-item-link {
-  cursor: pointer;
 }
 
 /* 列表栏目,相当于td */
@@ -102,9 +102,9 @@ a.list-item:active,
   color: $text-muted;
 }
 
-/* 缩进列表 */
+// 缩进列表
 .list-indented {
-  overflow: hidden; // 隐藏left超出的边框
+  overflow: hidden; // 隐藏 left 超出的边框
 
   li::after, // 兼容旧版本
   .list-item::after {
@@ -113,7 +113,7 @@ a.list-item:active,
 
   // 激活时，下边框占满整行
   li:active + li::after, // 兼容旧版本
-  .list-item:active + .list-item {
+  .list-item:active + .list-item::after {
     left: 0;
   }
 }
