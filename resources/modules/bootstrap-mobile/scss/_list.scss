@@ -9,11 +9,13 @@
   list-style: none;
 }
 
-.list > li {
+.list > li,
+.list-item {
   @include hairline-top($border-color); /* 在list-intended时,点击高亮整行背景,和下一行的上边框,因此只能用border-top */
 }
 
-.list > li:first-child {
+.list > li:first-child,
+.list-item:first-child {
   @include hairline-none();
 }
 
@@ -47,6 +49,8 @@
 /* 点击高亮背景, list-link用于整个ul的所有li, list-item-link用与单独一个li */
 .list-link > li:not(.list-divider):active,
 .list-link > li:not(.list-divider).active,
+.list-item:active,
+.list-item.active,
 .list-item-link:active,
 .list-item-link.active {
   background-color: $gray-300;
