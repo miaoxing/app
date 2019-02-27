@@ -28,7 +28,7 @@
   }
 
   .form-control:disabled,
-  .form-control[readonly]{
+  .form-control[readonly] {
     background-color: transparent; /* bs */
   }
 
@@ -84,6 +84,7 @@
   margin-right: 1rem;
 
   .form-body {
+    overflow: hidden;
     border-radius: $border-radius-lg;
     @include hairline($border-color, $border-radius-lg);
   }
