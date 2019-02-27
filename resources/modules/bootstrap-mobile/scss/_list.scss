@@ -9,14 +9,13 @@
   list-style: none;
 }
 
-// 列表项目,可以加到li或a标签中
-.list li, // 兼容旧版本
+// 列表项目
 .list-item {
   display: flex;
   color: inherit;
   padding: .625rem 1rem;
 
-  /* 在list-intended时,点击高亮整行背景,和下一行的上边框,使用 border-top 效果更美观 */
+  /* 在 list-intended 时,点击高亮整行背景,和下一行的上边框,使用 border-top 效果更美观 */
   @include hairline-top($border-color);
 
   &:first-child {
@@ -30,6 +29,16 @@
 
   @at-root a.list-item:active {
     background-color: $gray-300;
+  }
+}
+
+// 兼容旧版本
+.list li {
+  /* 在 list-intended 时,点击高亮整行背景,和下一行的上边框,使用 border-top 效果更美观 */
+  @include hairline-top($border-color);
+
+  &:first-child {
+    @include hairline-none();
   }
 }
 
