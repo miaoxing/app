@@ -941,7 +941,7 @@
         -webkit-background-size: 100% 1px;
     }
 
-    .list > li, .list > li:first-child.list-divider {
+    .list > li, .list > li:first-child.list-item-divider {
         border-top: 0;
         background-repeat: repeat-x;
         -webkit-background-size: 100% 1px;
@@ -968,24 +968,24 @@
 }
 
 /* 列表分割线 */
-.list-divider {
+.list-item-divider {
     padding-top: 6px;
     padding-bottom: 6px;
     background-color: #f8f9fa;
 }
 
-.list-divider .list-heading {
+.list-item-divider .list-heading {
     font-size: 14px;
 }
 
 /* 点击高亮背景, list-link用于整个ul的所有li, list-item-link用与单独一个li */
-.list-link > li:not(.list-divider):active, .list-link > li:not(.list-divider).active,
+.list-link > li:not(.list-item-divider):active, .list-link > li:not(.list-item-divider).active,
 .list-item-link:active, .list-item-link.active {
     background-color: #e5e6e7;
 }
 
 /* 应用在li标签上,使用手型鼠标提示用户可以点击 */
-.list-link > li:not(.list-divider), .list-item-link {
+.list-link > li:not(.list-item-divider), .list-item-link {
     cursor: pointer;
 }
 
@@ -1088,16 +1088,16 @@
 }
 
 /* 缩进列表不更改divider样式 */
-.list-indented > .list-divider {
+.list-indented > .list-item-divider {
     margin-left: 0;
     padding-left: 15px;
 }
 
-.list-indented > .list-divider.list-item {
+.list-indented > .list-item-divider.list-item {
     padding-right: 15px;
 }
 
-.list-indented > .list-divider + li {
+.list-indented > .list-item-divider + li {
     padding-left: 15px;
     padding-right: 15px;
     margin-left: 0;
