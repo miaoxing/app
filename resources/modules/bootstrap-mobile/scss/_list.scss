@@ -1,10 +1,12 @@
 .list {
   font-size: 1rem;
-  padding-left: 0;
-  list-style: none;
   background-color: #fff;
   @include hairline-top($border-color);
   @include hairline-bottom($border-color);
+
+  // ul
+  padding-left: 0;
+  list-style: none;
 }
 
 .list > li {
@@ -20,16 +22,13 @@
 }
 
 /* 列表全局配置 */
-.list .list-item:not([class*="text-"]) {
-  color: inherit;
-}
-
 .list a:hover, .list a:focus {
   text-decoration: none;
 }
 
 /* 列表项目,可以加到li或a标签中 */
 .list-item {
+  color: inherit;
   padding: 10px 15px;
   display: table;
   table-layout: fixed;
