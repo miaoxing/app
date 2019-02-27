@@ -82,12 +82,11 @@
   }
 
   .modal-content {
-    border: 0;
-    overflow: hidden;
+    overflow: hidden; // 隐藏按钮超出的边角
   }
 
   .modal-header {
-    display: none; /* 暂不支持 */
+    display: none; // 前台无需显示
   }
 
   .modal-body {
@@ -99,15 +98,12 @@
   }
 
   .modal-footer {
-    border: 0;
     padding: 0;
-    @include hairline-top($border-color);
   }
 
   .modal-footer > .btn {
     flex: 1 1 0;
     background: transparent;
-    border: none;
     min-height: 3rem;
     font-size: 1.125rem;
     margin: 0;
@@ -119,17 +115,17 @@
 
     &:active,
     &:active:focus {
-      background-color: $gray-300;
-      border: none;
       box-shadow: none;
+    }
+
+    &::after {
+      border-radius: 0;
+      border-width: 0;
     }
   }
 
   .modal-footer > .btn + .btn {
+    // 只显示左边框
     @include hairline-left($border-color);
-  }
-
-  .modal-footer > .btn-primary {
-    color: $primary;
   }
 }

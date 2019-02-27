@@ -73,7 +73,7 @@ const ConfirmDialog = (props) => {
     cancelButtonProps,
     content,
     centered = true,
-    okType = 'primary',
+    okType = 'outline-primary',
     title = '提示',
     okText = '确定',
     cancelText = '取消',
