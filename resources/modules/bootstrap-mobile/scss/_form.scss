@@ -1,4 +1,4 @@
-/* 组合表单 */
+// 组合表单
 .form {
   @include hairline-top($border-color);
   background-color: #fff;
@@ -25,6 +25,11 @@
     appearance: none;
     display: inline-block; /* bs */
     padding-left: 0; /* bs */
+  }
+
+  .form-control:disabled,
+  .form-control[readonly]{
+    background-color: transparent; /* bs */
   }
 
   textarea.form-control {
@@ -71,63 +76,29 @@
   }
 }
 
-/* 嵌入表单 */
+// 嵌入表单
 .form-inset {
-  margin-left: 15px;
-  margin-right: 15px;
-  border: none;
-  background: none;
-}
+  @include hairline-none();
 
-.form-inset::before {
-  background: none;
-  border: none;
-}
+  background-color: transparent;
+  margin-left: 1rem;
+  margin-right: 1rem;
 
-.form-inset .form-body {
-  border-radius: 7px;
-  border: 1px solid #e0e0e0;
-  background: #fff;
-}
+  .form-body {
+    border-radius: $border-radius-lg;
+    @include hairline($border-color, $border-radius-lg);
 
-.form-inset .form-body > .form-group:last-child {
-  border-bottom: none;
-  background-image: none;
-}
-
-.form-inset .form-footer {
-  padding-left: 0;
-  padding-right: 0;
-  background: none;
-}
-
-.form-inset .form-legend:first-child {
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
-}
-
-@media screen and (-webkit-min-device-pixel-ratio: 2) {
-  .form-inset .form-body {
-    position: relative;
-    border: none;
+    background-color: $white;
   }
 
-  .form-inset .form-body:before {
-    content: "";
-    width: 200%;
-    height: 200%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border: 1px solid #dedfe0;
-    -webkit-transform: scale(0.5);
-    -webkit-transform-origin: -50% -50%;
-    border-radius: 14px;
+  .form-group:last-child {
+    @include hairline-none();
   }
 
-  /*.form-inset .form-body .form-legend:first-child {
-      background-image: none;
-  }*/
+  .form-footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 // Deprecated
