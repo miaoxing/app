@@ -51,19 +51,15 @@
   }
 }
 
-/* 列表分割线 */
-.list li:first-child.list-divider {
-  @include hairline-top($border-color);
-}
-
+// 分割线
 .list-divider {
-  padding-top: 6px;
-  padding-bottom: 6px;
-  background-color: #f8f9fa;
-}
+  padding: .375rem 1rem;
+  background-color: $body-bg;
 
-.list-divider .list-heading {
-  font-size: 14px;
+  // Deprecate ?
+  .list-heading {
+    font-size: .875rem;
+  }
 }
 
 /* 列表栏目,相当于td */
@@ -125,25 +121,14 @@
   .list-item:active + .list-item::after {
     left: 0;
   }
-}
 
-/*
-// 缩进列表不更改divider样式
-.list-indented > .list-divider {
-  margin-left: 0;
-  padding-left: 15px;
+  // 分割线显示完整的上下边框
+  .list-divider + li::after, // 兼容旧版本
+  .list-divider::after,
+  .list-divider + .list-item::after {
+    left: 0;
+  }
 }
-
-.list-indented > .list-divider.list-item {
-  padding-right: 15px;
-}
-
-.list-indented > .list-divider + li {
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-left: 0;
-}
-*/
 
 /* 紧凑列表 */
 .list-condensed .list-item {
