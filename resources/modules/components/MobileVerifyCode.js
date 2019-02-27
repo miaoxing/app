@@ -23,13 +23,6 @@ class MobileVerifyCode extends React.Component {
     }
 
     return <div className="js-verify-code-from-group form-group">
-      <style>
-        {`
-        .text-primary.disabled {
-          color: #a6a6a6 !important;
-        }
-        `}
-      </style>
       <label htmlFor="verify-code" className="control-label">
         验证码{' '}
         <span className="text-warning">*</span>
@@ -38,8 +31,8 @@ class MobileVerifyCode extends React.Component {
         <div className="input-group">
           <Field type="tel" className="form-control" id="verify-code" name={this.props.name} placeholder="请输入验证码"
             maxLength={this.props.maxLength}/>
-          <span className="input-group-btn border-left">
-            <button type="button" className="js-verify-code-send text-primary btn btn-secondary">
+          <span className="input-group-append">
+            <button type="button" className="js-verify-code-send btn btn-outline-primary">
               获取验证码
             </button>
           </span>
