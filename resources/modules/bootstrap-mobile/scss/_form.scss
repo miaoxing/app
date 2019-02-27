@@ -28,7 +28,7 @@
   }
 
   textarea.form-control {
-    margin-top: 11px;
+    margin-top: 10px; // TODO why?
     padding-left: 0;
     padding-top: 0;
   }
@@ -53,6 +53,7 @@
 
 .col-control {
   display: flex; /* input-group 上下居中 */
+  align-items: center;
   flex: 1;
   line-height: 44px;
 }
