@@ -1,13 +1,13 @@
 // 组合表单
 .form {
   @include hairline-top($border-color);
-  background-color: #fff;
 
   .form-group {
     display: flex;
     font-size: 1rem;
     padding-left: 1rem;
     margin-bottom: 0; /* bs */
+    background-color: #fff;
     @include hairline-bottom($border-color);
   }
 
@@ -69,7 +69,6 @@
 
 .form-footer {
   padding: 1rem;
-  background: $body-bg;
 
   .btn {
     @extend .btn-md;
@@ -87,8 +86,6 @@
   .form-body {
     border-radius: $border-radius-lg;
     @include hairline($border-color, $border-radius-lg);
-
-    background-color: $white;
   }
 
   .form-group:last-child {
