@@ -38,10 +38,10 @@
 
     // 只显示左边框
     &::after {
-      border-width: 0;
       border-radius: 0;
-      border-color: $border-color !important;
+      border-width: 0;
     }
+
     @include hairline-left($border-color);
   }
 
