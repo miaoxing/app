@@ -22,17 +22,16 @@
 }
 
 /* 列表全局配置 */
-.list a:hover, .list a:focus {
+.list a:hover,
+.list a:focus {
   text-decoration: none;
 }
 
 /* 列表项目,可以加到li或a标签中 */
 .list-item {
   color: inherit;
+  display: flex;
   padding: 10px 15px;
-  display: table;
-  table-layout: fixed;
-  width: 100%;
 }
 
 /* 列表分割线 */
@@ -59,7 +58,8 @@
 
 /* 列表栏目,相当于td */
 .list-col {
-  display: table-cell;
+  display: flex;
+  flex-direction: column;
   width: 100%;
   vertical-align: top;
 }
@@ -84,13 +84,9 @@
   vertical-align: middle;
 }
 
-.list-bottom {
-  vertical-align: bottom;
-}
-
 /* 列表标题 */
 .list-heading {
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: normal;
   margin-top: 0;
   margin-bottom: 0;
@@ -100,14 +96,9 @@
 
 /* 标题下面的文案,一般用于简介,子标题 */
 .list-body {
-  font-size: 12px;
-  margin-top: 8px;
-  color: #808080;
-}
-
-/* 鼠标移过更改背景颜色 */
-.list-hover > li:hover {
-  background-color: #f5f5f5;
+  font-size: .875rem;
+  margin-top: .5rem;
+  color: $text-muted;
 }
 
 /* 缩进列表 */
@@ -235,13 +226,10 @@
   height: 0;
   padding: 0;
   line-height: 40px;
-  /* 开启硬件加速 */
-  -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
 
 .list-loading-transition {
-  -webkit-transition: all 300ms;
   transition: all 300ms;
 }
 
@@ -254,20 +242,7 @@
   border: 2px solid;
   border-bottom-color: transparent;
   vertical-align: middle;
-  -webkit-animation: list-rotate 0.75s linear infinite;
   animation: list-rotate 0.75s linear infinite;
-}
-
-@-webkit-keyframes list-rotate {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  50% {
-    -webkit-transform: rotate(180deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
 }
 
 @keyframes list-rotate {
