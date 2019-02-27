@@ -1,38 +1,22 @@
 .list {
-  font-size: 16px;
+  font-size: 1rem;
   padding-left: 0;
   list-style: none;
   background-color: #fff;
-  border-top: #dedfe0 1px solid;
-  border-bottom: #dedfe0 1px solid;
+  @include hairline-top($border-color);
+  @include hairline-bottom($border-color);
 }
 
 .list > li {
-  border-top: 1px solid #dedfe0; /* 在list-intended时,点击高亮整行背景,和下一行的上边框,因此只能用border-top */
-  position: relative;
+  @include hairline-top($border-color); /* 在list-intended时,点击高亮整行背景,和下一行的上边框,因此只能用border-top */
 }
 
 .list > li:first-child {
-  border: none;
-  background-image: none;
+  @include hairline-none();
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 2) {
-  .list {
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0.5, transparent), color-stop(0.5, #dedfe0), to(#dedfe0)) left top repeat-x, -webkit-gradient(linear, left top, left bottom, color-stop(0.5, transparent), color-stop(0.5, #dedfe0), to(#dedfe0)) left bottom repeat-x;
-    background-color: #fff;
-    border-top: 0;
-    border-bottom: 0;
-    -webkit-background-size: 100% 1px;
-  }
-
-  .list > li, .list > li:first-child.list-divider {
-    border-top: 0;
-    background-repeat: repeat-x;
-    -webkit-background-size: 100% 1px;
-    background-position: left top;
-    background-image: -webkit-gradient(linear, left bottom, left top, color-stop(0.5, transparent), color-stop(0.5, #e0e0e0), to(#e0e0e0));
-  }
+.list > li:first-child.list-divider {
+  @include hairline-top($border-color);
 }
 
 /* 列表全局配置 */
