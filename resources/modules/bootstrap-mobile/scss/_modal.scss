@@ -107,12 +107,8 @@
     font-size: 1.125rem;
     margin: 0;
 
-    &:focus {
-      box-shadow: none;
-    }
-
-    &:active,
-    &:active:focus {
+    // 点击时只有背景色，不显示阴影，淡化操作
+    @include button-active {
       box-shadow: none;
     }
 

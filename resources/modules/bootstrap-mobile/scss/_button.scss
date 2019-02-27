@@ -1,12 +1,7 @@
-// 使用统一的颜色，以便自定义主题色时不会有
+// 使用统一的颜色，以便和主色调不冲突
 .btn {
-  &:not(:disabled):not(.disabled):active,
-  &:not(:disabled):not(.disabled).active {
+  @include button-active {
     box-shadow: $btn-active-box-shadow;
-
-    &:focus {
-      box-shadow: $btn-active-box-shadow;
-    }
   }
 }
 
@@ -24,8 +19,7 @@
       background-color: transparent;
     }
 
-    &:not(:disabled):not(.disabled):active,
-    &:not(:disabled):not(.disabled).active {
+    @include button-active {
       color: $value;
       background-color: $gray-100;
     }

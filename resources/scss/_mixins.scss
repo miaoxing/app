@@ -1,0 +1,6 @@
+@mixin button-active {
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    @content;
+  }
+}
