@@ -152,13 +152,12 @@
 
 /* 紧凑列表 */
 .list-condensed .list-item {
-  padding: 5px 8px;
+  padding: .3rem .5rem;
 }
 
 /* 无边框列表 */
 .list-borderless > li {
-  border-bottom: 0;
-  background-image: none;
+  @include hairline-none();
 }
 
 /* 左右布局列表 */
@@ -167,25 +166,6 @@
   padding-right: 0;
   font-weight: normal; /* bs */
   margin-bottom: 0; /* bs */
-}
-
-.list-content {
-  padding-left: 0;
-}
-
-/* 列表头部 */
-.list-header {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-  color: #222
-}
-
-.list-header .list-heading {
-  font-size: 20px;
-}
-
-.list-header .small {
-  margin-top: 8px;
 }
 
 /* 列表右边的图标 */
@@ -217,7 +197,7 @@
 /* 列表为空的提示文案 */
 .list-empty {
   text-align: center;
-  padding: 6em 0;
+  padding: 6rem 0;
 }
 
 .list-loading-top {
@@ -255,4 +235,15 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+// Deprecated
+/* 列表头部 */
+.list-header {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.list-header .list-heading {
+  font-size: 1.25rem;
 }
