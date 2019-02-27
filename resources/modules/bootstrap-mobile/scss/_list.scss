@@ -46,18 +46,14 @@
   font-size: 14px;
 }
 
-/* 点击高亮背景, list-link用于整个ul的所有li, list-item-link用与单独一个li */
-.list-link > li:not(.list-divider):active,
-.list-link > li:not(.list-divider).active,
-.list-item:active,
-.list-item.active,
-.list-item-link:active,
-.list-item-link.active {
+/* 点击高亮背景, list-item-link用与单独一个li */
+a.list-item:active,
+.list-item-link:active {
   background-color: $gray-300;
 }
 
 /* 应用在li标签上,使用手型鼠标提示用户可以点击 */
-.list-link > li:not(.list-divider), .list-item-link {
+.list-item-link {
   cursor: pointer;
 }
 
