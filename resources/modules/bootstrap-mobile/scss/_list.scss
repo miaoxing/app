@@ -46,9 +46,11 @@
 }
 
 /* 点击高亮背景, list-link用于整个ul的所有li, list-item-link用与单独一个li */
-.list-link > li:not(.list-divider):active, .list-link > li:not(.list-divider).active,
-.list-item-link:active, .list-item-link.active {
-  background-color: #e5e6e7;
+.list-link > li:not(.list-divider):active,
+.list-link > li:not(.list-divider).active,
+.list-item-link:active,
+.list-item-link.active {
+  background-color: $gray-300;
 }
 
 /* 应用在li标签上,使用手型鼠标提示用户可以点击 */
@@ -103,38 +105,22 @@
 
 /* 缩进列表 */
 .list-indented {
-  overflow: hidden;
+  overflow: hidden; // 隐藏left超出的边框
+
+  li::after, // 兼容旧版本
+  .list-item::after {
+    left: 1rem;
+  }
+
+  // 激活时，下边框占满整行
+  li:active + li::after, // 兼容旧版本
+  .list-item:active + .list-item {
+    left: 0;
+  }
 }
 
-.list-indented > li {
-  margin-left: 15px;
-}
-
-.list-indented .list-item {
-  padding-left: 0;
-}
-
-/* 修复缩进后右边内边距丢失的问题 */
-.list-indented > li.list-item {
-  padding-right: 30px;
-}
-
-/* 缩进列表点击时,本行和下一行的的上边框占满整格 */
-.list-indented.list-link > li:active, .list-indented > .list-item-link:active,
-.list-indented.list-link > li.active, .list-indented > .list-item-link.active,
-.list-indented.list-link > li:active + li, .list-indented > .list-item-link:active + li,
-.list-indented.list-link > li.active + li, .list-indented > .list-item-link.active + li {
-  padding-left: 15px;
-  margin-left: 0;
-}
-
-/* 缩进列表点击时,修复下一行缩进错误 */
-.list-indented.list-link > li:active + li.list-item, .list-indented > .list-item-link:active + li.list-item,
-.list-indented.list-link > li.active + li.list-item, .list-indented > .list-item-link.active + li.list-item {
-  padding-right: 15px;
-}
-
-/* 缩进列表不更改divider样式 */
+/*
+// 缩进列表不更改divider样式
 .list-indented > .list-divider {
   margin-left: 0;
   padding-left: 15px;
@@ -149,6 +135,7 @@
   padding-right: 15px;
   margin-left: 0;
 }
+*/
 
 /* 紧凑列表 */
 .list-condensed .list-item {
