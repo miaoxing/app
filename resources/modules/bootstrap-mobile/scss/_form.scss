@@ -17,6 +17,7 @@
     line-height: 44px;
     padding-top: 0;
     padding-bottom: 0;
+    margin-bottom: 0; /* control-label */
   }
 
   .form-control {
@@ -30,6 +31,27 @@
     margin-top: 11px;
     padding-left: 0;
     padding-top: 0;
+  }
+
+  .input-group .btn {
+    border-radius: 0;
+
+    :hover {
+      background: none;
+    }
+
+    // 只显示左边框
+    &::after {
+      border-width: 0;
+      border-radius: 0;
+      border-color: $border-color !important;
+    }
+
+    @include hairline-left($border-color);
+  }
+
+  .form-control:focus {
+    z-index: 0;
   }
 }
 

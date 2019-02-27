@@ -1,3 +1,15 @@
+// 使用统一的颜色，以便自定义主题色时不会有
+.btn {
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active {
+    box-shadow: $btn-active-box-shadow;
+
+    &:focus {
+      box-shadow: $btn-active-box-shadow;
+    }
+  }
+}
+
 @each $color, $value in $theme-colors {
   .btn-#{$color} {
     border-width: 0;
@@ -5,6 +17,18 @@
 
   .btn-outline-#{$color} {
     @include hairline($value, $btn-border-radius);
+
+    // hover 使用默认样式，解决 iOS 保留住 hover 效果
+    &:hover {
+      color: $value;
+      background-color: transparent;
+    }
+
+    &:not(:disabled):not(.disabled):active,
+    &:not(:disabled):not(.disabled).active {
+      color: $value;
+      background-color: $gray-100;
+    }
   }
 }
 
