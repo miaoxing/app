@@ -34,14 +34,7 @@
   }
 
   .input-group .btn {
-    border-radius: 0;
-
-    // 只显示左边框
-    &::after {
-      border-radius: 0;
-      border-width: 0;
-    }
-
+    @include hairline-none(true);
     @include hairline-left($border-color);
   }
 

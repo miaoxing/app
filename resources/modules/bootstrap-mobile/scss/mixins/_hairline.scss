@@ -92,3 +92,15 @@
     @extend %border;
   }
 }
+
+@mixin hairline-none($no-radius: false) {
+  @if $no-radius == true {
+    border-radius: 0;
+  }
+  &:after {
+    border-width: 0;
+    @if $no-radius == true {
+      border-radius: 0;
+    }
+  }
+}
