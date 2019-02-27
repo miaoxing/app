@@ -21,17 +21,16 @@
   @include hairline-top($border-color);
 }
 
-/* 列表全局配置 */
-.list a:hover,
-.list a:focus {
-  text-decoration: none;
-}
-
 /* 列表项目,可以加到li或a标签中 */
 .list-item {
-  color: inherit;
   display: flex;
-  padding: 10px 15px;
+  color: inherit;
+  padding: .625rem 1rem;
+
+  &:hover {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 
 /* 列表分割线 */
