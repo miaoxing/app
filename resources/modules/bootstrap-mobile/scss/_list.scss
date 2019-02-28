@@ -1,3 +1,6 @@
+$list-item-padding-x: 1rem !default;
+$list-item-padding-y: .625rem !default;
+
 .list {
   font-size: 1rem;
   background-color: #fff;
@@ -13,7 +16,7 @@
 .list-item {
   display: flex;
   color: inherit;
-  padding: .625rem 1rem;
+  padding: $list-item-padding-y $list-item-padding-x;
 
   align-items: center; // 避免默认拉伸
 
@@ -61,6 +64,31 @@
 
   .list-title {
     font-size: .875rem;
+  }
+}
+
+// 项目媒体,放在左侧,例如图片,图标
+.list-media {
+  display: flex;
+  align-self: stretch; // 占满项目内部,以便::after定位
+  align-items: center;
+  position: relative;
+  padding-right: $list-item-padding-x;
+
+  // 占满项目外框,以便挡住底部的边
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: 1;
+    top: calc(#{$list-item-padding-y} + 1px);
+    width: 100%;
+    height: 100%;
+    border-bottom: 1px solid #fff;
+    pointer-events: none;
+
+    @at-root .list-item:active {
+      z-index: 1; // 遮住.list-media::after
+    }
   }
 }
 

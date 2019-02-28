@@ -853,16 +853,47 @@
                     没有标题和文本
                   </li>
 
-                  <li class="list-item-link">
-                    <a class="list-item" href="javascript:;">
-                      <img width="48" class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
-                      <div class="list-col ml-3">
-                        标题标题标题标题标题标题标题标题标题
-                        标题标题标题标题标题标题标题标题标题
-                        标题标题标题标题标题标题标题标题标题
-                        标题标题标题标题标题标题标题标题标题
-                      </div>
-                    </a>
+                  <style>
+                    .list-item:active {
+                      z-index: 1;
+                    }
+                    .list-item:active .list-media::after {
+                      display: none;
+                    }
+                  </style>
+
+                  <li class="list-item">
+                    <div class="list-media">
+                      <img width="48" onclick="alert(1)" class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                    </div>
+                    <div>
+                      标题标题标题标题标题标题标题标题标题
+                      标题标题标题标题标题标题标题标题标题
+                      标题标题标题标题标题标题标题标题标题
+                      标题标题标题标题标题标题标题标题标题
+                    </div>
+                  </li>
+
+                  <li class="list-item list-item-link">
+                    <div class="list-media">
+                      <img width="48" onclick="alert(1)" class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                    </div>
+                    <div>
+                      标题标题标题标题标题标题标题标题标题
+                      标题标题标题标题标题标题标题标题标题
+                      标题标题标题标题标题标题标题标题标题
+                      标题标题标题标题标题标题标题标题标题
+                    </div>
+                  </li>
+
+                  <li class="list-item">
+                    <img width="48" class="" src="http://i.gtimg.cn/vipstyle/frozenui/1.0.0/img/default.png" alt="标题标题标题标题标题标题标题标题标题" />
+                    <div class="ml-3">
+                      标题标题标题标题标题标题标题标题标题
+                      标题标题标题标题标题标题标题标题标题
+                      标题标题标题标题标题标题标题标题标题
+                      标题标题标题标题标题标题标题标题标题
+                    </div>
                   </li>
                 </ul>
 
