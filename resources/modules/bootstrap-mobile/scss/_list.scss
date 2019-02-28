@@ -96,6 +96,22 @@
   color: $text-muted;
 }
 
+// 列表右边的图标
+.has-feedback {
+  padding-right: 2rem;
+}
+
+.list-feedback {
+  position: absolute;
+  top: 0;
+  right: .5rem; // 视觉上距离右边约1rem
+  bottom: 0;
+  height: 44px;
+  line-height: 44px;
+  margin: auto;
+  color: $text-muted;
+}
+
 // 栏目
 .list-col {
   display: flex;
@@ -150,26 +166,6 @@
   padding-right: 0;
   font-weight: normal; /* bs */
   margin-bottom: 0; /* bs */
-}
-
-/* 列表右边的图标 */
-.list-item.has-feedback {
-  padding-right: 30px;
-}
-
-.list-feedback {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 2;
-  display: block;
-  text-align: center;
-  width: 30px;
-  height: 32px;
-  line-height: 32px;
-  overflow: auto;
-  margin: auto;
 }
 
 /* 显示列表加载中和加载完成样式 */
