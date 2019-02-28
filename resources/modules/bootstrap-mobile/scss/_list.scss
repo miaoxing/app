@@ -78,6 +78,10 @@
   // 兼容包含 .center-right 的情况
   position: relative;
   width: 100%;
+
+  + .list-text {
+    margin-top: .5rem;
+  }
 }
 
 // 显示标题右边的内容
@@ -89,7 +93,6 @@
 // 标题下面的文案,一般用于简介,子标题
 .list-text {
   font-size: .875rem;
-  margin-top: .5rem;
   color: $text-muted;
 }
 
