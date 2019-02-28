@@ -192,12 +192,10 @@ $list-item-padding-y: .625rem !default;
   }
 }
 
-/* 左右布局列表 */
-.list-label {
-  padding-left: 0;
-  padding-right: 0;
-  font-weight: normal; /* bs */
-  margin-bottom: 0; /* bs */
+// 列表为空的提示文案
+.list-empty {
+  text-align: center;
+  padding: 6rem 0;
 }
 
 /* 显示列表加载中和加载完成样式 */
@@ -205,12 +203,6 @@ $list-item-padding-y: .625rem !default;
 .list-finished {
   text-align: center;
   padding: 1em;
-}
-
-/* 列表为空的提示文案 */
-.list-empty {
-  text-align: center;
-  padding: 6rem 0;
 }
 
 .list-loading-top {
@@ -270,4 +262,12 @@ $list-item-padding-y: .625rem !default;
 .list-col > a > img,
 .list-col > img {
   width: 100%;
+}
+
+/* 左右布局列表 */
+.list-label {
+  padding-left: 0;
+  padding-right: 0;
+  font-weight: normal; /* bs */
+  margin-bottom: 0; /* bs */
 }
