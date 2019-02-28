@@ -60,6 +60,7 @@ $list-item-padding-y: .625rem !default;
 .list-divider {
   padding-top: .375rem;
   padding-bottom: .375rem;
+  font-size: .875rem;
   background-color: $body-bg;
 
   .list-title {
@@ -86,7 +87,7 @@ $list-item-padding-y: .625rem !default;
     border-bottom: 1px solid #fff;
     pointer-events: none;
 
-    @at-root .list-item:active {
+    @at-root .list-item:not(.list-divider):active {
       z-index: 1; // 遮住.list-media::after
     }
   }
