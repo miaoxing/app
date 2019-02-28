@@ -52,7 +52,7 @@
 }
 
 // 分割线
-.list-item-divider {
+.list-divider {
   padding-top: .375rem;
   padding-bottom: .375rem;
   background-color: $body-bg;
@@ -118,9 +118,9 @@
   }
 
   // 分割线显示完整的上下边框
-  .list-item-divider + li::after, // 兼容旧版本
-  .list-item-divider::after,
-  .list-item-divider + .list-item::after {
+  .list-divider + li::after, // 兼容旧版本
+  .list-divider::after,
+  .list-divider + .list-item::after {
     left: 0;
   }
 }
