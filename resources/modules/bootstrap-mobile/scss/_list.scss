@@ -42,7 +42,7 @@
   }
 }
 
-// 设置单个item为可点击状态
+// 设置单个 item 为可点击状态
 .list-item-link {
   cursor: pointer;
 
@@ -130,14 +130,18 @@
   }
 }
 
-/* 紧凑列表 */
-.list-condensed .list-item {
-  padding: .3rem .5rem;
+// 紧凑列表
+.list-condensed  {
+  .list-item {
+    padding: .3rem .5rem;
+  }
 }
 
-/* 无边框列表 */
-.list-borderless > li {
-  @include hairline-none();
+// 无边框列表
+.list-borderless {
+  .list-item {
+    @include hairline-none();
+  }
 }
 
 /* 左右布局列表 */
@@ -169,7 +173,8 @@
 }
 
 /* 显示列表加载中和加载完成样式 */
-.list-loading, .list-finished {
+.list-loading,
+.list-finished {
   text-align: center;
   padding: 1em;
 }
