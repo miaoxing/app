@@ -83,6 +83,7 @@
 // 显示标题右边的内容
 .list-title-after {
   white-space: nowrap;
+  margin-left: .5rem;
 }
 
 // 标题下面的文案,一般用于简介,子标题
@@ -92,10 +93,10 @@
   color: $text-muted;
 }
 
-// 列表栏目
+// 栏目
 .list-col {
   display: flex;
-  flex-direction: column; // 预期内部内容为垂直结构
+  flex-direction: column; // 内部内容为垂直结构
   width: 100%;
 }
 
@@ -127,7 +128,7 @@
 }
 
 // 紧凑列表
-.list-condensed  {
+.list-condensed {
   .list-item {
     padding: .3rem .5rem;
   }
