@@ -69,7 +69,9 @@
   margin-top: 0;
   margin-bottom: 0;
   line-height: 1.5;
+  // 兼容包含 .center-right 的情况
   position: relative;
+  width: 100%;
 }
 
 // 标题下面的文案,一般用于简介,子标题
