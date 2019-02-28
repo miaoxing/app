@@ -62,26 +62,15 @@
   }
 }
 
-/* 列表栏目,相当于td */
+// 列表栏目
 .list-col {
   display: flex;
-  flex-direction: column;
+  flex-direction: column; // 预期内部内容为垂直结构
   width: 100%;
-  vertical-align: top;
 }
 
 .list-col + .list-col {
-  padding-left: 15px;
-}
-
-.list-col > a > img,
-.list-col > img {
-  width: 100%;
-}
-
-/* 用于.list-col定位 */
-.list-middle {
-  vertical-align: middle;
+  padding-left: 1rem;
 }
 
 /* 列表标题 */
@@ -225,4 +214,15 @@
 
 .list-header .list-heading {
   font-size: 1.25rem;
+}
+
+/* 用于.list-col定位 */ // 实际无效了
+.list-middle {
+  vertical-align: middle;
+}
+
+// 改用 img-fluid
+.list-col > a > img,
+.list-col > img {
+  width: 100%;
 }
