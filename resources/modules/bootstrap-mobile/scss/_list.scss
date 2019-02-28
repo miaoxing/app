@@ -57,9 +57,26 @@
   padding-bottom: .375rem;
   background-color: $body-bg;
 
-  .list-heading {
+  .list-title {
     font-size: .875rem;
   }
+}
+
+// 项目标题
+.list-title {
+  font-size: 1rem;
+  font-weight: normal;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.5;
+  position: relative;
+}
+
+// 标题下面的文案,一般用于简介,子标题
+.list-text {
+  font-size: .875rem;
+  margin-top: .5rem;
+  color: $text-muted;
 }
 
 // 列表栏目
@@ -71,23 +88,6 @@
 
 .list-col + .list-col {
   padding-left: 1rem;
-}
-
-/* 列表标题 */
-.list-heading {
-  font-size: 1rem;
-  font-weight: normal;
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 1.5;
-  position: relative;
-}
-
-/* 标题下面的文案,一般用于简介,子标题 */
-.list-body {
-  font-size: .875rem;
-  margin-top: .5rem;
-  color: $text-muted;
 }
 
 // 缩进列表
@@ -212,7 +212,7 @@
   padding-bottom: 10px !important;
 }
 
-.list-header .list-heading {
+.list-header .list-title {
   font-size: 1.25rem;
 }
 
