@@ -74,14 +74,8 @@
   padding-left: 15px;
 }
 
-.list-row + .list-row {
-  margin-top: 10px;
-}
-
 .list-col > a > img,
-.list-col > img,
-.list-row > a > img,
-.list-row > img {
+.list-col > img {
   width: 100%;
 }
 
