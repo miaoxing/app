@@ -216,9 +216,9 @@
   font-size: 1.25rem;
 }
 
-/* 用于.list-col定位 */ // 实际无效了
+// 改用 .align-self-center
 .list-middle {
-  vertical-align: middle;
+  align-self: center;
 }
 
 // 改用 img-fluid
