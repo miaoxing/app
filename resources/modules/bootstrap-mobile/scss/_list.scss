@@ -185,6 +185,8 @@ $list-item-padding-y: .625rem !default;
 
 // 无边框列表
 .list-borderless {
+  @include hairline-none();
+
   .list-item {
     @include hairline-none();
   }
