@@ -114,8 +114,8 @@ $list-item-padding-y: .625rem !default;
   }
 }
 
-// 显示标题右边的内容
-.list-title-after {
+// 显示标题右边的内容,例如状态,徽章,图标等
+.list-meta {
   white-space: nowrap;
   margin-left: .5rem;
 }
