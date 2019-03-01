@@ -92,10 +92,10 @@ $list-item-padding-y: .625rem !default;
       .list-item-link {
         &:not(.list-divider):active {
           z-index: 1; // 遮住上一个.list-media::after
-        }
 
-        & .list-media::after {
-          border-bottom-width: 0; // 遮住自己
+          .list-media::after {
+            border-bottom-width: 0; // 遮住自己
+          }
         }
       }
     }
