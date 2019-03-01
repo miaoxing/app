@@ -922,19 +922,52 @@
                   </li>
                 </ul>
 
+              <style>
+                .list-item.form-group {
+                  padding-top: 0;
+                  padding-bottom: 0;
+                }
+
+                .list-item.form-group::after {
+                  border-bottom-width: 0;
+                }
+              </style>
               <strong class="m-2 d-block">表单列表混合</strong>
               <div class="form list list-indented">
                 <a class="list-item">
                   退款说明退款说明退款说明退款说明退款说明退款说明退款说明退款说
                 </a>
 
-                <div class="form-group list-item" style="padding-top: 0;padding-bottom: 0">
+                <div class="list-item form-group">
                   <label for="email2" class="control-label">
                     邮箱
                   </label>
-
                   <div class="col-control">
                     <input type="text" id="email2" class="form-control" placeholder="请输入邮箱">
+                  </div>
+                </div>
+
+                <div class="list-item form-group">
+                  <label for="sex2" class="control-label">
+                    性别
+                  </label>
+
+                  <div class="col-control">
+                    <select class="form-control" id="sex2">
+                      <option>男</option>
+                      <option>女</option>
+                    </select>
+                    <a href="javascript:;" class="bm-angle-right form-control-feedback"></a>
+                  </div>
+                </div>
+
+                <div class="list-item form-group">
+                  <label class="control-label">
+                    详细地址
+                  </label>
+
+                  <div class="col-control">
+                    <textarea placeholder="街道等详细地址" class="form-control" rows="2"></textarea>
                   </div>
                 </div>
 
@@ -954,7 +987,7 @@
                   </div>
                 </div>
 
-                <div class="form-group list-item" style="padding-top: 0;padding-bottom: 0">
+                <div class="form-group list-item">
                   <label for="email3" class="control-label">
                     邮箱
                   </label>
