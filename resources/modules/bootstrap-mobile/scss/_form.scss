@@ -1,5 +1,6 @@
 // 列表表单
-.form {
+.form, // 废弃,兼容旧版
+.list {
   @include hairline-top($border-color);
   .form-group {
     display: flex;
@@ -19,15 +20,6 @@
     margin-bottom: 0; /* control-label */
     align-self: flex-start; // 在 .list-item 中
   }
-}
-
-.form-legend {
-  color: $text-muted;
-  background: $body-bg;
-  padding: .5rem 1rem;
-  font-size: .875rem;
-  margin-bottom: 0; // bs <legend>
-  @include hairline-bottom($border-color);
 }
 
 .col-control {
@@ -51,7 +43,7 @@
       background-color: transparent; /* bs */
     }
 
-    textarea& {
+    textarea#{&} {
       margin-top: 10px; // TODO why?
       padding-left: 0;
       padding-top: 0;
@@ -101,6 +93,16 @@
 }
 
 // Deprecated
+
+// 改用 .list-divider
+.form-legend {
+  color: $text-muted;
+  background: $body-bg;
+  padding: .375rem 1rem;
+  font-size: .875rem;
+  margin-bottom: 0; // bs <legend>
+  @include hairline-bottom($border-color);
+}
 
 /* Checkbox + Radio */
 .form .checkbox, .form .radio {

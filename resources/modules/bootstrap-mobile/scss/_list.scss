@@ -58,10 +58,12 @@ $list-item-padding-y: .625rem !default;
 
 // 分割线
 .list-divider {
+  color: $text-muted;
   padding-top: .375rem;
   padding-bottom: .375rem;
   font-size: .875rem;
   background-color: $body-bg;
+  margin-bottom: 0; // bs <legend>
 
   .list-title {
     font-size: .875rem;
@@ -163,7 +165,9 @@ $list-item-padding-y: .625rem !default;
   padding-left: 1rem;
 }
 
-// 条目,和 .list-detail 一起用于展示列表内容
+// 描述列表
+
+// 条目，和 .list-detail 一起用于展示列表内容
 .list-term {
   margin-right: auto;
   white-space: nowrap;
@@ -175,6 +179,17 @@ $list-item-padding-y: .625rem !default;
 .list-detail {
   text-align: justify;
   margin-left: 1rem;
+}
+
+// 表单
+
+.list-item.form-group {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.list-item.form-group::after {
+  border-bottom-width: 0;
 }
 
 // 缩进列表
