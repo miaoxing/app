@@ -38,6 +38,10 @@
     margin-top: -$list-item-padding-y;
     margin-bottom: -$list-item-padding-y;
   }
+
+  .col-control {
+    margin-right: -$list-item-padding-x;
+  }
 }
 
 // 兼容旧版本
