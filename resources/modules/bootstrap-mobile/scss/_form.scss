@@ -53,6 +53,7 @@
   background: $body-bg;
   padding: .5rem 1rem;
   font-size: .875rem;
+  margin-bottom: 0; // bs <legend>
   @include hairline-bottom($border-color);
 }
 
