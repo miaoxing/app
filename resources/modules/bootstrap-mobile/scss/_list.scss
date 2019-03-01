@@ -1,6 +1,3 @@
-$list-item-padding-x: 1rem !default;
-$list-item-padding-y: .625rem !default;
-
 .list {
   font-size: 1rem;
   background-color: #fff;
@@ -34,6 +31,12 @@ $list-item-padding-y: .625rem !default;
 
   @at-root a.list-item:active {
     background-color: $gray-300;
+  }
+
+  .col-form-label,
+  .col-control {
+    margin-top: -$list-item-padding-y;
+    margin-bottom: -$list-item-padding-y;
   }
 }
 
@@ -148,8 +151,8 @@ $list-item-padding-y: .625rem !default;
   top: 0;
   right: .5rem; // 视觉上距离右边约1rem
   bottom: 0;
-  height: 44px;
-  line-height: 44px;
+  height: 48px;
+  line-height: 48px;
   margin: auto;
   color: $text-muted;
 }
@@ -179,17 +182,6 @@ $list-item-padding-y: .625rem !default;
 .list-detail {
   text-align: justify;
   margin-left: 1rem;
-}
-
-// 表单
-
-.list-item.form-group {
-  padding-top: 0;
-  padding-bottom: 0;
-}
-
-.list-item.form-group::after {
-  border-bottom-width: 0;
 }
 
 // 缩进列表

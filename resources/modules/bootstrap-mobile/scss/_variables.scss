@@ -1,3 +1,5 @@
-$primary: #1cb7f0 !default;
-$gray-300: #dee2e6 !default;
-$border-color: $gray-300 !default;
+// Lists
+
+$list-height: 3rem !default; // 48px
+$list-item-padding-y: ($list-height - $font-size-base * $line-height-base) / 2; // .75rem;
+$list-item-padding-x: 1rem !default;

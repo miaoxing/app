@@ -928,8 +928,8 @@
                   退款说明退款说明退款说明退款说明退款说明退款说明退款说明退款说
                 </a>
 
-                <div class="list-item form-group">
-                  <label for="email2" class="control-label">
+                <div class="list-item">
+                  <label for="email2" class="col-form-label">
                     邮箱
                   </label>
                   <div class="col-control">
@@ -937,8 +937,8 @@
                   </div>
                 </div>
 
-                <div class="list-item form-group">
-                  <label for="sex2" class="control-label">
+                <div class="list-item">
+                  <label for="sex2" class="col-form-label">
                     性别
                   </label>
 
@@ -951,8 +951,27 @@
                   </div>
                 </div>
 
-                <div class="list-item form-group">
-                  <label class="control-label">
+                <div class="list-item">
+                  <label for="verify-code" class="col-form-label">
+                    验证码
+                    <span class="text-warning">*</span>
+                  </label>
+
+                  <div class="col-control">
+                    <div class="input-group">
+                      <input type="tel" class="form-control" id="verify-code" name="verifyCode" placeholder="请输入验证码"
+                        maxlength="6">
+                      <span class="input-group-append">
+                        <button type="button" class="btn btn-outline-primary">
+                          获取验证码
+                        </button>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="list-item">
+                  <label class="col-form-label">
                     详细地址
                   </label>
 
@@ -978,7 +997,7 @@
                 </div>
 
                 <div class="form-group list-item">
-                  <label for="email3" class="control-label">
+                  <label for="email3" class="col-form-label">
                     邮箱
                   </label>
 
@@ -1131,7 +1150,7 @@
                     <div class="form-legend">基础设置</div>
 
                     <div class="form-group">
-                        <label for="email" class="control-label">
+                        <label for="email" class="col-form-label">
                             邮箱
                         </label>
 
@@ -1144,7 +1163,7 @@
                         <legend class="form-legend">基础设置</legend>
 
                         <div class="form-group">
-                            <label for="email-readonly" class="control-label">
+                            <label for="email-readonly" class="col-form-label">
                                 邮箱(只读)
                             </label>
 
@@ -1154,7 +1173,7 @@
                         </div>
 
                         <div class="form-group has-feedback has-clear">
-                            <label for="idCard" class="control-label">
+                            <label for="idCard" class="col-form-label">
                                 身份证号码
                             </label>
 
@@ -1169,7 +1188,7 @@
                         <legend class="form-legend">详细设置</legend>
 
                         <div class="form-group">
-                            <label for="sex2" class="control-label">
+                            <label for="sex2" class="col-form-label">
                                 性别
                             </label>
 
@@ -1183,7 +1202,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="control-label">
+                            <label class="col-form-label">
                                 性别
                             </label>
 
@@ -1204,7 +1223,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="gender2" class="control-label">
+                            <label for="gender2" class="col-form-label">
                                 性别
                                 <span class="text-warning">*</span>
                             </label>
@@ -1222,7 +1241,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="#" class="control-label">
+                            <label for="#" class="col-form-label">
                                 详细地址
                             </label>
 
@@ -1239,7 +1258,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label text-primary text-center border-right" for="phone">中国 +86</label>
+                        <label class="col-form-label text-primary text-center border-right" for="phone">中国 +86</label>
 
                         <div class="col-control">
                             <input type="text" class="form-control" id="phone" placeholder="请输入手机号码">
@@ -1247,7 +1266,7 @@
                     </div>
 
                     <div class="form-group">
-                      <label for="#" class="control-label">
+                      <label for="#" class="col-form-label">
                         金额
                       </label>
                       <div class="col-control">
@@ -1281,7 +1300,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label" for="checkbox1" style="width: auto">对附近的人可见</label>
+                        <label class="col-form-label" for="checkbox1" style="width: auto">对附近的人可见</label>
 
                         <div class="col-control">
                             <label for="#" class="switch">
@@ -1303,7 +1322,7 @@
                     </div>
 
                     <div class="form-group form-link">
-                        <label for="#" class="control-label">账号</label>
+                        <label for="#" class="col-form-label">账号</label>
 
                         <div class="col-control">
                             <input type="text" class="form-control" value="421205351" readonly>
@@ -1417,7 +1436,7 @@
             <div class="example">
                 <form class="form border-top">
                     <div class="form-group">
-                        <label class="control-label">爱好</label>
+                        <label class="col-form-label">爱好</label>
                         <div class="col-control">
                             <div class="checkbox checkbox-circle checkbox-info border-bottom">
                               <label for="checkbox8">
@@ -1446,13 +1465,13 @@
             <div class="example" style="background: #f8f9fa">
                 <form class="form">
                     <div class="form-group">
-                        <label for="inputEmail3" class="control-label">账号</label>
+                        <label for="inputEmail3" class="col-form-label">账号</label>
                         <div class="col-control">
                             <input type="text" class="form-control" id="inputEmail3" placeholder="Email">
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword3" class="control-label">密码</label>
+                        <label for="inputPassword3" class="col-form-label">密码</label>
                         <div class="col-control">
                             <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
                         </div>
@@ -1466,7 +1485,7 @@
                               </label>
                             </div>
                         </div>
-                        <label class="control-label">
+                        <label class="col-form-label">
                             <a href="javascript:;">无法登录?</a>
                         </label>
                     </div>
@@ -1477,7 +1496,7 @@
             <div class="example">
                 <form class="form">
                     <div class="form-group">
-                        <label class="control-label" for="checkbox2" style="width: auto">对附近的人可见</label>
+                        <label class="col-form-label" for="checkbox2" style="width: auto">对附近的人可见</label>
                         <div class="col-control">
                             <label for="#" class="switch">
                                 <input type="checkbox" id="checkbox2"/>
@@ -1486,7 +1505,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label class="control-label" for="checkbox3" style="width: auto">对附近的人可见</label>
+                        <label class="col-form-label" for="checkbox3" style="width: auto">对附近的人可见</label>
                         <div class="col-control">
                             <label for="#" class="switch">
                                 <input type="checkbox" id="checkbox3" checked/>
@@ -1523,7 +1542,7 @@
             <div class="example">
                 <form action="#" class="form">
                     <div class="form-group has-feedback has-clear">
-                        <label for="idCard" class="control-label">
+                        <label for="idCard" class="col-form-label">
                             身份证号码
                         </label>
 
@@ -1534,7 +1553,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="#" class="control-label">
+                        <label for="#" class="col-form-label">
                             详细地址
                         </label>
 
@@ -1610,13 +1629,13 @@
             <div class="example">
               <form class="form-horizontal">
                 <div class="form-group">
-                  <label for="inputEmail3" class="col-xs-2 control-label">Email</label>
+                  <label for="inputEmail3" class="col-xs-2 col-form-label">Email</label>
                   <div class="col-xs-10">
                     <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="inputPassword3" class="col-xs-2 control-label">Password</label>
+                  <label for="inputPassword3" class="col-xs-2 col-form-label">Password</label>
                   <div class="col-xs-10">
                     <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
                   </div>
@@ -1661,7 +1680,7 @@
             <div class="example">
                 <form action="#" class="form">
                     <div class="form-group">
-                        <label class="control-label text-primary text-center border-right" for="phone">中国 +86</label>
+                        <label class="col-form-label text-primary text-center border-right" for="phone">中国 +86</label>
 
                         <div class="col-control">
                             <input type="text" class="form-control" id="phone" placeholder="请输入手机号码">
@@ -1690,14 +1709,14 @@
             <div class="example">
                 <form class="form">
                     <div class="form-group">
-                        <label for="#" class="control-label">账号</label>
+                        <label for="#" class="col-form-label">账号</label>
 
                         <div class="col-control">
                             <input type="text" value="421205351" class="form-control" readonly>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="#" class="control-label">身份证号码</label>
+                        <label for="#" class="col-form-label">身份证号码</label>
 
                         <div class="col-control">
                             <input type="text" value="445331199401055317" class="form-control" readonly>

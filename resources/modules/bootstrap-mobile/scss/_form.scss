@@ -2,6 +2,7 @@
 .form, // 废弃,兼容旧版
 .list {
   @include hairline-top($border-color);
+
   .form-group {
     display: flex;
     font-size: 1rem;
@@ -14,10 +15,8 @@
   .control-label, // 兼容bs3
   .col-form-label {
     width: 95px;
-    line-height: 44px;
-    padding-top: 0;
-    padding-bottom: 0;
-    margin-bottom: 0; /* control-label */
+    padding-top: $list-item-padding-y;
+    padding-bottom: $list-item-padding-y;
     align-self: flex-start; // 在 .list-item 中
   }
 }
@@ -26,13 +25,14 @@
   display: flex; /* input-group 上下居中 */
   align-items: center;
   flex: 1;
-  line-height: 44px;
 
   .form-control {
     border: none;
     appearance: none;
     display: inline-block; /* bs */
-    padding-left: 0; /* bs */
+    height: $list-height;
+    padding-top: $list-item-padding-y;
+    padding-bottom: $list-item-padding-y;
 
     &:focus {
       z-index: 0;
@@ -43,10 +43,8 @@
       background-color: transparent; /* bs */
     }
 
-    textarea#{&} {
-      margin-top: 10px; // TODO why?
-      padding-left: 0;
-      padding-top: 0;
+    @at-root .col-control textarea.form-control {
+      height: auto;
     }
   }
 
@@ -160,9 +158,9 @@
   position: absolute;
   right: 0;
   top: 0;
-  height: 44px;
-  line-height: 44px;
-  width: 44px;
+  height: 48px;
+  line-height: 48px;
+  width: 48px;
   color: #a6a6a6;
   text-align: center;
   pointer-events: none;
