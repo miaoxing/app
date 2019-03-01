@@ -87,8 +87,13 @@ $list-item-padding-y: .625rem !default;
     border-bottom: 1px solid #fff;
     pointer-events: none;
 
-    @at-root .list-item:not(.list-divider):active {
-      z-index: 1; // 遮住.list-media::after
+    @at-root {
+      a.list-item,
+      .list-item-link {
+        &:not(.list-divider):active {
+          z-index: 1; // 遮住.list-media::after
+        }
+      }
     }
   }
 }
@@ -177,9 +182,11 @@ $list-item-padding-y: .625rem !default;
     left: 1rem;
   }
 
-  // 激活时，下边框占满整行
-  li:active + li::after, // 兼容旧版本
-  .list-item:active + .list-item::after {
+  // 激活链接时，下边框占满整行
+  .list-item-link:active + li::after, // 兼容旧版本
+  a.list-item + li::after, // 兼容旧版本
+  .list-item-link:active + .list-item::after,
+  a.list-item:active + .list-item::after {
     left: 0;
   }
 
