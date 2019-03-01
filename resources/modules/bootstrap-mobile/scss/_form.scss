@@ -1,6 +1,5 @@
 // 列表表单
-.form, // 废弃,兼容旧版
-.list {
+.form { // 废弃,兼容旧版
   @include hairline-top($border-color);
 
   .form-group {
@@ -11,14 +10,23 @@
     background-color: #fff;
     @include hairline-bottom($border-color);
   }
+}
 
+.form, // 废弃,兼容旧版
+.list {
   .control-label, // 兼容bs3
   .col-form-label {
-    width: 95px;
+    width: 5em;
     padding-top: $list-item-padding-y;
     padding-bottom: $list-item-padding-y;
     align-self: flex-start; // 在 .list-item 中
     margin-bottom: 0; // bs
+  }
+
+  @for $i from 2 through 8 {
+    .col-form-label-#{$i} {
+      width: #{$i}em;
+    }
   }
 }
 
