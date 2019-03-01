@@ -63,7 +63,7 @@
   padding: 1rem;
 
   .btn {
-    @extend .btn-md;
+    padding: $list-item-padding-y;
   }
 }
 
@@ -97,7 +97,7 @@
 .form-legend {
   color: $text-muted;
   background: $body-bg;
-  padding: .375rem 1rem;
+  padding: .5rem 1rem;
   font-size: .875rem;
   margin-bottom: 0; // bs <legend>
   @include hairline-bottom($border-color);

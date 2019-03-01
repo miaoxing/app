@@ -15,7 +15,7 @@
   color: inherit;
   padding: $list-item-padding-y $list-item-padding-x;
 
-  align-items: center; // 避免默认拉伸
+  align-items: center; // 避免默认拉伸,例如图片
 
   /* 在 list-intended 时,点击高亮整行背景,和下一行的上边框,使用 border-top 效果更美观 */
   @include hairline-top($border-color);
@@ -66,8 +66,8 @@
 // 分割线
 .list-divider {
   color: $text-muted;
-  padding-top: .375rem;
-  padding-bottom: .375rem;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
   font-size: .875rem;
   background-color: $body-bg;
   margin-bottom: 0; // bs <legend>
@@ -201,15 +201,23 @@
   .list-item-link:active + li::after, // 兼容旧版本
   a.list-item + li::after, // 兼容旧版本
   .list-item-link:active + .list-item::after,
-  a.list-item:active + .list-item::after {
-    left: 0;
-  }
+  a.list-item:active + .list-item::after,
 
-  // 分割线显示完整的上下边框
+    // 分割线显示完整的上下边框
   .list-divider + li::after, // 兼容旧版本
   .list-divider::after,
   .list-divider + .list-item::after {
     left: 0;
+  }
+
+  .form-footer {
+    background: $body-bg;
+
+    &::after {
+      left: 0;
+      border-bottom: 1px solid #fff;
+      z-index: 1;
+    }
   }
 }
 
