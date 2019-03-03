@@ -245,7 +245,38 @@
   padding: 6rem 0;
 }
 
-/* 显示列表加载中和加载完成样式 */
+// Deprecated
+
+// 列表头部
+.list-header {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.list-header .list-item-title {
+  font-size: 1.25rem;
+}
+
+// 改用 .align-self-center
+.list-middle {
+  align-self: center;
+}
+
+// 改用 img-fluid
+.list-col > a > img,
+.list-col > img {
+  width: 100%;
+}
+
+// 左右布局列表 改用 list-item-term
+.list-label {
+  padding-left: 0;
+  padding-right: 0;
+  font-weight: normal; /* bs */
+  margin-bottom: 0; /* bs */
+}
+
+// 显示列表加载中和加载完成样式 改用 Bootstrap Spinner 或其他的
 .list-loading,
 .list-finished {
   text-align: center;
@@ -287,34 +318,4 @@
   100% {
     transform: rotate(360deg);
   }
-}
-
-// Deprecated
-/* 列表头部 */
-.list-header {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-}
-
-.list-header .list-item-title {
-  font-size: 1.25rem;
-}
-
-// 改用 .align-self-center
-.list-middle {
-  align-self: center;
-}
-
-// 改用 img-fluid
-.list-col > a > img,
-.list-col > img {
-  width: 100%;
-}
-
-/* 左右布局列表 */
-.list-label {
-  padding-left: 0;
-  padding-right: 0;
-  font-weight: normal; /* bs */
-  margin-bottom: 0; /* bs */
 }
