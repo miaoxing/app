@@ -77,6 +77,21 @@
   }
 }
 
+.list-footer {
+  padding: 1rem;
+  background: $body-bg;
+
+  // 遮住 .list 的下边框
+  &::after {
+    border-bottom: 1px solid #fff;
+    z-index: 1;
+  }
+
+  .btn {
+    padding: $list-item-padding-y;
+  }
+}
+
 // 项目媒体,放在左侧,例如图片,图标
 .list-media {
   display: flex;
@@ -208,18 +223,11 @@
     // 分割线显示完整的上下边框
   .list-divider + li::after, // 兼容旧版本
   .list-divider::after,
-  .list-divider + .list-item::after {
+  .list-divider + .list-item::after,
+
+    // 页脚上显示完整边框
+  .list-footer::after {
     left: 0;
-  }
-
-  .form-footer {
-    background: $body-bg;
-
-    &::after {
-      left: 0;
-      border-bottom: 1px solid #fff;
-      z-index: 1;
-    }
   }
 }
 

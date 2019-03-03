@@ -974,7 +974,7 @@
     background-color: #f8f9fa;
 }
 
-.list-divider .list-item-title {
+.list-divider .list-title {
     font-size: 14px;
 }
 
@@ -1021,7 +1021,7 @@
 }
 
 /* 列表标题 */
-.list-item-title {
+.list-title {
     font-size: 16px;
     font-weight: normal;
     margin-top: 0;
@@ -1031,7 +1031,7 @@
 }
 
 /* 标题下面的文案,一般用于简介,子标题 */
-.list-item-text {
+.list-text {
     font-size: 12px;
     line-height: 16px;
     margin-top: 8px;
@@ -1159,7 +1159,7 @@
     color: #222
 }
 
-.list-header .list-item-title {
+.list-header .list-title {
     font-size: 20px;
 }
 
