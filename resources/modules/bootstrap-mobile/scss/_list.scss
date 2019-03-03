@@ -15,8 +15,6 @@
   color: inherit;
   padding: $list-item-padding-y $list-item-padding-x;
 
-  align-items: center; // 避免默认拉伸,例如图片
-
   /* 在 list-intended 时,点击高亮整行背景,和下一行的上边框,使用 border-top 效果更美观 */
   @include hairline-top($border-color);
 
