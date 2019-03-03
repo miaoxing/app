@@ -126,20 +126,15 @@
 
 // 项目标题
 .list-title {
+  // h1-h6 元素
   font-size: 1rem;
   font-weight: normal;
   margin-top: 0;
   margin-bottom: 0;
-  line-height: 1.5;
+  line-height: $line-height-base;
 
-  // 右边可放置状态文案,badge,图标等
+  // 右边可放置 .list-meta
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  // 兼容包含 .center-right 的情况
-  position: relative;
-  width: 100%;
 
   + .list-text {
     margin-top: .5rem;
@@ -323,4 +318,9 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+// 改用 .list-meta
+.list-title .center-right {
+  right: 1rem;
 }
