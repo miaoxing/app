@@ -155,7 +155,8 @@
   color: $text-muted;
 }
 
-// 列表右边的图标
+// 列表右边有图标
+// NOTE: CSS4 通过 :has 简化
 .list-has-feedback {
   padding-right: 2rem;
 }
