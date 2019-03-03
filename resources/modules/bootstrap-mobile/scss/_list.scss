@@ -176,11 +176,10 @@
   color: $gray-400;
 }
 
-// 栏目
+// 栏目,内部内容为垂直结构
 .list-col {
   display: flex;
-  flex-direction: column; // 内部内容为垂直结构
-  flex: 1 1 auto;
+  flex-direction: column;
 }
 
 .list-col + .list-col {
