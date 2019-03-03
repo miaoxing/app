@@ -70,7 +70,7 @@
   background-color: $body-bg;
   margin-bottom: 0; // bs <legend>
 
-  .list-title {
+  .list-title { // 兼容旧版本
     font-size: .875rem;
   }
 }
