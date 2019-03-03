@@ -147,6 +147,7 @@
   margin-left: auto; // 预期展示在右边
   padding-left: .5rem; // 与左边保留距离
   align-self: center; // 两边高度可能不一致（多行，字体大小），因此居中
+  color: $text-muted;
 }
 
 // 标题下面的文案,一般用于简介,子标题
