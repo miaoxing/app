@@ -72,7 +72,7 @@
   background-color: $body-bg;
   margin-bottom: 0; // bs <legend>
 
-  .list-title {
+  .list-item-title {
     font-size: .875rem;
   }
 }
@@ -112,7 +112,7 @@
 }
 
 // 项目标题
-.list-title {
+.list-item-title {
   font-size: 1rem;
   font-weight: normal;
   margin-top: 0;
@@ -128,7 +128,7 @@
   position: relative;
   width: 100%;
 
-  + .list-text {
+  + .list-item-text {
     margin-top: .5rem;
   }
 }
@@ -142,7 +142,7 @@
 }
 
 // 标题下面的文案,一般用于简介,子标题
-.list-text {
+.list-item-text {
   font-size: .875rem;
   color: $text-muted;
 }
@@ -296,7 +296,7 @@
   padding-bottom: 10px !important;
 }
 
-.list-header .list-title {
+.list-header .list-item-title {
   font-size: 1.25rem;
 }
 
