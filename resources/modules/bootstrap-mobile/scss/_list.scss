@@ -78,7 +78,7 @@
 }
 
 // 项目媒体,放在左侧,例如图片,图标
-.list-item-media {
+.list-media {
   display: flex;
   align-self: stretch; // 占满项目内部,以便::after定位
   align-items: center;
@@ -100,9 +100,9 @@
       a.list-item,
       .list-item-link {
         &:not(.list-divider):active {
-          z-index: 1; // 遮住上一个.list-item-media::after
+          z-index: 1; // 遮住上一个.list-media::after
 
-          .list-item-media::after {
+          .list-media::after {
             border-bottom-width: 0; // 遮住自己
           }
         }
@@ -134,7 +134,7 @@
 }
 
 // 显示在右边的内容,例如状态,徽章,图标等
-.list-item-meta {
+.list-meta {
   flex-shrink: 0; // 内容一般较少，不被挤到换行
   margin-left: auto; // 预期展示在右边
   padding-left: .5rem; // 与左边保留距离
@@ -177,7 +177,7 @@
 // 描述列表
 
 // 条目，和 .list-detail 一起用于展示列表内容
-.list-item-term {
+.list-term {
   margin-right: auto;
   white-space: nowrap;
   align-self: flex-start;
@@ -185,7 +185,7 @@
 }
 
 // 详情
-.list-item-detail {
+.list-detail {
   text-align: justify;
   margin-left: 1rem;
 }
@@ -239,13 +239,44 @@
   }
 }
 
+// Deprecated
+
+// 列表头部
+.list-header {
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}
+
+.list-header .list-title {
+  font-size: 1.25rem;
+}
+
+// 改用 .align-self-center
+.list-middle {
+  align-self: center;
+}
+
+// 改用 img-fluid
+.list-col > a > img,
+.list-col > img {
+  width: 100%;
+}
+
+// 左右布局列表 改用 list-term
+.list-label {
+  padding-left: 0;
+  padding-right: 0;
+  font-weight: normal; /* bs */
+  margin-bottom: 0; /* bs */
+}
+
 // 列表为空的提示文案
 .list-empty {
   text-align: center;
   padding: 6rem 0;
 }
 
-/* 显示列表加载中和加载完成样式 */
+// 显示列表加载中和加载完成样式 改用 Bootstrap Spinners 或其他
 .list-loading,
 .list-finished {
   text-align: center;
@@ -287,34 +318,4 @@
   100% {
     transform: rotate(360deg);
   }
-}
-
-// Deprecated
-/* 列表头部 */
-.list-header {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-}
-
-.list-header .list-title {
-  font-size: 1.25rem;
-}
-
-// 改用 .align-self-center
-.list-middle {
-  align-self: center;
-}
-
-// 改用 img-fluid
-.list-col > a > img,
-.list-col > img {
-  width: 100%;
-}
-
-/* 左右布局列表 */
-.list-label {
-  padding-left: 0;
-  padding-right: 0;
-  font-weight: normal; /* bs */
-  margin-bottom: 0; /* bs */
 }
