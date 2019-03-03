@@ -120,6 +120,11 @@
           }
         }
       }
+
+      // 不遮住 .list-divider 的边框
+      .list-divider::after {
+        z-index: 1;
+      }
     }
   }
 }
