@@ -146,6 +146,7 @@
 .list-text {
   color: $text-muted;
   margin-left: auto; // 默认显示在右边
+  padding-left: 1rem;
   flex-shrink: 0; // 右边内容一般较少，不被挤到换行
 }
 
@@ -203,7 +204,7 @@
 // 上下结构的复杂详情列表
 .list-col {
   .list-text {
-    margin-left: 0;
+    padding-left: 0;
     margin-top: .5rem;
     font-size: .875rem;
   }
