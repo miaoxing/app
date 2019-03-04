@@ -161,13 +161,13 @@
   color: $text-muted;
 }
 
-// 列表右边有图标
+// 列表右边的臂章/三角/箭头图标
 // NOTE: CSS4 通过 :has 简化
-.list-has-feedback {
+.list-has-arrow {
   padding-right: 2rem;
 }
 
-.list-feedback {
+.list-arrow {
   position: absolute;
   top: 0;
   right: .5rem; // 视觉上距离右边约1rem

@@ -716,7 +716,7 @@
     float: none; /* 垂直居中 */
 }
 
-.form .list-has-feedback .form-control {
+.form .list-has-arrow .form-control {
     padding-right: 44px;
 }
 
@@ -1168,11 +1168,11 @@
 }
 
 /* 列表右边的图标 */
-.list-item.list-has-feedback {
+.list-item.list-has-arrow {
     padding-right: 30px;
 }
 
-.list-feedback {
+.list-arrow {
     position: absolute;
     top: 0;
     right: 0;
