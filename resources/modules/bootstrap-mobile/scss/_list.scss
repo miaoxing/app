@@ -189,19 +189,24 @@
 }
 
 // 描述列表
+.list-description {
+  // 条目
+  .list-title {
+    margin-right: auto;
+    white-space: nowrap;
+    color: $text-muted;
+  }
 
-// 条目，和 .list-detail 一起用于展示列表内容
-.list-term {
-  margin-right: auto;
-  white-space: nowrap;
-  align-self: flex-start;
-  color: $text-muted;
-}
+  // 详情
+  .list-text {
+    text-align: justify;
+    margin-left: 1rem;
 
-// 详情
-.list-detail {
-  text-align: justify;
-  margin-left: 1rem;
+    // 覆盖 .list-text
+    margin-top: 0;
+    font-size: 1rem;
+    color: $body-color;
+  }
 }
 
 // 缩进列表
