@@ -142,13 +142,6 @@
   display: flex;
 }
 
-// 标题底部的文本，例如简介，详细介绍，描述列表等复杂内容
-.list-text {
-  color: $text-muted;
-  margin-top: .5rem;
-  font-size: .875rem;
-}
-
 // 显示在右边的内容,例如状态,徽章,图标等
 .list-detail {
   flex-shrink: 0; // 内容一般较少，不被挤到换行
@@ -156,6 +149,13 @@
   padding-left: 1rem; // 与左边保留距离
   align-self: center; // 两边高度可能不一致（多行，字体大小），因此居中
   color: $text-muted;
+}
+
+// 标题底部的文本，例如简介，详细介绍，描述列表等复杂内容
+.list-text {
+  color: $text-muted;
+  margin-top: .5rem;
+  font-size: .875rem;
 }
 
 // 列表右边的臂章/三角/箭头图标
@@ -179,10 +179,10 @@
 .list-col {
   display: flex;
   flex-direction: column;
-}
 
-.list-col + .list-col {
-  padding-left: 1rem;
+  & + & {
+    padding-left: 1rem;
+  }
 }
 
 // 描述列表
