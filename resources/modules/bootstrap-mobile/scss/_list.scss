@@ -138,23 +138,22 @@
   margin-bottom: 0;
   line-height: $line-height-base;
 
-  // 右边可放置 .list-meta
+  // 右边可放置 .list-detail
   display: flex;
 }
 
-// 标题所属的文案，例如简介，详情
+// 标题底部的文本，例如简介，详细介绍，描述列表等复杂内容
 .list-text {
   color: $text-muted;
-  margin-left: auto; // 默认显示在右边
-  padding-left: 1rem;
-  flex-shrink: 0; // 右边内容一般较少，不被挤到换行
+  margin-top: .5rem;
+  font-size: .875rem;
 }
 
 // 显示在右边的内容,例如状态,徽章,图标等
-.list-meta {
+.list-detail {
   flex-shrink: 0; // 内容一般较少，不被挤到换行
   margin-left: auto; // 预期展示在右边
-  padding-left: .5rem; // 与左边保留距离
+  padding-left: 1rem; // 与左边保留距离
   align-self: center; // 两边高度可能不一致（多行，字体大小），因此居中
   color: $text-muted;
 }
@@ -195,19 +194,9 @@
   }
 
   // 详情
-  .list-text {
+  .list-detail {
     color: $body-color;
     flex-shrink: 1;
-  }
-}
-
-// 上下结构的复杂详情列表
-.list-col {
-  .list-text {
-    padding-left: 0;
-    margin-left: 0; // 覆盖默认auto值，避免显示在右边
-    margin-top: .5rem;
-    font-size: .875rem;
   }
 }
 
@@ -334,7 +323,7 @@
   }
 }
 
-// 改用 .list-meta
+// 改用 .list-detail
 .list-title .center-right {
   right: 1rem;
 }
