@@ -9,7 +9,7 @@ class DropdownMenu extends React.Component {
 
   render() {
     return <div className="filter-dropdown nav-dropdown">
-      <ul className="nav-tabs tabs-justified border-top-bottom">
+      <ul className="nav-tabs tabs-justified border-y">
         <li className="dropdown">
           <a className="text-active-primary" data-toggle="dropdown" data-target="#search">
             <span>搜索</span>&nbsp;&nbsp;
