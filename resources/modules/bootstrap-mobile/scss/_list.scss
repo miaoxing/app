@@ -61,6 +61,14 @@
   }
 }
 
+// 头部
+.list-header {
+  color: $text-muted;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  font-size: .875rem;
+}
+
 // 分割线
 .list-divider {
   color: $text-muted;
@@ -243,16 +251,6 @@
 }
 
 // Deprecated
-
-// 列表头部
-.list-header {
-  padding-top: 10px !important;
-  padding-bottom: 10px !important;
-}
-
-.list-header .list-title {
-  font-size: 1.25rem;
-}
 
 // 改用 .align-self-center
 .list-middle {
