@@ -34,6 +34,7 @@
   display: flex; /* input-group 上下居中 */
   align-items: center;
   flex: 1;
+  min-height: $list-height; // 内部没有 input 的情况
 
   .form-control {
     border: none;
