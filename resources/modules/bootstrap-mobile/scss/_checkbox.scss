@@ -283,3 +283,14 @@
 .checkbox .checkbox-label::after {
   padding-top: 0
 }
+
+.custom-checkbox-success .custom-control-input:checked ~ .custom-control-label {
+  &::before {
+    border-color: $success;
+    background-color: $success;
+  }
+
+  &::after {
+    background-image: str-replace($custom-checkbox-indicator-icon-checked, str-replace(#{$custom-control-indicator-checked-color}, "#", "%23"), "%23fff");
+  }
+}
