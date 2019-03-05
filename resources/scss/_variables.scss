@@ -48,10 +48,19 @@ $input-btn-focus-width: 0;
 
 // Forms
 
+$input-color: $gray-800;
 $input-border-color: $gray-300;
 $input-focus-border-color: $gray-400;
 $input-group-addon-bg: transparent;
 $input-group-addon-border-color: transparent;
+
+$custom-control-indicator-bg-size: 70% 70%;
+$custom-control-indicator-checked-color: $gray-700;
+$custom-control-indicator-checked-bg: #fff;
+$custom-control-indicator-checked-border-color: $custom-control-indicator-checked-color;
+$custom-control-indicator-size: 1.25rem;
+
+$custom-checkbox-indicator-border-radius: 50%;
 
 // Custom
 
