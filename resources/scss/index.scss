@@ -1,8 +1,11 @@
+// Bootstrap 方法
+@import "~bootstrap/scss/functions";
+
+// 自定义变量
 @import "variables";
 @import "mixins";
 
 // Bootstrap 样式
-@import "~bootstrap/scss/functions";
 @import "~bootstrap/scss/variables";
 @import "~bootstrap/scss/mixins";
 //@import "~bootstrap/scss/root";
