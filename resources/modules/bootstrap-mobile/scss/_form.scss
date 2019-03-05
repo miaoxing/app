@@ -15,7 +15,7 @@
 .form, // 废弃,兼容旧版
 .list {
   .control-label, // 兼容bs3
-  .col-form-label {
+  .form-label {
     width: 5em;
     padding-top: $list-item-padding-y;
     padding-bottom: $list-item-padding-y;
