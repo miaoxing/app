@@ -12,6 +12,7 @@
 // 列表项目
 .list-item {
   display: flex;
+  flex-wrap: wrap;
   color: inherit;
   padding: $list-item-padding-y $list-item-padding-x;
 
@@ -149,6 +150,7 @@
 
   // 右边可放置 .list-detail
   display: flex;
+  flex: 1;
 }
 
 // 显示在右边的内容,例如状态,徽章,图标等
@@ -165,6 +167,7 @@
   color: $text-muted;
   margin-top: .5rem;
   font-size: .875rem;
+  width: 100%; // 换行到 .list-title 下面
 }
 
 // 列表右边的臂章/三角/箭头图标
@@ -188,6 +191,7 @@
 .list-col {
   display: flex;
   flex-direction: column;
+  flex: 1; // 1. 内容超出自动换行 2. 等比占满空间
 
   & + & {
     padding-left: 1rem;
