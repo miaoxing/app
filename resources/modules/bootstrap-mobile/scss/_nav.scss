@@ -1,6 +1,6 @@
-// Tab underline
+// Nav underline
 
-.tab-underline {
+.nav-underline {
   border-bottom: 1px solid $border-color;
 
   .nav-item {
@@ -10,10 +10,6 @@
   .nav-link {
     color: $text-muted;
     border: 0;
-
-    &:hover {
-      border-bottom: 3px solid $gray-400;
-    }
 
     &.active {
       color: $link-color;

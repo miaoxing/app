@@ -536,7 +536,7 @@
 /**
  * 选项卡
  */
-.tab-underline {
+.nav-underline {
     width: 100%;
     overflow: scroll;
     -webkit-overflow-scrolling: touch;
@@ -545,30 +545,30 @@
     display: -webkit-box;
 }
 
-.tab-underline::-webkit-scrollbar {
+.nav-underline::-webkit-scrollbar {
     height: 0;
     width: 0;
 }
 
-.tab-underline > li {
+.nav-underline > li {
     box-flex: 1;
     -webkit-box-flex: 1;
     text-align: center;
 }
 
-.tab-underline > li.active {
+.nav-underline > li.active {
     border-bottom: 3px #00a5e0 solid;
     opacity: .8;
 }
 
-.tab-underline > li > a {
+.nav-underline > li > a {
     color: #808080;
     font-size: 16px;
     padding-left: 0;
     padding-right: 0;
 }
 
-.tab-underline > li.active > a {
+.nav-underline > li.active > a {
     color: #00a5e0;
 }
 
@@ -599,13 +599,13 @@
     border-color: #00a5e0;
 }
 
-.tab-underline-sm > li > a {
+.nav-underline-sm > li > a {
     font-size: 14px;
     padding-top: 6px;
     padding-bottom: 4px;
 }
 
-.tab-underline-sm > li.active {
+.nav-underline-sm > li.active {
     border-bottom-width: 2px;
 }
 /* 组合表单 */

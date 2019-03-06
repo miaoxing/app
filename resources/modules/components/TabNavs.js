@@ -18,7 +18,7 @@ class TabNavs extends React.Component {
     const cur = item ? item.key : 'all';
     const baseUrl = this.props.baseUrl || window.location.pathname;
 
-    return <Nav className={classNames('header-tab tab-underline border-top', this.props.className)}>
+    return <Nav className={classNames('header-nav nav-underline border-top', this.props.className)}>
       {map(this.props.data, (item) => {
         return <Nav.Item key={item.key}>
           <Nav.Link
