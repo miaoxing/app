@@ -16,7 +16,7 @@
 .list {
   .control-label, // 兼容bs3
   .form-label {
-    width: 5em;
+    width: 6em;
     padding-top: $list-item-padding-y;
     padding-bottom: $list-item-padding-y;
     align-self: flex-start; // 在 .list-item 中
@@ -44,6 +44,7 @@
     height: $list-height;
     padding-top: $list-item-padding-y;
     padding-bottom: $list-item-padding-y;
+    padding-left: 0; // 和 .custom-form 或文本对齐
 
     &:focus {
       z-index: 0;
