@@ -77,8 +77,3 @@ body {
   line-height: 24px;
   background: #ff9900;
 }
-
-/* 解决被生成的text-primary覆盖 */
-.text-primary.disabled {
-  color: #a6a6a6 !important; /* stylelint-disable-line declaration-no-important */
-}
