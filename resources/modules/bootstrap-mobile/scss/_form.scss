@@ -35,13 +35,13 @@
   align-items: center;
   flex: 1;
   flex-wrap: wrap; // 便于垂直布局
-  min-height: $list-height; // 内部没有 input 的情况
+  min-height: $list-item-height; // 内部没有 input 的情况
 
   .form-control {
     border: none;
     appearance: none;
     display: inline-block; /* bs */
-    height: $list-height;
+    height: $list-item-height;
     padding-top: $list-item-padding-y;
     padding-bottom: $list-item-padding-y;
     padding-left: 0; // 和 .custom-form 或文本对齐
@@ -70,7 +70,7 @@
   }
 
   .custom-control {
-    min-height: $list-height;
+    min-height: $list-item-height;
     display: flex;
     align-items: center;
     flex-basis: 100%;
