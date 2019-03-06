@@ -1,0 +1,24 @@
+// 增加缩放效果
+.custom-checkbox,
+.custom-radio {
+  .custom-control-label::after {
+    transform: scale(0, 0);
+    transition: transform 0.15s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+  }
+}
+
+.custom-control-input:checked ~ .custom-control-label::after {
+  transform: scale(1, 1);
+}
+
+// 增加常用颜色
+.custom-checkbox-success .custom-control-input:checked ~ .custom-control-label {
+  &::before {
+    border-color: $success;
+    background-color: $success;
+  }
+
+  &::after {
+    background-image: str-replace($custom-checkbox-indicator-icon-checked, str-replace(#{$custom-control-indicator-checked-color}, "#", "%23"), "%23fff");
+  }
+}
