@@ -20,9 +20,9 @@
       selector = selector && selector.replace(/.*(?=#[^\s]*$)/, '') // strip for ie7
     }
 
-    if ($this.parent('li').hasClass('active')) return
+    if ($this.hasClass('active')) return
 
-    var previous = $ul.find('.active:last a')[0]
+    var previous = $ul.find('.active:last')[0]
     var e = $.Event('show.bs.tab', {
       relatedTarget: previous
     })
@@ -33,7 +33,7 @@
 
     var $target = $(selector)
 
-    this.activate($this.closest('li'), $ul)
+    this.activate($this, $ul)
     this.activate($target, $target.parent(), function () {
       $this.trigger({
         type: 'shown.bs.tab',
@@ -43,7 +43,7 @@
   }
 
   Tab.prototype.activate = function (element, container, callback) {
-    var $active = container.find('> .active')
+    var $active = container.find('.active')
     var transition = callback
       && $.support.transition
       && $active.hasClass('fade')
