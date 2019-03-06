@@ -1428,19 +1428,19 @@
                                 性别
                             </label>
 
-                            <div class="col-control flex-column align-items-start">
-                              <label class="col-control border-bottom w-100 mb-0">
-                                <span class="custom-control custom-radio">
-                                  <input type="radio" name="customRadio" class="custom-control-input">
-                                  <label class="custom-control-label">男</label>
-                                </span>
-                              </label>
-                              <label class="col-control w-100 mb-0">
-                                <span class="custom-control custom-radio">
-                                  <input type="radio" name="customRadio" class="custom-control-input">
-                                  <label class="custom-control-label">女</label>
-                                </span>
-                              </label>
+                            <div class="col-control">
+                              <div class="custom-control custom-radio">
+                                <input id="sex11" type="radio" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="sex11">男</label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input id="sex12" type="radio" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="sex12">女</label>
+                              </div>
+                              <div class="custom-control custom-radio">
+                                <input id="sex13" type="radio" name="customRadio" class="custom-control-input">
+                                <label class="custom-control-label" for="sex13">其他</label>
+                              </div>
                             </div>
                         </div>
 
@@ -1575,37 +1575,33 @@
                 <form action="#" class="form">
                     <div class="form-legend">性别</div>
                     <div class="form-group">
-                      <div class="col-control flex-column align-items-start">
-                        <label class="col-control border-bottom w-100 mb-0">
-                          <span class="custom-control custom-radio">
-                            <input type="radio" name="customRadio2" class="custom-control-input">
-                            <label class="custom-control-label">男</label>
-                          </span>
+                      <div class="col-control">
+                        <label class="custom-control custom-radio">
+                          <input type="radio" name="customRadio2" class="custom-control-input">
+                          <span class="custom-control-label">男</span>
                         </label>
-                        <label class="col-control w-100 mb-0">
-                          <span class="custom-control custom-radio">
-                            <input type="radio" name="customRadio2" class="custom-control-input">
-                            <label class="custom-control-label">女</label>
-                          </span>
+                        <label class="custom-control custom-radio">
+                          <input type="radio" name="customRadio2" class="custom-control-input">
+                          <span class="custom-control-label">女</span>
                         </label>
                       </div>
                     </div>
 
                     <div class="form-group">
-                      <label class="col-control border-bottom w-100 mb-0">
-                        <span class="custom-control custom-radio">
+                      <div class="col-control">
+                        <label class="custom-control custom-radio">
                           <input type="radio" name="customRadio3" class="custom-control-input" value="1">
-                          <label class="custom-control-label">用于一般单选或多选普通操作</label>
-                        </span>
-                      </label>
+                          <span class="custom-control-label">用于一般单选或多选普通操作</span>
+                        </label>
+                      </div>
                     </div>
                     <div class="form-group">
-                      <label class="col-control border-bottom w-100 mb-0">
-                        <span class="custom-control custom-radio">
+                      <div class="col-control">
+                        <label class="custom-control custom-radio">
                           <input type="radio" name="customRadio3" class="custom-control-input" value="2">
-                          <label class="custom-control-label">用于一般单选或多选普通操作</label>
-                        </span>
-                      </label>
+                          <span class="custom-control-label">用于一般单选或多选普通操作</span>
+                        </label>
+                      </div>
                     </div>
                 </form>
             </div>
@@ -1655,34 +1651,30 @@
                 </form>
             </div>
 
-            <p>Checkbox带左边label</p>
-            <div class="example">
-                <form class="form border-top">
-                    <div class="form-group">
-                        <label class="form-label">爱好</label>
-                        <div class="col-control">
-                            <div class="checkbox checkbox-circle checkbox-info border-bottom">
-                              <label for="checkbox8">
-                                <input id="checkbox8" type="checkbox" name="checkbox5" checked>
-                                <span class="checkbox-label">运动</span>
-                              </label>
-                            </div>
-                            <div class="checkbox checkbox-circle checkbox-info border-bottom">
-                              <label for="checkbox9">
-                                <input id="checkbox9" type="checkbox" name="checkbox5">
-                                <span class="checkbox-label">唱歌</span>
-                              </label>
-                            </div>
-                            <div class="checkbox checkbox-circle checkbox-info">
-                              <label for="checkbox10">
-                                <input id="checkbox10" type="checkbox" name="checkbox10">
-                                <span class="checkbox-label">吃吃吃</span>
-                              </label>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
+          <p>Checkbox带左边label</p>
+          <div class="example">
+            <form class="form border-top">
+              <div class="form-group">
+                <label class="form-label">爱好</label>
+                <div class="col-control">
+                  <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="customCheck20" checked>
+                    <label class="custom-control-label" for="customCheck20">运动</label>
+                  </div>
+
+                  <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="customCheck21" checked>
+                    <label class="custom-control-label" for="customCheck21">唱歌</label>
+                  </div>
+
+                  <div class="custom-control custom-checkbox custom-control-inline">
+                    <input type="checkbox" class="custom-control-input" id="customCheck22" checked>
+                    <label class="custom-control-label" for="customCheck22">吃吃吃</label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
 
             <p>Checkbox</p>
             <div class="example" style="background: #f8f9fa">

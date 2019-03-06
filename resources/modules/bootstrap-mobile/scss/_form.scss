@@ -34,6 +34,7 @@
   display: flex; /* input-group 上下居中 */
   align-items: center;
   flex: 1;
+  flex-wrap: wrap; // 便于垂直布局
   min-height: $list-height; // 内部没有 input 的情况
 
   .form-control {
@@ -65,6 +66,26 @@
 
   .input-group-text {
     @include hairline-left($border-color);
+  }
+
+  .custom-control {
+    min-height: $list-height;
+    display: flex;
+    align-items: center;
+    flex-basis: 100%;
+    margin-bottom: 0; // for <label>
+
+    &:not(:last-child) {
+      @include hairline-bottom($border-color);
+    }
+  }
+
+  .custom-control-label {
+    width: 100%; // 便于点击选择
+  }
+
+  .custom-control-inline {
+    flex-basis: auto;
   }
 }
 
