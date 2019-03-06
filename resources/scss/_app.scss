@@ -21,31 +21,21 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* 头部的选项卡 */
+// 头部导航
 .header-tab {
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
   background-color: #fff;
   @include hairline-bottom($border-color);
-
-  .nav-item {
-    flex: 1 1 auto;
-    text-align: center;
-  }
+  @extend .nav-fill;
 
   // 下边框不被hairline边框挡住
   .nav-link {
     position: relative;
     bottom: 1px;
+    font-size: .875rem;
+    padding-left: .375rem;
+    padding-right: .375rem;
   }
-}
-
-.header-tab > li {
-  min-width: initial;
-}
-
-.header-tab > li > a {
-  font-size: 14px;
-  padding: 6px;
 }
 
 /* 统计栏 */
