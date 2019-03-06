@@ -28,10 +28,11 @@ body {
   @include hairline-bottom($border-color);
   @extend .nav-fill;
 
-  // 下边框不被hairline边框挡住
+  .nav-item {
+    margin-bottom: 0; // hairline不占据已有的空间
+  }
+
   .nav-link {
-    position: relative;
-    bottom: 1px;
     font-size: .875rem;
     padding-left: .375rem;
     padding-right: .375rem;
