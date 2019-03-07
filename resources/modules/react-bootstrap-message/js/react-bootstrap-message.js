@@ -127,27 +127,43 @@ const loadingOptions = {
   type: 'loading',
 };
 
-let loadingResult;
+let count = 0;
+let loading;
+
+function showLoading() {
+  count++;
+  if (count === 1) {
+    loading = api.loading({content: loadingOptions.tpl(loadingOptions.text)});
+  }
+};
+
+function hideLoading() {
+  if (!loading) {
+    return;
+  }
+
+  if (count > 0) {
+    count--;
+  }
+  if (count === 0) {
+    loading();
+  }
+};
 
 api.loading = (options = 'show') => {
   switch (options) {
     case 'show':
-      options = {content: loadingOptions.tpl(loadingOptions.text)};
-      break;
+      return showLoading();
 
     case 'hide':
-      return loadingResult && loadingResult();
+      return hideLoading();
 
     default:
       if (typeof options === 'string' || React.isValidElement(options)) {
         options = {content: loadingOptions.tpl(options)};
       }
+      return api.open({...loadingOptions, ...options});
   }
-
-  options = {...loadingOptions, ...options};
-  loadingResult && loadingResult();
-  loadingResult = api.open(options);
-  return loadingResult;
 };
 
 export default api;

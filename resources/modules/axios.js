@@ -3,29 +3,6 @@ import app from 'app';
 import message from 'react-bootstrap-message/js/react-bootstrap-message';
 import React from "react";
 
-let count = 0;
-let loading;
-
-function showLoading() {
-  count++;
-  if (count === 1) {
-    loading = app.loading();
-  }
-};
-
-function hideLoading() {
-  if (!loading) {
-    return;
-  }
-
-  if (count > 0) {
-    count--;
-  }
-  if (count === 0) {
-    loading();
-  }
-};
-
 function showError(error) {
   app.err('很抱歉，请求出错，请稍后再试');
   // TODO log
@@ -37,10 +14,10 @@ axios.interceptors.request.use(config => {
 });
 
 axios.interceptors.response.use(response => {
-  hideLoading();
+  message.loading('show');
   return response;
 }, error => {
-  hideLoading();
+  message.loading('hide');
   showError(error);
   return Promise.reject(error)
 });
