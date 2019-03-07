@@ -9,12 +9,12 @@ function showError(error) {
 }
 
 axios.interceptors.request.use(config => {
-  config.loading && showLoading();
+  config.loading && message.loading('show');
   return config;
 });
 
 axios.interceptors.response.use(response => {
-  message.loading('show');
+  message.loading('hide');
   return response;
 }, error => {
   message.loading('hide');
