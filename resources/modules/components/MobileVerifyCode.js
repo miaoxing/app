@@ -8,7 +8,7 @@ class MobileVerifyCode extends React.Component {
     maxLength: 6,
   };
 
-  componentDidUpdate() {
+  componentDidMount() {
     let options = {};
     if (this.props.url) {
       options.url = this.props.url;
