@@ -16,7 +16,7 @@ class FooterBar extends React.Component {
 }
 
 FooterBar.defaultProps = {
-  height: 54 // 44 + 10
+  height: 58 // 48 + 10
 };
 
 export default FooterBar;
