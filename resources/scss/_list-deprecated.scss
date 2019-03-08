@@ -67,9 +67,9 @@
   }
 }
 
-// 改用 .list-detail
-.list-title > .center-right {
-  right: 1rem;
+// 兼容有 .center-right
+.list-title {
+  position: relative;
 }
 
 .list-title > .float-right {
