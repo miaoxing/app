@@ -327,6 +327,10 @@
 }
 
 // 改用 .list-detail
-.list-title .center-right {
+.list-title > .center-right {
   right: 1rem;
+}
+
+.list-title > .float-right {
+  margin-left: auto;
 }
