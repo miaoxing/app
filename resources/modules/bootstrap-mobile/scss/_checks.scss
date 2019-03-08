@@ -1,9 +1,15 @@
 // 增加缩放效果
 .custom-checkbox,
 .custom-radio {
-  .custom-control-label::after {
-    transform: scale(0, 0);
-    transition: transform 0.15s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+  .custom-control-label {
+    &::before {
+      pointer-events: all; // ::after缩小后点击不到，只能点击before
+    }
+
+    &::after {
+      transform: scale(0, 0);
+      transition: transform 0.15s cubic-bezier(0.8, -0.33, 0.2, 1.33);
+    }
   }
 }
 
