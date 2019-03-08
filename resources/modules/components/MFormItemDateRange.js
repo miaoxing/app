@@ -4,6 +4,13 @@ import DatePicker from 'components/DatePicker'
 import moment from "moment";
 import 'jquery-unparam';
 import 'react-datepicker/dist/react-datepicker.css';
+import {createGlobalStyle} from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  .form .form-label {
+    width: 7em;
+  }
+`;
 
 class MFormItemDateRange extends React.Component {
   static defaultProps = {
@@ -46,13 +53,7 @@ class MFormItemDateRange extends React.Component {
 
   render() {
     return <>
-      <style>
-        {`
-          .form .control-label {
-            width: 7em;
-          }
-        `}
-      </style>
+      <GlobalStyle/>
       <FormGroup>
         <FormLabel>开始{this.props.label}日期</FormLabel>
         <div className="col-control">
