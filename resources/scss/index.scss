@@ -76,12 +76,14 @@
 //@import "../modules/bootstrap-mobile/scss/notice";
 @import "../modules/bootstrap-mobile/scss/utilities";
 
-// 自定义样式
+// 自定义功能样式
 @import '../modules/react-bootstrap-message/scss/react-bootstrap-message';
-@import "bs3-utilities";
 @import "font-sizes";
 @import "buttons";
 @import "modal";
+
+// 废弃样式
+@import "bs3-utilities";
 
 // 自定义常用的样式
 @import "app";
