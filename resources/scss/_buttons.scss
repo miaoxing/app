@@ -22,4 +22,9 @@
   height: 48px;
   display: block;
   line-height: 32px; /* 链接需要指定高度才能上下居中,按钮无需 */
+
+  // hairline
+  &::after {
+    border-radius: 0;
+  }
 }
