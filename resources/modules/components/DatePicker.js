@@ -4,6 +4,8 @@ import 'react-datepicker/dist/react-datepicker.css';
 import styled from 'styled-components';
 
 const StyledDatePicker = styled.div`
+  width: 100%; // 占满整个 .col-control
+
   .react-datepicker-wrapper,
   .react-datepicker__input-container {
     display: block;
@@ -15,7 +17,7 @@ const StyledDatePicker = styled.div`
     background-color: transparent;
     color: #d6d6d6;
     font-size: 24px;
-    margin: -14px 0 0 0;
+    margin: -12px 0 0 0;
     right: 6px;
     top: 50%;
   }
