@@ -132,6 +132,8 @@ $mobile-only: false !default;
       }
 
       &-loading-icon {
+        width: 34px; // 和其他 message 一样高度
+        height: 34px;
         margin-bottom: 0;
         margin-right: 8px;
       }
