@@ -40,7 +40,7 @@
 
 <?= $block->js() ?>
 <script>
-  require(['form'], function () {
+  require(['plugins/admin/js/form'], function () {
     $('.js-app-form').ajaxForm({
       dataType: 'json'
     });

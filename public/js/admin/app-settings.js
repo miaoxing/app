@@ -1,4 +1,4 @@
-define(['form', 'plugins/app/js/validation', 'plugins/admin/js/spectrum'], function () {
+define(['plugins/admin/js/form', 'plugins/app/js/validation', 'plugins/admin/js/spectrum'], function () {
   var AppSettings = function () {
     // do nothings.
   };
