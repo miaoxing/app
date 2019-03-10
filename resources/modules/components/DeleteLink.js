@@ -36,7 +36,7 @@ class DeleteLink extends React.Component {
 }
 
 DeleteLink.defaultProps = {
-  message: '删除后将无法还原,确认删除?',
+  message: '删除后将无法还原,确定删除?',
 };
 
 export default withTable(DeleteLink);
