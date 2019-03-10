@@ -8,7 +8,7 @@ const MFormItem = ({name, label, ...props}) => {
   const id = name ? decamelize(name, '-') : null;
 
   return <FormGroup>
-    {label && <FormLabel className="col-form-label">
+    {label && <FormLabel>
       {label}
       {props.required && <>{' '}<Required/></>}
     </FormLabel>}

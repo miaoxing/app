@@ -22,12 +22,6 @@
     align-self: flex-start; // 在 .list-item 中
     margin-bottom: 0; // bs
   }
-
-  @for $i from 2 through 8 {
-    .col-form-label-#{$i} {
-      width: #{$i}em;
-    }
-  }
 }
 
 .col-control {
