@@ -25,9 +25,9 @@ function FormItem({container = FormGroup, label, name, help, labelSize = 2, cont
           {props.children}
         </FormControl>}
       </Col>
-      {help && <Col as="label" sm={helpSize} className="help-text">
+      {help && <Form.Label column sm={helpSize} className="text-muted">
         {help}
-      </Col>}
+      </Form.Label>}
     </Component>
   );
 }
