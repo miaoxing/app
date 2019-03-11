@@ -13,13 +13,19 @@ const StyledDatePicker = styled.div`
   .react-datepicker-popper {
     z-index: 100;
   }
-  .react-datepicker__close-icon::after {
-    background-color: transparent;
-    color: #d6d6d6;
-    font-size: 24px;
-    margin: -12px 0 0 0;
-    right: 6px;
+  .react-datepicker__close-icon {
     top: 50%;
+    transform: translateY(-50%);
+    height: auto; // 抵消原CSS
+    right: 0.75rem; // 抵消原CSS
+    
+    &::after {
+      background-color: transparent;
+      color: #d6d6d6;
+      font-size: 1.5rem;
+      position: static; // 抵消原CSS
+      padding: 0; // 抵消原CSS
+    }
   }
 `;
 
