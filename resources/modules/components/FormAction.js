@@ -7,7 +7,8 @@ function FormAction({url, list = true}) {
     <Form.Group as={Row} className="form-actions px-0">
       <Col sm={{span: 10, offset: 2}}>
         <Button type="submit">提交</Button>
-        {list && (url ? <Button href={url} variant="secondary" className="ml-3">返回列表</Button> : <CListBtn/>)}
+        {list && (url ? <Button href={url} variant="secondary" className="ml-3">返回列表</Button> :
+          <CListBtn className="ml-3"/>)}
       </Col>
     </Form.Group>
   );
