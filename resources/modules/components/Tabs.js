@@ -1,11 +1,7 @@
-import {Tabs as RbTabs} from 'react-bootstrap';
-import styled from "styled-components";
 import React from "react";
+import {Tabs as RbTabs} from 'react-bootstrap';
+import classNames from 'classnames';
 
-class Tabs extends React.Component {
-  render() {
-    return <RbTabs {...this.props} className={this.props.className + ' nav-underline'}/>
-  }
+export default ({className, ...props}) => {
+  return <RbTabs className={classNames(className, 'nav-underline')} {...props}/>
 }
-
-export default Tabs;
