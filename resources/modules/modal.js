@@ -74,7 +74,7 @@ const ConfirmDialog = (props) => {
     content,
     centered = true,
     okType = 'outline-primary',
-    title = '提示',
+    title = '',
     okText = '确定',
     cancelText = '取消',
     okCancel = true,
@@ -99,9 +99,9 @@ const ConfirmDialog = (props) => {
       className="modal-prompt modal-zoom"
       {...rest}
     >
-      <Modal.Header>
+      {title && <Modal.Header>
         <Modal.Title>{title}</Modal.Title>
-      </Modal.Header>
+      </Modal.Header>}
       <Modal.Body>{content}</Modal.Body>
       <Modal.Footer>
         {cancelButton}

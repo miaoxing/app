@@ -86,7 +86,8 @@
   }
 
   .modal-header {
-    display: none; // 前台无需显示
+    padding-top: .75rem;
+    padding-bottom: .75rem;
   }
 
   .modal-body {
