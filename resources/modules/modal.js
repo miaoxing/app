@@ -63,6 +63,12 @@ class ActionButton extends React.Component {
   }
 }
 
+const defaults = {
+  okType: 'outline-primary',
+  okText: '确定',
+  cancelText: '取消',
+};
+
 const ConfirmDialog = (props) => {
   const {
     onOk,
@@ -73,10 +79,10 @@ const ConfirmDialog = (props) => {
     cancelButtonProps,
     content,
     centered = true,
-    okType = 'outline-primary',
+    okType = defaults.okType,
     title = '',
-    okText = '确定',
-    cancelText = '取消',
+    okText = defaults.okText,
+    cancelText = defaults.cancelText,
     okCancel = true,
     autoFocusButton = 'ok',
     ...rest
@@ -210,5 +216,7 @@ confirm.alert = (config) => {
     ...config,
   })
 };
+
+confirm.defaults = defaults;
 
 export default confirm;
