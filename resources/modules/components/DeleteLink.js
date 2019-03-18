@@ -29,7 +29,7 @@ class DeleteLink extends React.Component {
 
   render() {
     const {message, href, table, ...rest} = this.props;
-    return <a className="text-danger" onClick={this.handleDelete} {...rest}>
+    return <a className="text-danger" href="javascript:;" onClick={this.handleDelete} {...rest}>
       删除
     </a>;
   }
