@@ -7,7 +7,7 @@ $wei->page->addAsset('plugins/app/css/swipe.css');
 ?>
 
 <div class="js-image-slider swipe">
-  <div class="js-images-preview swipe-wrap">
+  <div class="js-images-preview images-preview swipe-wrap">
     <?php foreach ($images as $index => $image) : ?>
       <div>
         <img src="<?= wei()->asset->thumb($image, 750) ?>"/>
