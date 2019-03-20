@@ -4,14 +4,6 @@
   width: 100%;
 }
 
-// 左右布局列表 直接使用list-title 配置list-description
-.list-label {
-  padding-left: 0;
-  padding-right: 0;
-  font-weight: normal; /* bs */
-  margin-bottom: 0; /* bs */
-}
-
 // 列表为空的提示文案
 .list-empty {
   text-align: center;
