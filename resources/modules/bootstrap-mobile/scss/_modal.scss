@@ -18,13 +18,15 @@
   @include hairline-top($border-color);
 }
 
-/* 底部弹出Modal窗口 */
+// 底部弹出Modal窗口
+
 .modal-bottom {
   .modal-dialog {
     margin: 0;
     bottom: 0;
     position: absolute;
     width: 100%;
+    max-width: 100%; // 抵消 $modal-md;
     max-height: 100vh;
   }
 
