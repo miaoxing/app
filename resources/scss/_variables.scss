@@ -68,6 +68,11 @@ $custom-radio-indicator-icon-checked: str-replace(url("data:image/svg+xml,%3csvg
 
 $badge-font-weight: normal;
 
+// Modals
+
+// 不限制 modal 宽度
+$modal-md: 100%;
+
 // Custom
 
 $mobile-only: true;

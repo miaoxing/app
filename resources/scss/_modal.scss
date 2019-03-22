@@ -5,10 +5,9 @@
   z-index: $zindex-modal;
 }
 
-@media (max-width: 576px) {
+@include media-breakpoint-up(sm) {
   .modal-dialog {
-    max-width: 100%;
-    margin: $modal-dialog-margin-y-sm-up;
+    margin: $modal-dialog-margin-y-sm-up; /* 小屏幕下左右加上间距 */
   }
 }
 
