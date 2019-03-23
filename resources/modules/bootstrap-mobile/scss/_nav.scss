@@ -10,6 +10,7 @@
   .nav-link {
     color: $text-muted;
     border: 0;
+    padding-bottom: calc(#{$nav-link-padding-y} - 3px);
 
     &.active {
       color: $link-color;
