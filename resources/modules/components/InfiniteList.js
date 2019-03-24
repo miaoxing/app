@@ -2,12 +2,17 @@ import React from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import axios from 'axios';
 import app from 'app';
+import _ from "lodash";
 
 export default class InfiniteList extends React.Component {
   static defaultProps = {
     url: '',
     emptyMessage: <div className="list-empty">暂无记录</div>,
     useWindow: true,
+    element: 'ul',
+    className: null,
+    renderItem: null,
+    render: null,
   };
 
   state = {
@@ -41,15 +46,25 @@ export default class InfiniteList extends React.Component {
     return location.pathname + '.json' + location.search;
   }
 
+  renderChildren() {
+    if (this.props.renderItem) {
+      return <this.props.element className={this.props.className}>
+        {this.state.data.map(row => this.props.renderItem(row))}
+      </this.props.element>;
+    }
+
+    return this.props.render({
+      data: this.state.data
+    });
+  }
+
   render() {
     return <InfiniteScroll
       loadMore={this.handleLoadMore.bind(this)}
       hasMore={this.state.hasMore && !this.state.loading}
       useWindow={this.props.useWindow}
     >
-      {this.props.render({
-        data: this.state.data
-      })}
+      {this.renderChildren()}
       {this.state.loading && this.state.hasMore && <div className="text-center list-loading" key={0}>
         <span className="list-loading-spinner"/>努力加载中...
       </div>}
