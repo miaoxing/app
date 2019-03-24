@@ -5,6 +5,8 @@ import NoMatch from 'components/NoMatch';
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
 import app from 'app';
+import {ThemeProvider} from 'styled-components';
+import theme from 'theme';
 
 class App extends React.Component {
   constructor(props) {
@@ -92,14 +94,16 @@ class App extends React.Component {
 
   render() {
     const Component = this.loadableComponent;
-    return <BrowserRouter>
-      <Switch>
-        {/* TODO /admin/login */}
-        <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
-        <Route exact path={wei.appUrl} component={Component}/>
-        <Route component={NoMatch}/>
-      </Switch>
-    </BrowserRouter>;
+    return <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Switch>
+          {/* TODO /admin/login */}
+          <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
+          <Route exact path={wei.appUrl} component={Component}/>
+          <Route component={NoMatch}/>
+        </Switch>
+      </BrowserRouter>
+    </ThemeProvider>;
   }
 }
 
