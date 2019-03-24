@@ -10,7 +10,7 @@ const loader = Promise.all([
 ]);
 
 @connect
-class SearchDateRangePicker extends React.Component {
+class SearchDateRangePickerik extends React.Component {
   static defaultProps = {
     min: 'Min',
     max: 'Max',
@@ -44,4 +44,4 @@ class SearchDateRangePicker extends React.Component {
   }
 }
 
-export default SearchDateRangePicker;
+export default SearchDateRangePickerik;
