@@ -6,6 +6,22 @@ import {connect} from "formik";
 import moment from 'moment';
 import 'bootstrap-daterangepicker/daterangepicker';
 import 'bootstrap-daterangepicker/daterangepicker.css';
+import {createGlobalStyle} from 'styled-components';
+
+const GlobalStyle = createGlobalStyle`
+  // 解决月份为中文时年月下来未对齐
+  .yearselect {
+    position: relative;
+    top: -2px;
+  }
+  
+  // 适当美化原生的年月下拉
+  .yearselect,
+  .monthselect {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+  }
+`;
 
 @connect
 class SearchDateRangePicker extends React.Component {
@@ -68,6 +84,7 @@ class SearchDateRangePicker extends React.Component {
 
   render() {
     return <>
+      <GlobalStyle/>
       <SearchItem label={this.props.label} className={'js-' + this.id} autoComplete="off"
         name={this.props.name + 'Range'}/>
       <input type="hidden" className={'js-' + this.id + '-min'} name={this.props.name + this.props.min}/>
