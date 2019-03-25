@@ -2,10 +2,12 @@ import React from 'react';
 import rp from 'require-promise';
 import SearchItem from 'components/SearchItem';
 import decamelize from 'decamelize';
+import {connect} from "formik";
 import moment from 'moment';
 import 'bootstrap-daterangepicker/daterangepicker';
 import 'bootstrap-daterangepicker/daterangepicker.css';
 
+@connect
 class SearchDateRangePicker extends React.Component {
   static defaultProps = {
     min: 'Min',
@@ -48,9 +50,20 @@ class SearchDateRangePicker extends React.Component {
   }
 
   updateValues(start, end) {
-    $('.js-' + this.id + '-min').val(start ? (start.format(this.format) + ' 00:00:00') : '');
-    $('.js-' + this.id + '-max').val(end ? (end.format(this.format) + ' 23:59:59') : '');
-    $('.js-' + this.id).val(start ? (start.format(this.format) + ' ~ ' + end.format(this.format)) : '').trigger('change');
+    var startValue = start ? (start.format(this.format) + ' 00:00:00') : '';
+    var endValue = end ? (end.format(this.format) + ' 23:59:59') : '';
+    var fullValue = start ? (start.format(this.format) + ' ~ ' + end.format(this.format)) : '';
+
+    $('.js-' + this.id + '-min').val(startValue);
+    $('.js-' + this.id + '-max').val(endValue);
+    $('.js-' + this.id).val(fullValue).trigger('change');
+
+    if (this.props.formik.setFieldValue) {
+      this.props.formik.setFieldValue(this.props.name + this.props.min, startValue);
+      this.props.formik.setFieldValue(this.props.name + this.props.max, endValue);
+      this.props.formik.setFieldValue(this.props.name + 'Range', fullValue);
+      this.props.formik.submitForm();
+    }
   }
 
   render() {
