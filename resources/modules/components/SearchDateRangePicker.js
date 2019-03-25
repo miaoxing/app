@@ -62,6 +62,34 @@ class SearchDateRangePicker extends React.Component {
       this.updateValues(picker.startDate, picker.endDate);
     }).on('cancel.daterangepicker', (ev, picker) => {
       this.updateValues(null, null);
+    }).on('blur', (e) => {
+      var $el = $(e.target);
+      var picker = $el.data('daterangepicker');
+      var dateString = $el.val().split(picker.locale.separator),
+        start = null,
+        end = null;
+
+      if (dateString.length === 2) {
+        start = moment(dateString[0], picker.locale.format);
+        end = moment(dateString[1], picker.locale.format);
+      }
+
+      if (start === null || end === null) {
+        start = moment($el.val(), picker.locale.format);
+        end = start;
+      }
+
+      // 如果输入无效的值,还原为原来的值
+      if (!start.isValid() || !end.isValid()) {
+        this.updateValues(picker.startDate, picker.endDate);
+        return;
+      }
+
+      picker.setStartDate(start);
+      picker.setEndDate(end);
+      picker.updateView();
+      // 更新输入框到最新值
+      this.updateValues(start, end);
     });
   }
 
