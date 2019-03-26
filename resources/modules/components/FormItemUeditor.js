@@ -14,7 +14,9 @@ class FormItemUeditor extends React.Component {
     }
 
     if (getIn(prevProps.formik.values, this.props.name) !== getIn(this.props.formik.values, this.props.name)) {
-      this.editor.setContent(getIn(this.props.formik.values, this.props.name));
+      this.editor.ready(() => {
+        this.editor.setContent(getIn(this.props.formik.values, this.props.name));
+      });
     }
   }
 
