@@ -2,9 +2,12 @@ import React from "react";
 import {Form} from 'react-bootstrap';
 import {Field, getIn} from 'formik';
 
-export default ({id, ...props}) => {
+export default ({id, label, ...props}) => {
   if (!id) {
     id = props.name + '-' + props.value;
+  }
+  if (!label && !props.children) {
+    label = ' ';
   }
 
   return (
@@ -33,7 +36,7 @@ export default ({id, ...props}) => {
           checked = props.value == field.value;
         }
 
-        return <Form.Check custom checked={checked} id={id} {...field} {...props} {...extProps}/>
+        return <Form.Check custom checked={checked} id={id} label={label} {...field} {...props} {...extProps}/>
       }}
     />
   );
