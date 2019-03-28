@@ -1,11 +1,11 @@
 import React from 'react';
 
 const ListText = ({label, children, ...props}) => {
-  return <li className="list-item" {...props}>
+  return <li className="list-item list-description" {...props}>
     <h4 className="list-title">
-      <span className="text-muted">{label}</span>
-      <span className="float-right">{children || '-'}</span>
+      {label}
     </h4>
+    <div className="list-detail">{children || '-'}</div>
   </li>;
 };
 
