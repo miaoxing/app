@@ -8,14 +8,16 @@ import {connect} from "formik";
 export default class extends React.Component {
   static defaultProps = {
     verified: false,
+    reset: false,
   };
 
   verifiedMobile;
 
-  handleChange = (e) => {
-    console.log('change');
-    this.props.formik.handleChange(e);
-  };
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    if (prevProps.reset === false && this.props.reset === true) {
+      $('.js-verify-code-send').verifyCode('reset');
+    }
+  }
 
   showVerifyCode() {
     if (!this.props.verified) {
@@ -36,7 +38,7 @@ export default class extends React.Component {
     }
 
     return <>
-      <MFormItem label="手机" name="mobile" className="js-mobile" onChange={this.handleChange}/>
+      <MFormItem label="手机" name="mobile" className="js-mobile"/>
       {this.showVerifyCode() && <MobileVerifyCode/>}
     </>;
   }
