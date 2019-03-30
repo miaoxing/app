@@ -1,7 +1,6 @@
 import React from "react";
 import MFormItem from "components/MFormItem";
 import MobileVerifyCode from "components/MobileVerifyCode";
-import verifyNewMobile from 'vendor/miaoxing/verify-code/resources/modules/verify-new-mobile'
 import {connect} from "formik";
 
 @connect
