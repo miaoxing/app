@@ -4,19 +4,13 @@ import MobileVerifyCode from "components/MobileVerifyCode";
 import {connect} from "formik";
 
 @connect
-export default class extends React.Component {
+class Child extends React.Component {
   static defaultProps = {
     verified: false,
     reset: false,
   };
 
   verifiedMobile;
-
-  componentDidUpdate(prevProps, prevState, snapshot) {
-    if (prevProps.reset === false && this.props.reset === true) {
-      $('.js-verify-code-send').verifyCode('reset');
-    }
-  }
 
   showVerifyCode() {
     if (!this.props.verified) {
@@ -40,5 +34,16 @@ export default class extends React.Component {
       <MFormItem label="手机" name="mobile" className="js-mobile"/>
       {this.showVerifyCode() && <MobileVerifyCode/>}
     </>;
+  }
+}
+
+// NOTE: Formik 2 支持 ForwardRef 后才合并 Child
+export default class MFormItemMobileVerifyCode extends React.Component {
+  reset(reset) {
+    reset && $('.js-verify-code-send').verifyCode('reset');
+  }
+
+  render() {
+    return <Child {...this.props}/>
   }
 }
