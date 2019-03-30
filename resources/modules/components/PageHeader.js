@@ -3,8 +3,7 @@ import React from 'react';
 class PageHeader extends React.Component {
   render() {
     return (
-      <div className="page-header">
-        {this.props.children && <div className="float-right">{this.props.children}</div>}
+      <div className="page-header d-flex flex-wrap">
         <h1>
           {this.props.parentTitle || wei.page.controllerTitle}
           {this.props.title && <small>
@@ -12,6 +11,7 @@ class PageHeader extends React.Component {
             {' '}{this.props.title}
           </small>}
         </h1>
+        {this.props.children && <div className="ml-auto">{this.props.children}</div>}
       </div>
     );
   }
