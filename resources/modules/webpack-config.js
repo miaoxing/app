@@ -1,9 +1,9 @@
 const webpack = require('webpack');
 const path = require('path');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 const ManifestPlugin = require('webpack-manifest-plugin');
 const HappyPack = require('happypack');
+const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 // const HardSourceWebpackPlugin = require('hard-source-webpack-plugin');
 // const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
 // const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
@@ -73,7 +73,7 @@ class WebpackConfig {
           {
             test: /\.(sa|sc|c)ss$/,
             use: [
-              MiniCssExtractPlugin.loader,
+              this.getExtractCssChunksLoader(),
               'css-loader',
               {
                 loader: 'postcss-loader',
@@ -91,7 +91,7 @@ class WebpackConfig {
           {
             test: /\.less$/,
             use: [
-              MiniCssExtractPlugin.loader,
+              this.getExtractCssChunksLoader(),
               'less-loader',
             ]
           },
@@ -124,8 +124,9 @@ class WebpackConfig {
         new HappyPack({
           loaders: ['babel-loader?cacheDirectory']
         }),
-        new MiniCssExtractPlugin({
-          filename: useVersioning ? '[name]-[contenthash:6].css' : '[name].css'
+        new ExtractCssChunks({
+          filename: useVersioning ? '[name]-[contenthash:6].css' : '[name].css',
+          orderWarning: true,
         }),
         // new HardSourceWebpackPlugin(),
         // new BundleAnalyzerPlugin(),
@@ -160,6 +161,15 @@ class WebpackConfig {
     }
 
     return config;
+  }
+
+  getExtractCssChunksLoader() {
+    return {
+      loader: ExtractCssChunks.loader,
+      options: {
+        hot: this.isHot, // 需加上才会重新加载全部CSS
+      }
+    };
   }
 
   getWebpackLoaderOptionsPlugin() {
