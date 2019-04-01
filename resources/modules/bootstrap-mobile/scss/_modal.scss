@@ -80,7 +80,8 @@
 .modal-prompt {
   .modal-dialog {
     width: 300px;
-    margin: auto;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   .modal-content {
@@ -92,12 +93,15 @@
     padding-bottom: .75rem;
   }
 
-  .modal-body {
+  // 在 .modal-body 下增加 .modal-text 来解决内容超出时上半部分被挡住
+  // @see https://stackoverflow.com/a/47760391
+  @at-root .modal-text {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 6rem;
-    padding: 1.5rem;
+    min-height: 4rem; // 内容过少时也不会太扁
+    padding: .5rem;
   }
 
   .modal-footer {

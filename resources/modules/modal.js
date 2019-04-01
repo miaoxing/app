@@ -78,6 +78,7 @@ const ConfirmDialog = (props) => {
     okButtonProps,
     cancelButtonProps,
     content,
+    html = false,
     centered = true,
     okType = defaults.okType,
     title = '',
@@ -103,12 +104,17 @@ const ConfirmDialog = (props) => {
       centered={centered}
       autoFocus={false}
       className="modal-prompt modal-zoom"
+      dialogClassName="modal-dialog-scrollable"
       {...rest}
     >
       {title && <Modal.Header>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>}
-      <Modal.Body>{content}</Modal.Body>
+      <Modal.Body>
+        <div className="modal-text" dangerouslySetInnerHTML={html ? {__html: content} : null}>
+          {html ? null : content}
+        </div>
+      </Modal.Body>
       <Modal.Footer>
         {cancelButton}
         <ActionButton type={okType} actionFn={onOk} closeModal={close} autoFocus={autoFocusButton === 'ok'}
