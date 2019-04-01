@@ -51,32 +51,20 @@
   }
 }
 
-/* 解决iOS底部弹窗后可以继续往下滚动的问题 */
+// 解决iOS底部弹窗后可以继续往下滚动的问题
+
 .modal-fixfixed {
   position: relative;
   overflow: hidden;
   height: 100%;
-}
 
-.modal-fixfixed .modal-backdrop.show {
-  opacity: .8;
-}
-
-// 实现缩放动画效果
-.modal-zoom {
-  transform: scale(0.8);
-  transition: all .15s linear;
-}
-
-.modal-zoom.show {
-  transform: scale(1);
-}
-
-.modal.modal-zoom .modal-dialog {
-  transform: translate(0, 0);
+  .modal-backdrop.show {
+    opacity: .8;
+  }
 }
 
 // 简化弹窗
+
 .modal-prompt {
   .modal-dialog {
     width: 300px;

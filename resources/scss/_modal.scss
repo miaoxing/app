@@ -1,5 +1,20 @@
 // Modal
 
+// 实现缩放动画效果
+
+.modal-zoom {
+  transform: scale(0.8);
+  transition: all .15s linear;
+
+  &.show {
+    transform: scale(1);
+  }
+
+  &.modal .modal-dialog {
+    transform: translate(0, 0);
+  }
+}
+
 // 在 modal 上再次弹出 modal 能覆盖原 modal
 .modal-backdrop ~ .modal-backdrop {
   z-index: $zindex-modal;
