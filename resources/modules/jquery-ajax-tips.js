@@ -30,6 +30,10 @@ $(document)
       return;
     }
 
+    if (ajaxOptions.ignoreError) {
+      return;
+    }
+
     $.err(jqXHR.status === NOT_FOUND ? '很抱歉，您访问的页面不存在，请检查后再试' : '很抱歉，请求出错，请稍后再试');
     $.log({
       url: window.location.href,

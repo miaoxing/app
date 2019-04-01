@@ -4,8 +4,11 @@ import message from 'react-bootstrap-message/js/react-bootstrap-message';
 import React from "react";
 
 function showError(error) {
+  if (error.config.ignoreError) {
+    return;
+  }
+
   app.err('很抱歉，请求出错，请稍后再试');
-  // TODO log
 }
 
 axios.interceptors.request.use(config => {
@@ -19,7 +22,7 @@ axios.interceptors.response.use(response => {
 }, error => {
   message.loading('hide');
   showError(error);
-  return Promise.reject(error)
+  return Promise.reject(error);
 });
 
 export default axios;
