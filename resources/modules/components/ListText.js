@@ -1,12 +1,26 @@
-import React from 'react';
+import React from "react";
+import classNames from "classnames";
 
-const ListText = ({label, children, ...props}) => {
-  return <li className="list-item list-description" {...props}>
-    <h4 className="list-title">
-      {label}
-    </h4>
-    <div className="list-detail">{children || '-'}</div>
-  </li>;
+const ListText = (props) => {
+  const {
+    as: Component,
+    className,
+    ...rest
+  } = props;
+
+  return (
+    <Component
+      {...props}
+      className={classNames(
+        className,
+        'list-text'
+      )}
+    />
+  );
+};
+
+ListText.defaultProps = {
+  as: 'div',
 };
 
 export default ListText;
