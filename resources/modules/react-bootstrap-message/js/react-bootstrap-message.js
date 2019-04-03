@@ -166,4 +166,31 @@ api.loading = (options = 'show') => {
   }
 };
 
+api.ret = (ret, duration, callback) => {
+  const result = api[ret.code === 1 ? 'success' : 'danger'](ret.message, duration, callback);
+
+  let suc;
+  result.suc = fn => {
+    suc = fn;
+    return result;
+  };
+
+  let err;
+  result.err = fn => {
+    err = fn;
+    return result;
+  };
+
+  result.then(() => {
+    if (ret.code === 1 && suc) {
+      suc();
+    }
+    if (ret.code !== 1 && err) {
+      err();
+    }
+  });
+
+  return result;
+};
+
 export default api;

@@ -4,9 +4,8 @@ import message from 'vendor/miaoxing/app/resources/modules/react-bootstrap-messa
 /**
  * 根据JSON显示提示
  */
-$.msg = function (result, delay, callback) {
-  var method = result.code > 0 ? 'success' : 'danger';
-  return message[method](result.message, delay, callback);
+$.msg = function (...args) {
+  return message.ret(...args);
 };
 
 /**
