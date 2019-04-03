@@ -47,4 +47,6 @@ List.defaultProps = {
   as: 'ul',
 };
 
+List.Indented = (props) => (<List indented={true} {...props}/>)
+
 export default List;
