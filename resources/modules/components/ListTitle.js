@@ -1,26 +1,26 @@
 import React from "react";
 import classNames from "classnames";
 
-export default class extends React.Component {
-  static defaultProps = {
-    as: 'h5',
-  };
+const ListTitle = (props) => {
+  const {
+    as: Component,
+    className,
+    ...rest
+  } = props;
 
-  render() {
-    const {
-      as: Component,
-      className,
-      ...props
-    } = this.props;
+  return (
+    <Component
+      {...props}
+      className={classNames(
+        className,
+        'list-title'
+      )}
+    />
+  );
+};
 
-    return (
-      <Component
-        {...props}
-        className={classNames(
-          className,
-          'list-title'
-        )}
-      />
-    );
-  }
-}
+ListTitle.defaultProps = {
+  as: 'h5',
+};
+
+export default ListTitle;

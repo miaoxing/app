@@ -1,7 +1,7 @@
 import React from "react";
 import classNames from "classnames";
 
-const ListItem = (props) => {
+const ListDetail = (props) => {
   const {
     as: Component,
     className,
@@ -10,17 +10,17 @@ const ListItem = (props) => {
 
   return (
     <Component
-      {...rest}
+      {...props}
       className={classNames(
         className,
-        'list-item'
+        'list-detail'
       )}
     />
   );
 };
 
-ListItem.defaultProps = {
-  as: 'li'
+ListDetail.defaultProps = {
+  as: 'div',
 };
 
-export default ListItem;
+export default ListDetail;
