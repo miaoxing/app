@@ -8,8 +8,10 @@ import axios from 'axios';
 /**
  * 在基础的表单上增加了
  *
- * 1. 点击提交数据发送到后台
- * 2. 提交成功后跳转到相应页面
+ * 1. 简化 Formik 和 form 的层级结构
+ * 2. 默认自动从后台读取数据
+ * 3. 点击提交数据发送到后台
+ * 4. 提交成功后跳转到相应页面
  */
 class Form extends React.Component {
   static propTypes = {
@@ -32,6 +34,16 @@ class Form extends React.Component {
      * 渲染子组件
      */
     render: propTypes.func,
+
+    /**
+     * HTML form 元素的属性
+     */
+    formProps: propTypes.object,
+
+    /**
+     * Formik 的属性
+     */
+    initialValues: propTypes.object,
   };
 
   state = {
@@ -117,16 +129,18 @@ class Form extends React.Component {
   }
 
   render() {
+    const {render, children, initialValues, formProps, ...props} = this.props;
     return (
       <Formik
         initialValues={this.state.initialValues}
         enableReinitialize={true}
         onSubmit={this.handleSubmit}
         render={(props) => (
-          <FormikForm>
-            {this.props.render ? this.props.render(props) : this.props.children}
+          <FormikForm {...formProps}>
+            {render ? render(props) : children}
           </FormikForm>
         )}
+        {...props}
       />
     );
   }
