@@ -19,10 +19,28 @@ class Form extends React.Component {
     url: propTypes.string,
 
     /**
+     *
+     */
+    valuesUrl: propTypes.string,
+
+    /**
      * 提交成功后跳转的地址，默认为上一级页面
      */
     redirectUrl: propTypes.string,
   };
+
+  state = {
+    initialValues: this.props.initialValues,
+  };
+
+  static getDerivedStateFromProps(props, state) {
+    if (props.initialValues && props.initialValues !== state.initialValues) {
+      return {
+        initialValues: props.initialValues,
+      };
+    }
+    return null;
+  }
 
   handleSubmit = (values) => {
     axios({
@@ -57,10 +75,46 @@ class Form extends React.Component {
     }
   }
 
+  getValuesUrl() {
+    if (typeof this.props.valuesUrl === 'undefined') {
+      return window.location.href;
+    }
+
+    return this.props.valuesUrl;
+  }
+
+  componentDidMount() {
+    if (this.props.initialValues) {
+      return;
+    }
+
+    const valuesUrl = this.getValuesUrl();
+    if (valuesUrl !== false) {
+      app.get(valuesUrl).then(ret => {
+        this.setState({initialValues: this.filterValues(ret.data)});
+      });
+    }
+  }
+
+  /**
+   * 将输入项的值从 null 转换为空字符,因为 React input 值不允许为 null
+   *
+   * @param object data
+   * @returns object
+   */
+  filterValues(data) {
+    Object.keys(data).forEach(key => {
+      if (data[key] === null) {
+        data[key] = '';
+      }
+    });
+    return data;
+  }
+
   render() {
     return (
       <Formik
-        initialValues={this.props.initialValues}
+        initialValues={this.state.initialValues}
         enableReinitialize={true}
         onSubmit={this.handleSubmit}
         render={() => (
