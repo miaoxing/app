@@ -14,15 +14,4 @@
     $root.removeClass('modal-fixfixed');
     $body.scrollTop(scrollTop);
   });
-
-  // 确保高度不超出屏幕
-  $doc.on('shown.bs.modal', '.modal-bottom', function (e) {
-    var $element = $(e.target);
-    $element.find('.modal-body').css(
-      'max-height',
-      $(window).height()
-      - $element.find('.modal-header').outerHeight()
-      - $element.find('.modal-footer').outerHeight()
-    );
-  });
 })(jQuery);
