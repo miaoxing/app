@@ -19,14 +19,19 @@ class Form extends React.Component {
     url: propTypes.string,
 
     /**
-     *
+     * 获取表单数据的后台地址
      */
-    valuesUrl: propTypes.string,
+    valuesUrl: propTypes.oneOfType([propTypes.string, propTypes.bool]),
 
     /**
      * 提交成功后跳转的地址，默认为上一级页面
      */
     redirectUrl: propTypes.string,
+
+    /**
+     * 渲染子组件
+     */
+    render: propTypes.func,
   };
 
   state = {
@@ -117,9 +122,9 @@ class Form extends React.Component {
         initialValues={this.state.initialValues}
         enableReinitialize={true}
         onSubmit={this.handleSubmit}
-        render={() => (
+        render={(props) => (
           <FormikForm>
-            {this.props.children}
+            {this.props.render ? this.props.render(props) : this.props.children}
           </FormikForm>
         )}
       />
