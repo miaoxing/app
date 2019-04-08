@@ -4,17 +4,23 @@ import Loading from 'components/Loading';
 import NoMatch from 'components/NoMatch';
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
-import app from 'app';
 import {ThemeProvider} from 'styled-components';
+import app from 'app';
 import theme from 'theme';
+import event from 'event';
 
 class App extends React.Component {
   static defaultProps = {
     pages: {},
+    plugins: {},
+    events: {},
   };
 
   constructor(props) {
     super(props);
+
+    // 初始化事件
+    event.setConfigs(props);
 
     // 解析出页面路径中的插件和控制对应关系
     // 如 article/articles/Edit => articles:article

@@ -11,7 +11,7 @@ class AppContainer extends React.Component {
   }
 
   render() {
-    return <App importPage={this.importPage} pages={configs.pages}/>;
+    return <App importPage={this.importPage} {...configs}/>;
   }
 }
 

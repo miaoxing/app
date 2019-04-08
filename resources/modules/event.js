@@ -1,13 +1,17 @@
 import hoook from 'hoook';
-import configs from 'data/cache/app-pages';
 
 const ee = hoook();
 
 class Event {
+  configs = {};
   loaded = {};
 
   on = ee.hook;
   off = ee.unhook;
+
+  setConfigs(configs) {
+    this.configs = configs;
+  }
 
   trigger(event, data) {
     this.loadEvent(event, () => {
@@ -22,18 +26,18 @@ class Event {
     }
     this.loaded[event] = true;
 
-    if (typeof configs.events[event] === 'undefined') {
+    if (typeof this.configs.events[event] === 'undefined') {
       fn();
       return;
     }
 
     const promises = [];
-    configs.events[event].forEach(pluginId => {
+    this.configs.events[event].forEach(pluginId => {
       if (!wei.pluginIds.includes(pluginId)) {
         return;
       }
 
-      const promise = configs.plugins[pluginId]();
+      const promise = this.configs.plugins[pluginId]();
       promises.push(promise);
       promise.then(fns => {
         this.on(event, fns.default[event]);
