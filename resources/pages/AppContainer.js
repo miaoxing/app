@@ -2,7 +2,7 @@ import React from 'react';
 import {hot} from 'react-hot-loader';
 import App from "components/App";
 import NoMatch from "components/NoMatch";
-import configs from 'data/cache/app-pages';
+import configs from 'data/configs/app';
 
 class AppContainer extends React.Component {
   importPage(plugin, controller, action) {

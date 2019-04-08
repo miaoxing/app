@@ -58,4 +58,4 @@ content += '\n  ' + eventContent.substring(4, eventContent.length - 1);
 
 content += '};\n';
 
-fs.writeFileSync(`data/cache/${name}-pages.js`, content);
+fs.writeFileSync(`data/configs/${name}.js`, content);
