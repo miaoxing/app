@@ -73,7 +73,7 @@ class App extends React.Component {
           }
         }
 
-        return this.props.importPage(plugin, controller, action);
+        return this.importPage(plugin, controller, action);
       },
       loading: Loading
     });
@@ -84,6 +84,11 @@ class App extends React.Component {
     });
 
     return <LoadableComponent {...props}/>;
+  }
+
+  importPage(plugin, controller, action) {
+    const path = `${plugin}/${controller}/${action}`;
+    return this.props.pages[path] ? this.props.pages[path]() : new Promise(resolve => resolve(NoMatch));
   }
 
   handleLoad(props) {
