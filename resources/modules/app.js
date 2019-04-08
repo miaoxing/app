@@ -1,6 +1,7 @@
 import message from 'react-bootstrap-message/js/react-bootstrap-message';
 import modal from 'modal';
 import param from 'jquery-param';
+import weiEvent from 'event';
 
 class App {
   constructor() {
@@ -124,6 +125,14 @@ class App {
 
   confirm(...args) {
     return modal(...args);
+  }
+
+  trigger(event, data) {
+    weiEvent.trigger(event, data);
+  }
+
+  on(event, fn) {
+    weiEvent.on(event, fn);
   }
 
   get namespace() {

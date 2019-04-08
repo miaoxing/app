@@ -9,6 +9,10 @@ import {ThemeProvider} from 'styled-components';
 import theme from 'theme';
 
 class App extends React.Component {
+  static defaultProps = {
+    pages: {},
+  };
+
   constructor(props) {
     super(props);
 
@@ -51,9 +55,10 @@ class App extends React.Component {
         app.id = props.match.params.id;
         app.history = props.history;
 
+        app.trigger('pageLoad', props);
+
         // TODO Nav也升级为React
         if (typeof $ !== 'undefined') {
-          $(document).trigger('pageLoad', props);
           this.handleLoad(props);
           if (this.deep > 0) {
             $('.js-back').show();
@@ -81,15 +86,6 @@ class App extends React.Component {
     } else if (props.history.action === 'PUSH') {
       this.deep++;
     } // ignore REPLACE
-  }
-
-  loadEvents() {
-    // const events = require.context('vendor/miaoxing', true, /^\.\/.*\/resources\/events\/events\.(\w+)$/);
-    // events.keys().forEach((key) => {
-    //   if (wei.pluginIds.indexOf(key.split('/')[1]) !== -1) {
-    //     events(key).default();
-    //   }
-    // });
   }
 
   render() {
