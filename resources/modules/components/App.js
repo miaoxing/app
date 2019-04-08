@@ -82,7 +82,10 @@ class App extends React.Component {
   }
 
   importPage(plugin, controller, action) {
-    const path = `${plugin}/${controller}/${action}`;
+    let path = `${plugin}/${controller}/${action}`;
+    if (typeof wei.pageMap[path] !== 'undefined') {
+      path = wei.pageMap[path];
+    }
     return this.props.pages[path] ? this.props.pages[path]() : new Promise(resolve => resolve(NoMatch));
   }
 
