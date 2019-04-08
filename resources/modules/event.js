@@ -28,8 +28,12 @@ class Event {
     }
 
     const promises = [];
-    Object.keys(configs.events[event]).forEach((i) => {
-      const promise = configs.plugins[configs.events[event][i]]();
+    configs.events[event].forEach(pluginId => {
+      if (!wei.pluginIds.includes(pluginId)) {
+        return;
+      }
+
+      const promise = configs.plugins[pluginId]();
       promises.push(promise);
       promise.then(fns => {
         this.on(event, fns.default[event]);
