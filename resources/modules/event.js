@@ -34,22 +34,19 @@ class Event {
     }
 
     const promises = [];
-    Object.keys(this.configs.events).forEach(event => {
-      const priorityPlugin = this.configs.events[event];
-      Object.keys(priorityPlugin).forEach(priority => {
-        priorityPlugin[priority].forEach(pluginId => {
-          if (!wei.pluginIds.includes(pluginId)) {
-            return;
-          }
+    Object.keys(this.configs.events[event]).forEach(priority => {
+      this.configs.events[event][priority].forEach(pluginId => {
+        if (!wei.pluginIds.includes(pluginId)) {
+          return;
+        }
 
-          const promise = this.configs.plugins[pluginId]();
-          promises.push(promise);
-          promise.then(fns => {
-            priority = parseInt(priority, 10);
-            const method = 'on' + ucfirst(priority === DEFAULT_PRIORITY ? event : (event + priority));
-            this.on(event, fns.default[method], priority);
-          });
-        })
+        const promise = this.configs.plugins[pluginId]();
+        promises.push(promise);
+        promise.then(fns => {
+          priority = parseInt(priority, 10);
+          const method = 'on' + ucfirst(priority === DEFAULT_PRIORITY ? event : (event + priority));
+          this.on(event, fns.default[method], priority);
+        });
       });
     });
     Promise.all(promises).then(fn);
