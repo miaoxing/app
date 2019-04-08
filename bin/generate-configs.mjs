@@ -1,7 +1,9 @@
 import glob from 'glob';
 import fs from 'fs';
 import chalk from 'chalk';
+import lcfirst from 'locutus/php/strings/lcfirst';
 
+const DEFAULT_PRIORITY = 100;
 const name = process.argv[2] || 'app';
 const prefix = 'vendor/miaoxing';
 const length = prefix.length;
@@ -40,15 +42,19 @@ eventFiles.forEach(file => {
 
   // NOTE: 需通过babel才能导入？先直接解析字符串
   const text = fs.readFileSync(file, 'utf8');
-  const regex = new RegExp('\n  (.+?)\\(\\) {\n', 'g');
+  const regex = new RegExp('\n  on(.+?)\\(\\) {\n', 'g');
   let match;
   do {
     match = regex.exec(text);
     if (match) {
-      if (typeof events[match[1]] === 'undefined') {
-        events[match[1]] = [];
+      const [, event, priority = DEFAULT_PRIORITY] = /(.+?)((\d+))?$/.exec(lcfirst(match[1]));
+      if (typeof events[event] === 'undefined') {
+        events[event] = {};
       }
-      events[match[1]].push(plugin);
+      if (typeof events[priority] === 'undefined') {
+        events[event][priority] = [];
+      }
+      events[event][priority].push(plugin);
     }
   } while (match);
 });
