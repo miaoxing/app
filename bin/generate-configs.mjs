@@ -42,7 +42,7 @@ eventFiles.forEach(file => {
 
   // NOTE: 需通过babel才能导入？先直接解析字符串
   const text = fs.readFileSync(file, 'utf8');
-  const regex = new RegExp('\n  on(.+?)\\(\\) {\n', 'g');
+  const regex = new RegExp('\n  on(.+?)\\(', 'g');
   let match;
   do {
     match = regex.exec(text);
