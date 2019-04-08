@@ -15,9 +15,9 @@ class Event {
     this.configs = configs;
   }
 
-  trigger(event, data) {
-    this.loadEvent(event, () => {
-      ee.fire(event, data);
+  trigger(...args) {
+    this.loadEvent(args[0], () => {
+      ee.fire(...args);
     });
   }
 
