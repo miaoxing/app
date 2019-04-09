@@ -48,6 +48,7 @@ class WebpackConfig {
     const config = {
       mode: this.isProd ? 'production' : 'development',
       resolve: {
+        extensions: ['.tsx', '.ts', '.js'],
         modules: [
           this.rootDir,
           'vendor/miaoxing/app/resources/modules',
@@ -66,8 +67,14 @@ class WebpackConfig {
       module: {
         rules: [
           {
+            test: /\.tsx?$/,
+            use: 'ts-loader',
+            exclude: /node_modules/,
+            include: this.rootDir + '/vendor/miaoxing/app/resources/modules/components',
+          },
+          {
             test: /.js$/,
-            use: 'happypack/loader',
+            use: 'babel-loader?cacheDirectory',
             exclude: /node_modules/,
           },
           {
@@ -121,9 +128,9 @@ class WebpackConfig {
         minimizer: []
       },
       plugins: [
-        new HappyPack({
+        /*new HappyPack({
           loaders: ['babel-loader?cacheDirectory']
-        }),
+        }),*/
         new ExtractCssChunks({
           filename: useVersioning ? '[name]-[contenthash:6].css' : '[name].css',
           orderWarning: true,
