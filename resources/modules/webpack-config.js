@@ -47,6 +47,7 @@ class WebpackConfig {
 
     const config = {
       mode: this.isProd ? 'production' : 'development',
+      devtool: 'source-map',
       resolve: {
         extensions: ['.tsx', '.ts', '.js'],
         modules: [
@@ -68,9 +69,12 @@ class WebpackConfig {
         rules: [
           {
             test: /\.tsx?$/,
-            use: 'ts-loader',
-            exclude: /node_modules/,
-            include: this.rootDir + '/vendor/miaoxing/app/resources/modules/components',
+            loader: 'awesome-typescript-loader'
+          },
+          {
+            enforce: 'pre',
+            test: /\.js$/,
+            loader: 'source-map-loader'
           },
           {
             test: /.js$/,
