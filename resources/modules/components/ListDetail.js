@@ -10,7 +10,7 @@ const ListDetail = (props) => {
 
   return (
     <Component
-      {...props}
+      {...rest}
       className={classNames(
         className,
         'list-detail'

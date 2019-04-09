@@ -10,7 +10,7 @@ const ListText = (props) => {
 
   return (
     <Component
-      {...props}
+      {...rest}
       className={classNames(
         className,
         'list-text'

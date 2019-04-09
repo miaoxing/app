@@ -1,7 +1,12 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 
-const ListTitle = (props) => {
+export interface ListTitleProps {
+  as?: any;
+  className?: string;
+}
+
+const ListTitle = (props: ListTitleProps) => {
   const {
     as: Component,
     className,
@@ -10,7 +15,7 @@ const ListTitle = (props) => {
 
   return (
     <Component
-      {...props}
+      {...rest}
       className={classNames(
         className,
         'list-title'
