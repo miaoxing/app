@@ -5,7 +5,7 @@ import ListDetail from "components/ListDetail";
 
 const ListDesc = ({title, children, ...props}) => {
   return <ListItem description={true} {...props}>
-    <ListTitle>{title}></ListTitle>
+    <ListTitle>{title}</ListTitle>
     <ListDetail>{children || '-'}</ListDetail>
   </ListItem>;
 };
