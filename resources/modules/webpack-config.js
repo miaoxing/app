@@ -68,7 +68,13 @@ class WebpackConfig {
         rules: [
           {
             test: /\.tsx?$/,
-            loader: 'awesome-typescript-loader'
+            loader: 'awesome-typescript-loader',
+            exclude: /node_modules/,
+            options: {
+              useCache: true,
+              cacheDirectory: 'node_module/.cache/awcache',
+              forceIsolatedModules: true,
+            }
           },
           {
             test: /.js$/,
