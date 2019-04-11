@@ -22,7 +22,6 @@ class WebpackConfig {
     this.rootDir = process.cwd();
     this.buildDir = path.resolve(this.rootDir, this.distDir);
     this.isProd = process.env.NODE_ENV === 'production';
-    this.useSourcemaps = !this.isProd;
     this.isHot = path.basename(require.main.filename) === 'webpack-dev-server.js';
     // HMR不支持chunkhash，只支持hash
     this.useVersioning = !this.isHot;
@@ -47,7 +46,7 @@ class WebpackConfig {
 
     const config = {
       mode: this.isProd ? 'production' : 'development',
-      devtool: 'source-map',
+      devtool: this.isProd ? false : 'eval',
       resolve: {
         extensions: ['.tsx', '.ts', '.js'],
         modules: [
@@ -70,11 +69,6 @@ class WebpackConfig {
           {
             test: /\.tsx?$/,
             loader: 'awesome-typescript-loader'
-          },
-          {
-            enforce: 'pre',
-            test: /\.js$/,
-            loader: 'source-map-loader'
           },
           {
             test: /.js$/,
