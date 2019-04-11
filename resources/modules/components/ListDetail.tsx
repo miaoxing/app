@@ -1,7 +1,12 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
 
-const ListText = (props) => {
+export interface ListDetailProps {
+  as?: any;
+  className?: string;
+}
+
+const ListDetail = (props: ListDetailProps) => {
   const {
     as: Component,
     className,
@@ -13,14 +18,14 @@ const ListText = (props) => {
       {...rest}
       className={classNames(
         className,
-        'list-text'
+        'list-detail'
       )}
     />
   );
 };
 
-ListText.defaultProps = {
+ListDetail.defaultProps = {
   as: 'div',
 };
 
-export default ListText;
+export default ListDetail;

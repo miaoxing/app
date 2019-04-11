@@ -1,11 +1,23 @@
-import React from "react";
+import * as React from "react";
 import classNames from "classnames";
-import propTypes from 'prop-types';
-import ListTitle from "components/ListTitle";
-import ListText from "components/ListText";
-import ListDetail from "components/ListDetail";
+import ListTitle from "./ListTitle";
+import ListText from "./ListText";
+import ListDetail from "./ListDetail";
 
-const ListItem = (props) => {
+export interface ListItemProps {
+  as?: any;
+  className?: string;
+  title?: string;
+  detail?: string;
+  text?: string;
+  /**
+   * 是否为描述列表项目
+   */
+  description?: boolean;
+  children?: any;
+}
+
+const ListItem = (props: ListItemProps) => {
   const {
     as: Component,
     className,
@@ -39,13 +51,6 @@ const ListItem = (props) => {
       )}
     </Component>
   );
-};
-
-ListItem.propTypes = {
-  /**
-   * 是否为描述列表项目
-   */
-  description: propTypes.bool,
 };
 
 ListItem.defaultProps = {

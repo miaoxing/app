@@ -1,8 +1,27 @@
-import React from "react";
-import PropTypes from 'prop-types';
+import * as React from "react";
 import classNames from 'classnames';
 
-const List = (props) => {
+export interface ListProps {
+  as?: any;
+  className?: string;
+
+  /**
+   * 缩进列表
+   */
+  indented?: boolean;
+
+  /**
+   * 紧凑列表
+   */
+  condensed?: boolean;
+
+  /**
+   * 无边框列表
+   */
+  borderless?: boolean;
+}
+
+const List = (props: ListProps) => {
   const {
     as: Component,
     className,
@@ -26,27 +45,11 @@ const List = (props) => {
   );
 };
 
-List.propTypes = {
-  /**
-   * 缩进列表
-   */
-  indented: PropTypes.bool,
-
-  /**
-   * 紧凑列表
-   */
-  condensed: PropTypes.bool,
-
-  /**
-   * 无边框列表
-   */
-  borderless: PropTypes.bool,
-};
-
 List.defaultProps = {
   as: 'ul',
 };
 
-List.Indented = (props) => (<List indented={true} {...props}/>)
+List.Indented = (props: ListProps) => (<List indented={true} {...props}/>);
 
 export default List;
+export const ListIndented = List.Indented;
