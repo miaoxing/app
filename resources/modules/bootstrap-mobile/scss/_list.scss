@@ -207,7 +207,7 @@
   // 条目
   .list-title {
     color: $text-muted;
-    flex-shrink: 0;
+    flex: 1 0 auto;
   }
 
   // 详情
