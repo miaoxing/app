@@ -72,7 +72,7 @@ class WebpackConfig {
             exclude: /node_modules/,
             options: {
               useCache: true,
-              cacheDirectory: 'node_module/.cache/awcache',
+              cacheDirectory: 'node_modules/.cache/awcache',
               forceIsolatedModules: true,
             }
           },
