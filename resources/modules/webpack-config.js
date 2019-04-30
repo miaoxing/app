@@ -10,17 +10,18 @@ const ExtractCssChunks = require("extract-css-chunks-webpack-plugin");
 
 class WebpackConfig {
   constructor(options) {
+    // 基于当前目录
+    this.rootDir = process.cwd();
+
     this.name = options.name;
     this.manifest = options.manifest || false;
-    this.distDir = options.distDir || 'dist2';
+    this.distDir = options.distDir || 'dist';
+    this.buildDir = options.buildDir || path.resolve(this.rootDir, 'public/' + this.distDir);
     this.externals = options.externals || {jquery: 'jQuery'};
     if (options.getEntries) {
       this.getEntries = options.getEntries;
     }
 
-    // 基于当前目录
-    this.rootDir = process.cwd();
-    this.buildDir = path.resolve(this.rootDir, this.distDir);
     this.isProd = process.env.NODE_ENV === 'production';
     this.isHot = path.basename(require.main.filename) === 'webpack-dev-server.js';
     // HMR不支持chunkhash，只支持hash
