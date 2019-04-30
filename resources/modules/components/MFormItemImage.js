@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'plugins/wechat-image/css/wechat-image.css';
+import 'public/plugins/wechat-image/css/wechat-image.css';
 import _ from "lodash";
 
 class MFormItemImage extends React.Component {
