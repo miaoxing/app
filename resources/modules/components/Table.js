@@ -8,6 +8,7 @@ import overlayFactory from 'react-bootstrap-table2-overlay';
 import {withTable} from "components/TableProvider";
 import axios from 'axios';
 import app from 'app';
+import * as ReactDOM from "react-dom";
 
 const Empty = () => <span className="text-muted">-</span>;
 
@@ -33,6 +34,8 @@ class Table extends React.Component {
 
   columns = [];
 
+  scrollLeft = 0;
+
   constructor(props) {
     super(props);
 
@@ -51,6 +54,8 @@ class Table extends React.Component {
     ) {
       this.reload({page: 1});
     }
+
+    this.reverseScroll();
   }
 
   defaultFormatter(value) {
@@ -99,7 +104,7 @@ class Table extends React.Component {
         page: parseInt(params.page, 10),
         totalSize: data.records,
         sizePerPage: parseInt(data.rows, 10)
-      });
+      }, this.handleAfterLoad);
       this.props.onLoad && this.props.onLoad(this.state);
       this.disableLoading();
     });
@@ -114,6 +119,7 @@ class Table extends React.Component {
   }
 
   handleTableChange = (type, {page, sizePerPage, sortField, sortOrder}) => {
+    this.keepScroll();
     this.setState({
       sortField,
       sortOrder
@@ -126,6 +132,34 @@ class Table extends React.Component {
       });
     });
   };
+
+  keepScroll() {
+    if (!this.props.fixed) {
+      return;
+    }
+
+    this.scrollLeft = ReactDOM.findDOMNode(this.node).getElementsByClassName('table-responsive')[0].scrollLeft;
+  }
+
+  getTableNode() {
+    const node = ReactDOM.findDOMNode(this.node).getElementsByClassName('table-responsive')[0];
+    node.setAttribute('a' + (new Date()).getSeconds(), 'a');
+    console.log(node);
+    return node;
+  }
+
+  handleAfterLoad() {
+    this.reverseScroll();
+  }
+
+  reverseScroll() {
+    if (!this.scrollLeft) {
+      return;
+    }
+
+    const node = this.getTableNode();
+    node.scrollLeft = this.scrollLeft;
+  }
 
   render() {
     const {columns, ...restProps} = this.props;
