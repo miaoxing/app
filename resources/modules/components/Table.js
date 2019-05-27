@@ -255,12 +255,9 @@ class Table extends React.Component {
     }
 
     const node = this.getTableNode();
-
-    // 表格的内容变化，宽度可能跟着改变，所以滚动超过一半时，以终点为基准，
-    // 记录 scrollLeft 为负数，表示距离终点的距离
-    const middle = (node.scrollWidth - node.clientWidth) / 2;
-    if (node.scrollLeft > middle) {
-      this.scrollLeft = middle - node.scrollLeft;
+    if (node.scrollLeft && node.clientWidth + node.scrollLeft === node.scrollWidth) {
+      // -1 means scrolled to end
+      this.scrollLeft = -1;
     } else {
       this.scrollLeft = node.scrollLeft;
     }
@@ -299,10 +296,10 @@ class Table extends React.Component {
     }
 
     const node = this.getTableNode();
-    if (this.scrollLeft > 0) {
-      node.scrollLeft = this.scrollLeft;
+    if (this.scrollLeft === -1) {
+      node.scrollLeft = node.scrollWidth - node.clientWidth;
     } else {
-      node.scrollLeft = node.clientWidth + this.scrollLeft;
+      node.scrollLeft = this.scrollLeft;
     }
   }
 
