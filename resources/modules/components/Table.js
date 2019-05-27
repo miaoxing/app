@@ -34,7 +34,7 @@ const GlobalStyle = styled.createGlobalStyle`
   .table-fixed {
     margin-bottom: 0;
     
-    // 重现实现不合并的边框
+    // 重新实现不合并的边框
     border-collapse: separate;
     border-spacing: 0;
     
