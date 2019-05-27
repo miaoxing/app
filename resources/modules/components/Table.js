@@ -139,6 +139,7 @@ class Table extends React.Component {
 
   fixed = false;
   scrollLeft = 0;
+  lefts = {};
 
   constructor(props) {
     super(props);
@@ -166,6 +167,7 @@ class Table extends React.Component {
 
     this.updateScrollClasses();
     this.restoreScrollPosition();
+    this.calColPositions();
   }
 
   defaultFormatter(value) {
@@ -303,6 +305,41 @@ class Table extends React.Component {
     }
   }
 
+  calColPositions() {
+    const node = this.getMainNode();
+    const table = node.children[0];
+
+    this.columns.forEach((column, i) => {
+      if (column.fixed !== 'left') {
+        return;
+      }
+
+      const cell = table.rows[0].cells[i];
+      const left = cell.offsetLeft + 'px';
+      for (let row of table.rows) {
+        if (row.cells[i]) {
+          row.cells[i].style.left = left;
+        }
+      }
+    });
+
+    let right = 0;
+    const length = this.columns.length;
+    this.columns.reverse().forEach((column, i) => {
+      if (column.fixed !== 'right') {
+        return;
+      }
+
+      const index = this.columns.length - i - 1;
+      for (let row of table.rows) {
+        if (row.cells[index]) {
+          row.cells[index].style.right = right + 'px';
+        }
+      }
+      right += table.rows[0].cells[index].offsetWidth;
+    });
+  }
+
   render() {
     const {columns, ...restProps} = this.props;
     const {page, sizePerPage, totalSize} = this.state;
@@ -326,6 +363,7 @@ class Table extends React.Component {
         }
       }
     });
+    this.columns = columns;
 
     restProps.classes = classNames(restProps.classes, 'table-center', {
       'table-fixed': this.fixed,
