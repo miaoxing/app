@@ -321,8 +321,12 @@ class Table extends React.Component {
       if (typeof column.fixed !== 'undefined') {
         this.fixed = true;
         const classes = 'col-fixed col-fixed-' + column.fixed;
-        column.classes = classNames(column.classes, classes);
-        column.headerClasses = classNames(column.headerClasses, classes);
+        if (!column.classes || !column.classes.includes(classes)) {
+          column.classes = classNames(column.classes, classes);
+        }
+        if (!column.headerClasses || !column.headerClasses.includes(classes)) {
+          column.headerClasses = classNames(column.headerClasses, classes);
+        }
       }
     });
 
