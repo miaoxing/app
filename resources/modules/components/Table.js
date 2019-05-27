@@ -9,14 +9,112 @@ import {withTable} from "components/TableProvider";
 import axios from 'axios';
 import app from 'app';
 import * as ReactDOM from "react-dom";
+import * as styled from "styled-components";
+import classNames from 'classnames';
 
 const Empty = () => <span className="text-muted">-</span>;
+
+const GlobalStyle = styled.createGlobalStyle`
+  .react-bs-table-sizePerPage-dropdown.show {
+    display:inline-block !important;
+  }
+  
+  .react-bs-table-no-data {
+    height: 5rem;
+  }
+  
+  .table-fixed-container {
+    overflow-x: hidden;
+    
+    .react-bootstrap-table-pagination {
+      margin-top: 1rem;
+    }
+  }
+  
+  .table-fixed {
+    margin-bottom: 0;
+    
+    // 重现实现不合并的边框
+    border-collapse: separate;
+    border-spacing: 0;
+    
+    td, th {
+      border-right-width: 0;
+      border-bottom-width: 0;
+      
+      &:last-child {
+        border-left: 1px solid #e0e0e0;
+        border-right: 1px solid #e0e0e0;
+      }
+    }
+    
+    > thead > tr > th {
+      border-bottom-width: 0;
+    }
+    
+    tr:last-child td {
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .react-bootstrap-table & {
+      table-layout: auto;
+    }
+    
+    // Hover
+    &.table-hover tbody tr:hover .col-fixed {
+      background-color: inherit;
+    }
+  }
+  
+  .col-fixed {
+    position: sticky;
+    background: #fff;
+    
+    .table-fixed & {
+      border-right: 1px solid #e0e0e0;
+    }
+  }
+  
+  th.col-fixed {
+    background: inherit;
+  }
+  
+  .col-fixed-left {
+    & + th,
+    & + td {
+      border-left-width: 0;
+    }
+  }
+  
+  // 左边有滚动，加上左边列的右侧阴影
+  .table-fixed-scroll-left .col-fixed-left::after {
+    box-shadow: 15px 0 15px -15px inset rgba(0, 0, 0, 0.15);
+    content: " ";
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: -15px;
+    width: 15px;
+  }
+  
+  // 右边有滚动，加上右边的左侧阴影
+  .table-fixed-scroll-right .col-fixed-right::before {
+    box-shadow: -15px 0 15px -15px inset rgba(0, 0, 0, 0.15);
+    content: " ";
+    height: 100%;
+    left: -15px;
+    position: absolute;
+    top: 0;
+    width: 15px;
+  }
+`;
 
 @withTable
 class Table extends React.Component {
   static defaultProps = {
     url: null,
     onLoad: null,
+    fixed: false,
   };
 
   node = null;
@@ -121,6 +219,7 @@ class Table extends React.Component {
   }
 
   handleTableChange = (type, {page, sizePerPage, sortField, sortOrder}) => {
+    this.saveScrollPosition();
     this.setState({
       sortField,
       sortOrder
@@ -144,6 +243,7 @@ class Table extends React.Component {
     }
 
     const node = this.getTableNode();
+    console.log('node', node, node.scrollLeft);
 
     // 表格的内容变化，宽度可能跟着改变，所以滚动超过一半时，以终点为基准，
     // 记录 scrollLeft 为负数，表示距离终点的距离
@@ -181,17 +281,18 @@ class Table extends React.Component {
       }
     });
 
-    return <>
-      <style>
-        {`
-        .react-bs-table-sizePerPage-dropdown.show {
-          display:inline-block!important;
-        }
-        .react-bs-table-no-data {
-          height: 5rem;
-        }
-       `}
-      </style>
+    restProps.classes = classNames(restProps.classes, 'table-center', {
+      'table-fixed': this.props.fixed,
+      'table-fixed-scroll-left': true,
+      'table-fixed-scroll-right': true,
+    });
+
+    if (this.props.fixed) {
+      restProps.wrapperClasses = classNames(restProps.wrapperClasses, 'table-responsive');
+    }
+
+    return <div className={this.props.fixed ? 'table-fixed-container' : null}>
+      <GlobalStyle/>
       <BootstrapTable
         ref={n => this.node = n}
         remote={{pagination: true}}
@@ -200,7 +301,6 @@ class Table extends React.Component {
         columns={columns}
         hover
         bootstrap4
-        classes="table-center"
         noDataIndication={this.state.noDataIndication}
         loading={this.state.loading}
         overlay={overlayFactory({
@@ -221,7 +321,7 @@ class Table extends React.Component {
         onTableChange={this.handleTableChange}
         {...restProps}
       />
-    </>;
+    </div>;
   }
 }
 
