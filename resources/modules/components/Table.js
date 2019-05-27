@@ -80,10 +80,16 @@ const GlobalStyle = styled.createGlobalStyle`
   }
   
   .col-fixed-left {
+    left: 0;
+    
     & + th,
     & + td {
       border-left-width: 0;
     }
+  }
+  
+  .col-fixed-right {
+    right: 0;
   }
   
   // 左边有滚动，加上左边列的右侧阴影
@@ -132,6 +138,7 @@ class Table extends React.Component {
 
   columns = [];
 
+  fixed = false;
   scrollLeft = 0;
 
   constructor(props) {
@@ -238,7 +245,7 @@ class Table extends React.Component {
   }
 
   saveScrollPosition() {
-    if (!this.props.fixed) {
+    if (!this.fixed) {
       return;
     }
 
@@ -272,6 +279,7 @@ class Table extends React.Component {
     const {columns, ...restProps} = this.props;
     const {page, sizePerPage, totalSize} = this.state;
 
+    this.fixed = false;
     columns.forEach((column) => {
       if (typeof column.dataField === 'undefined') {
         column.dataField = column.text;
@@ -279,19 +287,25 @@ class Table extends React.Component {
       if (typeof column.formatter === 'undefined') {
         column.formatter = this.defaultFormatter;
       }
+      if (typeof column.fixed !== 'undefined') {
+        this.fixed = true;
+        const classes = 'col-fixed col-fixed-' + column.fixed;
+        column.classes = classNames(column.classes, classes);
+        column.headerClasses = classNames(column.headerClasses, classes);
+      }
     });
 
     restProps.classes = classNames(restProps.classes, 'table-center', {
-      'table-fixed': this.props.fixed,
-      'table-fixed-scroll-left': true,
-      'table-fixed-scroll-right': true,
+      'table-fixed': this.fixed,
+      'table-fixed-scroll-left': this.fixed,
+      'table-fixed-scroll-right': this.fixed,
     });
 
-    if (this.props.fixed) {
+    if (this.fixed) {
       restProps.wrapperClasses = classNames(restProps.wrapperClasses, 'table-responsive');
     }
 
-    return <div className={this.props.fixed ? 'table-fixed-container' : null}>
+    return <div className={this.fixed ? 'table-fixed-container' : null}>
       <GlobalStyle/>
       <BootstrapTable
         ref={n => this.node = n}
