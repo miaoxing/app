@@ -245,8 +245,8 @@ class Table extends React.Component {
     });
   };
 
-  getTableNode() {
-    return ReactDOM.findDOMNode(this.node).getElementsByClassName('table-responsive')[0];
+  getMainNode() {
+    return ReactDOM.findDOMNode(this.node).getElementsByClassName('react-bootstrap-table')[0];
   }
 
   saveScrollPosition() {
@@ -254,7 +254,7 @@ class Table extends React.Component {
       return;
     }
 
-    const node = this.getTableNode();
+    const node = this.getMainNode();
     if (node.scrollLeft && node.clientWidth + node.scrollLeft === node.scrollWidth) {
       // -1 means scrolled to end
       this.scrollLeft = -1;
@@ -272,13 +272,13 @@ class Table extends React.Component {
   }
 
   handleScroll = (e) => {
-    if (e.target !== document && e.target === this.getTableNode()) {
+    if (e.target !== document && e.target === this.getMainNode()) {
       this.updateScrollClasses();
     }
   };
 
   updateScrollClasses() {
-    const node = this.getTableNode();
+    const node = this.getMainNode();
 
     let state = {};
     state.hasScrollLeft = node.scrollLeft !== 0;
@@ -295,7 +295,7 @@ class Table extends React.Component {
       return;
     }
 
-    const node = this.getTableNode();
+    const node = this.getMainNode();
     if (this.scrollLeft === -1) {
       node.scrollLeft = node.scrollWidth - node.clientWidth;
     } else {
