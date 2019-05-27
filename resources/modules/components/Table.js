@@ -81,6 +81,8 @@ class Table extends React.Component {
   }
 
   reload(params = {}) {
+    this.saveScrollPosition();
+
     // 自身参数
     let tableParams = {
       page: this.state.page,
@@ -119,7 +121,6 @@ class Table extends React.Component {
   }
 
   handleTableChange = (type, {page, sizePerPage, sortField, sortOrder}) => {
-    this.saveScrollPosition();
     this.setState({
       sortField,
       sortOrder
