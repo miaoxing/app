@@ -93,7 +93,7 @@ const GlobalStyle = styled.createGlobalStyle`
   }
   
   // 左边有滚动，加上左边列的右侧阴影
-  .table-fixed-scroll-left .col-fixed-left::after {
+  .table-fixed-scroll-left .col-fixed-left-last::after {
     box-shadow: 15px 0 15px -15px inset rgba(0, 0, 0, 0.15);
     content: " ";
     height: 100%;
@@ -104,14 +104,21 @@ const GlobalStyle = styled.createGlobalStyle`
   }
   
   // 右边有滚动，加上右边的左侧阴影
-  .table-fixed-scroll-right .col-fixed-right::before {
-    box-shadow: -15px 0 15px -15px inset rgba(0, 0, 0, 0.15);
-    content: " ";
-    height: 100%;
-    left: -15px;
-    position: absolute;
-    top: 0;
-    width: 15px;
+  .table-fixed-scroll-right .col-fixed-right {
+    &::before {
+      box-shadow: -15px 0 15px -15px inset rgba(0, 0, 0, 0.15);
+      content: " ";
+      height: 100%;
+      left: -15px;
+      position: absolute;
+      top: 0;
+      width: 15px;
+    }
+    
+    // 除了第一个之外的不用加上阴影
+    & ~ .col-fixed-right::before {
+      display: none;
+    }
   }
 `;
 
@@ -345,7 +352,7 @@ class Table extends React.Component {
     const {page, sizePerPage, totalSize} = this.state;
 
     this.fixed = false;
-    columns.forEach((column) => {
+    columns.forEach((column, i) => {
       if (typeof column.dataField === 'undefined') {
         column.dataField = column.text;
       }
@@ -354,8 +361,11 @@ class Table extends React.Component {
       }
       if (typeof column.fixed !== 'undefined') {
         this.fixed = true;
-        const classes = 'col-fixed col-fixed-' + column.fixed;
+        let classes = 'col-fixed col-fixed-' + column.fixed;
         if (!column.classes || !column.classes.includes(classes)) {
+          if (columns[i + 1] && !columns[i + 1].fixed) {
+            classes += ' col-fixed-' + column.fixed + '-last';
+          }
           column.classes = classNames(column.classes, classes);
         }
         if (!column.headerClasses || !column.headerClasses.includes(classes)) {
