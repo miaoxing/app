@@ -90,6 +90,10 @@ const GlobalStyle = styled.createGlobalStyle`
   
   .col-fixed-right {
     right: 0;
+    
+    .table-fixed & + & {
+       border-left-width: 0;
+    }
   }
   
   // 左边有滚动，加上左边列的右侧阴影
