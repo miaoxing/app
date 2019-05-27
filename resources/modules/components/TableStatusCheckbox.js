@@ -47,6 +47,7 @@ export default class TableStatusCheckbox extends React.Component {
   render() {
     return <FormCheck
       custom
+      className="custom-control-no-text"
       label={' '}
       id={'table-status-toggle-' + this.props.row.id}
       checked={this.state.checked}
