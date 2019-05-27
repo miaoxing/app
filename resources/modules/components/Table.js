@@ -120,7 +120,6 @@ class Table extends React.Component {
   static defaultProps = {
     url: null,
     onLoad: null,
-    fixed: false,
   };
 
   node = null;
@@ -151,6 +150,11 @@ class Table extends React.Component {
   componentDidMount() {
     window.tableNode = this.node;
     this.reload();
+    this.bindScroll();
+  }
+
+  componentWillUnmount() {
+    this.unbindScroll();
   }
 
   componentDidUpdate(prevProps) {
@@ -160,6 +164,7 @@ class Table extends React.Component {
       this.reload({page: 1});
     }
 
+    this.updateScrollClasses();
     this.restoreScrollPosition();
   }
 
@@ -250,7 +255,6 @@ class Table extends React.Component {
     }
 
     const node = this.getTableNode();
-    console.log('node', node, node.scrollLeft);
 
     // 表格的内容变化，宽度可能跟着改变，所以滚动超过一半时，以终点为基准，
     // 记录 scrollLeft 为负数，表示距离终点的距离
@@ -260,6 +264,33 @@ class Table extends React.Component {
     } else {
       this.scrollLeft = node.scrollLeft;
     }
+  }
+
+  bindScroll() {
+    document.addEventListener('scroll', this.handleScroll, true);
+  }
+
+  unbindScroll() {
+    document.removeEventListener('scroll', this.handleScroll, true);
+  }
+
+  handleScroll = (e) => {
+    if (e.target !== document && e.target === this.getTableNode()) {
+      this.updateScrollClasses();
+    }
+  };
+
+  updateScrollClasses() {
+    const node = this.getTableNode();
+
+    let state = {};
+    state.hasScrollLeft = node.scrollLeft !== 0;
+    state.hasScrollRight = node.clientWidth + node.scrollLeft !== node.scrollWidth;
+
+    // TODO 直接绑定到 wrapper,通过 setState 更新类名
+    const table = node.children[0];
+    table.classList[state.hasScrollLeft ? 'add' : 'remove']('table-fixed-scroll-left');
+    table.classList[state.hasScrollRight ? 'add' : 'remove']('table-fixed-scroll-right');
   }
 
   restoreScrollPosition() {
@@ -297,8 +328,8 @@ class Table extends React.Component {
 
     restProps.classes = classNames(restProps.classes, 'table-center', {
       'table-fixed': this.fixed,
-      'table-fixed-scroll-left': this.fixed,
-      'table-fixed-scroll-right': this.fixed,
+      // 'table-fixed-scroll-left': this.state.hasScrollLeft,
+      // 'table-fixed-scroll-right': this.state.hasScrollRight,
     });
 
     if (this.fixed) {
