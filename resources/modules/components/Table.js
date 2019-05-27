@@ -55,7 +55,7 @@ class Table extends React.Component {
       this.reload({page: 1});
     }
 
-    this.reverseScroll();
+    this.restoreScrollPosition();
   }
 
   defaultFormatter(value) {
@@ -104,7 +104,7 @@ class Table extends React.Component {
         page: parseInt(params.page, 10),
         totalSize: data.records,
         sizePerPage: parseInt(data.rows, 10)
-      }, this.handleAfterLoad);
+      });
       this.props.onLoad && this.props.onLoad(this.state);
       this.disableLoading();
     });
@@ -119,7 +119,7 @@ class Table extends React.Component {
   }
 
   handleTableChange = (type, {page, sizePerPage, sortField, sortOrder}) => {
-    this.keepScroll();
+    this.saveScrollPosition();
     this.setState({
       sortField,
       sortOrder
@@ -133,32 +133,38 @@ class Table extends React.Component {
     });
   };
 
-  keepScroll() {
+  getTableNode() {
+    return ReactDOM.findDOMNode(this.node).getElementsByClassName('table-responsive')[0];
+  }
+
+  saveScrollPosition() {
     if (!this.props.fixed) {
       return;
     }
 
-    this.scrollLeft = ReactDOM.findDOMNode(this.node).getElementsByClassName('table-responsive')[0].scrollLeft;
+    const node = this.getTableNode();
+
+    // 表格的内容变化，宽度可能跟着改变，所以滚动超过一半时，以终点为基准，
+    // 记录 scrollLeft 为负数，表示距离终点的距离
+    const middle = (node.scrollWidth - node.clientWidth) / 2;
+    if (node.scrollLeft > middle) {
+      this.scrollLeft = middle - node.scrollLeft;
+    } else {
+      this.scrollLeft = node.scrollLeft;
+    }
   }
 
-  getTableNode() {
-    const node = ReactDOM.findDOMNode(this.node).getElementsByClassName('table-responsive')[0];
-    node.setAttribute('a' + (new Date()).getSeconds(), 'a');
-    console.log(node);
-    return node;
-  }
-
-  handleAfterLoad() {
-    this.reverseScroll();
-  }
-
-  reverseScroll() {
+  restoreScrollPosition() {
     if (!this.scrollLeft) {
       return;
     }
 
     const node = this.getTableNode();
-    node.scrollLeft = this.scrollLeft;
+    if (this.scrollLeft > 0) {
+      node.scrollLeft = this.scrollLeft;
+    } else {
+      node.scrollLeft = node.clientWidth + this.scrollLeft;
+    }
   }
 
   render() {
