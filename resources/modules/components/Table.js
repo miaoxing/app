@@ -336,7 +336,7 @@ class Table extends React.Component {
 
     let right = 0;
     const length = this.columns.length;
-    this.columns.reverse().forEach((column, i) => {
+    this.columns.slice().reverse().forEach((column, i) => {
       if (column.fixed !== 'right') {
         return;
       }
