@@ -26,6 +26,10 @@ const GlobalStyle = styled.createGlobalStyle`
   .table-fixed-container {
     overflow-x: hidden;
     
+    .table-responsive {
+      border-right: 1px solid #e0e0e0;
+    }
+    
     .react-bootstrap-table-pagination {
       margin-top: 1rem;
     }
@@ -41,11 +45,6 @@ const GlobalStyle = styled.createGlobalStyle`
     td, th {
       border-right-width: 0;
       border-bottom-width: 0;
-      
-      &:last-child {
-        border-left: 1px solid #e0e0e0;
-        border-right: 1px solid #e0e0e0;
-      }
     }
     
     > thead > tr > th {
