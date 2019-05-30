@@ -64,67 +64,70 @@ const GlobalStyle = styled.createGlobalStyle`
     }
     
     // Table hover
-    &.table-hover tbody tr:hover .col-fixed {
+    &.table-hover tbody tr:hover .table-fixed-col {
       background-color: inherit;
     }
-  }
-  
-  .col-fixed {
-    position: sticky;
-    background: #fff;
     
-    .table-fixed.table-bordered & {
-      border-right: 1px solid #e0e0e0;
-    }
-  }
-  
-  th.col-fixed {
-    background: inherit;
-  }
-  
-  .col-fixed-left {
-    left: 0;
-    
-    & + th,
-    & + td {
-      border-left-width: 0;
-    }
-  }
-  
-  .col-fixed-right {
-    right: 0;
-    
-    .table-fixed & + & {
-       border-left-width: 0;
-    }
-  }
-  
-  // 左边有滚动，加上左边列的右侧阴影
-  .table-fixed-scroll-left .col-fixed-left-last::after {
-    box-shadow: 15px 0 15px -15px inset rgba(0, 0, 0, 0.15);
-    content: " ";
-    height: 100%;
-    position: absolute;
-    top: 0;
-    right: -15px;
-    width: 15px;
-  }
-  
-  // 右边有滚动，加上右边的左侧阴影
-  .table-fixed-scroll-right .col-fixed-right {
-    &::before {
-      box-shadow: -15px 0 15px -15px inset rgba(0, 0, 0, 0.15);
+    // 左边有滚动，加上左边列的右侧阴影
+    &-scroll-left &-col-left-last::after {
+      box-shadow: 15px 0 15px -15px inset rgba(0, 0, 0, 0.15);
       content: " ";
       height: 100%;
-      left: -15px;
       position: absolute;
       top: 0;
+      right: -15px;
       width: 15px;
     }
     
-    // 除了第一个之外的不用加上阴影
-    & ~ .col-fixed-right::before {
-      display: none;
+    // 右边有滚动，加上右边的左侧阴影
+    &-scroll-right &-col-right {
+      &::before {
+        box-shadow: -15px 0 15px -15px inset rgba(0, 0, 0, 0.15);
+        content: " ";
+        height: 100%;
+        left: -15px;
+        position: absolute;
+        top: 0;
+        width: 15px;
+      }
+      
+      // 除了第一个之外的不用加上阴影
+      & ~ .table-fixed-col-right::before {
+        display: none;
+      }
+    }
+    
+    // Column
+    &-col {
+      position: sticky;
+      background: #fff;
+      
+      .table-fixed.table-bordered & {
+        border-right: 1px solid #e0e0e0;
+      }
+      
+      th& {
+        background: inherit;
+      }
+      
+      &-left {
+        left: 0;
+        
+        & + th,
+        & + td {
+          // 左滚动列已有右边框，因此相邻的右非滚动列不用加上左边框
+          border-left-width: 0;
+        }
+      }
+      
+      &-right {
+        right: 0;
+        
+        & + & {
+           // 右滚动列已有左边框，因此相邻的右滚动列不用加上左边框
+           border-left-width: 0;
+        }
+      }
     }
   }
 `;
@@ -368,10 +371,10 @@ class Table extends React.Component {
       }
       if (typeof column.fixed !== 'undefined') {
         this.fixed = true;
-        let classes = 'col-fixed col-fixed-' + column.fixed;
+        let classes = 'table-fixed-col table-fixed-col-' + column.fixed;
         if (!column.classes || !column.classes.includes(classes)) {
           if (columns[i + 1] && !columns[i + 1].fixed) {
-            classes += ' col-fixed-' + column.fixed + '-last';
+            classes += ' table-fixed-col-' + column.fixed + '-last';
           }
           column.classes = classNames(column.classes, classes);
         }
