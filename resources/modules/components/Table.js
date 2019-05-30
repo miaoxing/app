@@ -26,10 +26,6 @@ const GlobalStyle = styled.createGlobalStyle`
   .table-fixed-container {
     overflow-x: hidden;
     
-    .table-responsive {
-      border-right: 1px solid #e0e0e0;
-    }
-    
     .react-bootstrap-table-pagination {
       margin-top: 1rem;
     }
@@ -44,9 +40,11 @@ const GlobalStyle = styled.createGlobalStyle`
     
     // Border
     &.table-bordered {
-      // 重新实现不合并的边框
+      // 重新实现不合并的边框，以便滚动时有各自的边框
       border-collapse: separate;
       border-spacing: 0;
+      border-right: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
     
       thead {
         th, td {
@@ -57,10 +55,6 @@ const GlobalStyle = styled.createGlobalStyle`
       td, th {
         border-right-width: 0;
         border-bottom-width: 0;
-      }
-      
-      tr:last-child td {
-        border-bottom: 1px solid #e0e0e0;
       }
     }
     
