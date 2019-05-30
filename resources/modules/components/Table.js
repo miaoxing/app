@@ -38,25 +38,30 @@ const GlobalStyle = styled.createGlobalStyle`
   .table-fixed {
     margin-bottom: 0;
     
-    // 重新实现不合并的边框
-    border-collapse: separate;
-    border-spacing: 0;
-    
-    td, th {
-      border-right-width: 0;
-      border-bottom-width: 0;
-    }
-    
-    > thead > tr > th {
-      border-bottom-width: 0;
-    }
-    
-    tr:last-child td {
-      border-bottom: 1px solid #e0e0e0;
-    }
-    
     .react-bootstrap-table & {
       table-layout: auto;
+    }
+    
+    // Border
+    &.table-bordered {
+      // 重新实现不合并的边框
+      border-collapse: separate;
+      border-spacing: 0;
+    
+      thead {
+        th, td {
+          border-bottom-width: 0;
+        }
+      }
+      
+      td, th {
+        border-right-width: 0;
+        border-bottom-width: 0;
+      }
+      
+      tr:last-child td {
+        border-bottom: 1px solid #e0e0e0;
+      }
     }
     
     // Hover
@@ -69,7 +74,7 @@ const GlobalStyle = styled.createGlobalStyle`
     position: sticky;
     background: #fff;
     
-    .table-fixed & {
+    .table-fixed.table-bordered & {
       border-right: 1px solid #e0e0e0;
     }
   }

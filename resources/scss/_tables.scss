@@ -5,15 +5,19 @@
 .table {
   word-wrap: break-word; // 数字字母（如 URL）超长能正确换行
   overflow-wrap: break-word;
+
+  thead {
+    tr {
+      color: #707070;
+      background: #f6f6f6;
+    }
+  }
 }
 
-.table > thead > tr {
-  color: #707070;
-  background: #f6f6f6;
-}
-
-.table > thead > tr > th {
-  border-bottom-width: 1px;
+.table-bordered thead {
+  th, td {
+    border-bottom-width: 1px;
+  }
 }
 
 .table-center {
