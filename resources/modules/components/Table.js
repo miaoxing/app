@@ -15,6 +15,7 @@ import classNames from 'classnames';
 const Empty = () => <span className="text-muted">-</span>;
 
 const GlobalStyle = styled.createGlobalStyle`
+  // React bootstrap table
   .react-bs-table-sizePerPage-dropdown.show {
     display:inline-block !important;
   }
@@ -22,23 +23,27 @@ const GlobalStyle = styled.createGlobalStyle`
   .react-bs-table-no-data {
     height: 5rem;
   }
-  
-  .table-fixed-container {
-    overflow-x: hidden;
+
+  // 自适应滚动时，让 windows 下滚动条贴紧表格
+  .react-bootstrap-table {
+    table {
+      margin-bottom: 0;
+    }
     
-    .react-bootstrap-table-pagination {
+    &-pagination {
       margin-top: 1rem;
     }
   }
   
-  .table-fixed {
-    margin-bottom: 0;
-    
+  // Fixed table
+  .table-fixed {    
+    // React bootstrap table
     .react-bootstrap-table & {
+      // 还原为默认的自动布局，可以不用设置每列的宽度
       table-layout: auto;
     }
     
-    // Border
+    // Table border
     &.table-bordered {
       // 重新实现不合并的边框，以便滚动时有各自的边框
       border-collapse: separate;
@@ -58,7 +63,7 @@ const GlobalStyle = styled.createGlobalStyle`
       }
     }
     
-    // Hover
+    // Table hover
     &.table-hover tbody tr:hover .col-fixed {
       background-color: inherit;
     }
@@ -387,7 +392,7 @@ class Table extends React.Component {
       restProps.wrapperClasses = classNames(restProps.wrapperClasses, 'table-responsive');
     }
 
-    return <div className={this.fixed ? 'table-fixed-container' : null}>
+    return <>
       <GlobalStyle/>
       <BootstrapTable
         ref={n => this.node = n}
@@ -417,7 +422,7 @@ class Table extends React.Component {
         onTableChange={this.handleTableChange}
         {...restProps}
       />
-    </div>;
+    </>;
   }
 }
 
