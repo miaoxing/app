@@ -48,7 +48,6 @@ const GlobalStyle = styled.createGlobalStyle`
       // 重新实现不合并的边框，以便滚动时有各自的边框
       border-collapse: separate;
       border-spacing: 0;
-      border-right: 1px solid #e0e0e0;
       border-bottom: 1px solid #e0e0e0;
     
       thead {
@@ -60,6 +59,10 @@ const GlobalStyle = styled.createGlobalStyle`
       td, th {
         border-right-width: 0;
         border-bottom-width: 0;
+        
+        &:last-child {
+          border-right: 1px solid #e0e0e0;
+        }
       }
     }
     
