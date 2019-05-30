@@ -329,18 +329,19 @@ class Table extends React.Component {
     const node = this.getMainNode();
     const table = node.children[0];
 
+    let left = 0;
     this.columns.forEach((column, i) => {
       if (column.fixed !== 'left') {
         return;
       }
 
-      const cell = table.rows[0].cells[i];
-      const left = cell.offsetLeft + 'px';
+      const index = i;
       for (let row of table.rows) {
-        if (row.cells[i]) {
-          row.cells[i].style.left = left;
+        if (row.cells[index]) {
+          row.cells[index].style.left = left + 'px';
         }
       }
+      left += table.rows[0].cells[index].offsetWidth;
     });
 
     let right = 0;
