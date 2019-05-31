@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import Loading from 'components/Loading';
 import NoMatch from 'components/NoMatch';
 import ucfirst from 'ucfirst';
@@ -8,14 +8,36 @@ import {ThemeProvider} from 'styled-components';
 import app from 'app';
 import theme from 'theme';
 import event from 'event';
-import ApolloClient from 'apollo-boost';
-import {ApolloProvider} from 'react-apollo';
+import {Component} from "react";
+import {Modal, Button} from "react-bootstrap";
 
-const client = new ApolloClient({
-  uri: 'https://graphql-pokemon.now.sh/',
-});
+function ModalLink({to, ...props}) {
+  return <Link
+    to={{
+      pathname: to,
+      state: {modal: true}
+    }}
+    {...props}
+  />
+}
 
-class App extends React.Component {
+window.ModalLink = ModalLink;
+
+class ModalSwitch extends Component {
+  previousLocation = this.props.location;
+
+  componentWillUpdate(nextProps) {
+    let {location} = this.props;
+
+    // set previousLocation if props.location is not modal
+    if (
+      nextProps.history.action !== "POP" &&
+      (!location.state || !location.state.modal)
+    ) {
+      this.previousLocation = this.props.location;
+    }
+  }
+
   static defaultProps = {
     pages: {},
     plugins: {},
@@ -104,18 +126,63 @@ class App extends React.Component {
   }
 
   render() {
+    let {location} = this.props;
+
+    let isModal = !!(
+      location.state &&
+      location.state.modal &&
+      this.previousLocation !== location
+    ); // not initial render
+
     const Component = this.loadableComponent;
+
+    return (
+      <div>
+        <Switch location={isModal ? this.previousLocation : location}>
+          <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
+          <Route exact path={wei.appUrl} component={Component}/>
+          <Route component={NoMatch}/>
+        </Switch>
+        {isModal ?
+          <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} render={(props) => {
+            return <ModalView {...props} component={Component}/>;
+          }}/> : null}
+      </div>
+    );
+  }
+}
+
+function ModalView(props) {
+  let back = e => {
+    e && e.stopPropagation();
+    props.history.goBack();
+  };
+
+  const Component = props.component;
+
+  return (
+    <Modal show onHide={back}>
+      <Modal.Header closeButton>
+        <Modal.Title>Modal heading</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Component {...props}/>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="primary" onClick={back}>Back</Button>
+      </Modal.Footer>
+    </Modal>
+  );
+}
+
+class App extends React.Component {
+  render() {
     return <ThemeProvider theme={theme}>
-      <ApolloProvider client={client}>
-        <BrowserRouter>
-          <Switch>
-            {/* TODO /admin/login */}
-            <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
-            <Route exact path={wei.appUrl} component={Component}/>
-            <Route component={NoMatch}/>
-          </Switch>
-        </BrowserRouter>
-      </ApolloProvider>
+      <BrowserRouter>
+        <Route render={(props) => {
+          return <ModalSwitch {...props} {...this.props}/>
+        }}/>
+      </BrowserRouter>
     </ThemeProvider>;
   }
 }
