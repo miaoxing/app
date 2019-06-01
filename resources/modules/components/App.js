@@ -22,14 +22,6 @@ function ModalLink({to, ...props}) {
 }
 
 window.ModalLink = ModalLink;
-let base;
-
-const LoadableComponent = Loadable({
-  loader: () => {
-    return base.importPage(app.plugin, app.controller, app.action);
-  },
-  loading: Loading
-});
 
 class ModalSwitch extends Component {
   previousLocation = this.props.location;
@@ -68,7 +60,6 @@ class ModalSwitch extends Component {
 
     this.loadableComponent = this.loadableComponent.bind(this);
     this.deep = 1;
-    base = this;
   }
 
   getController(params) {
@@ -91,26 +82,42 @@ class ModalSwitch extends Component {
     const plugin = this.controllerMap[controller];
 
     app.plugin = plugin;
-
     app.namespace = props.match.params.namespace;
     app.controller = controller;
     app.action = action;
     app.id = props.match.params.id;
     app.history = props.history;
 
-    app.trigger('pageLoad', props);
-
-    // TODO Nav也升级为React
-    if (typeof $ !== 'undefined') {
-      this.handleLoad(props);
-      if (this.deep > 0) {
-        $('.js-back').show();
-      } else {
-        $('.js-back').hide();
-      }
-    }
+    const LoadableComponent = this.createLoadableComponent(props);
 
     return <LoadableComponent {...props}/>;
+  }
+
+  components = [];
+
+  createLoadableComponent(props) {
+    const id = app.controller + '/' + app.action;
+    if (!this.components[id]) {
+      this.components[id] = Loadable({
+        loader: () => {
+          app.trigger('pageLoad', props);
+
+          // TODO Nav也升级为React
+          if (typeof $ !== 'undefined') {
+            this.handleLoad(props);
+            if (this.deep > 0) {
+              $('.js-back').show();
+            } else {
+              $('.js-back').hide();
+            }
+          }
+
+          return this.importPage(app.plugin, app.controller, app.action);
+        },
+        loading: Loading
+      });
+    }
+    return this.components[id];
   }
 
   importPage(plugin, controller, action) {
