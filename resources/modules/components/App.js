@@ -22,6 +22,14 @@ function ModalLink({to, ...props}) {
 }
 
 window.ModalLink = ModalLink;
+let base;
+
+const LoadableComponent = Loadable({
+  loader: () => {
+    return base.importPage(app.plugin, app.controller, app.action);
+  },
+  loading: Loading
+});
 
 class ModalSwitch extends Component {
   previousLocation = this.props.location;
@@ -60,6 +68,7 @@ class ModalSwitch extends Component {
 
     this.loadableComponent = this.loadableComponent.bind(this);
     this.deep = 1;
+    base = this;
   }
 
   getController(params) {
@@ -77,34 +86,29 @@ class ModalSwitch extends Component {
   }
 
   loadableComponent(props) {
-    const LoadableComponent = Loadable({
-      loader: () => {
-        const controller = this.getController(props.match.params);
-        const action = this.getAction(props.match.params);
-        const plugin = this.controllerMap[controller];
+    const controller = this.getController(props.match.params);
+    const action = this.getAction(props.match.params);
+    const plugin = this.controllerMap[controller];
 
-        app.namespace = props.match.params.namespace;
-        app.controller = controller;
-        app.action = action;
-        app.id = props.match.params.id;
-        app.history = props.history;
+    app.plugin = plugin;
 
-        app.trigger('pageLoad', props);
+    app.namespace = props.match.params.namespace;
+    app.controller = controller;
+    app.action = action;
+    app.id = props.match.params.id;
+    app.history = props.history;
 
-        // TODO Nav也升级为React
-        if (typeof $ !== 'undefined') {
-          this.handleLoad(props);
-          if (this.deep > 0) {
-            $('.js-back').show();
-          } else {
-            $('.js-back').hide();
-          }
-        }
+    app.trigger('pageLoad', props);
 
-        return this.importPage(plugin, controller, action);
-      },
-      loading: Loading
-    });
+    // TODO Nav也升级为React
+    if (typeof $ !== 'undefined') {
+      this.handleLoad(props);
+      if (this.deep > 0) {
+        $('.js-back').show();
+      } else {
+        $('.js-back').hide();
+      }
+    }
 
     return <LoadableComponent {...props}/>;
   }
