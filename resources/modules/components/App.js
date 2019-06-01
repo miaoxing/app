@@ -1,37 +1,26 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
 import Loading from 'components/Loading';
 import NoMatch from 'components/NoMatch';
+import ModalSwitch from 'components/ModalSwitch';
+import ModalView from "components/ModalView";
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
 import {ThemeProvider} from 'styled-components';
 import app from 'app';
 import theme from 'theme';
 import event from 'event';
-import {Component} from "react";
-import {Modal, Button} from "react-bootstrap";
 
-class App extends React.Component {
-  render() {
-    return <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Route render={(props) => (<ModalSwitch {...props} {...this.props}/>)}/>
-      </BrowserRouter>
-    </ThemeProvider>;
-  }
-}
-
-/**
- * @link https://reacttraining.com/react-router/web/example/modal-gallery
- */
-class ModalSwitch extends Component {
+export default class App extends React.Component {
   static defaultProps = {
     pages: {},
     plugins: {},
     events: {},
   };
 
-  previousLocation = this.props.location;
+  deep = 1;
+  pages = [];
+  controllerMap = {};
 
   constructor(props) {
     super(props);
@@ -40,27 +29,11 @@ class ModalSwitch extends Component {
     event.setConfigs(props);
 
     // 解析出页面路径中的插件和控制对应关系
-    // 如 article/articles/Edit => articles:article
-    this.controllerMap = {};
-    Object.keys(this.props.pages).forEach((key) => {
-      const parts = key.split('/');
-      this.controllerMap[parts[1]] = parts[0];
+    // 如 article/articles/Edit => {articles:article}
+    Object.keys(this.props.pages).forEach(key => {
+      const [plugin, controller] = key.split('/');
+      this.controllerMap[controller] = plugin;
     });
-
-    this.loadableComponent = this.loadableComponent.bind(this);
-    this.deep = 1;
-  }
-
-  componentWillUpdate(nextProps) {
-    let {location} = this.props;
-
-    // set previousLocation if props.location is not modal
-    if (
-      nextProps.history.action !== "POP" &&
-      (!location.state || !location.state.modal)
-    ) {
-      this.previousLocation = this.props.location;
-    }
   }
 
   getController(params) {
@@ -77,51 +50,34 @@ class ModalSwitch extends Component {
     }
   }
 
-  loadableComponent(props) {
+  loadableComponent = (props) => {
     const controller = this.getController(props.match.params);
     const action = this.getAction(props.match.params);
     const plugin = this.controllerMap[controller];
 
-    app.plugin = plugin;
     app.namespace = props.match.params.namespace;
     app.controller = controller;
     app.action = action;
     app.id = props.match.params.id;
     app.history = props.history;
 
-    const LoadableComponent = this.createLoadableComponent(props);
+    app.trigger('pageLoad', props);
+    this.handleBack(props);
 
-    return <LoadableComponent {...props}/>;
-  }
-
-  components = [];
-
-  createLoadableComponent(props) {
-    const id = app.controller + '/' + app.action;
-    if (!this.components[id]) {
-      this.components[id] = Loadable({
-        loader: () => {
-          app.trigger('pageLoad', props);
-
-          // TODO Nav也升级为React
-          if (typeof $ !== 'undefined') {
-            this.handleLoad(props);
-            if (this.deep > 0) {
-              $('.js-back').show();
-            } else {
-              $('.js-back').hide();
-            }
-          }
-
-          return this.importPage(app.plugin, app.controller, app.action);
-        },
-        loading: Loading
+    const key = controller + '/' + action;
+    if (!this.pages[key]) {
+      this.pages[key] = Loadable({
+        loader: () => this.importPage(plugin, controller, action),
+        loading: Loading,
       });
     }
-    return this.components[id];
-  }
+
+    const LoadableComponent = this.pages[key];
+    return <LoadableComponent {...props}/>;
+  };
 
   importPage(plugin, controller, action) {
+    // 允许外部配置替换页面
     let path = `${plugin}/${controller}/${action}`;
     if (typeof wei.pageMap[path] !== 'undefined') {
       path = wei.pageMap[path];
@@ -129,64 +85,49 @@ class ModalSwitch extends Component {
     return this.props.pages[path] ? this.props.pages[path]() : new Promise(resolve => resolve(NoMatch));
   }
 
-  handleLoad(props) {
+  /**
+   * @param props
+   * @deprecated 应通过 pageLoad 事件实现
+   */
+  handleBack(props) {
+    if (typeof $ === 'undefined') {
+      return;
+    }
+
     if (props.history.action === 'POP') {
       this.deep--;
     } else if (props.history.action === 'PUSH') {
       this.deep++;
     } // ignore REPLACE
-  }
 
-  isModal() {
-    let {location} = this.props;
-    return !!(
-      location.state &&
-      location.state.modal &&
-      this.previousLocation !== location
-    ); // not initial render
+    if (this.deep > 0) {
+      $('.js-back').show();
+    } else {
+      $('.js-back').hide();
+    }
   }
 
   render() {
-    const isModal = this.isModal();
     const Component = this.loadableComponent;
+    const restPath = app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?');
 
     return (
-      <>
-        <Switch location={isModal ? this.previousLocation : location}>
-          <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
-          <Route exact path={wei.appUrl} component={Component}/>
-          <Route component={NoMatch}/>
-        </Switch>
-        {isModal ?
-          <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} render={(props) => {
-            return <ModalView {...props} component={Component}/>;
-          }}/> : null}
-      </>
-    );
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Route render={props => (
+            <ModalSwitch
+              {...props}
+              modalRoute={<Route exact path={restPath} render={props => (
+                <ModalView {...props} component={Component}/>
+              )}/>}
+            >
+              <Route exact path={restPath} component={Component}/>
+              <Route exact path={wei.appUrl} component={Component}/>
+              <Route component={NoMatch}/>
+            </ModalSwitch>
+          )}/>
+        </BrowserRouter>
+      </ThemeProvider>
+    )
   }
 }
-
-function ModalView(props) {
-  let back = e => {
-    e && e.stopPropagation();
-    props.history.goBack();
-  };
-
-  const Component = props.component;
-
-  return (
-    <Modal show onHide={back}>
-      <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        <Component {...props}/>
-      </Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={back}>Back</Button>
-      </Modal.Footer>
-    </Modal>
-  );
-}
-
-export default App;
