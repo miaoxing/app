@@ -11,38 +11,27 @@ import event from 'event';
 import {Component} from "react";
 import {Modal, Button} from "react-bootstrap";
 
-function ModalLink({to, ...props}) {
-  return <Link
-    to={{
-      pathname: to,
-      state: {modal: true}
-    }}
-    {...props}
-  />
+class App extends React.Component {
+  render() {
+    return <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Route render={(props) => (<ModalSwitch {...props} {...this.props}/>)}/>
+      </BrowserRouter>
+    </ThemeProvider>;
+  }
 }
 
-window.ModalLink = ModalLink;
-
+/**
+ * @link https://reacttraining.com/react-router/web/example/modal-gallery
+ */
 class ModalSwitch extends Component {
-  previousLocation = this.props.location;
-
-  componentWillUpdate(nextProps) {
-    let {location} = this.props;
-
-    // set previousLocation if props.location is not modal
-    if (
-      nextProps.history.action !== "POP" &&
-      (!location.state || !location.state.modal)
-    ) {
-      this.previousLocation = this.props.location;
-    }
-  }
-
   static defaultProps = {
     pages: {},
     plugins: {},
     events: {},
   };
+
+  previousLocation = this.props.location;
 
   constructor(props) {
     super(props);
@@ -60,6 +49,18 @@ class ModalSwitch extends Component {
 
     this.loadableComponent = this.loadableComponent.bind(this);
     this.deep = 1;
+  }
+
+  componentWillUpdate(nextProps) {
+    let {location} = this.props;
+
+    // set previousLocation if props.location is not modal
+    if (
+      nextProps.history.action !== "POP" &&
+      (!location.state || !location.state.modal)
+    ) {
+      this.previousLocation = this.props.location;
+    }
   }
 
   getController(params) {
@@ -136,19 +137,21 @@ class ModalSwitch extends Component {
     } // ignore REPLACE
   }
 
-  render() {
+  isModal() {
     let {location} = this.props;
-
-    let isModal = !!(
+    return !!(
       location.state &&
       location.state.modal &&
       this.previousLocation !== location
     ); // not initial render
+  }
 
+  render() {
+    const isModal = this.isModal();
     const Component = this.loadableComponent;
 
     return (
-      <div>
+      <>
         <Switch location={isModal ? this.previousLocation : location}>
           <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
           <Route exact path={wei.appUrl} component={Component}/>
@@ -158,7 +161,7 @@ class ModalSwitch extends Component {
           <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} render={(props) => {
             return <ModalView {...props} component={Component}/>;
           }}/> : null}
-      </div>
+      </>
     );
   }
 }
@@ -184,18 +187,6 @@ function ModalView(props) {
       </Modal.Footer>
     </Modal>
   );
-}
-
-class App extends React.Component {
-  render() {
-    return <ThemeProvider theme={theme}>
-      <BrowserRouter>
-        <Route render={(props) => {
-          return <ModalSwitch {...props} {...this.props}/>
-        }}/>
-      </BrowserRouter>
-    </ThemeProvider>;
-  }
 }
 
 export default App;
