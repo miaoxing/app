@@ -1,7 +1,8 @@
 import React from "react";
 import {Button, Modal} from "react-bootstrap";
+import {withRouter} from "react-router";
 
-export default function ModalView(props) {
+export default withRouter(function ModalView(props) {
   let back = e => {
     e && e.stopPropagation();
     props.history.goBack();
@@ -13,11 +14,11 @@ export default function ModalView(props) {
         <Modal.Title>Modal heading</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <props.component {...props}/>
+        {props.children}
       </Modal.Body>
       <Modal.Footer>
         <Button variant="primary" onClick={back}>Back</Button>
       </Modal.Footer>
     </Modal>
   );
-}
+})

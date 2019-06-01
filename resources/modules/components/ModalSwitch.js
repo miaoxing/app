@@ -1,15 +1,12 @@
 import React from 'react';
-import {Switch} from 'react-router';
+import {Switch, withRouter} from 'react-router';
+import ModalView from "components/ModalView";
 
 /**
  * @link https://reacttraining.com/react-router/web/example/modal-gallery
  */
+@withRouter
 export default class ModalSwitch extends React.Component {
-  static defaultProps = {
-    location: null,
-    modalRoute: null,
-  };
-
   previousLocation = this.props.location;
 
   componentWillUpdate(nextProps) {
@@ -34,13 +31,16 @@ export default class ModalSwitch extends React.Component {
   render() {
     const isModal = this.isModal();
 
-
     return (
       <>
         <Switch location={isModal ? this.previousLocation : location}>
           {this.props.children}
         </Switch>
-        {isModal ? this.props.modalRoute : null}
+        {isModal && <ModalView>
+          <Switch>
+            {this.props.children}
+          </Switch>
+        </ModalView>}
       </>
     );
   }

@@ -109,23 +109,15 @@ export default class App extends React.Component {
 
   render() {
     const Component = this.loadableComponent;
-    const restPath = app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?');
 
     return (
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <Route render={props => (
-            <ModalSwitch
-              {...props}
-              modalRoute={<Route exact path={restPath} render={props => (
-                <ModalView {...props} component={Component}/>
-              )}/>}
-            >
-              <Route exact path={restPath} component={Component}/>
-              <Route exact path={wei.appUrl} component={Component}/>
-              <Route component={NoMatch}/>
-            </ModalSwitch>
-          )}/>
+          <ModalSwitch>
+            <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
+            <Route exact path={wei.appUrl} component={Component}/>
+            <Route component={NoMatch}/>
+          </ModalSwitch>
         </BrowserRouter>
       </ThemeProvider>
     )
