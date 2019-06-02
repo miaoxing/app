@@ -9,16 +9,10 @@ export default withRouter(function ModalView(props) {
   };
 
   return (
-    <Modal show onHide={back}>
-      <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
-      </Modal.Header>
+    <Modal show onHide={back} className="modal-right">
       <Modal.Body>
         {props.children}
       </Modal.Body>
-      <Modal.Footer>
-        <Button variant="primary" onClick={back}>Back</Button>
-      </Modal.Footer>
     </Modal>
   );
 })
