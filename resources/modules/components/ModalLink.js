@@ -1,12 +1,6 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React from 'react';
+import Link from 'components/Link';
 
-export default function ModalLink({to, ...props}) {
-  return <Link
-    to={{
-      pathname: to,
-      state: {modal: true}
-    }}
-    {...props}
-  />
-}
+export default (props) => (
+  <Link modal {...props}/>
+);

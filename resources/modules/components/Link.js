@@ -5,7 +5,7 @@ export default function Link({to, modal, ...props}) {
   return <RouterLink
     to={{
       pathname: to,
-      state: {modal: modal}
+      state: {modal}
     }}
     {...props}
   />
