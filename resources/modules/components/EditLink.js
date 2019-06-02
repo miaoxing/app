@@ -1,4 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
+import Link from 'components/Link';
 
-export default (props) => <Link to={props.href}>{props.children || '编辑'}</Link>;
+export default ({href, children, ...props}) => (
+  <Link to={href} {...props}>{children || '编辑'}</Link>
+);
