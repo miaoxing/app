@@ -2,17 +2,32 @@ import React from "react";
 import {Button, Modal} from "react-bootstrap";
 import {withRouter} from "react-router";
 
-export default withRouter(function ModalView(props) {
-  let back = e => {
-    e && e.stopPropagation();
-    props.history.goBack();
+@withRouter
+export default class ModalView extends React.Component {
+  state = {
+    show: true
   };
 
-  return (
-    <Modal show onHide={back} className="modal-right">
-      <Modal.Body>
-        {props.children}
-      </Modal.Body>
-    </Modal>
-  );
-})
+  handleHide = () => {
+    this.setState({show: false});
+  };
+
+  handleExited = () => {
+    this.props.history.goBack();
+  };
+
+  render() {
+    return (
+      <Modal
+        show={this.state.show}
+        onHide={this.handleHide}
+        onExited={this.handleExited}
+        className="modal-right"
+      >
+        <Modal.Body>
+          {this.props.children}
+        </Modal.Body>
+      </Modal>
+    );
+  }
+}
