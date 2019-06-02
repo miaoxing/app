@@ -11,6 +11,7 @@ import app from 'app';
 import * as ReactDOM from "react-dom";
 import * as styled from "styled-components";
 import classNames from 'classnames';
+import ModalEvent from "components/ModalEvent";
 
 const Empty = () => <span className="text-muted">-</span>;
 
@@ -140,6 +141,7 @@ class Table extends React.Component {
   static defaultProps = {
     url: null,
     onLoad: null,
+    reloadOnModalExit: false,
   };
 
   node = null;
@@ -361,8 +363,12 @@ class Table extends React.Component {
     });
   }
 
+  handleModalExit = () => {
+    this.reload();
+  };
+
   render() {
-    const {columns, ...restProps} = this.props;
+    const {columns, reloadOnModalExit, ...restProps} = this.props;
     const {page, sizePerPage, totalSize} = this.state;
 
     this.fixed = false;
@@ -401,6 +407,7 @@ class Table extends React.Component {
 
     return <>
       <GlobalStyle/>
+      {reloadOnModalExit && <ModalEvent onExit={this.handleModalExit}/>}
       <BootstrapTable
         ref={n => this.node = n}
         remote={{pagination: true}}

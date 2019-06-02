@@ -12,19 +12,17 @@ export default class ModalEvent extends React.Component {
 
   componentDidMount() {
     this.unlisten = this.props.history.listen((location, action) => {
-      if (this.isModal && !location.state.modal) {
+      const isModal = location.state && location.state.modal;
+
+      if (this.isModal && !isModal) {
         this.handleEvent('onExit', location, action);
       }
 
-      if (!this.isModal && location.state.modal) {
+      if (!this.isModal && isModal) {
         this.handleEvent('onEnter', location, action);
       }
 
-      if (location.state.modal) {
-        this.isModal = true;
-      } else {
-        this.isModal = false;
-      }
+      this.isModal = isModal;
     });
   }
 
