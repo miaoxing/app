@@ -24,7 +24,7 @@ export default class ModalView extends React.Component {
         onExited={this.handleExited}
         className="modal-right"
       >
-        <Modal.Body>
+        <Modal.Body className="page-content">
           {this.props.children}
         </Modal.Body>
       </Modal>
