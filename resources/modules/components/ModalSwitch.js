@@ -33,7 +33,7 @@ export default class ModalSwitch extends React.Component {
 
     return (
       <>
-        <Switch location={isModal ? this.previousLocation : location}>
+        <Switch location={isModal ? this.previousLocation : this.props.location}>
           {this.props.children}
         </Switch>
         {isModal && <ModalView>
