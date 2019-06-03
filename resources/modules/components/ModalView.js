@@ -1,6 +1,7 @@
 import React from "react";
 import {Button, Modal} from "react-bootstrap";
 import {withRouter} from "react-router";
+import ModalEvent from "components/ModalEvent";
 
 @withRouter
 export default class ModalView extends React.Component {
@@ -9,7 +10,9 @@ export default class ModalView extends React.Component {
   };
 
   handleHide = () => {
-    this.setState({show: false});
+    // 如果还在modal中。
+    this.props.history.goBack();
+    //this.setState({show: false});
   };
 
   handleExited = () => {
@@ -18,16 +21,19 @@ export default class ModalView extends React.Component {
 
   render() {
     return (
-      <Modal
-        show={this.state.show}
-        onHide={this.handleHide}
-        onExited={this.handleExited}
-        className="modal-right"
-      >
-        <Modal.Body className="page-content">
-          {this.props.children}
-        </Modal.Body>
-      </Modal>
-    );
+      <>
+        <ModalEvent onExit={() => {console.log('exit')}} onEnter={() => {console.log('enter')}}/>
+        <Modal
+          show={this.state.show}
+          onHide={this.handleHide}
+          onExited={this.handleExited}
+          className="modal-right"
+        >
+          <Modal.Body className="page-content">
+            {this.props.children}
+          </Modal.Body>
+        </Modal>
+      </>
+    );lfys-hospital-doctor-screeningslfys-hospital-doctor-screenings
   }
 }
