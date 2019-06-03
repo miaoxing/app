@@ -34,6 +34,6 @@ export default class ModalView extends React.Component {
           </Modal.Body>
         </Modal>
       </>
-    );lfys-hospital-doctor-screeningslfys-hospital-doctor-screenings
+    );
   }
 }

@@ -19,7 +19,7 @@ export default class App extends React.Component {
   };
 
   deep = 1;
-  pages = [];
+  pages = {};
   controllerMap = {};
 
   constructor(props) {
@@ -64,7 +64,7 @@ export default class App extends React.Component {
     app.trigger('pageLoad', props);
     this.handleBack(props);
 
-    const key = controller + '/' + action;
+    const key = props.location.pathname + props.location.search;
     if (!this.pages[key]) {
       this.pages[key] = Loadable({
         loader: () => this.importPage(plugin, controller, action),
