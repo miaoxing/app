@@ -5,35 +5,34 @@ import ModalEvent from "components/ModalEvent";
 
 @withRouter
 export default class ModalView extends React.Component {
+  static defaultProps = {
+    length: 1
+  };
+
   state = {
     show: true
   };
 
   handleHide = () => {
-    // 如果还在modal中。
-    this.props.history.goBack();
-    //this.setState({show: false});
+    this.setState({show: false});
   };
 
   handleExited = () => {
-    this.props.history.goBack();
+    this.props.history.go(-this.props.length);
   };
 
   render() {
     return (
-      <>
-        <ModalEvent onExit={() => {console.log('exit')}} onEnter={() => {console.log('enter')}}/>
-        <Modal
-          show={this.state.show}
-          onHide={this.handleHide}
-          onExited={this.handleExited}
-          className="modal-right"
-        >
-          <Modal.Body className="page-content">
-            {this.props.children}
-          </Modal.Body>
-        </Modal>
-      </>
+      <Modal
+        show={this.state.show}
+        onHide={this.handleHide}
+        onExited={this.handleExited}
+        className="modal-right"
+      >
+        <Modal.Body className="page-content">
+          {this.props.children}
+        </Modal.Body>
+      </Modal>
     );
   }
 }
