@@ -2,6 +2,8 @@ import React from 'react';
 import {Switch, withRouter} from 'react-router';
 import ModalView from "components/ModalView";
 
+export const ModalContext = React.createContext({});
+
 /**
  * @link https://reacttraining.com/react-router/web/example/modal-gallery
  */
@@ -32,7 +34,7 @@ export default class ModalSwitch extends React.Component {
     const isModal = this.isModal();
 
     return (
-      <>
+      <ModalContext.Provider value={{isModal: isModal}}>
         <Switch location={isModal ? this.previousLocation : this.props.location}>
           {this.props.children}
         </Switch>
@@ -41,7 +43,7 @@ export default class ModalSwitch extends React.Component {
             {this.props.children}
           </Switch>
         </ModalView>}
-      </>
+      </ModalContext.Provider>
     );
   }
 }
