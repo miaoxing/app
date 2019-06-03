@@ -10,6 +10,12 @@ import {ThemeProvider} from 'styled-components';
 import app from 'app';
 import theme from 'theme';
 import event from 'event';
+import ApolloClient from 'apollo-boost';
+import {ApolloProvider} from 'react-apollo';
+
+const client = new ApolloClient({
+  uri: 'https://graphql-pokemon.now.sh/',
+});
 
 export default class App extends React.Component {
   static defaultProps = {
@@ -112,13 +118,15 @@ export default class App extends React.Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <ModalSwitch>
-            <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
-            <Route exact path={wei.appUrl} component={Component}/>
-            <Route component={NoMatch}/>
-          </ModalSwitch>
-        </BrowserRouter>
+        <ApolloProvider client={client}>
+          <BrowserRouter>
+            <ModalSwitch>
+              <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
+              <Route exact path={wei.appUrl} component={Component}/>
+              <Route component={NoMatch}/>
+            </ModalSwitch>
+          </BrowserRouter>
+        </ApolloProvider>
       </ThemeProvider>
     )
   }
