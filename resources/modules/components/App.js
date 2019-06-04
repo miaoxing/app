@@ -14,7 +14,7 @@ import ApolloClient from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo';
 
 const client = new ApolloClient({
-  uri: 'https://graphql-pokemon.now.sh/',
+  uri: wei.appUrl + '/graphql',
 });
 
 export default class App extends React.Component {
