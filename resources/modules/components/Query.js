@@ -1,10 +1,10 @@
 import React from "react";
 import {Query as GraphQLQuery} from "react-apollo";
 
-export default (props) => {
+export default ({loading: showLoading, ...props}) => {
   return <GraphQLQuery {...props}>
     {({loading, error, ...rest}) => {
-      if (loading) {
+      if (showLoading && loading) {
         return <div className="text-center mt-3">努力加载中...</div>;
       }
 
