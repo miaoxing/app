@@ -157,7 +157,7 @@ class Table extends React.Component {
     sortOrder: '',
     loading: false,
     noDataIndication: this.noDataIndication,
-    test: 0,
+    search: {},
   };
 
   columns = [];
@@ -223,13 +223,8 @@ class Table extends React.Component {
     if (this.props.query) {
       this.enableLoading();
       this.setState({
-        test: this.state.test + 1
-      }, () => {
-        console.log('x2', this.state.test);
+        search: this.props.table.search,
       });
-
-      console.log('x', this.state.test);
-
       return;
     }
 
@@ -443,6 +438,7 @@ class Table extends React.Component {
           limit: this.state.sizePerPage,
           sort: this.state.sortField || '',
           order: this.state.sortOrder || '',
+          search: JSON.stringify(this.state.search),
         }}
         onCompleted={(data) => {
           this.disableLoading();
