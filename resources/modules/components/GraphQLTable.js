@@ -434,11 +434,13 @@ class Table extends React.Component {
         query={this.props.query}
         fetchPolicy="network-only"
         variables={{
-          page: this.state.page,
-          limit: this.state.sizePerPage,
-          sort: this.state.sortField || '',
-          order: this.state.sortOrder || '',
-          search: JSON.stringify(this.state.search),
+          query: {
+            page: this.state.page,
+            limit: this.state.sizePerPage,
+            sort: this.state.sortField || '',
+            order: this.state.sortOrder || '',
+            search: JSON.stringify(this.state.search),
+          }
         }}
         onCompleted={(data) => {
           this.disableLoading();
