@@ -221,7 +221,7 @@ class Table extends React.Component {
     this.saveScrollPosition();
 
     if (this.props.query) {
-      this.enableLoading();
+      // this.enableLoading();
       this.setState({
         search: this.props.table.search,
       });
