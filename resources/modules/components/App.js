@@ -10,12 +10,6 @@ import {ThemeProvider} from 'styled-components';
 import app from 'app';
 import theme from 'theme';
 import event from 'event';
-import ApolloClient from 'apollo-boost';
-import {ApolloProvider} from 'react-apollo';
-
-const client = new ApolloClient({
-  uri: wei.appUrl + '/graphql',
-});
 
 export default class App extends React.Component {
   static defaultProps = {
@@ -118,15 +112,13 @@ export default class App extends React.Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <ApolloProvider client={client}>
-          <BrowserRouter>
-            <ModalSwitch>
-              <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
-              <Route exact path={wei.appUrl} component={Component}/>
-              <Route component={NoMatch}/>
-            </ModalSwitch>
-          </BrowserRouter>
-        </ApolloProvider>
+        <BrowserRouter>
+          <ModalSwitch>
+            <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
+            <Route exact path={wei.appUrl} component={Component}/>
+            <Route component={NoMatch}/>
+          </ModalSwitch>
+        </BrowserRouter>
       </ThemeProvider>
     )
   }
