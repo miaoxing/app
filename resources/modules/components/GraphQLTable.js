@@ -447,9 +447,9 @@ class Table extends React.Component {
           const result = Object.values(data)[0];
           this.setState({
             data: result.data,
-            page: result.currentPage,
-            totalSize: result.total,
-            sizePerPage: result.perPage,
+            page: result.paginatorInfo.currentPage,
+            totalSize: result.paginatorInfo.total,
+            sizePerPage: result.paginatorInfo.perPage,
           });
         }}
       >
