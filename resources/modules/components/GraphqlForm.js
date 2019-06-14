@@ -10,14 +10,24 @@ import Query from "components/Query";
 import LoadingOverlay from 'react-loading-overlay';
 import {withRouter} from "react-router";
 
+const EditQuery = (props) => {
+  if (props.query) {
+    return <Query
+      query={props.query}
+      variables={props.variables}
+    >
+      {props.children}
+    </Query>
+  }
+
+  return props.children({data: {}, loading: false});
+};
+
 @withRouter
 export default class extends React.Component {
   render() {
     return (
-      <Query
-        query={this.props.query}
-        variables={this.props.variables}
-      >
+      <EditQuery {...this.props}>
         {({data, loading}) => (
           <Mutation
             mutation={this.props.mutation}
@@ -46,7 +56,7 @@ export default class extends React.Component {
           }}
           </Mutation>
         )}
-      </Query>
+      </EditQuery>
     );
   }
 }
