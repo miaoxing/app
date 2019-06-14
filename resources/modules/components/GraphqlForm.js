@@ -31,7 +31,7 @@ export default class extends React.Component {
                 initialValues={Object.values(data)[0]}
                 enableReinitialize={true}
                 onSubmit={(values) => {
-                  mutate({variables: {input: values}}).then(({data}) => {
+                  mutate({variables: {data: values}}).then(({data}) => {
                     app.suc('操作成功').then(() => {
                       this.props.history.push(app.curIndexUrl());
                     });
