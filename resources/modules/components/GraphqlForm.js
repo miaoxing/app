@@ -59,6 +59,9 @@ export default class extends React.Component {
                 initialValues={this.filterValues(Object.values(data)[0])}
                 enableReinitialize={true}
                 onSubmit={(values) => {
+                  if (this.props.beforeSubmit) {
+                    this.props.beforeSubmit(values);
+                  }
                   mutate({variables: {data: values}}).then(({data}) => {
                     app.suc('操作成功').then(() => {
                       this.props.history.push(app.curIndexUrl());
