@@ -25,6 +25,24 @@ const EditQuery = (props) => {
 
 @withRouter
 export default class extends React.Component {
+  /**
+   * 将输入项的值从 null 转换为空字符,因为 React input 值不允许为 null
+   *
+   * @param object data
+   * @returns object
+   */
+  filterValues(data) {
+    if (!data) {
+      return {};
+    }
+    Object.keys(data).forEach(key => {
+      if (data[key] === null) {
+        data[key] = '';
+      }
+    });
+    return data;
+  }
+
   render() {
     return (
       <EditQuery {...this.props}>
@@ -38,7 +56,7 @@ export default class extends React.Component {
               text='Loading...'
             >
               <Formik
-                initialValues={Object.values(data)[0]}
+                initialValues={this.filterValues(Object.values(data)[0])}
                 enableReinitialize={true}
                 onSubmit={(values) => {
                   mutate({variables: {data: values}}).then(({data}) => {
