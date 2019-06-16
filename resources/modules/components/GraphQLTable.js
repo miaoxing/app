@@ -175,6 +175,8 @@ class Table extends React.Component {
 
     // 将Provider中的方法指向当前组件
     this.props.table.reload = this.reload.bind(this);
+
+    window.t = this;
   }
 
   componentDidMount() {
@@ -228,6 +230,8 @@ class Table extends React.Component {
     this.setState({
       search: this.props.table.search,
     });
+
+    this.refetch();
     return;
 
     // 自身参数
@@ -490,7 +494,8 @@ class Table extends React.Component {
           });
         }}
       >
-        {({loading, error, data}) => {
+        {({loading, error, data, refetch}) => {
+          this.refetch = refetch;
           return <BootstrapTable
             ref={n => this.node = n}
             remote={{pagination: true}}

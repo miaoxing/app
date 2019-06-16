@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 import app from 'app';
 import pluralize from 'pluralize';
 import ucfirst from 'ucfirst';
+import {withTable} from "components/TableProvider";
 
 class GDeleteLink extends React.Component {
   getMutation() {
@@ -21,24 +22,17 @@ class GDeleteLink extends React.Component {
     `);
   }
 
-  getRefetchQueries() {
-    return this.props.refetchQueries || [app.controller];
-  }
-
   handleClick(mutate) {
-    app.confirm(this.props.message, (result) => {
-      if (!result) {
-        return;
-      }
-
-      mutate({variables: {id: this.props.id}});
+    app.confirm(this.props.message).ok(() => {
+      mutate({variables: {id: this.props.id}}).then(() => {
+        this.props.table && this.props.table.reload();
+      });
     });
   }
 
   render() {
     return <Mutation
       mutation={this.getMutation()}
-      refetchQueries={this.getRefetchQueries()}
     >
       {(mutate, {loading, error, data}) => {
         return <>
@@ -55,4 +49,4 @@ GDeleteLink.defaultProps = {
   message: '删除后将无法还原,确定删除?',
 };
 
-export default GDeleteLink;
+export default withTable(GDeleteLink);
