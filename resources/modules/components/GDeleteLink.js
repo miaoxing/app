@@ -22,7 +22,7 @@ class GDeleteLink extends React.Component {
   }
 
   getRefetchQueries() {
-    return this.props.refetchQueries || app.controller;
+    return this.props.refetchQueries || [app.controller];
   }
 
   handleClick(mutate) {
