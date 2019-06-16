@@ -14,6 +14,8 @@ import classNames from 'classnames';
 import ModalEvent from "components/ModalEvent";
 import gql from "graphql-tag";
 import Query from "components/Query";
+import ucfirst from "ucfirst";
+import pluralize from "pluralize";
 
 const Empty = () => <span className="text-muted">-</span>;
 
@@ -144,6 +146,8 @@ class Table extends React.Component {
     url: null,
     onLoad: null,
     reloadOnModalExit: false,
+    keyField: 'id',
+    extraFields: [],
   };
 
   node = null;
@@ -220,13 +224,11 @@ class Table extends React.Component {
   reload(params = {}) {
     this.saveScrollPosition();
 
-    if (this.props.query) {
-      // this.enableLoading();
-      this.setState({
-        search: this.props.table.search,
-      });
-      return;
-    }
+    // this.enableLoading();
+    this.setState({
+      search: this.props.table.search,
+    });
+    return;
 
     // 自身参数
     let tableParams = {
@@ -388,6 +390,41 @@ class Table extends React.Component {
     this.reload();
   };
 
+  getQuery() {
+    if (this.props.query) {
+      return this.props.query;
+    }
+
+    let fields = [];
+    this.props.columns.forEach((column, i) => {
+      if (column.dataField && /[_A-Za-z][_0-9A-Za-z]*/.test(column.dataField)) {
+        fields.push(column.dataField);
+      }
+    });
+
+    fields = fields.concat(this.props.extraFields);
+
+    if (!fields.includes(this.props.keyField)) {
+      fields.unshift(this.props.keyField);
+    }
+
+    const models = app.controller;
+    return gql(`
+      query ${models}($query: ListInput) {
+        ${models}(query: $query) {
+          data {
+            ${fields.join(' ')}
+          }
+          paginatorInfo {
+            total
+            currentPage
+            perPage
+          }
+        }
+      }
+    `);
+  }
+
   render() {
     const {columns, reloadOnModalExit, ...restProps} = this.props;
     const {page, sizePerPage, totalSize} = this.state;
@@ -429,9 +466,9 @@ class Table extends React.Component {
     return <>
       <GlobalStyle/>
       {reloadOnModalExit && <ModalEvent onExit={this.handleModalExit}/>}
-      {this.props.query && <Query
+      <Query
         loading={false}
-        query={this.props.query}
+        query={this.getQuery()}
         fetchPolicy="network-only"
         variables={{
           query: {
@@ -456,11 +493,10 @@ class Table extends React.Component {
         {() => {
           return null;
         }}
-      </Query>}
+      </Query>
       <BootstrapTable
         ref={n => this.node = n}
         remote={{pagination: true}}
-        keyField="id"
         data={this.state.data}
         columns={columns}
         hover
