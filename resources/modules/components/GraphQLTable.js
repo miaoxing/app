@@ -175,8 +175,6 @@ class Table extends React.Component {
 
     // 将Provider中的方法指向当前组件
     this.props.table.reload = this.reload.bind(this);
-
-    window.t = this;
   }
 
   componentDidMount() {
@@ -474,6 +472,7 @@ class Table extends React.Component {
         loading={false}
         query={this.getQuery()}
         fetchPolicy="network-only"
+        notifyOnNetworkStatusChange={true}
         variables={{
           query: {
             page: this.state.page,
