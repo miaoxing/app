@@ -53,7 +53,7 @@ export default class extends React.Component {
             return <LoadingOverlay
               active={loading || mutationLoading}
               spinner
-              text='Loading...'
+              background="rgba(192,192,192,0.3)"
             >
               <Formik
                 initialValues={this.filterValues(Object.values(data)[0])}
