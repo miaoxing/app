@@ -490,37 +490,36 @@ class Table extends React.Component {
           });
         }}
       >
-        {() => {
-          return null;
+        {({loading, error, data}) => {
+          return <BootstrapTable
+            ref={n => this.node = n}
+            remote={{pagination: true}}
+            data={this.state.data}
+            columns={columns}
+            hover
+            bootstrap4
+            noDataIndication={loading ? ' ' : this.state.noDataIndication}
+            loading={loading}
+            overlay={overlayFactory({
+              spinner: true,
+              background: 'rgba(192,192,192,0.3)'
+            })}
+            pagination={paginationFactory({
+              page,
+              sizePerPage,
+              totalSize,
+              showTotal: true,
+              paginationTotalRenderer: (from, to, size) => (
+                <span className="react-bootstrap-table-pagination-total">
+                  &nbsp;显示第 {from} 至 {to} 项结果，共 {size} 项
+                </span>
+              )
+            })}
+            onTableChange={this.handleTableChange}
+            {...restProps}
+          />
         }}
       </Query>
-      <BootstrapTable
-        ref={n => this.node = n}
-        remote={{pagination: true}}
-        data={this.state.data}
-        columns={columns}
-        hover
-        bootstrap4
-        noDataIndication={this.state.noDataIndication}
-        loading={this.state.loading}
-        overlay={overlayFactory({
-          spinner: true,
-          background: 'rgba(192,192,192,0.3)'
-        })}
-        pagination={paginationFactory({
-          page,
-          sizePerPage,
-          totalSize,
-          showTotal: true,
-          paginationTotalRenderer: (from, to, size) => (
-            <span className="react-bootstrap-table-pagination-total">
-              &nbsp;显示第 {from} 至 {to} 项结果，共 {size} 项
-            </span>
-          )
-        })}
-        onTableChange={this.handleTableChange}
-        {...restProps}
-      />
     </>;
   }
 }
