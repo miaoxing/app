@@ -1,16 +1,44 @@
 import React from "react";
 import {Mutation} from "react-apollo";
+import gql from "graphql-tag";
+import app from 'app';
+import pluralize from 'pluralize';
+import ucfirst from 'ucfirst';
 
-export default class extends React.Component {
+class GDeleteLink extends React.Component {
+  getMutation() {
+    if (this.props.mutation) {
+      return this.props.mutation;
+    }
+
+    const model = ucfirst(pluralize.singular(app.controller));
+    return gql(`
+      mutation delete${model}($id: ID!) {
+        delete${model}(id: $id) {
+          id
+        }
+      }
+    `);
+  }
+
+  getRefetchQueries() {
+    return this.props.refetchQueries || app.controller;
+  }
+
   handleClick(mutate) {
-    mutate({variables: {id: this.props.id}})
+    app.confirm(this.props.message, (result) => {
+      if (!result) {
+        return;
+      }
+
+      mutate({variables: {id: this.props.id}});
+    });
   }
 
   render() {
-    const {mutation, refetchQueries} = this.props;
     return <Mutation
-      mutation={mutation}
-      refetchQueries={refetchQueries}
+      mutation={this.getMutation()}
+      refetchQueries={this.getRefetchQueries()}
     >
       {(mutate, {loading, error, data}) => {
         return <>
@@ -22,3 +50,9 @@ export default class extends React.Component {
     </Mutation>
   }
 }
+
+GDeleteLink.defaultProps = {
+  message: '删除后将无法还原,确定删除?',
+};
+
+export default GDeleteLink;
