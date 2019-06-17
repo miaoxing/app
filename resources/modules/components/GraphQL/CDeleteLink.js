@@ -6,7 +6,7 @@ import pluralize from 'pluralize';
 import ucfirst from 'ucfirst';
 import {withTable} from "components/TableProvider";
 
-class GDeleteLink extends React.Component {
+class CDeleteLink extends React.Component {
   getMutation() {
     if (this.props.mutation) {
       return this.props.mutation;
@@ -45,8 +45,8 @@ class GDeleteLink extends React.Component {
   }
 }
 
-GDeleteLink.defaultProps = {
+CDeleteLink.defaultProps = {
   message: '删除后将无法还原,确定删除?',
 };
 
-export default withTable(GDeleteLink);
+export default withTable(CDeleteLink);

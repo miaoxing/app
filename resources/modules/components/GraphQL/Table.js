@@ -10,7 +10,7 @@ import axios from "axios";
 import {withTable} from "components/TableProvider";
 
 @withTable
-export default class GraphQLTable extends React.Component {
+export default class Table extends React.Component {
   static defaultProps = {
     extraFields: [],
     keyField: 'id',
