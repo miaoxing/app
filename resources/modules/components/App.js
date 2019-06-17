@@ -1,6 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import Loading from 'components/Loading';
+import LoadableLoading from 'components/LoadableLoading';
 import NoMatch from 'components/NoMatch';
 import ModalSwitch from 'components/ModalSwitch';
 import ModalView from "components/ModalView";
@@ -10,6 +10,12 @@ import {ThemeProvider} from 'styled-components';
 import app from 'app';
 import theme from 'theme';
 import event from 'event';
+import ApolloClient from 'apollo-boost';
+import {ApolloProvider} from 'react-apollo';
+
+const client = new ApolloClient({
+  uri: wei.appUrl + '/graphql',
+});
 
 export default class App extends React.Component {
   static defaultProps = {
@@ -68,7 +74,7 @@ export default class App extends React.Component {
     if (!this.pages[key]) {
       this.pages[key] = Loadable({
         loader: () => this.importPage(plugin, controller, action),
-        loading: Loading,
+        loading: LoadableLoading,
       });
     }
 
@@ -112,13 +118,15 @@ export default class App extends React.Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <ModalSwitch>
-            <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
-            <Route exact path={wei.appUrl} component={Component}/>
-            <Route component={NoMatch}/>
-          </ModalSwitch>
-        </BrowserRouter>
+        <ApolloProvider client={client}>
+          <BrowserRouter>
+            <ModalSwitch>
+              <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
+              <Route exact path={wei.appUrl} component={Component}/>
+              <Route component={NoMatch}/>
+            </ModalSwitch>
+          </BrowserRouter>
+        </ApolloProvider>
       </ThemeProvider>
     )
   }

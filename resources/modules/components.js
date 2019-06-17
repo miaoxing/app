@@ -1,8 +1,9 @@
+// @deprecated
+
 // 页面
 export Page from './components/Page';
 export PageHeader from './components/PageHeader';
 export NoMatch from './components/NoMatch';
-export Loading from './components/Loading';
 
 // 列表
 export DataTable from './components/DataTable';
