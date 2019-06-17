@@ -1,5 +1,6 @@
 import React from "react";
 import {Query as GraphQLQuery} from "react-apollo";
+import Error from "vendor/miaoxing/graphql/resources/components/Error";
 
 export default ({loading: showLoading, ...props}) => {
   return <GraphQLQuery {...props}>
@@ -9,7 +10,7 @@ export default ({loading: showLoading, ...props}) => {
       }
 
       if (error) {
-        return `很抱歉，加载出错：${error.message}`;
+        return <Error error={error}/>
       }
 
       return props.children({loading, error, ...rest});
