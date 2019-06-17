@@ -6,7 +6,10 @@ import ucfirst from "ucfirst";
 import pluralize from "pluralize";
 import app from 'app';
 import paginationFactory from "react-bootstrap-table2-paginator";
+import axios from "axios";
+import {withTable} from "components/TableProvider";
 
+@withTable
 export default class GraphQLTable extends React.Component {
   static defaultProps = {
     extraFields: [],
@@ -22,6 +25,9 @@ export default class GraphQLTable extends React.Component {
     search: [],
   };
 
+  refetch = () => {
+  };
+
   buildQuery() {
     if (this.props.query) {
       return this.props.query;
@@ -29,7 +35,7 @@ export default class GraphQLTable extends React.Component {
 
     let fields = [];
     this.props.columns.forEach((column, i) => {
-      if (column.dataField) {
+      if (column.dataField && /[_A-Za-z][_0-9A-Za-z]*/.test(column.dataField)) {
         fields.push(column.dataField);
       }
     });
@@ -58,24 +64,30 @@ export default class GraphQLTable extends React.Component {
   }
 
   reload(params = {}) {
-    this.setState({
-      search: this.props.table.search,
-    });
+    // 自身参数
+    const state = {
+      page: this.state.page,
+      sizePerPage: this.state.sizePerPage,
+      sortField: this.state.sortField,
+      sortOrder: this.state.sortOrder,
+      search: this.state.search,
+    };
 
-    this.refetch();
+    const newState = Object.assign({}, state, {search: this.props.table.search}, params);
+
+    if (JSON.stringify(state) === JSON.stringify(newState)) {
+      this.refetch();
+    } else {
+      this.setState(newState);
+    }
   }
 
   handleLoad = (type, {page, sizePerPage, sortField, sortOrder}) => {
-    this.setState({
-      sortField,
-      sortOrder
-    }, () => {
-      this.reload({
-        page: type === 'sort' ? 1 : page,
-        rows: sizePerPage,
-        sort: sortField,
-        order: sortOrder
-      });
+    this.reload({
+      page: type === 'sort' ? 1 : page,
+      sizePerPage: sizePerPage,
+      sortField: sortField,
+      sortOrder: sortOrder,
     });
   };
 
@@ -87,8 +99,10 @@ export default class GraphQLTable extends React.Component {
       notifyOnNetworkStatusChange={true}
       variables={{
         query: {
+          // @paginate
           page: this.state.page,
-          limit: this.state.sizePerPage,
+          count: this.state.sizePerPage,
+
           sort: this.state.sortField || '',
           order: this.state.sortOrder || '',
           search: JSON.stringify(this.state.search),
@@ -96,26 +110,17 @@ export default class GraphQLTable extends React.Component {
       }}
     >
       {({loading, error, data, refetch}) => {
-        const result = Object.values(data)[0];
-        const paginatorInfo = result ? result.paginatorInfo : null;
+        // 存储该变量以便后续主动调用重载
         this.refetch = refetch;
+
+        const result = Object.values(data)[0];
 
         return <BootstrapTable
           {...this.props}
           data={result ? result.data : []}
+          paginatorInfo={result ? result.paginatorInfo : {}}
           loading={loading}
           onLoad={this.handleLoad}
-          pagination={paginationFactory({
-            page: paginatorInfo ? paginatorInfo.currentPage : 1,
-            sizePerPage: paginatorInfo ? paginatorInfo.perPage : 10,
-            totalSize: paginatorInfo ? paginatorInfo.total : 0,
-            showTotal: true,
-            paginationTotalRenderer: (from, to, size) => (
-              <span className="react-bootstrap-table-pagination-total">
-                &nbsp;显示第 {from} 至 {to} 项结果，共 {size} 项
-              </span>
-            )
-          })}
         />
       }}
     </Query>

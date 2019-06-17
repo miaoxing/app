@@ -141,24 +141,14 @@ class Table extends React.Component {
   static defaultProps = {
     url: null,
     onLoad: null,
+    keyField: 'id',
     reloadOnModalExit: false,
+    noDataIndication: '暂无数据',
+    paginatorInfo: {},
   };
 
   node = null;
-  noDataIndication = '暂无数据';
-  state = {
-    data: [],
-    page: 1,
-    totalSize: 0,
-    sizePerPage: 10,
-    sortField: '',
-    sortOrder: '',
-    loading: false,
-    noDataIndication: this.noDataIndication,
-  };
-
   columns = [];
-
   fixed = false;
   scrollLeft = 0;
   lefts = {};
@@ -180,9 +170,7 @@ class Table extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.url !== prevProps.url
-      || this.props.table.search !== prevProps.table.search
-    ) {
+    if (this.props.table.search !== prevProps.table.search) {
       this.reload({page: 1});
     }
 
@@ -199,58 +187,9 @@ class Table extends React.Component {
     }
   }
 
-  enableLoading() {
-    this.setState({
-      loading: true,
-      noDataIndication: ' ',
-    });
-  }
-
-  disableLoading() {
-    this.setState({
-      loading: false,
-      noDataIndication: this.noDataIndication,
-    });
-  }
-
   reload(params = {}) {
     this.saveScrollPosition();
-
-    // 自身参数
-    let tableParams = {
-      page: this.state.page,
-      rows: this.state.sizePerPage,
-      sort: this.state.sortField,
-      order: this.state.sortOrder,
-    };
-
-    // 外部搜索参数
-    const searchParams = this.props.table.search;
-
-    params = Object.assign({}, tableParams, searchParams, params);
-
-    this.enableLoading();
-    axios({
-      url: app.appendUrl(this.getUrl(), params),
-      dataType: 'json'
-    }).then(({data}) => {
-      this.setState({
-        data: data.data,
-        page: parseInt(params.page, 10),
-        totalSize: data.records,
-        sizePerPage: parseInt(data.rows, 10)
-      });
-      this.props.onLoad && this.props.onLoad(this.state);
-      this.disableLoading();
-    });
-  }
-
-  getUrl() {
-    if (this.props.url) {
-      return this.props.url;
-    }
-
-    return location.pathname + '.json' + location.search;
+    this.props.onLoad && this.props.onLoad('reload', params);
   }
 
   handleTableChange = (...args) => {
@@ -357,8 +296,7 @@ class Table extends React.Component {
   };
 
   render() {
-    const {columns, reloadOnModalExit, ...restProps} = this.props;
-    const {page, sizePerPage, totalSize} = this.state;
+    const {columns, paginatorInfo, reloadOnModalExit, ...restProps} = this.props;
 
     this.fixed = false;
     columns.forEach((column, i) => {
@@ -400,21 +338,18 @@ class Table extends React.Component {
       <BootstrapTable
         ref={n => this.node = n}
         remote={{pagination: true}}
-        keyField="id"
-        data={this.props.data}
         columns={columns}
         hover
         bootstrap4
-        noDataIndication={this.state.noDataIndication}
-        loading={this.state.loading}
+        loading={this.props.loading}
         overlay={overlayFactory({
           spinner: true,
           background: 'rgba(192,192,192,0.3)'
         })}
         pagination={paginationFactory({
-          page,
-          sizePerPage,
-          totalSize,
+          page: paginatorInfo.currentPage || 1,
+          sizePerPage: paginatorInfo.perPage || 10,
+          totalSize: paginatorInfo.total || 0,
           showTotal: true,
           paginationTotalRenderer: (from, to, size) => (
             <span className="react-bootstrap-table-pagination-total">
@@ -424,6 +359,8 @@ class Table extends React.Component {
         })}
         onTableChange={this.handleTableChange}
         {...restProps}
+        // 不被覆盖
+        noDataIndication={this.props.loading ? ' ' : this.props.noDataIndication}
       />
     </>;
   }
