@@ -65,7 +65,7 @@ export default class App extends React.Component {
     this.handleBack(props);
 
     // 允许 state 传入 __reload 要求当前页面也要刷新
-    const key = props.location.pathname + props.location.search + JSON.stringify(props.location.state.__reload);
+    const key = props.location.pathname + props.location.search + (props.location.state ? props.location.state.__reload : '');
     if (!this.pages[key]) {
       this.pages[key] = Loadable({
         loader: () => this.importPage(plugin, controller, action),
