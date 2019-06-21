@@ -77,6 +77,9 @@ class App {
   }
 
   reload() {
+    if (!this.history.location.state) {
+      this.history.location.state = {};
+    }
     this.history.location.state.__reload = new Date();
     this.history.replace(this.history.location);
   }
