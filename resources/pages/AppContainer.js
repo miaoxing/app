@@ -8,4 +8,3 @@ const AppContainer = () => {
 };
 
 export default hot(module)(AppContainer);
-
