@@ -1,5 +1,6 @@
 {
   "name": "miaoxing/app",
+  "type": "miaoxing-plugin",
   "keywords": [
     "miaoxing", "app"
   ],
