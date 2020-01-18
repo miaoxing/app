@@ -144,6 +144,9 @@ class WebpackConfig {
         // new BundleAnalyzerPlugin(),
       ],
       devServer: {
+        // Fix "Invalid Host/Origin Header" warning
+        // @link https://github.com/webpack/webpack-dev-server/issues/1604
+        disableHostCheck: true,
         headers: {
           'Access-Control-Allow-Origin': '*'
         }
