@@ -23,7 +23,7 @@ function handleFormik(props) {
 }
 
 const FormControl = ({formik, ...props}) => {
-  if (formik.setFieldValue) {
+  if (formik && formik.setFieldValue) {
     props = handleFormik(props);
   }
 
