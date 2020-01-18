@@ -16,4 +16,4 @@ build:
     - script:
         name: check all rules
         code: |
-          bash vendor/miaoxing/plugin/build/build-wercker.sh --coverage 1 1
+          bash plugins/plugin/build/build-wercker.sh --coverage 1 1

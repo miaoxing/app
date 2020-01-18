@@ -1,5 +1,5 @@
 import hoook from 'hoook';
-import ucfirst from 'locutus/php/strings/ucfirst';
+import ucfirst from 'ucfirst';
 
 const DEFAULT_PRIORITY = 100;
 const ee = hoook();

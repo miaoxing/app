@@ -6,7 +6,7 @@ module.exports = WebpackConfig.build({
   manifest: true,
   getEntries() {
     return {
-      [this.name] : `${this.rootDir}/vendor/miaoxing/${this.name}/resources/pages/index.js`
+      [this.name] : `${this.rootDir}/plugins/${this.name}/resources/pages/index.js`
     }
   }
 });

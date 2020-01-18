@@ -1,5 +1,5 @@
 import $ from 'jquery';
-import message from 'vendor/miaoxing/app/resources/modules/react-bootstrap-message/js/react-bootstrap-message';
+import message from 'plugins/app/resources/modules/react-bootstrap-message/js/react-bootstrap-message';
 
 /**
  * 根据JSON显示提示

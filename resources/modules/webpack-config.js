@@ -36,7 +36,7 @@ class WebpackConfig {
     entries[this.name] = [];
 
     // 不使用完整路径将提示 Module not found: Error
-    entries[this.name].push(this.rootDir + `/vendor/miaoxing/${this.name}/resources/containers/${this.name}.js`);
+    entries[this.name].push(this.rootDir + `/plugins/${this.name}/resources/containers/${this.name}.js`);
 
     return entries;
   }
@@ -52,7 +52,7 @@ class WebpackConfig {
         extensions: ['.tsx', '.ts', '.js'],
         modules: [
           this.rootDir,
-          'vendor/miaoxing/app/resources/modules',
+          'plugins/app/resources/modules',
           'node_modules'
         ]
       },
