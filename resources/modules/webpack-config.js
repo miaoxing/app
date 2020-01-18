@@ -54,7 +54,10 @@ class WebpackConfig {
           this.rootDir,
           'plugins/app/resources/modules',
           'node_modules'
-        ]
+        ],
+        alias: {
+          'react-dom': '@hot-loader/react-dom',
+        },
       },
       // NOTE: 需直接传入结果，不能使用回调函数，否则HMR不生效
       entry: this.getEntries(),
