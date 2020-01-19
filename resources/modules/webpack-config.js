@@ -118,13 +118,6 @@ class WebpackConfig {
               // https://github.com/webpack-contrib/file-loader/issues/177
               name: useVersioning ? '[path][name]-[hash:6].[ext]' : '[path][name].[ext]'
             }
-          },
-          {
-            test: /\.ejs$/,
-            loader: 'underscore-template-strict-loader',
-            query: {
-              globals: ['$', 'wei']
-            }
           }
         ]
       },
