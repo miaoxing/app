@@ -111,7 +111,7 @@ class WebpackConfig {
             ]
           },
           {
-            test: /\.(jpg|png|gif|svg|json|ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
+            test: /\.(jpg|png|gif|svg|ttf|eot|woff(2)?)(\?[a-z0-9]+)?$/,
             loader: 'file-loader',
             options: {
               // 只支持hash，相当于contenthash
