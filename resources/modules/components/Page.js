@@ -6,7 +6,7 @@ class Page extends React.Component {
     var firstChild = React.Children.toArray(this.props.children)[0];
 
     return (
-      <div className="page-wrapper">
+      <div className="page-wrapper p-4 bg-white">
         {firstChild.type !== <PageHeader />.type && <PageHeader />}
         {this.props.children}
       </div>

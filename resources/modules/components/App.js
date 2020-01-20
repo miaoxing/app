@@ -10,6 +10,8 @@ import {ThemeProvider} from 'styled-components';
 import app from 'app';
 import theme from 'theme';
 import event from 'event';
+import axios from "axios";
+import Layout from 'plugins/admin/resources/layouts/Default';
 
 export default class App extends React.Component {
   static defaultProps = {
@@ -21,6 +23,16 @@ export default class App extends React.Component {
   deep = 1;
   pages = {};
   controllerMap = {};
+
+  state = {
+    menus: [],
+    user: {},
+  };
+
+  componentDidMount() {
+    axios(app.url('admin/config'), {loading: true})
+      .then(({data}) => this.setState(data));
+  }
 
   constructor(props) {
     super(props);
@@ -113,11 +125,13 @@ export default class App extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <BrowserRouter>
-          <ModalSwitch>
-            <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
-            <Route exact path={wei.appUrl} component={Component}/>
-            <Route component={NoMatch}/>
-          </ModalSwitch>
+          <Layout menus={this.state.menus} user={this.state.user}>
+            <ModalSwitch>
+              <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
+              <Route exact path={wei.appUrl} component={Component}/>
+              <Route component={NoMatch}/>
+            </ModalSwitch>
+          </Layout>
         </BrowserRouter>
       </ThemeProvider>
     )
