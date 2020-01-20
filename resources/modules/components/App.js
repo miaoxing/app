@@ -3,7 +3,6 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import LoadableLoading from 'components/LoadableLoading';
 import NoMatch from 'components/NoMatch';
 import ModalSwitch from 'components/ModalSwitch';
-import ModalView from "components/ModalView";
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
 import {ThemeProvider} from 'styled-components';
@@ -20,7 +19,6 @@ export default class App extends React.Component {
     events: {},
   };
 
-  deep = 1;
   pages = {};
   controllerMap = {};
 
@@ -74,7 +72,6 @@ export default class App extends React.Component {
     app.history = props.history;
 
     app.trigger('pageLoad', props);
-    this.handleBack(props);
 
     const key = props.location.pathname + props.location.search;
     if (!this.pages[key]) {
@@ -95,28 +92,6 @@ export default class App extends React.Component {
       path = wei.pageMap[path];
     }
     return this.props.pages[path] ? this.props.pages[path]() : new Promise(resolve => resolve(NoMatch));
-  }
-
-  /**
-   * @param props
-   * @deprecated 应通过 pageLoad 事件实现
-   */
-  handleBack(props) {
-    if (typeof $ === 'undefined') {
-      return;
-    }
-
-    if (props.history.action === 'POP') {
-      this.deep--;
-    } else if (props.history.action === 'PUSH') {
-      this.deep++;
-    } // ignore REPLACE
-
-    if (this.deep > 0) {
-      $('.js-back').show();
-    } else {
-      $('.js-back').hide();
-    }
   }
 
   render() {
