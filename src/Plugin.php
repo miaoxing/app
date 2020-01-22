@@ -20,20 +20,6 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
 
         $subCategories['app-site'] = [
             'parentId' => 'app',
-            'name' => '网站',
-            'icon' => 'fa fa-sitemap',
-            'sort' => 1000,
-        ];
-
-        $subCategories['app-setting'] = [
-            'parentId' => 'app',
-            'name' => '设置',
-            'icon' => 'fa fa-gear',
-            'sort' => 0,
-        ];
-
-        $navs[] = [
-            'parentId' => 'app-setting',
             'url' => 'admin/app-settings',
             'name' => '网站设置',
         ];
