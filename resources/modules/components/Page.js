@@ -36,6 +36,7 @@ class Page extends React.Component {
               </Breadcrumb.Item>
             </LinkContainer>
           ))}
+          {this.state.breadcrumb.length === 0 && <Breadcrumb.Item className="invisible">#</Breadcrumb.Item>}
         </Breadcrumb>
         <div className="p-4 bg-white">
           {this.props.children}
