@@ -49,7 +49,7 @@ class SearchFormik extends React.Component {
       onSubmit={this.handleSubmit}
       render={({submitForm}) => (
         <Form
-          className={(className ? className + ' ' : '') + 'search-form well'}
+          className={(className ? className + ' ' : '') + 'search-form'}
           onChange={realTime ? this.handleChange.bind(this, submitForm) : null}
           {...rest}
         >
