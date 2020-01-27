@@ -420,7 +420,7 @@ class Table extends React.Component {
         loading={this.state.loading}
         overlay={overlayFactory({
           spinner: true,
-          background: 'rgba(192,192,192,0.3)'
+          styles: {overlay: (base) => ({...base, background: 'rgba(192, 192, 192, 0.3)'})}
         })}
         pagination={paginationFactory({
           page,
