@@ -4,7 +4,7 @@ import CListBtn from 'components/CListBtn';
 
 function FormAction({url, list = true}) {
   return (
-    <Form.Group as={Row} className="form-actions px-0">
+    <Form.Group as={Row} className="form-actions">
       <Col sm={{span: 10, offset: 2}}>
         <Button type="submit">提交</Button>
         {list && (url ? <Button href={url} variant="secondary" className="ml-3">返回列表</Button> :
