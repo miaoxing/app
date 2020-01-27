@@ -1,15 +1,43 @@
 import React from 'react';
-import PageHeader from './PageHeader';
+import {Breadcrumb} from "react-bootstrap";
+import axios from 'axios';
+import app from 'app';
+import lcfirst from 'lcfirst';
 
 class Page extends React.Component {
-  render () {
-    var firstChild = React.Children.toArray(this.props.children)[0];
+  static defaultProps = {
+    breadcrumb: null,
+  };
 
+  state = {
+    breadcrumb: [],
+  };
+
+  componentDidMount() {
+    axios.get(app.url('admin/breadcrumb', {ctrl: app.namespace + '/' + app.controller, act: lcfirst(app.action)}))
+      .then(({data}) => {
+        if (data.code !== 1) {
+          // 忽略错误未找到的情况
+          return;
+        }
+        this.setState({breadcrumb: data.data});
+      });
+  }
+
+  render() {
     return (
-      <div className="page-wrapper p-4 bg-white">
-        {firstChild.type !== <PageHeader />.type && <PageHeader />}
-        {this.props.children}
-      </div>
+      <>
+        <Breadcrumb className="mt-n4 mx-n4 mb-4" listProps={{className: 'breadcrumb-light py-3 pl-4'}}>
+          {this.state.breadcrumb.map((breadcrumb, index) => (
+            <Breadcrumb.Item href={breadcrumb.url} active={this.state.breadcrumb.length === index + 1}>
+              {breadcrumb.name}
+            </Breadcrumb.Item>
+          ))}
+        </Breadcrumb>
+        <div className="p-4 bg-white">
+          {this.props.children}
+        </div>
+      </>
     );
   }
 }
