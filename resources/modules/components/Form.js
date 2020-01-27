@@ -135,13 +135,13 @@ class Form extends React.Component {
         initialValues={this.state.initialValues}
         enableReinitialize={true}
         onSubmit={this.handleSubmit}
-        render={(props) => (
+      >
+        {(props) => (
           <FormikForm {...formProps}>
             {render ? render(props) : children}
           </FormikForm>
         )}
-        {...props}
-      />
+      </Formik>
     );
   }
 }
