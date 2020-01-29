@@ -15,7 +15,7 @@ class Page extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(app.url('admin/breadcrumb', {ctrl: app.namespace + '/' + app.controller, act: lcfirst(app.action)}))
+    axios.get(app.url('admin-api/admin-page/breadcrumb', {ctrl: app.namespace + '/' + app.controller, act: lcfirst(app.action)}))
       .then(({data}) => {
         if (data.code !== 1) {
           // 忽略错误未找到的情况

@@ -28,7 +28,7 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    axios(app.url('admin/config'), {loading: true})
+    axios(app.url('admin-api/admin-page'), {loading: true})
       .then(({data}) => this.setState(data));
   }
 
