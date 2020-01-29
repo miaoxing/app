@@ -44,6 +44,12 @@ class App {
     return window.location.pathname;
   }
 
+  curApiUrl() {
+    return this.namespace ?
+      window.location.pathname.replace('/' + this.namespace + '/', '/' + this.namespace + '-api/')
+      : ('/api' + window.location.pathname)
+  }
+
   curIndexUrl() {
     return this.url((this.namespace ? (this.namespace + '/') : '') + this.controller);
   }
@@ -66,6 +72,14 @@ class App {
 
   curFormUrl() {
     return this.curIndexUrl() + '/' + (this.id ? 'update' : 'create');
+  }
+
+  curApiIndexUrl() {
+    return this.url((this.namespace ? (this.namespace + '-') : '') + 'api/' + this.controller);
+  }
+
+  curApiFormUrl() {
+    return this.curApiIndexUrl() + '/' + (this.id ? 'update' : 'create');
   }
 
   actionUrl(action, argsOrParam, params) {
