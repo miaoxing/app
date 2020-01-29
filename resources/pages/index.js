@@ -5,7 +5,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppContainer from './AppContainer';
 
-import '../modules/requirejs-custom/require';
 import 'script-loader!jquery';
 
 import 'bootstrap/js/dist/modal';
@@ -16,8 +15,6 @@ import '../modules/bootstrap-popup';
 import '../modules/loading';
 
 import '../modules/wei';
-import '../modules/require-config';
-import '../modules/jquery-ajax-tips';
 
 import '../scss/index.scss';
 
