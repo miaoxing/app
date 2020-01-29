@@ -10,7 +10,7 @@ class Logs extends \Miaoxing\Plugin\BaseController
 
     public function createAction($req)
     {
-        if ($req['message']) {
+        if ($req['message'] && wei()->has('jsRaven')) {
             wei()->jsRaven->captureMessage($req['message'], $req['params']);
         }
 
