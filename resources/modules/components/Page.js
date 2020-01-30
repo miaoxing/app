@@ -16,32 +16,46 @@ class Page extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(app.url('admin-api/admin-page/breadcrumb', {
-      ctrl: app.namespace + '/' + app.controller,
-      act: lcfirst(app.action)
-    }))
-      .then(({data}) => {
-        if (data.code !== 1) {
-          // 忽略错误未找到的情况
-          return;
-        }
-        this.setState({breadcrumb: data.data});
-      });
+    if (this.props.breadcrumb !== false) {
+      axios.get(app.url('admin-api/admin-page/breadcrumb', {
+        ctrl: app.namespace + '/' + app.controller,
+        act: lcfirst(app.action)
+      }))
+        .then(({data}) => {
+          if (data.code !== 1) {
+            // 忽略错误未找到的情况
+            return;
+          }
+          this.setState({breadcrumb: data.data});
+        });
+    }
+  }
+
+  renderBreadcrumb() {
+    if (this.props.breadcrumb) {
+      return this.props.breadcrumb;
+    }
+
+    if (this.props.breadcrumb === false) {
+      return '';
+    }
+
+    return <Breadcrumb className="mt-n4 mx-n4 mb-4" listProps={{className: 'breadcrumb-light py-3 pl-4'}}>
+      {this.state.breadcrumb.map((breadcrumb, index) => (
+        <LinkContainer key={breadcrumb.name} to={breadcrumb.url}>
+          <Breadcrumb.Item active={this.state.breadcrumb.length === index + 1}>
+            {breadcrumb.name}
+          </Breadcrumb.Item>
+        </LinkContainer>
+      ))}
+      {this.state.breadcrumb.length === 0 && <Breadcrumb.Item className="invisible">#</Breadcrumb.Item>}
+    </Breadcrumb>
   }
 
   render() {
     return (
       <>
-        <Breadcrumb className="mt-n4 mx-n4 mb-4" listProps={{className: 'breadcrumb-light py-3 pl-4'}}>
-          {this.state.breadcrumb.map((breadcrumb, index) => (
-            <LinkContainer key={breadcrumb.name} to={breadcrumb.url}>
-              <Breadcrumb.Item active={this.state.breadcrumb.length === index + 1}>
-                {breadcrumb.name}
-              </Breadcrumb.Item>
-            </LinkContainer>
-          ))}
-          {this.state.breadcrumb.length === 0 && <Breadcrumb.Item className="invisible">#</Breadcrumb.Item>}
-        </Breadcrumb>
+        {this.renderBreadcrumb()}
         <div className={this.props.raw ? '' : "p-4 bg-white"}>
           {this.props.children}
         </div>
