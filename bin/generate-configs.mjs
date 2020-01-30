@@ -20,7 +20,7 @@ files.forEach(file => {
   const last = parts[parts.length - 1];
   // plugins/plugin/resources/pages/controller/action.js
   // => plugin/controller/action
-  content += `    '${parts[2]}/${parts[parts.length - 2]}/${last.substring(0, last.length - 3)}': () => import('${file}'),\n`;
+  content += `    '${parts[1]}/${parts[parts.length - 2]}/${last.substring(0, last.length - 3)}': () => import('${file}'),\n`;
 });
 content += '  },';
 
