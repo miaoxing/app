@@ -3,11 +3,12 @@ import {Breadcrumb} from "react-bootstrap";
 import axios from 'axios';
 import app from 'app';
 import lcfirst from 'lcfirst';
-import { LinkContainer } from 'react-router-bootstrap';
+import {LinkContainer} from 'react-router-bootstrap';
 
 class Page extends React.Component {
   static defaultProps = {
     breadcrumb: null,
+    raw: false
   };
 
   state = {
@@ -15,7 +16,10 @@ class Page extends React.Component {
   };
 
   componentDidMount() {
-    axios.get(app.url('admin-api/admin-page/breadcrumb', {ctrl: app.namespace + '/' + app.controller, act: lcfirst(app.action)}))
+    axios.get(app.url('admin-api/admin-page/breadcrumb', {
+      ctrl: app.namespace + '/' + app.controller,
+      act: lcfirst(app.action)
+    }))
       .then(({data}) => {
         if (data.code !== 1) {
           // 忽略错误未找到的情况
@@ -38,7 +42,7 @@ class Page extends React.Component {
           ))}
           {this.state.breadcrumb.length === 0 && <Breadcrumb.Item className="invisible">#</Breadcrumb.Item>}
         </Breadcrumb>
-        <div className="p-4 bg-white">
+        <div className={this.props.raw ? '' : "p-4 bg-white"}>
           {this.props.children}
         </div>
       </>
