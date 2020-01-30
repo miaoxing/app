@@ -73,7 +73,10 @@ export default class App extends React.Component {
 
     app.trigger('pageLoad', props);
 
+    console.log(app);
+
     const key = props.location.pathname + props.location.search;
+    console.log('x', key,  this.pages)
     if (!this.pages[key]) {
       this.pages[key] = Loadable({
         loader: () => this.importPage(plugin, controller, action),
