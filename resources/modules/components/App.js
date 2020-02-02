@@ -73,10 +73,7 @@ export default class App extends React.Component {
 
     app.trigger('pageLoad', props);
 
-    console.log(app);
-
     const key = props.location.pathname + props.location.search;
-    console.log('x', key,  this.pages)
     if (!this.pages[key]) {
       this.pages[key] = Loadable({
         loader: () => this.importPage(plugin, controller, action),
@@ -105,7 +102,7 @@ export default class App extends React.Component {
         <BrowserRouter>
           <Layout menus={this.state.menus} user={this.state.user}>
             <ModalSwitch>
-              <Route exact path={app.url(':namespace(admin)?/:controller/:id(\\d+)?/:action?')} component={Component}/>
+              <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')} component={Component}/>
               <Route exact path={wei.appUrl} component={Component}/>
               <Route component={NoMatch}/>
             </ModalSwitch>
