@@ -107,7 +107,13 @@ class WebpackConfig {
             test: /\.less$/,
             use: [
               this.getExtractCssChunksLoader(),
-              'less-loader',
+              'css-loader',
+              {
+                loader: 'less-loader',
+                options: {
+                  javascriptEnabled: true
+                }
+              }
             ]
           },
           {
