@@ -43,6 +43,7 @@ export default ({url, ...restProps}) => {
         querySorter = sorter;
         ref.current.reload();
       }}
+      loading={false}
       {...restProps}
     />
   );
