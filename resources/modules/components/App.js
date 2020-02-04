@@ -12,10 +12,10 @@ import event from 'event';
 import axios from "axios";
 import Layout from 'plugins/admin/resources/layouts/Default';
 import {Spin} from 'antd';
-import {Spinner} from "react-bootstrap";
+import Loading from './Loading';
 
 // 指定 Antd 全局的 loading 样式
-Spin.setDefaultIndicator(<Spinner animation="grow" variant="primary"/>);
+Spin.setDefaultIndicator(<Loading/>);
 
 export default class App extends React.Component {
   static defaultProps = {

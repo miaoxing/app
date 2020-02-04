@@ -1,9 +1,5 @@
 import React from 'react';
 import {Spinner} from "react-bootstrap";
 
-export default (props) => {
-  return <div className="text-center my-5">
-    <Spinner animation="grow" variant="primary"/>
-    <div>努力加载中...</div>
-  </div>;
-};
+// NOTE: antd spin 会传入 className=ant-spin-dot，以便居中显示
+export default (props) => <Spinner animation="grow" variant="primary" {...props}/>

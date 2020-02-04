@@ -1,5 +1,5 @@
 import React from 'react';
-import Loading from './Loading';
+import PageLoading from './PageLoading';
 
 export default (props) => {
   if (props.error) {
@@ -15,6 +15,6 @@ export default (props) => {
       <div className="d-none">{props.error.toString()}</div>
     </div>;
   } else {
-    return <Loading/>;
+    return <PageLoading/>;
   }
 };
