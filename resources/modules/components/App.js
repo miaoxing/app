@@ -11,8 +11,9 @@ import theme from 'theme';
 import event from 'event';
 import axios from "axios";
 import Layout from 'plugins/admin/resources/layouts/Default';
-import {Spin} from 'antd';
+import {Button, DatePicker, Spin} from 'antd';
 import Loading from './Loading';
+import {ConfigProvider} from 'antd';
 
 // 指定 Antd 全局的 loading 样式
 Spin.setDefaultIndicator(<Loading/>);
@@ -103,17 +104,22 @@ export default class App extends React.Component {
     const Component = this.loadableComponent;
 
     return (
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <Layout menus={this.state.menus} user={this.state.user}>
-            <ModalSwitch>
-              <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')} component={Component}/>
-              <Route exact path={wei.appUrl} component={Component}/>
-              <Route component={NoMatch}/>
-            </ModalSwitch>
-          </Layout>
-        </BrowserRouter>
-      </ThemeProvider>
+      <ConfigProvider
+        autoInsertSpaceInButton={false}
+      >
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <Layout menus={this.state.menus} user={this.state.user}>
+              <ModalSwitch>
+                <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')}
+                  component={Component}/>
+                <Route exact path={wei.appUrl} component={Component}/>
+                <Route component={NoMatch}/>
+              </ModalSwitch>
+            </Layout>
+          </BrowserRouter>
+        </ThemeProvider>
+      </ConfigProvider>
     )
   }
 }
