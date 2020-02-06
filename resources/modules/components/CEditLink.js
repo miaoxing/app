@@ -1,6 +1,6 @@
 import React from 'react';
-import EditLink from 'components/EditLink';
 import app from 'app';
+import {EditLink} from "@miaoxing/button";
 
 const CEditLink = ({id, ...props}) => <EditLink href={app.curEditUrl(id)} {...props} />;
 

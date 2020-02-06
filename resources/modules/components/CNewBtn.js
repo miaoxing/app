@@ -1,5 +1,5 @@
 import React from 'react';
-import NewBtn from 'components/NewBtn';
+import {NewBtn} from '@miaoxing/button';
 import app from 'app';
 
 export default (props) => (

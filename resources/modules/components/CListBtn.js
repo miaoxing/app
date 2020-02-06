@@ -1,5 +1,5 @@
 import React from 'react';
-import ListBtn from 'components/ListBtn';
+import {ListBtn} from '@miaoxing/button';
 import app from 'app';
 
 const CListBtn = (props) => {
