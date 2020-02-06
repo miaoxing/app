@@ -5,8 +5,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppContainer from './AppContainer';
 
-import 'script-loader!jquery';
-
 import 'bootstrap/js/dist/modal';
 import '../modules/bootstrap-mobile/js/modal';
 
