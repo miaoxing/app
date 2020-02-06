@@ -3,8 +3,6 @@
 namespace MiaoxingDoc\App {
 
     /**
-     * @property    \Miaoxing\App\Service\Captcha $captcha 图形验证码
-     *
      * @property    \Miaoxing\App\Service\Coll $coll
      *
      * @property    \Miaoxing\App\Service\Logger $logger
@@ -35,9 +33,6 @@ namespace {
     function wei()
     {
     }
-
-    /** @var Miaoxing\App\Service\Captcha $captcha */
-    $captcha = wei()->captcha;
 
     /** @var Miaoxing\App\Service\Coll $coll */
     $coll = wei()->coll;
