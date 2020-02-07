@@ -59,23 +59,23 @@
 //@import "~bootstrap/scss/print";
 
 // Bootstrap Mobile 样式
-@import "../modules/bootstrap-mobile/scss/variables";
-@import "../modules/bootstrap-mobile/scss/mixins/hairline";
-@import "../modules/bootstrap-mobile/scss/border";
-@import "../modules/bootstrap-mobile/scss/modal";
-@import "../modules/bootstrap-mobile/scss/flex";
-@import "../modules/bootstrap-mobile/scss/icon";
-@import "../modules/bootstrap-mobile/scss/button";
-//@import "../modules/bootstrap-mobile/scss/loading";
-@import "../modules/bootstrap-mobile/scss/nav";
-@import "../modules/bootstrap-mobile/scss/form";
-@import "../modules/bootstrap-mobile/scss/list";
-@import "../modules/bootstrap-mobile/scss/table";
-//@import "../modules/bootstrap-mobile/scss/switch";
-@import "../modules/bootstrap-mobile/scss/checks";
-//@import "../modules/bootstrap-mobile/scss/spinner";
-//@import "../modules/bootstrap-mobile/scss/notice";
-@import "../modules/bootstrap-mobile/scss/utilities";
+@import "~bootstrap-mobile/scss/variables";
+@import "~bootstrap-mobile/scss/mixins/hairline";
+@import "~bootstrap-mobile/scss/border";
+@import "~bootstrap-mobile/scss/modal";
+@import "~bootstrap-mobile/scss/flex";
+@import "~bootstrap-mobile/scss/icon";
+@import "~bootstrap-mobile/scss/button";
+//@import "~bootstrap-mobile/scss/loading";
+@import "~bootstrap-mobile/scss/nav";
+@import "~bootstrap-mobile/scss/form";
+@import "~bootstrap-mobile/scss/list";
+@import "~bootstrap-mobile/scss/table";
+//@import "~bootstrap-mobile/scss/switch";
+@import "~bootstrap-mobile/scss/checks";
+//@import "~bootstrap-mobile/scss/spinner";
+//@import "~bootstrap-mobile/scss/notice";
+@import "~bootstrap-mobile/scss/utilities";
 
 // 自定义功能样式
 @import '../modules/react-bootstrap-message/scss/react-bootstrap-message';

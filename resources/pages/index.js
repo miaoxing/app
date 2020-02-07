@@ -6,7 +6,7 @@ import ReactDOM from 'react-dom';
 import AppContainer from './AppContainer';
 
 import 'bootstrap/js/dist/modal';
-import '../modules/bootstrap-mobile/js/modal';
+import 'bootstrap-mobile/js/modal';
 
 import '../modules/bootstrap-tips';
 import '../modules/bootstrap-popup';
