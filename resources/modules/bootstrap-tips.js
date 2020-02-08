@@ -1,5 +1,6 @@
-import $ from 'jquery';
-import message from 'plugins/app/resources/modules/react-bootstrap-message/js/react-bootstrap-message';
+import message from 'react-bootstrap-message/js/react-bootstrap-message';
+
+typeof window.$ === 'undefined' && (window.$ = {});
 
 /**
  * 根据JSON显示提示
