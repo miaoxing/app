@@ -2,7 +2,7 @@ import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import LoadableLoading from 'components/LoadableLoading';
 import NoMatch from 'components/NoMatch';
-import ModalSwitch from 'components/ModalSwitch';
+import {ModalSwitch} from '@miaoxing/modal';
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
 import {ThemeProvider} from 'styled-components';

@@ -1,6 +1,6 @@
 import React from "react";
 import {Link as RouterLink} from "react-router-dom";
-import {ModalContext} from 'components/ModalSwitch';
+import {ModalContext} from '@miaoxing/modal';
 import {createLocation} from 'history';
 
 export default function Link({to, modal, autoModal, ...props}) {
