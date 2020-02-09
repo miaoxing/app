@@ -4,7 +4,7 @@ import app from "app";
 import {Button} from "react-bootstrap";
 
 @connect
-export default class ExportBtn extends React.Component {
+export default class CExportBtn extends React.Component {
   exportCsv = () => {
     window.location = app.appendUrl(app.curIndexUrl(), Object.assign(this.props.formik.values, {
       page: 1,
