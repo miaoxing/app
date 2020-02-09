@@ -1,5 +1,5 @@
 import React from 'react';
-import FormItem from './FormItem';
+import {FormItem} from '@miaoxing/form';
 
 class SearchItem extends React.Component {
   render() {
