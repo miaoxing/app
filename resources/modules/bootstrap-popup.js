@@ -1,4 +1,4 @@
-import modal from 'modal';
+import modal from '@miaoxing/modal';
 
 typeof window.$ === 'undefined' && (window.$ = {});
 
