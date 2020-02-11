@@ -1,7 +1,7 @@
 import message from 'react-bootstrap-message/js/react-bootstrap-message';
 import modal from '@miaoxing/modal';
 import param from 'jquery-param';
-import weiEvent from 'event';
+import {api as weiEvent} from '@miaoxing/event';
 
 class App {
   constructor() {

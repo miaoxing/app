@@ -8,7 +8,7 @@ import Loadable from 'react-loadable';
 import {ThemeProvider} from 'styled-components';
 import app from 'app';
 import theme from 'theme';
-import event from 'event';
+import {api as event} from '@miaoxing/event';
 import axios from "axios";
 import Layout from 'plugins/admin/resources/layouts/Default';
 import {Button, DatePicker, Spin} from 'antd';
