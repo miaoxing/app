@@ -2,6 +2,7 @@ import message from 'react-bootstrap-message/js/react-bootstrap-message';
 import modal from '@miaoxing/modal';
 import param from 'jquery-param';
 import {api as weiEvent} from '@miaoxing/event';
+import axios from 'axios';
 
 class App {
   constructor() {
@@ -99,26 +100,26 @@ class App {
   }
 
   get(url) {
-    return $.ajax({
-      url: url,
+    return axios({
+      url,
       loading: true,
-      dataType: 'json',
-    }).then(ret => {
-      if (ret.code !== 1) {
-        return $.msg(ret);
+    }).then(({data}) => {
+      if (data.code !== 1) {
+        return $.msg(data);
       }
-      return ret;
+      return data;
     });
   }
 
   post(url, data = {}) {
-    return $.ajax({
+    return axios({
       url: url,
-      loading: true,
-      dataType: 'json',
-      type: 'post',
+      method: 'POST',
       data: data,
-    })
+      loading: true,
+    }).then(({data}) => {
+      return data;
+    });
   }
 
   suc(...args) {
