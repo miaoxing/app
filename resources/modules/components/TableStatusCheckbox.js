@@ -1,5 +1,5 @@
 import React from 'react';
-import {withTable} from "components/TableProvider";
+import {withTable} from "@miaoxing/table";
 import app from "app";
 import {FormCheck} from "react-bootstrap";
 
