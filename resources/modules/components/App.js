@@ -11,8 +11,8 @@ import theme from 'theme';
 import {api as event} from '@miaoxing/event';
 import axios from "axios";
 import Layout from 'plugins/admin/resources/layouts/Default';
-import {Button, DatePicker, Spin} from 'antd';
-import Loading from './Loading';
+import {Spin} from 'antd';
+import {Loading} from '@miaoxing/loading';
 import {ConfigProvider} from 'antd';
 
 // 指定 Antd 全局的 loading 样式

@@ -1,5 +1,5 @@
 import React from 'react';
-import PageLoading from './PageLoading';
+import {PageLoading} from '@miaoxing/loading';
 
 export default (props) => {
   if (props.error) {
