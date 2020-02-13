@@ -11,8 +11,6 @@ import '../modules/bootstrap-tips';
 import '../modules/bootstrap-popup';
 import '../modules/loading';
 
-import '../modules/wei';
-
 import '../scss/index.scss';
 
 ReactDOM.render(<AppContainer/>, document.getElementById('root'));
