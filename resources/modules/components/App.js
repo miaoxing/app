@@ -9,7 +9,7 @@ import {ThemeProvider} from 'styled-components';
 import app from 'app';
 import theme from 'theme';
 import {api as event} from '@miaoxing/event';
-import axios from "axios";
+import axios from "@miaoxing/axios";
 import Layout from 'plugins/admin/resources/layouts/Default';
 import {Spin} from 'antd';
 import {Loading} from '@miaoxing/loading';
