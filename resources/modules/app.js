@@ -1,5 +1,3 @@
-import message from 'react-bootstrap-message/js/react-bootstrap-message';
-import modal from '@miaoxing/modal';
 import param from 'jquery-param';
 import {api as weiEvent} from '@miaoxing/event';
 import axios from '@miaoxing/axios';
@@ -120,30 +118,6 @@ class App {
     }).then(({data}) => {
       return data;
     });
-  }
-
-  suc(...args) {
-    return message.success(...args);
-  }
-
-  err(...args) {
-    return message.danger(...args);
-  }
-
-  ret(...args) {
-    return message.ret(...args);
-  }
-
-  loading(...args) {
-    return message.loading(...args);
-  }
-
-  alert(...args) {
-    return modal.alert(...args);
-  }
-
-  confirm(...args) {
-    return modal(...args);
   }
 
   trigger(event, data) {

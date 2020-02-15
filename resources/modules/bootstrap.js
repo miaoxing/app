@@ -6,7 +6,8 @@ import axios from '@miaoxing/axios';
 $.loading = message.loading;
 $.alert = (message, fn) => modal.alert(message).then(fn);
 $.confirm = (message, fn) => modal(message).then(fn);
-$.msg = message.ret;
+
+$.ret = message.ret;
 $.suc = message.success;
 $.err = message.danger;
 
