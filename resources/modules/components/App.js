@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
-import LoadableLoading from 'components/LoadableLoading';
 import {ModalSwitch} from '@miaoxing/router-modal';
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
@@ -9,14 +8,25 @@ import app from 'app';
 import theme from 'theme';
 import {event} from '@miaoxing/event';
 import Layout from 'plugins/admin/resources/layouts/Default';
-import {Spin} from 'antd';
-import {Loading} from '@miaoxing/loading';
+import {Button, Spin} from 'antd';
+import {Loading, PageLoading} from '@miaoxing/loading';
 import {ConfigProvider} from 'antd';
 import $ from '@miaoxing/app';
-import {NotFound} from '@miaoxing/ret';
+import {InternalServerError, NotFound} from '@miaoxing/ret';
+import * as Sentry from "@sentry/browser";
 
 // 指定 Antd 全局的 loading 样式
 Spin.setDefaultIndicator(<Loading/>);
+
+const LoadableLoading = (props) => {
+  if (props.error) {
+    Sentry.captureException(props.error);
+    return <InternalServerError
+      extra={<Button type="primary" onClick={props.retry}>重试</Button>}
+    />
+  }
+  return <PageLoading/>;
+};
 
 export default class App extends React.Component {
   static defaultProps = {
