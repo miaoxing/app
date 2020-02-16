@@ -1,5 +1,4 @@
 import param from 'jquery-param';
-import {api as weiEvent} from '@miaoxing/event';
 
 class App {
   constructor() {
@@ -94,14 +93,6 @@ class App {
     }
     this.history.location.state.__reload = new Date();
     this.history.replace(this.history.location);
-  }
-
-  trigger(event, data) {
-    weiEvent.trigger(event, data);
-  }
-
-  on(event, fn) {
-    weiEvent.on(event, fn);
   }
 
   get namespace() {

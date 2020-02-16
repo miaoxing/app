@@ -7,7 +7,7 @@ import Loadable from 'react-loadable';
 import {ThemeProvider} from 'styled-components';
 import app from 'app';
 import theme from 'theme';
-import {api as event} from '@miaoxing/event';
+import {event} from '@miaoxing/event';
 import Layout from 'plugins/admin/resources/layouts/Default';
 import {Spin} from 'antd';
 import {Loading} from '@miaoxing/loading';
@@ -77,7 +77,7 @@ export default class App extends React.Component {
     app.id = props.match.params.id;
     app.history = props.history;
 
-    app.trigger('pageLoad', props);
+    event.trigger('pageLoad', props);
 
     const key = props.location.pathname + props.location.search;
     if (!this.pages[key]) {
