@@ -9,11 +9,11 @@ import {ThemeProvider} from 'styled-components';
 import app from 'app';
 import theme from 'theme';
 import {api as event} from '@miaoxing/event';
-import axios from "@miaoxing/axios";
 import Layout from 'plugins/admin/resources/layouts/Default';
 import {Spin} from 'antd';
 import {Loading} from '@miaoxing/loading';
 import {ConfigProvider} from 'antd';
+import $ from '@miaoxing/app';
 
 // 指定 Antd 全局的 loading 样式
 Spin.setDefaultIndicator(<Loading/>);
@@ -34,8 +34,8 @@ export default class App extends React.Component {
   };
 
   componentDidMount() {
-    axios(app.url('admin-api/admin-page'), {loading: true})
-      .then(({data}) => this.setState(data));
+    $.get(app.url('admin-api/admin-page'), {loading: true})
+      .then(ret => this.setState(ret));
   }
 
   constructor(props) {

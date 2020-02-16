@@ -11,5 +11,10 @@ $.ret = message.ret;
 $.suc = message.success;
 $.err = message.danger;
 
-$.get = axios.get;
-$.post = axios.post;
+$.get = (...args) => {
+  return axios(...args).then(({data}) => data);
+};
+$.post = (...args) => {
+  args.method = 'POST';
+  return $.get(...args);
+};

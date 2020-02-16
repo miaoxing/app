@@ -1,6 +1,5 @@
 import param from 'jquery-param';
 import {api as weiEvent} from '@miaoxing/event';
-import axios from '@miaoxing/axios';
 
 class App {
   constructor() {
@@ -95,29 +94,6 @@ class App {
     }
     this.history.location.state.__reload = new Date();
     this.history.replace(this.history.location);
-  }
-
-  get(url) {
-    return axios({
-      url,
-      loading: true,
-    }).then(({data}) => {
-      if (data.code !== 1) {
-        return $.msg(data);
-      }
-      return data;
-    });
-  }
-
-  post(url, data = {}) {
-    return axios({
-      url: url,
-      method: 'POST',
-      data: data,
-      loading: true,
-    }).then(({data}) => {
-      return data;
-    });
   }
 
   trigger(event, data) {
