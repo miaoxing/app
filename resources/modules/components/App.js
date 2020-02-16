@@ -1,7 +1,6 @@
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import LoadableLoading from 'components/LoadableLoading';
-import NoMatch from 'components/NoMatch';
 import {ModalSwitch} from '@miaoxing/router-modal';
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
@@ -14,6 +13,7 @@ import {Spin} from 'antd';
 import {Loading} from '@miaoxing/loading';
 import {ConfigProvider} from 'antd';
 import $ from '@miaoxing/app';
+import {NotFound} from '@miaoxing/ret';
 
 // 指定 Antd 全局的 loading 样式
 Spin.setDefaultIndicator(<Loading/>);
@@ -114,7 +114,7 @@ export default class App extends React.Component {
                 <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')}
                   component={Component}/>
                 <Route exact path={wei.appUrl} component={Component}/>
-                <Route component={NoMatch}/>
+                <Route component={NotFound}/>
               </ModalSwitch>
             </Layout>
           </BrowserRouter>
