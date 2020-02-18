@@ -4,7 +4,7 @@ import {ModalSwitch} from '@miaoxing/router-modal';
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
 import {ThemeProvider} from 'styled-components';
-import app from 'app';
+import app from 'plugins/app/resources/modules/app';
 import theme from 'theme';
 import {event} from '@miaoxing/event';
 import Layout from 'plugins/admin/resources/layouts/Default';

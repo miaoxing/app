@@ -1,6 +1,6 @@
 import {hot} from 'react-hot-loader/root';
 import React from 'react';
-import App from "components/App";
+import App from "./App";
 import configs from 'data/configs/app';
 
 const AppContainer = () => {

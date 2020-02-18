@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from 'formik';
-import app from "app";
+import app from 'plugins/app/resources/modules/app';
 import {Button} from "react-bootstrap";
 
 @connect
