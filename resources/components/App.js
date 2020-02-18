@@ -5,7 +5,7 @@ import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
 import {ThemeProvider} from 'styled-components';
 import app from 'plugins/app/resources/modules/app';
-import theme from 'theme';
+import theme from '../modules/theme';
 import {event} from '@miaoxing/event';
 import Layout from 'plugins/admin/resources/layouts/Default';
 import {Button, Spin} from 'antd';
