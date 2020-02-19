@@ -1,6 +1,7 @@
 import $ from '@miaoxing/app';
 import modal from '@miaoxing/modal';
 import message from 'react-bootstrap-message/js/react-bootstrap-message';
+import 'react-bootstrap-message/scss/react-bootstrap-message.scss';
 import axios from '@miaoxing/axios';
 
 $.loading = message.loading;
@@ -15,6 +16,6 @@ $.get = (...args) => {
   return axios(...args).then(({data}) => data);
 };
 $.post = (...args) => {
-  args.method = 'POST';
+  args[0].method = 'POST';
   return $.get(...args);
 };

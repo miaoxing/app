@@ -17,4 +17,11 @@ export default {
     '1.5rem',   // 24
     '3rem'      // 48
   ],
+  text: {
+    heading: {
+      fontFamily: 'inherit',
+      lineHeight: 1.2,
+      fontWeight: 500,
+    },
+  }
 };
