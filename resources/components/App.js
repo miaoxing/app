@@ -11,7 +11,6 @@ import Layout from 'plugins/admin/resources/layouts/Default';
 import {Button, Spin} from 'antd';
 import {Loading, PageLoading} from '@miaoxing/loading';
 import {ConfigProvider} from 'antd';
-import $ from '@miaoxing/app';
 import {InternalServerError, NotFound} from '@miaoxing/ret';
 import * as Sentry from "@sentry/browser";
 
@@ -37,16 +36,9 @@ export default class App extends React.Component {
 
   pages = {};
   controllerMap = {};
-
-  state = {
-    menus: [],
-    user: {},
+  layouts = {
+    '/admin/login': React.Fragment,
   };
-
-  componentDidMount() {
-    $.get(app.url('admin-api/admin-page'), {loading: true})
-      .then(ret => this.setState(ret));
-  }
 
   constructor(props) {
     super(props);
@@ -98,7 +90,10 @@ export default class App extends React.Component {
     }
 
     const LoadableComponent = this.pages[key];
-    return <LoadableComponent {...props}/>;
+    const PageLayout = this.getLayout(props);
+    return <PageLayout>
+      <LoadableComponent {...props}/>
+    </PageLayout>;
   };
 
   importPage(plugin, controller, action) {
@@ -110,6 +105,13 @@ export default class App extends React.Component {
     return this.props.pages[path] ? this.props.pages[path]() : new Promise(resolve => resolve(NoMatch));
   }
 
+  getLayout({location}) {
+    if (typeof this.layouts[location.pathname] !== 'undefined') {
+      return this.layouts[location.pathname];
+    }
+    return Layout;
+  }
+
   render() {
     const Component = this.loadableComponent;
 
@@ -119,14 +121,12 @@ export default class App extends React.Component {
       >
         <ThemeProvider theme={theme}>
           <BrowserRouter>
-            <Layout menus={this.state.menus} user={this.state.user}>
-              <ModalSwitch>
-                <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')}
-                  component={Component}/>
-                <Route exact path={wei.appUrl} component={Component}/>
-                <Route component={NotFound}/>
-              </ModalSwitch>
-            </Layout>
+            <ModalSwitch>
+              <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')}
+                component={Component}/>
+              <Route exact path={wei.appUrl} component={Component}/>
+              <Route component={NotFound}/>
+            </ModalSwitch>
           </BrowserRouter>
         </ThemeProvider>
       </ConfigProvider>
