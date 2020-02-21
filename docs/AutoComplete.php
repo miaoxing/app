@@ -19,6 +19,9 @@ namespace MiaoxingDoc\App {
      *
      * @property    \Miaoxing\App\Service\UserApp $userApp
      * @method      \Miaoxing\App\Service\UserApp|\Miaoxing\App\Service\UserApp[] userApp()
+     *
+     * @property    \Miaoxing\App\Service\Setting $setting 设置
+     * @method      string|\Miaoxing\App\Service\Setting|\Miaoxing\App\Service\Setting[] setting($id = null, $default = null)
      */
     class AutoComplete
     {
