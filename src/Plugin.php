@@ -17,12 +17,6 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
             'name' => '网站',
             'sort' => 1000,
         ];
-
-        $subCategories['app-site'] = [
-            'parentId' => 'app',
-            'url' => 'admin/app-settings',
-            'name' => '网站设置',
-        ];
     }
 
     public function onLinkToGetLinks(&$links, &$types)
