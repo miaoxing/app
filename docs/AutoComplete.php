@@ -17,9 +17,6 @@ namespace MiaoxingDoc\App {
      *
      * @property    \Miaoxing\App\Service\Status $status 状态
      *
-     * @property    \Miaoxing\App\Service\UserApp $userApp
-     * @method      \Miaoxing\App\Service\UserApp|\Miaoxing\App\Service\UserApp[] userApp()
-     *
      * @property    \Miaoxing\App\Service\Setting $setting 设置
      * @method      string|\Miaoxing\App\Service\Setting|\Miaoxing\App\Service\Setting[] setting($id = null, $default = null)
      */
@@ -54,7 +51,4 @@ namespace {
 
     /** @var Miaoxing\App\Service\Status $status */
     $status = wei()->status;
-
-    /** @var Miaoxing\App\Service\UserApp $userApp */
-    $userApp = wei()->userApp;
 }
