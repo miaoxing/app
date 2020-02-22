@@ -2,11 +2,11 @@
 
 namespace Miaoxing\App\Middleware;
 
-use Miaoxing\Plugin\Middleware\Base;
+use Miaoxing\Services\Middleware\BaseMiddleware;
 use Miaoxing\Plugin\Service\AppRecord;
 use Wei\RetTrait;
 
-class CheckAppStatus extends Base
+class CheckAppStatus extends BaseMiddleware
 {
     use RetTrait;
 

@@ -4,7 +4,7 @@ namespace MiaoxingTest\App\Fixture\Middleware;
 
 use Wei\RetTrait;
 
-class ReturnRet extends \Miaoxing\Plugin\Middleware\Base
+class ReturnRet extends \Miaoxing\Services\Middleware\BaseMiddleware
 {
     use RetTrait;
 
