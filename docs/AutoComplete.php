@@ -3,7 +3,7 @@
 namespace MiaoxingDoc\App {
 
     /**
-     * @property    \Miaoxing\App\Service\Logger $logger
+     * @property    \Miaoxing\Services\Service\Logger $logger
      * @method      bool logger($level, $message, $context = []) Logs with an arbitrary level
      */
     class AutoComplete
@@ -20,6 +20,6 @@ namespace {
     {
     }
 
-    /** @var Miaoxing\App\Service\Logger $logger */
+    /** @var \Miaoxing\Services\Service\Logger $logger */
     $logger = wei()->logger;
 }
