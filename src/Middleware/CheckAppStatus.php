@@ -22,7 +22,7 @@ class CheckAppStatus extends BaseMiddleware
 
         $record = $this->app->getRecord();
         if (isset($record['status']) && $record['status'] != AppRecord::STATUS_ONLINE) {
-            return $this->err('很抱歉,该应用已经' . $record->getConstValue('status', $record['status'], 'text'));
+            return $this->err('很抱歉,该应用已经' . $record->getConstName('status', $record['status']));
         }
 
         return $next();
