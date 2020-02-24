@@ -2,7 +2,7 @@
 
 namespace Miaoxing\App\Migration;
 
-use Miaoxing\Plugin\BaseMigration;
+use Miaoxing\Services\Migration\BaseMigration;
 
 class V20161103140841CreateUserLogsTable extends BaseMigration
 {
