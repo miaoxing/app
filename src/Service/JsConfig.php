@@ -4,11 +4,9 @@ namespace Miaoxing\App\Service;
 
 use Miaoxing\Plugin\Service\App;
 use Wei\Base;
-use Wei\Request;
 
 /**
  * @property App app
- * @property Request request
  */
 class JsConfig extends Base
 {
@@ -29,16 +27,13 @@ class JsConfig extends Base
     /**
      * @return array
      */
-    public function getConfig()
+    public function toArray()
     {
         return [
-            // required
-            'baseUrl' => $this->app->request->getBaseUrl(),
-
             // optional
             'pageMap' => $this->pageMap,
             'pluginIds' => $this->app->getRecord()['pluginIds'],
-            'theme' => $this->theme,
+            'theme' => [],
         ];
     }
 }

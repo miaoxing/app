@@ -15,11 +15,10 @@ import {Loading, PageLoading} from '@miaoxing/loading';
 import {ConfigProvider} from 'antd';
 import {InternalServerError, NotFound} from '@miaoxing/ret';
 import * as Sentry from "@sentry/browser";
+import $ from '@miaoxing/app';
 
 // 指定 Antd 全局的 loading 样式
 Spin.setDefaultIndicator(<Loading/>);
-
-const config = miaoxing;
 
 const LoadableLoading = (props) => {
   if (props.error) {
@@ -38,21 +37,33 @@ export default class App extends React.Component {
     events: {},
   };
 
+  config;
   pages = {};
   controllerMap = {};
   layouts = {
     '/admin/login': React.Fragment,
   };
 
+  state = {
+    theme: theme
+  };
+
   constructor(props) {
     super(props);
 
+    this.config = this.loadConfig();
+
+    app.baseUrl = miaoxing.baseUrl;
+
     // 初始化事件
-    app.baseUrl = config.baseUrl;
+    this.config.then(ret => {
+      event.setConfigs({
+        pluginIds: ret.pluginIds,
+      });
+    });
     event.setConfigs({
       events: props.events,
       plugins: props.plugins,
-      pluginIds: config.pluginIds,
     });
 
     // 解析出页面路径中的插件和控制对应关系
@@ -61,6 +72,11 @@ export default class App extends React.Component {
       const [plugin, controller] = key.split('/');
       this.controllerMap[controller] = plugin;
     });
+  }
+
+  async componentDidMount() {
+    const config = await this.config;
+    this.setState({theme: Object.assign(this.state.theme, config.theme)});
   }
 
   getController(params) {
@@ -105,13 +121,15 @@ export default class App extends React.Component {
     </PageLayout>;
   };
 
-  importPage(plugin, controller, action) {
+  async importPage(plugin, controller, action) {
+    const config = await this.config;
+
     // 允许外部配置替换页面
     let path = `${plugin}/${controller}/${action}`;
     if (typeof config.pageMap[path] !== 'undefined') {
       path = config.pageMap[path];
     }
-    return this.props.pages[path] ? this.props.pages[path]() : new Promise(resolve => resolve(NoMatch));
+    return this.props.pages[path] ? this.props.pages[path]() : NotFound;
   }
 
   getLayout({location}) {
@@ -119,6 +137,19 @@ export default class App extends React.Component {
       return this.layouts[location.pathname];
     }
     return Layout;
+  }
+
+  loadConfig() {
+    return $.get(app.url('js-config')).then(ret => {
+      if (ret.code !== 1) {
+        $.ret(ret);
+        return;
+      }
+      event.setConfigs({
+        pluginIds: ret.pluginIds,
+      });
+      return ret;
+    });
   }
 
   render() {

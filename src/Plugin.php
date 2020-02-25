@@ -50,7 +50,9 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
 
     public function onBeforeScript()
     {
-        wei()->page->addJsVar('miaoxing', wei()->jsConfig->getConfig());
+        wei()->page->addJsVar('miaoxing', [
+            'baseUrl' => wei()->request->getBaseUrl(),
+        ]);
     }
 
     /**
