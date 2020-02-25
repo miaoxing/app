@@ -124,7 +124,7 @@ export default class App extends React.Component {
             <ModalSwitch>
               <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')}
                 component={Component}/>
-              <Route exact path={wei.appUrl} component={Component}/>
+              <Route exact path={wei.baseUrl} component={Component}/>
               <Route component={NotFound}/>
             </ModalSwitch>
           </BrowserRouter>

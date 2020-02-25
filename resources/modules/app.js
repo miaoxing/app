@@ -10,7 +10,7 @@ class App {
   }
 
   url(url, argsOrParam, params) {
-    return wei.appUrl + '/' + this.appendUrl(url, argsOrParam, params);
+    return wei.baseUrl + '/' + this.appendUrl(url, argsOrParam, params);
   }
 
   appendUrl(url, argsOrParam, params) {

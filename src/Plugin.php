@@ -48,6 +48,11 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
         $this->checkCli();
     }
 
+    public function onBeforeScript()
+    {
+        wei()->page->addJsVar('wei', wei()->jsConfig->getConfig());
+    }
+
     /**
      * @todo 作为middleware
      */
