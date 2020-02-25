@@ -4,6 +4,7 @@ namespace Miaoxing\App;
 
 use Miaoxing\App\Middleware\CheckAppStatus;
 use Miaoxing\Plugin\BaseController;
+use Miaoxing\Plugin\Middleware\Auth;
 
 class Plugin extends \Miaoxing\Plugin\BasePlugin
 {
@@ -40,6 +41,8 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
      */
     public function onControllerInit(BaseController $controller)
     {
+        $controller->middleware(Auth::class);
+
         // 除去 admin/login 页面
         if (substr($this->app->getController(), 0, 6) === 'admin/') {
             $controller->middleware(CheckAppStatus::class);
