@@ -7,10 +7,11 @@ class App {
     this._action = '';
     this._id = '';
     this._history = null;
+    this._baseUrl = '';
   }
 
-  url(url, argsOrParam, params) {
-    return wei.baseUrl + '/' + this.appendUrl(url, argsOrParam, params);
+  url(url = '', argsOrParam, params) {
+    return this.baseUrl + '/' + this.appendUrl(url, argsOrParam, params);
   }
 
   appendUrl(url, argsOrParam, params) {
@@ -125,6 +126,14 @@ class App {
 
   set id(id) {
     this._id = id;
+  }
+
+  get baseUrl() {
+    return this._baseUrl;
+  }
+
+  set baseUrl(baseUrl) {
+    this._baseUrl = baseUrl;
   }
 
   get history() {

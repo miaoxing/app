@@ -1,3 +1,5 @@
+/* global miaoxing */
+
 import React from 'react';
 import {BrowserRouter, Route} from 'react-router-dom';
 import {ModalSwitch} from '@miaoxing/router-modal';
@@ -16,6 +18,8 @@ import * as Sentry from "@sentry/browser";
 
 // 指定 Antd 全局的 loading 样式
 Spin.setDefaultIndicator(<Loading/>);
+
+const config = miaoxing;
 
 const LoadableLoading = (props) => {
   if (props.error) {
@@ -44,7 +48,12 @@ export default class App extends React.Component {
     super(props);
 
     // 初始化事件
-    event.setConfigs(props);
+    app.baseUrl = config.baseUrl;
+    event.setConfigs({
+      events: props.events,
+      plugins: props.plugins,
+      pluginIds: config.pluginIds,
+    });
 
     // 解析出页面路径中的插件和控制对应关系
     // 如 article/articles/Edit => {articles:article}
@@ -99,8 +108,8 @@ export default class App extends React.Component {
   importPage(plugin, controller, action) {
     // 允许外部配置替换页面
     let path = `${plugin}/${controller}/${action}`;
-    if (typeof wei.pageMap[path] !== 'undefined') {
-      path = wei.pageMap[path];
+    if (typeof config.pageMap[path] !== 'undefined') {
+      path = config.pageMap[path];
     }
     return this.props.pages[path] ? this.props.pages[path]() : new Promise(resolve => resolve(NoMatch));
   }
@@ -124,7 +133,7 @@ export default class App extends React.Component {
             <ModalSwitch>
               <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')}
                 component={Component}/>
-              <Route exact path={wei.baseUrl} component={Component}/>
+              <Route exact path={app.url()} component={Component}/>
               <Route component={NotFound}/>
             </ModalSwitch>
           </BrowserRouter>
