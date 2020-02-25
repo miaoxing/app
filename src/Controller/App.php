@@ -6,9 +6,7 @@ use Miaoxing\Plugin\BaseController;
 
 class App extends BaseController
 {
-    protected $guestPages = [
-        'app'
-    ];
+    protected $controllerAuth = false;
 
     public function indexAction()
     {
