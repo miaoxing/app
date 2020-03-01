@@ -3,6 +3,7 @@
 namespace Miaoxing\App\Service;
 
 use Miaoxing\Plugin\Service\App;
+use Miaoxing\Services\Service\StaticTrait;
 use Wei\Base;
 
 /**
@@ -10,6 +11,8 @@ use Wei\Base;
  */
 class JsConfig extends Base
 {
+    use StaticTrait;
+
     /**
      * 替换页面的映射关系
      *
@@ -27,7 +30,7 @@ class JsConfig extends Base
     /**
      * @return array
      */
-    public function toArray()
+    protected function toArray()
     {
         return [
             // optional

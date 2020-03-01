@@ -3,6 +3,7 @@
 namespace Miaoxing\App\Controller;
 
 use Miaoxing\Plugin\BaseController;
+use Miaoxing\App\Service\JsConfig as JsConfigService;
 
 class JsConfig extends BaseController
 {
@@ -10,6 +11,6 @@ class JsConfig extends BaseController
 
     public function indexAction()
     {
-        return $this->suc(wei()->jsConfig->toArray());
+        return $this->suc(JsConfigService::toArray());
     }
 }
