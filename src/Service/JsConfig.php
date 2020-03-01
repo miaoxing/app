@@ -29,6 +29,7 @@ class JsConfig extends Base
 
     /**
      * @return array
+     * @api
      */
     protected function toArray()
     {

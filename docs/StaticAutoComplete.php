@@ -1,22 +1,23 @@
 <?php
 
-namespace Miaoxing\App\Service {
+namespace Miaoxing\App\Service;
 
-    class JsConfig
+interface JsConfig
+{
+    /**
+     * @return array
+     * @api
+     */
+    public function toArray();
+}
+
+if (true) { 
+    interface JsConfig
     {
-        public static function toArray()
-        {
-            return [];
-        }
-    }
-
-    if (false) {
-        class JsConfig
-        {
-            public function toArray()
-            {
-                return [];
-            }
-        }
+        /**
+         * @return array
+         * @api
+         */
+        public static function toArray();
     }
 }
