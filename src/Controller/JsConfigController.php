@@ -2,14 +2,15 @@
 
 namespace Miaoxing\App\Controller;
 
+use Miaoxing\App\Service\JsConfig;
 use Miaoxing\Plugin\BaseController;
 
-class App extends BaseController
+class JsConfigController extends BaseController
 {
     protected $controllerAuth = false;
 
     public function indexAction()
     {
-        return [];
+        return $this->suc(JsConfig::toArray());
     }
 }
