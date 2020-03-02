@@ -11,7 +11,7 @@ interface JsConfig
     public function toArray();
 }
 
-if (true) { 
+if (0) {
     interface JsConfig
     {
         /**
