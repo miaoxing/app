@@ -6,7 +6,7 @@ use Miaoxing\Services\Migration\BaseMigration;
 
 class V20161030182708CreateAppsTable extends BaseMigration
 {
-    protected $table = 'apps2';
+    protected $table = 'apps';
 
     /**
      * {@inheritdoc}
@@ -29,25 +29,18 @@ class V20161030182708CreateAppsTable extends BaseMigration
             ->exec();
 
         $now = date('Y-m-d H:i:s');
-        $this->db->batchInsert($this->table, [[
-            'userId' => 1,
-            'name' => 'app',
-            'title' => 'app',
-            'pluginIds' => '',
-            'createTime' => $now,
-            'createUser' => 1,
-            'updateTime' => $now,
-            'updateUser' => 1,
-        ], [
-            'userId' => 1,
-            'name' => 'test',
-            'title' => 'test',
-            'pluginIds' => '',
-            'createTime' => $now,
-            'createUser' => 1,
-            'updateTime' => $now,
-            'updateUser' => 1,
-        ]]);
+        $this->db->batchInsert($this->table, [
+            [
+                'userId' => 1,
+                'name' => 'app',
+                'title' => 'app',
+                'pluginIds' => '',
+                'createTime' => $now,
+                'createUser' => 1,
+                'updateTime' => $now,
+                'updateUser' => 1,
+            ],
+        ]);
     }
 
     /**
