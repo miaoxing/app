@@ -8,4 +8,7 @@ import AppContainer from '../components/AppContainer';
 import '../modules/bootstrap';
 import '../scss/index.scss';
 
-ReactDOM.render(<AppContainer/>, document.getElementById('root'));
+const root = document.getElementById('root');
+if (root) {
+  ReactDOM.render(<AppContainer/>, root);
+}
