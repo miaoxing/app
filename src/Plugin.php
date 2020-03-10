@@ -51,6 +51,13 @@ class Plugin extends \Miaoxing\Plugin\BasePlugin
         $this->checkCli();
     }
 
+    public function onBeforeStyle()
+    {
+        if (!$this->app->isAdmin()) {
+            wei()->page->addPluginAssets('app');
+        }
+    }
+
     public function onBeforeScript()
     {
         wei()->page->addJsVar('miaoxing', [
