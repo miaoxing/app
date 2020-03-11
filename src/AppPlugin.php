@@ -6,7 +6,7 @@ use Miaoxing\App\Middleware\CheckAppStatus;
 use Miaoxing\Plugin\BaseController;
 use Miaoxing\Plugin\Middleware\Auth;
 
-class Plugin extends \Miaoxing\Plugin\BasePlugin
+class AppPlugin extends \Miaoxing\Plugin\BasePlugin
 {
     protected $name = '核心';
 
