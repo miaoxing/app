@@ -47,8 +47,6 @@ class AppPlugin extends \Miaoxing\Plugin\BasePlugin
         if (substr($this->app->getController(), 0, 6) === 'admin/') {
             $controller->middleware(CheckAppStatus::class);
         }
-
-        $this->checkCli();
     }
 
     public function onBeforeStyle()
@@ -63,26 +61,5 @@ class AppPlugin extends \Miaoxing\Plugin\BasePlugin
         wei()->page->addJsVar('miaoxing', [
             'baseUrl' => wei()->request->getBaseUrl(),
         ]);
-    }
-
-    /**
-     * @todo 作为middleware
-     */
-    protected function checkCli()
-    {
-        if (substr($this->app->getController(), 0, 4) !== 'cli/') {
-            return;
-        }
-
-        if (php_sapi_name() == 'cli') {
-            return;
-        }
-
-        if (wei()->curUser->isSuperAdmin()) {
-            return;
-        }
-
-        $this->app->response->send('Forbidden', 403);
-        $this->app->preventPreviousDispatch();
     }
 }
