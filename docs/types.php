@@ -21,3 +21,22 @@ if (0) {
         public static function toArray();
     }
 }
+interface JsConfig2
+{
+    /**
+     * @return array
+     * @api
+     */
+    public function toArray();
+}
+
+if (0) {
+    interface JsConfig2
+    {
+        /**
+         * @return array
+         * @api
+         */
+        public static function toArray();
+    }
+}
