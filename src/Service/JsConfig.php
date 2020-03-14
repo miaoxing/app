@@ -40,4 +40,13 @@ class JsConfig extends Base
             'theme' => [],
         ];
     }
+
+    /**
+     * @return int
+     */
+    public function __invoke()
+    {
+        return 123;
+        // TODO: Implement __invoke() method.
+    }
 }
