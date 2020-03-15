@@ -15,7 +15,7 @@ import {Loading, PageLoading} from '@miaoxing/loading';
 import {ConfigProvider} from 'antd';
 import {InternalServerError, NotFound} from '@miaoxing/ret';
 import * as Sentry from "@sentry/browser";
-import $ from '@miaoxing/app';
+import $ from 'miaoxing';
 
 // 指定 Antd 全局的 loading 样式
 Spin.setDefaultIndicator(<Loading/>);

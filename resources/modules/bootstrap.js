@@ -1,4 +1,4 @@
-import $ from '@miaoxing/app';
+import $ from 'miaoxing';
 import modal from '@miaoxing/modal';
 import message from 'react-bootstrap-message/js/react-bootstrap-message';
 import 'react-bootstrap-message/scss/react-bootstrap-message.scss';
