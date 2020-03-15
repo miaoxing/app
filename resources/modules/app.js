@@ -1,5 +1,3 @@
-import param from 'jquery-param';
-
 class App {
   constructor() {
     this._namesapce = '';
