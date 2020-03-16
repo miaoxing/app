@@ -103,7 +103,6 @@ export default class App extends React.Component {
     app.controller = controller;
     app.action = action;
     app.id = props.match.params.id;
-    app.history = props.history;
 
     event.trigger('pageLoad', props);
 
