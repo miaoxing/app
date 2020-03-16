@@ -6,7 +6,6 @@ class App {
     this._controller = '';
     this._action = '';
     this._id = '';
-    this._history = null;
     this._baseUrl = '';
   }
 
@@ -84,18 +83,6 @@ class App {
     return this.appendUrl(this.curIndexUrl() + '/' + action, argsOrParam, params);
   }
 
-  to(...args) {
-    this.history.push(...args)
-  }
-
-  reload() {
-    if (!this.history.location.state) {
-      this.history.location.state = {};
-    }
-    this.history.location.state.__reload = new Date();
-    this.history.replace(this.history.location);
-  }
-
   get namespace() {
     return this._namespace;
   }
@@ -134,14 +121,6 @@ class App {
 
   set baseUrl(baseUrl) {
     this._baseUrl = baseUrl;
-  }
-
-  get history() {
-    return this._history;
-  }
-
-  set history(history) {
-    this._history = history;
   }
 }
 

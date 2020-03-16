@@ -1,7 +1,7 @@
 /* global miaoxing */
 
 import React from 'react';
-import {BrowserRouter, Route} from 'react-router-dom';
+import {Router, Route} from 'react-router-dom';
 import {ModalSwitch} from '@miaoxing/router-modal';
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
@@ -16,6 +16,7 @@ import {ConfigProvider} from 'antd';
 import {InternalServerError, NotFound} from '@miaoxing/ret';
 import * as Sentry from "@sentry/browser";
 import $ from 'miaoxing';
+import {history} from "@miaoxing/app";
 
 // 指定 Antd 全局的 loading 样式
 Spin.setDefaultIndicator(<Loading/>);
@@ -160,14 +161,14 @@ export default class App extends React.Component {
         autoInsertSpaceInButton={false}
       >
         <ThemeProvider theme={theme}>
-          <BrowserRouter>
+          <Router history={history}>
             <ModalSwitch>
               <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')}
                 component={Component}/>
               <Route exact path={app.url()} component={Component}/>
               <Route component={NotFound}/>
             </ModalSwitch>
-          </BrowserRouter>
+          </Router>
         </ThemeProvider>
       </ConfigProvider>
     )
