@@ -1,3 +1,5 @@
+import param from 'jquery-param';
+
 class App {
   constructor() {
     this._namesapce = '';
@@ -83,7 +85,7 @@ class App {
   }
 
   to(...args) {
-    this.history.push(this.url(...args))
+    this.history.push(...args)
   }
 
   reload() {
