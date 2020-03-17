@@ -37,52 +37,6 @@ class App {
     }
   }
 
-  curUrl() {
-    return window.location.pathname;
-  }
-
-  curApiUrl() {
-    return this.namespace ?
-      window.location.pathname.replace('/' + this.namespace + '/', '/' + this.namespace + '-api/')
-      : ('/api' + window.location.pathname)
-  }
-
-  curIndexUrl() {
-    return this.url((this.namespace ? (this.namespace + '/') : '') + this.controller);
-  }
-
-  curNewUrl() {
-    return this.curIndexUrl() + '/new';
-  }
-
-  curEditUrl(id = null) {
-    return this.curIndexUrl() + '/' + (id || this.id) + '/edit';
-  }
-
-  curShowUrl(id = null) {
-    return this.curIndexUrl() + '/' + (id || this.id);
-  }
-
-  curDestroyUrl(id = null) {
-    return this.curIndexUrl() + '/' + (id || this.id) + '/destroy';
-  }
-
-  curFormUrl() {
-    return this.curIndexUrl() + '/' + (this.id ? 'update' : 'create');
-  }
-
-  curApiIndexUrl() {
-    return this.url((this.namespace ? (this.namespace + '-') : '') + 'api/' + this.controller);
-  }
-
-  curApiFormUrl() {
-    return this.curApiIndexUrl() + '/' + (this.id ? 'update' : 'create');
-  }
-
-  actionUrl(action, argsOrParam, params) {
-    return this.appendUrl(this.curIndexUrl() + '/' + action, argsOrParam, params);
-  }
-
   get namespace() {
     return this._namespace;
   }
