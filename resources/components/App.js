@@ -17,6 +17,7 @@ import {InternalServerError, NotFound} from '@miaoxing/ret';
 import * as Sentry from "@sentry/browser";
 import $ from 'miaoxing';
 import {history} from "@miaoxing/app";
+import api from '@miaoxing/api';
 
 // 指定 Antd 全局的 loading 样式
 Spin.setDefaultIndicator(<Loading/>);
@@ -140,7 +141,7 @@ export default class App extends React.Component {
   }
 
   loadConfig() {
-    return $.get(app.url('js-config')).then(ret => {
+    return api.get('js-config').then(ret => {
       if (ret.code !== 1) {
         $.ret(ret);
         return;

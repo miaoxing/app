@@ -1,6 +1,6 @@
 <?php
 
-namespace Miaoxing\App\Controller;
+namespace Miaoxing\App\Controller\Api;
 
 use Miaoxing\App\Service\JsConfig;
 use Miaoxing\Plugin\BaseController;
