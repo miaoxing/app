@@ -16,6 +16,16 @@ $.get = (...args) => {
   return axios(...args).then(({data}) => data);
 };
 $.post = (...args) => {
-  args[0].method = 'POST';
-  return $.get(...args);
+  let config;
+
+  if (typeof args[0] === 'string') {
+    config = args[1] || {};
+    config.url = args[0];
+  } else {
+    config = args || {};
+  }
+
+  config.method = 'POST';
+
+  return $.get(config);
 };
