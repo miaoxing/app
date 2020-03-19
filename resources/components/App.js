@@ -14,7 +14,6 @@ import {event} from '@miaoxing/event';
 import {InternalServerError, NotFound} from '@miaoxing/ret';
 import {Loading, PageLoading} from '@miaoxing/loading';
 import {ModalSwitch} from '@miaoxing/router-modal';
-import Layout from 'plugins/admin/resources/layouts/Default';
 import theme from '../modules/theme';
 
 // 指定 Antd 全局的 loading 样式
@@ -32,21 +31,71 @@ const LoadableLoading = (props) => {
 
 export default class App extends React.Component {
   static defaultProps = {
+    /**
+     * 所有的页面
+     *
+     * 如 {'admin/admins/Edit': () => import('plugins/admin/resources/pages/admin/admins/Edit.js')}
+     */
     pages: {},
-    plugins: {},
-    events: {},
-  };
 
-  config;
-  pages = {};
-  controllerMap = {};
-  layouts = {
-    '/admin/login': React.Fragment,
+    /**
+     * 默认布局
+     */
+    defaultLayout: React.Fragment,
+
+    /**
+     * 指定页面的布局
+     *
+     * 如 {"admin/login": React.Fragment}
+     */
+    layouts: {},
+
+    /**
+     * 插件的事件入口
+     *
+     * 如 {'app': () => import('plugins/app/resources/events/admin/events.js')}
+     *
+     * @todo rename
+     */
+    plugins: {},
+
+    /**
+     * 插件的事件配置
+     *
+     * 如 {
+     * 'pageLoad': {
+     *   '100': [
+     *     'app'
+     *    ]
+     *   }
+     * }
+     */
+    events: {},
   };
 
   state = {
     theme: theme
   };
+
+  config;
+
+  /**
+   * 控制器对应的插件
+   *
+   * 如 {articles:article}
+   *
+   * @type {object}
+   */
+  controllerPlugins = {};
+
+  /**
+   * 缓存加载过的页面
+   *
+   * 以便 modal 页面不会重新加载
+   *
+   * @type {object}
+   */
+  loadedPages = {};
 
   constructor(props) {
     super(props);
@@ -70,7 +119,7 @@ export default class App extends React.Component {
     // 如 article/articles/Edit => {articles:article}
     Object.keys(this.props.pages).forEach(key => {
       const [plugin, controller] = key.split('/');
-      this.controllerMap[controller] = plugin;
+      this.controllerPlugins[controller] = plugin;
     });
   }
 
@@ -96,7 +145,7 @@ export default class App extends React.Component {
   loadableComponent = (props) => {
     const controller = this.getController(props.match.params);
     const action = this.getAction(props.match.params);
-    const plugin = this.controllerMap[controller];
+    const plugin = this.controllerPlugins[controller];
 
     app.namespace = props.match.params.namespace;
     app.controller = controller;
@@ -106,14 +155,14 @@ export default class App extends React.Component {
     event.trigger('pageLoad', props);
 
     const key = props.location.pathname + props.location.search;
-    if (!this.pages[key]) {
-      this.pages[key] = Loadable({
+    if (!this.loadedPages[key]) {
+      this.loadedPages[key] = Loadable({
         loader: () => this.importPage(plugin, controller, action),
         loading: LoadableLoading,
       });
     }
 
-    const LoadableComponent = this.pages[key];
+    const LoadableComponent = this.loadedPages[key];
     const PageLayout = this.getLayout(props);
     return <PageLayout>
       <LoadableComponent {...props}/>
@@ -132,10 +181,10 @@ export default class App extends React.Component {
   }
 
   getLayout({location}) {
-    if (typeof this.layouts[location.pathname] !== 'undefined') {
-      return this.layouts[location.pathname];
+    if (typeof this.props.layouts[location.pathname] !== 'undefined') {
+      return this.props.layouts[location.pathname];
     }
-    return Layout;
+    return this.props.defaultLayout;
   }
 
   loadConfig() {
