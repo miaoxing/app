@@ -183,7 +183,18 @@ export default class App extends React.Component {
   }
 
   getLayout(app) {
-    return this.props.layouts[app.controller + '/' + app.action] || this.props.defaultLayout;
+    const page = app.controller + '/' + app.action;
+    if (typeof this.props.layouts[page] !== 'undefined') {
+      if (this.props.layouts[page]) {
+        return Loadable({
+          loader: this.props.layouts[page],
+          loading: LoadableLoading,
+        });
+      } else {
+        return React.Fragment;
+      }
+    }
+    return this.props.defaultLayout;
   }
 
   loadConfig() {

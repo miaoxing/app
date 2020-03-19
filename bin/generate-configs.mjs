@@ -14,6 +14,7 @@ console.log(chalk.green(`Founds ${files.length} page files.`));
 let content = 'export default {\n';
 
 // 附加页面配置
+const layouts = {};
 content += `  'pages': {\n`;
 files.forEach(file => {
   const parts = file.split('/');
@@ -21,6 +22,27 @@ files.forEach(file => {
   // plugins/plugin/resources/pages/controller/action.js
   // => plugin/controller/action
   content += `    '${parts[1]}/${parts[parts.length - 2]}/${last.substring(0, last.length - 3)}': () => import('${file}'),\n`;
+
+  const text = fs.readFileSync(file, 'utf8');
+  const regex = new RegExp('\n \\* @layout (.+?)\n');
+  const match = regex.exec(text);
+  if (match) {
+    const page = `${parts[parts.length - 2]}/${lcfirst(last.substring(0, last.length - 3))}`;
+    layouts[page] = match[1];
+  }
+});
+
+content += '  },\n';
+
+// 附加布局
+content += `  'layouts': {\n`;
+Object.keys(layouts).forEach(key => {
+  content += `    '${key}': `;
+  if (layouts[key] === 'false') {
+    content += 'false,\n';
+  } else {
+    content += `() => import('${layouts[key]}'),\n`
+  }
 });
 content += '  },';
 
