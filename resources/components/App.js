@@ -2,22 +2,20 @@
 
 import React from 'react';
 import {Router, Route} from 'react-router-dom';
-import {ModalSwitch} from '@miaoxing/router-modal';
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
 import {ThemeProvider} from 'styled-components';
-import app from '@miaoxing/app';
-import theme from '../modules/theme';
-import {event} from '@miaoxing/event';
-import Layout from 'plugins/admin/resources/layouts/Default';
-import {Button, Spin} from 'antd';
-import {Loading, PageLoading} from '@miaoxing/loading';
-import {ConfigProvider} from 'antd';
-import {InternalServerError, NotFound} from '@miaoxing/ret';
+import {Button, ConfigProvider, Spin} from 'antd';
 import * as Sentry from "@sentry/browser";
 import $ from 'miaoxing';
-import {history} from "@miaoxing/app";
+import app, {history} from "@miaoxing/app";
 import api from '@miaoxing/api';
+import {event} from '@miaoxing/event';
+import {InternalServerError, NotFound} from '@miaoxing/ret';
+import {Loading, PageLoading} from '@miaoxing/loading';
+import {ModalSwitch} from '@miaoxing/router-modal';
+import Layout from 'plugins/admin/resources/layouts/Default';
+import theme from '../modules/theme';
 
 // 指定 Antd 全局的 loading 样式
 Spin.setDefaultIndicator(<Loading/>);
