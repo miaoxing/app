@@ -204,8 +204,7 @@ export default class App extends React.Component {
       <ThemeProvider theme={theme}>
         <Router history={history}>
           <ModalSwitch>
-            <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')}
-              component={Component}/>
+            <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')} component={Component}/>
             <Route exact path={app.url()} component={Component}/>
             <Route component={NotFound}/>
           </ModalSwitch>
