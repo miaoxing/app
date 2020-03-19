@@ -85,11 +85,11 @@ export default class App extends React.Component {
 
   getAction(params) {
     if (params.action) {
-      return ucfirst(params.action);
+      return params.action;
     } else if (params.id) {
-      return 'Show';
+      return 'show';
     } else {
-      return 'Index';
+      return 'index';
     }
   }
 
@@ -124,7 +124,7 @@ export default class App extends React.Component {
     const config = await this.config;
 
     // 允许外部配置替换页面
-    let path = `${plugin}/${controller}/${action}`;
+    let path = `${plugin}/${controller}/${ucfirst(action)}`;
     if (typeof config.pageMap[path] !== 'undefined') {
       path = config.pageMap[path];
     }
