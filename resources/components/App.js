@@ -5,19 +5,16 @@ import {Router, Route} from 'react-router-dom';
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
 import {ThemeProvider} from 'styled-components';
-import {Button, ConfigProvider, Spin} from 'antd';
+import {Button} from 'antd';
 import * as Sentry from "@sentry/browser";
 import $ from 'miaoxing';
 import app, {history} from "@miaoxing/app";
 import api from '@miaoxing/api';
 import {event} from '@miaoxing/event';
 import {InternalServerError, NotFound} from '@miaoxing/ret';
-import {Loading, PageLoading} from '@miaoxing/loading';
+import {PageLoading} from '@miaoxing/loading';
 import {ModalSwitch} from '@miaoxing/router-modal';
 import theme from '../modules/theme';
-
-// 指定 Antd 全局的 loading 样式
-Spin.setDefaultIndicator(<Loading/>);
 
 const LoadableLoading = (props) => {
   if (props.error) {
@@ -204,20 +201,16 @@ export default class App extends React.Component {
     const Component = this.loadableComponent;
 
     return (
-      <ConfigProvider
-        autoInsertSpaceInButton={false}
-      >
-        <ThemeProvider theme={theme}>
-          <Router history={history}>
-            <ModalSwitch>
-              <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')}
-                component={Component}/>
-              <Route exact path={app.url()} component={Component}/>
-              <Route component={NotFound}/>
-            </ModalSwitch>
-          </Router>
-        </ThemeProvider>
-      </ConfigProvider>
+      <ThemeProvider theme={theme}>
+        <Router history={history}>
+          <ModalSwitch>
+            <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')}
+              component={Component}/>
+            <Route exact path={app.url()} component={Component}/>
+            <Route component={NotFound}/>
+          </ModalSwitch>
+        </Router>
+      </ThemeProvider>
     )
   }
 }
