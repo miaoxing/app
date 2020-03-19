@@ -2,7 +2,6 @@
 
 /**
  * @property    Miaoxing\App\Service\JsConfig $jsConfig
- * @method      int jsConfig()
  */
 class JsConfigMixin {
 }
