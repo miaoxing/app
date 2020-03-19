@@ -190,9 +190,6 @@ export default class App extends React.Component {
         $.ret(ret);
         return;
       }
-      event.setConfigs({
-        pluginIds: ret.pluginIds,
-      });
       return ret;
     });
   }
