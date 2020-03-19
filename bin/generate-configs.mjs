@@ -31,14 +31,14 @@ console.log(chalk.green(`Founds ${eventFiles.length} event files.`));
 
 eventFiles.forEach(file => {
   const parts = file.split('/');
-  content += `    '${parts[2]}': () => import('${file}'),\n`;
+  content += `    '${parts[1]}': () => import('${file}'),\n`;
 });
 content += '  },';
 
 // 附加事件对应关系
 const events = {};
 eventFiles.forEach(file => {
-  const plugin = file.split('/')[2];
+  const plugin = file.split('/')[1];
 
   // NOTE: 需通过babel才能导入？先直接解析字符串
   const text = fs.readFileSync(file, 'utf8');
