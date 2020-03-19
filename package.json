@@ -4,6 +4,10 @@
   "repository": "https://github.com/miaoxing/app",
   "license": "MIT",
   "devDependencies": {
+    "chokidar": "^3.3.1",
+    "execa": "^4.0.0",
+    "@gitsync/log": "^0.4.0",
+    "chalk-theme": "^0.2.3",
     "miaoxing-coding-standards": "^2.0.0"
   }
 }
