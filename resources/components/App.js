@@ -160,7 +160,7 @@ export default class App extends React.Component {
     }
 
     const LoadableComponent = this.loadedPages[key];
-    const PageLayout = this.getLayout(props);
+    const PageLayout = this.getLayout(app);
     return <PageLayout>
       <LoadableComponent {...props}/>
     </PageLayout>;
@@ -177,11 +177,8 @@ export default class App extends React.Component {
     return this.props.pages[path] ? this.props.pages[path]() : NotFound;
   }
 
-  getLayout({location}) {
-    if (typeof this.props.layouts[location.pathname] !== 'undefined') {
-      return this.props.layouts[location.pathname];
-    }
-    return this.props.defaultLayout;
+  getLayout(app) {
+    return this.props.layouts[app.controller + '/' + app.action] || this.props.defaultLayout;
   }
 
   loadConfig() {
