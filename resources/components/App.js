@@ -74,6 +74,11 @@ export default class App extends React.Component {
     theme: theme
   };
 
+  /**
+   * 从后端加载的配置
+   *
+   * @type {Promise}
+   */
   config;
 
   /**
