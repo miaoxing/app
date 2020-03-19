@@ -23,10 +23,15 @@ command.describe = 'Watching config';
 command.handler = async () => {
   let ready = false;
 
-  chokidar.watch('plugins/*/resources/pages/**')
+  chokidar.watch([
+    'plugins/*/resources/pages/**',
+    'plugins/*/resources/events/**'
+  ])
     .on('add', listener)
     .on('unlink', listener)
-    .on('ready', () => {ready = true});
+    .on('ready', () => {
+      ready = true
+    });
 
   function listener(path: string) {
     if (!ready) {
