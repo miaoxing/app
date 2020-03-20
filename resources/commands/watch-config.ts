@@ -51,9 +51,10 @@ function generate(name: string) {
   const files = glob.sync(prefix + `/*/resources/pages/${name === 'admin' ? 'admin/' : ''}*/*.js`);
   console.log(chalk.green(`Founds ${files.length} page files.`));
 
+  // TODOP3 参照 Miaoxing\Config\Service\Config::varExport 生成对象
   let content = 'export default {\n';
 
-// 附加页面配置
+  // 附加页面配置
   const layouts: any = {};
   content += `  'pages': {\n`;
   files.forEach(file => {
@@ -74,7 +75,7 @@ function generate(name: string) {
 
   content += '  },\n';
 
-// 附加布局
+  // 附加布局
   content += `  'layouts': {\n`;
   Object.keys(layouts).forEach(key => {
     content += `    '${key}': `;
