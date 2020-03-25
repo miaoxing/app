@@ -36,7 +36,7 @@ class JsConfig extends Base
         return [
             // optional
             'pageMap' => $this->pageMap,
-            'pluginIds' => $this->app->getRecord()['pluginIds'],
+            'pluginIds' => $this->app->getModel()['pluginIds'],
             'theme' => [],
         ];
     }
