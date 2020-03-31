@@ -22,7 +22,7 @@ $.post = (...args) => {
     config = args[1] || {};
     config.url = args[0];
   } else {
-    config = args || {};
+    config = args[0];
   }
 
   config.method = 'POST';
