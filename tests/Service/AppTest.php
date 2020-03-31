@@ -15,8 +15,6 @@ class AppTest extends \Miaoxing\Plugin\Test\BaseTestCase
      */
     public function testResponse($action, $content)
     {
-        //wei()->curUser->loginById(1);
-
         $app = wei()->app;
         $app->setControllerMap(['test' => Test::class]);
 

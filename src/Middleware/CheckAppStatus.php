@@ -2,6 +2,7 @@
 
 namespace Miaoxing\App\Middleware;
 
+use Miaoxing\Plugin\Service\User;
 use Miaoxing\Services\Middleware\BaseMiddleware;
 use Miaoxing\Plugin\Service\AppModel;
 use Wei\RetTrait;
@@ -16,7 +17,7 @@ class CheckAppStatus extends BaseMiddleware
     public function __invoke($next)
     {
         // 超级管理员下线也可以访问,以便进行功能调整
-        if (wei()->curUser->isSuperAdmin()) {
+        if (User::cur()->isSuperAdmin()) {
             return $next();
         }
 
