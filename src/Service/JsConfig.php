@@ -2,17 +2,14 @@
 
 namespace Miaoxing\App\Service;
 
+use Miaoxing\Plugin\BaseService;
 use Miaoxing\Plugin\Service\App;
-use Miaoxing\Services\Service\StaticTrait;
-use Wei\Base;
 
 /**
  * @property App app
  */
-class JsConfig extends Base
+class JsConfig extends BaseService
 {
-    use StaticTrait;
-
     /**
      * 替换页面的映射关系
      *
