@@ -2,22 +2,13 @@
 
 namespace Miaoxing\App\Service;
 
-interface JsConfig
+class JsConfig extends \Miaoxing\Plugin\BaseService
 {
     /**
      * @return array
-     * @api
+     * @see JsConfig::toArray
      */
-    public function toArray();
-}
-
-if (0) {
-    interface JsConfig
+    public static function toArray()
     {
-        /**
-         * @return array
-         * @api
-         */
-        public static function toArray();
     }
 }
