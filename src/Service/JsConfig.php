@@ -26,7 +26,7 @@ class JsConfig extends BaseService
 
     /**
      * @return array
-     * @api
+     * @svc
      */
     protected function toArray()
     {
