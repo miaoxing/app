@@ -11,6 +11,6 @@ class JsConfigController extends BaseController
 
     public function indexAction()
     {
-        return $this->suc(JsConfig::toArray());
+        return suc(JsConfig::toArray());
     }
 }
