@@ -4,11 +4,13 @@
   "repository": "https://github.com/miaoxing/app",
   "license": "MIT",
   "devDependencies": {
+    "@gitsync/log": "^0.4.0",
+    "@types/execa": "^2.0.0",
+    "chalk": "^4.0.0",
+    "chalk-theme": "^0.2.3",
     "chokidar": "^3.3.1",
     "execa": "^4.0.0",
-    "@gitsync/log": "^0.4.0",
-    "chalk-theme": "^0.2.3",
-    "miaoxing-coding-standards": "^2.0.0",
-    "globby": "^11.0.0"
+    "globby": "^11.0.0",
+    "miaoxing-coding-standards": "^2.0.0"
   }
 }
