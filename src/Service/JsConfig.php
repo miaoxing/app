@@ -32,9 +32,10 @@ class JsConfig extends BaseService
     {
         return [
             // optional
+            'debug' => $this->wei->isDebug(),
+            'pluginIds' => $this->app->getModel()->pluginIds,
             'pageMap' => $this->pageMap,
-            'pluginIds' => $this->app->getModel()['pluginIds'],
-            'theme' => [],
+            'theme' => $this->theme,
         ];
     }
 }

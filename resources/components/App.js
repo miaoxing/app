@@ -18,6 +18,7 @@ import theme from '../modules/theme';
 
 const LoadableLoading = (props) => {
   if (props.error) {
+    app.debug && console.error(props.error);
     Sentry.captureException(props.error);
     return <InternalServerError
       extra={<Button type="primary" onClick={props.retry}>重试</Button>}
@@ -108,6 +109,7 @@ export default class App extends React.Component {
 
     // 初始化事件
     this.config.then(ret => {
+      app.debug = ret.debug;
       event.setConfigs({
         pluginIds: ret.pluginIds,
       });
