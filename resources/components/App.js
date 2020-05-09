@@ -109,7 +109,9 @@ export default class App extends React.Component {
 
     // 初始化事件
     this.config.then(ret => {
-      app.debug = ret.debug;
+      if (typeof ret.debug !== 'undefined') {
+        app.debug = ret.debug;
+      }
       event.setConfigs({
         pluginIds: ret.pluginIds,
       });
@@ -178,7 +180,7 @@ export default class App extends React.Component {
 
     // 允许外部配置替换页面
     let path = `${plugin}/${controller}/${ucfirst(action)}`;
-    if (typeof config.pageMap[path] !== 'undefined') {
+    if (config.pageMap && typeof config.pageMap[path] !== 'undefined') {
       path = config.pageMap[path];
     }
     return this.props.pages[path] ? this.props.pages[path]() : NotFound;
