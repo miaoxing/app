@@ -7,6 +7,7 @@ import AppContainer from '../components/AppContainer';
 
 import '../modules/bootstrap';
 import '../scss/index.scss';
+import '@miaoxing/icons';
 
 const root = document.getElementById('root');
 if (root) {
