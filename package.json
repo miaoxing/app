@@ -11,6 +11,7 @@
     "chokidar": "^3.3.1",
     "execa": "^4.0.0",
     "globby": "^11.0.0",
-    "miaoxing-coding-standards": "^2.0.0"
+    "miaoxing-coding-standards": "^2.0.0",
+    "path-to-regexp": "^1.7.0"
   }
 }

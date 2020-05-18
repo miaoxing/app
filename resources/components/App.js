@@ -15,6 +15,7 @@ import {InternalServerError, NotFound} from '@miaoxing/ret';
 import {PageLoading} from '@miaoxing/loading';
 import {ModalSwitch} from '@miaoxing/router-modal';
 import theme from '../modules/theme';
+import pathToRegexp from "path-to-regexp";
 
 const LoadableLoading = (props) => {
   if (props.error) {
@@ -103,9 +104,10 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    this.config = this.loadConfig();
-
+    // 最先设置，因为 config 要用到
     app.baseUrl = miaoxing.baseUrl;
+
+    this.config = this.loadConfig();
 
     // 初始化事件
     this.config.then(ret => {
@@ -149,14 +151,15 @@ export default class App extends React.Component {
   }
 
   loadableComponent = (props) => {
-    const controller = this.getController(props.match.params);
-    const action = this.getAction(props.match.params);
+    const params = this.match(props.location) || {};
+    const controller = this.getController(params);
+    const action = this.getAction(params);
     const plugin = this.controllerPlugins[controller];
 
-    app.namespace = props.match.params.namespace;
+    app.namespace = params.namespace;
     app.controller = controller;
     app.action = action;
-    app.id = props.match.params.id;
+    app.id = params.id;
 
     event.trigger('pageLoad', props);
 
@@ -174,6 +177,27 @@ export default class App extends React.Component {
       <LoadableComponent {...props}/>
     </PageLayout>;
   };
+
+  match(location) {
+    let path = '';
+    if (app.isUrlRewrite()) {
+      path = location.pathname.substr(app.baseUrl.length);
+    } else {
+      path = '/' + app.req('r');
+    }
+
+    const params = pathToRegexp('/:namespace(admin)?/:controller?/:id(\\d+)?/:action?').exec(path);
+    if (!params) {
+      return null;
+    }
+
+    return {
+      namespace: params[1],
+      controller: params[2],
+      id: params[3],
+      action: params[4],
+    }
+  }
 
   async importPage(plugin, controller, action) {
     const config = await this.config;
@@ -218,9 +242,7 @@ export default class App extends React.Component {
       <ThemeProvider theme={theme}>
         <Router history={history}>
           <ModalSwitch>
-            <Route exact path={app.url(':namespace(admin)?/:controller?/:id(\\d+)?/:action?')} component={Component}/>
-            <Route exact path={app.url()} component={Component}/>
-            <Route component={NotFound}/>
+            <Route component={Component}/>
           </ModalSwitch>
         </Router>
       </ThemeProvider>
