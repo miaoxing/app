@@ -1,4 +1,13 @@
 export default {
+  colors: {
+    primary: '#1890ff',
+    muted: '#757575',
+  },
+  fonts: {
+    body: 'system-ui, sans-serif',
+    heading: 'inherit',
+    monospace: 'Menlo, monospace',
+  },
   fontSizes: [
     '.75rem',   // 12
     '.875rem',  // 14
@@ -6,9 +15,14 @@ export default {
     '1.125rem', // 18
     '1.25rem',  // 20
   ],
-  colors: {
-    primary: '#1890ff',
-    muted: '#757575',
+  fontWeights: {
+    body: 400,
+    heading: 700,
+    bold: 700,
+  },
+  lineHeights: {
+    body: 1.5,
+    heading: 1.25,
   },
   space: [
     0,
@@ -18,13 +32,6 @@ export default {
     '1.5rem',   // 24
     '3rem'      // 48
   ],
-  text: {
-    heading: {
-      fontFamily: 'inherit',
-      lineHeight: 1.2,
-      fontWeight: 500,
-    },
-  },
   shadows: {
     sm: '0 .125rem .25rem rgba(0, 0, 0, .075)',
     md: '0 .5rem 1rem rgba(0, 0, 0, .15)',
