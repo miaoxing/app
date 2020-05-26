@@ -7,6 +7,7 @@ export default {
     '1.25rem',  // 20
   ],
   colors: {
+    primary: '#1890ff',
     muted: '#757575',
   },
   space: [
@@ -23,5 +24,10 @@ export default {
       lineHeight: 1.2,
       fontWeight: 500,
     },
-  }
+  },
+  shadows: {
+    sm: '0 .125rem .25rem rgba(0, 0, 0, .075)',
+    md: '0 .5rem 1rem rgba(0, 0, 0, .15)',
+    lg: '0 1rem 3rem rgba(0, 0, 0, .175)',
+  },
 };
