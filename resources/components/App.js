@@ -4,7 +4,6 @@ import React from 'react';
 import {Router, Route} from 'react-router-dom';
 import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
-import {ThemeProvider} from 'styled-components';
 import {Button} from 'antd';
 import * as Sentry from "@sentry/browser";
 import $ from 'miaoxing';
@@ -16,6 +15,7 @@ import {PageLoading} from '@miaoxing/loading';
 import {ModalSwitch} from '@miaoxing/router-modal';
 import theme from '../modules/theme';
 import pathToRegexp from "path-to-regexp";
+import { ThemeProvider } from 'emotion-theming'
 
 const LoadableLoading = (props) => {
   if (props.error) {
