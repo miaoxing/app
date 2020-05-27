@@ -16,9 +16,10 @@ export default {
     '1.25rem',  // 20
   ],
   fontWeights: {
+    light: 300,
+    bold: 700,
     body: 400,
     heading: 700,
-    bold: 700,
   },
   lineHeights: {
     body: 1.5,
