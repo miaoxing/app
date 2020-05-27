@@ -16,7 +16,6 @@ import {ModalSwitch} from '@miaoxing/router-modal';
 import theme from '../modules/theme';
 import pathToRegexp from "path-to-regexp";
 import { ThemeProvider } from 'emotion-theming'
-import {setTheme} from '@miaoxing/css';
 
 const LoadableLoading = (props) => {
   if (props.error) {
@@ -130,9 +129,6 @@ export default class App extends React.Component {
       const [plugin, controller] = key.split('/');
       this.controllerPlugins[controller] = plugin;
     });
-
-    // 设置主题
-    setTheme(theme);
   }
 
   async componentDidMount() {
