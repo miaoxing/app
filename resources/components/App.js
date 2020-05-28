@@ -13,7 +13,6 @@ import {event} from '@miaoxing/event';
 import {InternalServerError, NotFound} from '@miaoxing/ret';
 import {PageLoading} from '@miaoxing/loading';
 import {ModalSwitch} from '@miaoxing/router-modal';
-import theme from '../modules/theme';
 import pathToRegexp from "path-to-regexp";
 import { ThemeProvider } from 'emotion-theming'
 
@@ -70,10 +69,15 @@ export default class App extends React.Component {
      * }
      */
     events: {},
+
+    /**
+     * 主题配置
+     */
+    theme: {},
   };
 
   state = {
-    theme: theme
+    theme: this.props.theme,
   };
 
   /**
@@ -239,7 +243,7 @@ export default class App extends React.Component {
     const Component = this.loadableComponent;
 
     return (
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={this.state.theme}>
         <Router history={history}>
           <ModalSwitch>
             <Route component={Component}/>
