@@ -1,5 +1,4 @@
-@import "variables";
-@import "~@miaoxing/style/config";
+// NOTE: 已经通过 Webpack 注入 theme-preset.js 和 _config.scss，不用再次引入
 
 html {
   font-size: $font-size;
