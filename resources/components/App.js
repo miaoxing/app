@@ -2,7 +2,6 @@
 
 import React from 'react';
 import {Router, Route} from 'react-router-dom';
-import ucfirst from 'ucfirst';
 import Loadable from 'react-loadable';
 import {Button} from 'antd';
 import * as Sentry from "@sentry/browser";
@@ -32,7 +31,7 @@ export default class App extends React.Component {
     /**
      * 所有的页面
      *
-     * 如 {'admin/admins/Edit': () => import('plugins/admin/resources/pages/admin/admins/Edit.js')}
+     * 如 {'admin/admins/edit': () => import('plugins/admin/pages/admin/admins/edit.js')}
      */
     pages: {},
 
@@ -207,7 +206,7 @@ export default class App extends React.Component {
     const config = await this.config;
 
     // 允许外部配置替换页面
-    let path = `${plugin}/${controller}/${ucfirst(action)}`;
+    let path = `${plugin}/${controller}/${action}`;
     if (config.pageMap && typeof config.pageMap[path] !== 'undefined') {
       path = config.pageMap[path];
     }

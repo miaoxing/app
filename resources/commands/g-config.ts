@@ -34,7 +34,7 @@ function generate(name: string) {
   const DEFAULT_PRIORITY = 100;
   const prefix = 'plugins';
 
-  const files = glob.sync(prefix + `/*/resources/pages/${name === 'admin' ? 'admin/' : ''}*/*.js`);
+  const files = glob.sync(prefix + `/*/pages/${name === 'admin' ? 'admin/' : ''}*/*.js`);
   console.log(chalk.green(`Founds ${files.length} page files.`));
 
   // TODOP3 参照 Miaoxing\Config\Service\Config::varExport 生成对象
@@ -46,7 +46,7 @@ function generate(name: string) {
   files.forEach(file => {
     const parts = file.split('/');
     const last = parts[parts.length - 1];
-    // plugins/plugin/resources/pages/controller/action.js
+    // plugins/plugin/pages/controller/action.js
     // => plugin/controller/action
     content += `    '${parts[1]}/${parts[parts.length - 2]}/${last.substring(0, last.length - 3)}': () => import('${file}'),\n`;
 
@@ -75,7 +75,7 @@ function generate(name: string) {
 
   // 附加事件入口
   content += `\n  'plugins': {\n`;
-  const eventFiles = glob.sync(prefix + `/*/resources/events/${name === 'admin' ? 'admin/' : ''}events.js`);
+  const eventFiles = glob.sync(prefix + `/*/events/${name === 'admin' ? 'admin/' : ''}events.js`);
   console.log(chalk.green(`Founds ${eventFiles.length} event files.`));
 
   eventFiles.forEach(file => {
