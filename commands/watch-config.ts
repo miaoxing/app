@@ -15,8 +15,8 @@ command.handler = async () => {
   let ready = false;
 
   chokidar.watch([
-    'plugins/*/resources/pages/**',
-    'plugins/*/resources/events/**'
+    'plugins/*/pages/**',
+    'plugins/*/events/**'
   ])
     .on('add', listener)
     .on('unlink', listener)
@@ -29,8 +29,8 @@ command.handler = async () => {
       return;
     }
 
-    // plugins[0]/admin[1]/resources[2]/pages[3]/admin[4]/login/Index.js
-    const type = path.split('/')[4] === 'admin' ? 'admin' : 'app';
+    // plugins[0]/admin[1]/pages[2]/admin[3]/login/index.js
+    const type = path.split('/')[3] === 'admin' ? 'admin' : 'app';
     generate(type);
   }
 }

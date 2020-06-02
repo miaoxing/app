@@ -16,12 +16,12 @@ module.exports = WebpackConfig.build({
   },
   sassLoaderOptions: {
     prependData: function () {
-      return generateBootstrapVars(theme) + `@import "plugins/${name}/resources/scss/config";`;
+      return generateBootstrapVars(theme) + `@import "plugins/${name}/scss/config";`;
     }
   },
   getEntries() {
     return {
-      [name]: `${this.rootDir}/plugins/${name}/resources/pages/index.js`
+      [name]: `${this.rootDir}/plugins/${name}/modules/app.js`
     }
   }
 });

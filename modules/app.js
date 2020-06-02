@@ -5,7 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import AppContainer from '../components/AppContainer';
 
-import '../modules/bootstrap';
+import './bootstrap';
 import '../scss/index.scss';
 
 const root = document.getElementById('root');
