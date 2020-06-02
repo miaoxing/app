@@ -3,13 +3,6 @@ import * as glob from 'glob';
 import * as fs from 'fs';
 import * as chalk from 'chalk';
 
-function lcfirst(word: string) {
-  if (!word) {
-    return word;
-  }
-  return word[0].toLowerCase() + word.substr(1);
-}
-
 let command: CommandModule = {
   handler: () => {
   }
@@ -51,11 +44,20 @@ function generate(name: string) {
     content += `    '${parts[1]}/${parts[parts.length - 2]}/${last.substring(0, last.length - 3)}': () => import('${file}'),\n`;
 
     const text = fs.readFileSync(file, 'utf8');
+
+    // 读取布局配置
     const regex = new RegExp('\n \\* @layout (.+?)\n');
     const match = regex.exec(text);
     if (match) {
-      const page = `${parts[parts.length - 2]}/${lcfirst(last.substring(0, last.length - 3))}`;
+      const page = `${parts[parts.length - 2]}/${last.substring(0, last.length - 3)}`;
       layouts[page] = match[1];
+    }
+
+    // 读取共用配置
+    const shareRegex = new RegExp('\n \\* @share (.+?)\n');
+    const shareMatch = shareRegex.exec(text);
+    if (shareMatch) {
+      content += `    '${parts[1]}/${parts[parts.length - 2]}/${shareMatch[1]}': () => import('${file}'),\n`;
     }
   });
 
@@ -96,7 +98,7 @@ function generate(name: string) {
     do {
       match = regex.exec(text);
       if (match) {
-        const [, event, priority = DEFAULT_PRIORITY] = /(.+?)((\d+))?$/.exec(lcfirst(match[1]));
+        const [, event, priority = DEFAULT_PRIORITY] = /(.+?)(\d+)?$/.exec(match[1]);
         if (typeof events[event] === 'undefined') {
           events[event] = {};
         }
