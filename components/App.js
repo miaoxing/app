@@ -50,7 +50,7 @@ export default class App extends React.Component {
     /**
      * 插件的事件入口
      *
-     * 如 {'app': () => import('plugins/app/resources/events/admin/events.js')}
+     * 如 {'app': () => import('plugins/app/events/admin/events.js')}
      *
      * @todo rename
      */
