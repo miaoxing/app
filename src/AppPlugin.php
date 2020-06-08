@@ -4,7 +4,7 @@ namespace Miaoxing\App;
 
 use Miaoxing\App\Middleware\CheckAppStatus;
 use Miaoxing\Plugin\BaseController;
-use Miaoxing\Plugin\Middleware\Auth;
+use Miaoxing\Services\Middleware\Auth;
 
 class AppPlugin extends \Miaoxing\Plugin\BasePlugin
 {
