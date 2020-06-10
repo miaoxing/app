@@ -11,8 +11,8 @@ module.exports = WebpackConfig.build({
   lessLoaderOptions: {
     lessOptions: {
       modifyVars: generateAntdVars(theme),
-      javascriptEnabled: true,
-    },
+      javascriptEnabled: true
+    }
   },
   sassLoaderOptions: {
     prependData: function () {
@@ -22,6 +22,6 @@ module.exports = WebpackConfig.build({
   getEntries() {
     return {
       [name]: `${this.rootDir}/plugins/${name}/modules/app.js`
-    }
+    };
   }
 });
