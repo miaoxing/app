@@ -4,7 +4,10 @@ namespace MiaoxingTest\App\Controller;
 
 use Miaoxing\Plugin\Test\BaseControllerTestCase;
 
-class AppControllerTest extends BaseControllerTestCase
+/**
+ * @internal
+ */
+final class AppControllerTest extends BaseControllerTestCase
 {
     public function testIndexAction()
     {
