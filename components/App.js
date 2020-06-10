@@ -14,6 +14,7 @@ import {PageLoading} from '@miaoxing/loading';
 import {ModalSwitch} from '@miaoxing/router-modal';
 import pathToRegexp from 'path-to-regexp';
 import {ThemeProvider} from 'emotion-theming';
+import PropTypes from 'prop-types';
 
 const LoadableLoading = (props) => {
   if (props.error) {
@@ -26,8 +27,21 @@ const LoadableLoading = (props) => {
   }
   return <PageLoading/>;
 };
+LoadableLoading.propTypes = {
+  error: PropTypes.instanceOf(Error),
+  retry: PropTypes.func
+}
 
 export default class App extends React.Component {
+  static propTypes = {
+    pages: PropTypes.object,
+    events: PropTypes.object,
+    theme: PropTypes.object,
+    plugins: PropTypes.object,
+    layouts: PropTypes.object,
+    defaultLayout: PropTypes.elementType,
+  }
+
   static defaultProps = {
     /**
      * 所有的页面
