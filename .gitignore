@@ -1,3 +1,4 @@
+.idea/
 /node_modules/
 /yarn-error.log
 
@@ -7,8 +8,13 @@
 # coveralls
 /coverage/
 
-.idea/
+# php
+.php_cs.cache
 vendor/
 composer.lock
 phpunit.xml
-tests/config-local.php
+
+# miaoxing
+/plugins/
+/storage/
+/tests/config-local.php
