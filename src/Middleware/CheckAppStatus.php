@@ -2,9 +2,9 @@
 
 namespace Miaoxing\App\Middleware;
 
+use Miaoxing\Plugin\Service\AppModel;
 use Miaoxing\Plugin\Service\User;
 use Miaoxing\Services\Middleware\BaseMiddleware;
-use Miaoxing\Plugin\Service\AppModel;
 use Wei\RetTrait;
 
 class CheckAppStatus extends BaseMiddleware
@@ -22,7 +22,7 @@ class CheckAppStatus extends BaseMiddleware
         }
 
         $record = $this->app->getModel();
-        if (isset($record['status']) && $record['status'] != AppModel::STATUS_ONLINE) {
+        if (isset($record['status']) && AppModel::STATUS_ONLINE != $record['status']) {
             return $this->err('很抱歉,该应用已经' . $record->getConstName('status', $record['status']));
         }
 

@@ -44,7 +44,7 @@ class AppPlugin extends \Miaoxing\Plugin\BasePlugin
         $controller->middleware(Auth::class);
 
         // 除去 admin/login 页面
-        if (strpos($this->app->getController(), 'admin/') === 0) {
+        if (0 === strpos($this->app->getController(), 'admin/')) {
             $controller->middleware(CheckAppStatus::class);
         }
     }
