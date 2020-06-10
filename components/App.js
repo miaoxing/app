@@ -17,7 +17,7 @@ import {ThemeProvider} from 'emotion-theming';
 
 const LoadableLoading = (props) => {
   if (props.error) {
-    // eslint-disable-line no-console
+    // eslint-disable-next-line no-console
     app.debug && console.error(props.error);
     Sentry.captureException(props.error);
     return <InternalServerError

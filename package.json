@@ -9,9 +9,12 @@
     "chalk": "^4.0.0",
     "chalk-theme": "^0.2.3",
     "chokidar": "^3.3.1",
+    "eslint": "^7.2.0",
+    "eslint-plugin-react": "^7.20.0",
     "execa": "^4.0.0",
     "globby": "^11.0.0",
     "miaoxing-coding-standards": "^4.1.1",
-    "path-to-regexp": "^1.7.0"
+    "path-to-regexp": "^1.7.0",
+    "prop-types": "^15.7.2"
   }
 }
