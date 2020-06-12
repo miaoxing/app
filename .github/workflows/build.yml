@@ -79,7 +79,10 @@ jobs:
 
       - name: Upload coverage results to Coveralls
         env:
+          COVERALLS_PARALLEL: true
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          COVERALLS_SERVICE_JOB_ID: ${{ github.run_id }}
+          COVERALLS_FLAG_NAME: phpunit
         run: |
           composer global require cedx/coveralls
           coveralls build/logs/clover.xml
@@ -116,9 +119,22 @@ jobs:
           run: yarn jest --coverage --coverageReporters text lcovonly
 
         - name: Coveralls
+          env:
+            COVERALLS_FLAG_NAME: node-${{ matrix.node-version }}
           uses: coverallsapp/github-action@master
           with:
             github-token: ${{ secrets.GITHUB_TOKEN }}
+            parallel: true
+
+    coveralls-finish:
+      needs: [phpunit, jest]
+      runs-on: ubuntu-18.04
+      steps:
+        - name: Coveralls Finished
+          uses: coverallsapp/github-action@master
+          with:
+            github-token: ${{ secrets.github_token }}
+            parallel-finished: true
 
     phpcs:
       runs-on: ${{ matrix.operating-system }}
