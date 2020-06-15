@@ -115,9 +115,11 @@ jobs:
         run: yarn install
 
       - name: Run
-        run: yarn jest --coverage --coverageReporters text lcovonly
+        run: |
+          yarn jest --passWithNoTests --coverage --coverageReporters text lcovonly
 
       - name: Coveralls
+        if: startsWith(hashFiles('coverage/lcov.info'), '5df6e0e27613') == false
         env:
           COVERALLS_FLAG_NAME: node-${{ matrix.node-version }}
         uses: coverallsapp/github-action@master
