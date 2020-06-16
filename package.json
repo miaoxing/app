@@ -9,7 +9,6 @@
   "devDependencies": {
     "@babel/core": "^7.10.2",
     "@babel/preset-env": "^7.10.2",
-    "@gitsync/log": "^0.4.0",
     "@types/execa": "^2.0.0",
     "babel-jest": "^26.0.1",
     "chalk": "^4.0.0",
@@ -17,8 +16,7 @@
     "chokidar": "^3.3.1",
     "execa": "^4.0.0",
     "globby": "^11.0.0",
-    "jest": "^26.0.1",
-    "miaoxing-coding-standards": "^5.0.0-beta.3",
+    "miaoxing-coding-standards": "^5.0.0-beta.7",
     "path-to-regexp": "^1.7.0",
     "prop-types": "^15.7.2"
   }
