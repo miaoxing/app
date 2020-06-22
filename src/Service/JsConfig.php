@@ -3,10 +3,9 @@
 namespace Miaoxing\App\Service;
 
 use Miaoxing\Plugin\BaseService;
-use Miaoxing\Plugin\Service\App;
 
 /**
- * @property App app
+ * @mixin \AppMixin
  */
 class JsConfig extends BaseService
 {

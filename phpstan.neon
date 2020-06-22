@@ -1,0 +1,12 @@
+parameters:
+    level: 5
+
+    paths:
+        - src
+        - tests
+
+    scanFiles:
+        # 引入 *Mixin 类
+        - docs/auto-completion.php
+        - plugins/plugin/docs/auto-completion.php
+        - vendor/wei/wei/docs/auto-completion.php
