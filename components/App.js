@@ -7,7 +7,7 @@ import {Button} from 'antd';
 import * as Sentry from '@sentry/browser';
 import $ from 'miaoxing';
 import app, {history} from '@weijs/app';
-import api from '@miaoxing/api';
+import http from '@miaoxing/http';
 import {event} from '@miaoxing/event';
 import {InternalServerError, NotFound} from '@miaoxing/ret';
 import {PageLoading} from '@miaoxing/loading';
@@ -244,7 +244,7 @@ export default class App extends React.Component {
   }
 
   loadConfig() {
-    return api.get('js-config').then(ret => {
+    return http.get('js-config').then(ret => {
       if (ret.code !== 1) {
         $.ret(ret);
         return;
