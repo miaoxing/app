@@ -2,7 +2,8 @@
   "name": "miaoxing/app",
   "type": "miaoxing-plugin",
   "keywords": [
-    "miaoxing", "app"
+    "miaoxing",
+    "app"
   ],
   "license": "MIT",
   "require": {
