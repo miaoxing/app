@@ -1,6 +1,7 @@
 {
   "name": "@miaoxing/app",
   "version": "1.0.0",
+  "private": true,
   "repository": "https://github.com/miaoxing/app",
   "license": "MIT",
   "scripts": {
