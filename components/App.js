@@ -6,7 +6,7 @@ import Loadable from 'react-loadable';
 import {Button} from 'antd';
 import * as Sentry from '@sentry/browser';
 import $ from 'miaoxing';
-import app, {history} from '@weijs/app';
+import app, {history} from '@mxjs/app';
 import http from '@mxjs/http';
 import {event} from '@mxjs/event';
 import {InternalServerError, NotFound} from '@mxjs/ret';
