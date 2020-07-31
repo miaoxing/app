@@ -1,12 +1,12 @@
 import $ from 'miaoxing';
 
-import modal from '@miaoxing/modal';
-import '@miaoxing/modal/style/index.scss';
+import modal from '@mxjs/modal';
+import '@mxjs/modal/style/index.scss';
 
 import message from 'react-bootstrap-message/js/react-bootstrap-message';
 import 'react-bootstrap-message/scss/react-bootstrap-message.scss';
 
-import axios from '@miaoxing/axios';
+import axios from '@mxjs/axios';
 
 $.loading = message.loading;
 $.alert = (message, fn) => modal.alert(message).then(fn);

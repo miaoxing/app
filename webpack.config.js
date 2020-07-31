@@ -1,8 +1,8 @@
 const path = require('path');
-const WebpackConfig = require('@miaoxing/webpack');
-const {generateAntdVars, generateBootstrapVars} = require('@miaoxing/style/utils');
+const WebpackConfig = require('@mxjs/webpack');
+const {generateAntdVars, generateBootstrapVars} = require('@mxjs/style/utils');
 
-const theme = require('@miaoxing/style/theme-preset');
+const theme = require('@mxjs/style/theme-preset');
 const name = path.basename(__dirname);
 
 module.exports = WebpackConfig.build({
