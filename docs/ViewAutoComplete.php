@@ -14,8 +14,8 @@ $block = wei()->block;
 /** @var \Miaoxing\Order\Service\Url $url */
 $url = wei()->url;
 
-/** @var \Wei\Request $req */
-$req = wei()->request;
+/** @var \Wei\Req $req */
+$req = wei()->req;
 
 /** @var \Wei\E $e */
 $e = wei()->e;
