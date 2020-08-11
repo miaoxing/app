@@ -11,7 +11,7 @@
     "miaoxing/services": "^0.1.4"
   },
   "require-dev": {
-    "miaoxing/coding-standards": "^5.1"
+    "miaoxing/coding-standards": "^5.3.1"
   },
   "autoload": {
     "psr-4": {
