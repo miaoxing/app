@@ -29,8 +29,8 @@ const LoadableLoading = (props) => {
 };
 LoadableLoading.propTypes = {
   error: PropTypes.instanceOf(Error),
-  retry: PropTypes.func
-}
+  retry: PropTypes.func,
+};
 
 export default class App extends React.Component {
   static propTypes = {
@@ -87,11 +87,11 @@ export default class App extends React.Component {
     /**
      * 主题配置
      */
-    theme: {}
+    theme: {},
   };
 
   state = {
-    theme: this.props.theme
+    theme: this.props.theme,
   };
 
   /**
@@ -133,12 +133,12 @@ export default class App extends React.Component {
         app.debug = ret.debug;
       }
       event.setConfigs({
-        pluginIds: ret.pluginIds
+        pluginIds: ret.pluginIds,
       });
     });
     event.setConfigs({
       events: props.events,
-      plugins: props.plugins
+      plugins: props.plugins,
     });
 
     // 解析出页面路径中的插件和控制对应关系
@@ -185,7 +185,7 @@ export default class App extends React.Component {
     if (!this.loadedPages[key]) {
       this.loadedPages[key] = Loadable({
         loader: () => this.importPage(plugin, controller, action),
-        loading: LoadableLoading
+        loading: LoadableLoading,
       });
     }
 
@@ -213,7 +213,7 @@ export default class App extends React.Component {
       namespace: params[1],
       controller: params[2],
       id: params[3],
-      action: params[4]
+      action: params[4],
     };
   }
 
@@ -234,7 +234,7 @@ export default class App extends React.Component {
       if (this.props.layouts[page]) {
         return Loadable({
           loader: this.props.layouts[page],
-          loading: LoadableLoading
+          loading: LoadableLoading,
         });
       } else {
         return React.Fragment;
