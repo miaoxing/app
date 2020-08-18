@@ -8,9 +8,11 @@ use Miaoxing\Services\Middleware\Auth;
 
 class AppPlugin extends \Miaoxing\Plugin\BasePlugin
 {
-    protected $name = '核心';
+    protected $name = '应用';
 
     protected $description = '';
+
+    protected $code = 202;
 
     public function onAdminNavGetNavs(&$navs, &$categories, &$subCategories)
     {
