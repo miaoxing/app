@@ -6,13 +6,12 @@ import Loadable from 'react-loadable';
 import {Button} from 'antd';
 import * as Sentry from '@sentry/browser';
 import $ from 'miaoxing';
-import app, {history} from '@mxjs/app';
+import app, {history, router} from '@mxjs/app';
 import http from '@mxjs/http';
 import {event} from '@mxjs/event';
 import {InternalServerError, NotFound} from '@mxjs/ret';
 import {PageLoading} from '@mxjs/loading';
 import {ModalSwitch} from '@mxjs/router-modal';
-import pathToRegexp from 'path-to-regexp';
 import {ThemeProvider} from 'emotion-theming';
 import PropTypes from 'prop-types';
 
@@ -56,13 +55,6 @@ export default class App extends React.Component {
     defaultLayout: React.Fragment,
 
     /**
-     * 指定页面的布局
-     *
-     * 如 {"admin/login": React.Fragment}
-     */
-    layouts: {},
-
-    /**
      * 插件的事件入口
      *
      * 如 {'app': () => import('plugins/app/events/admin/events.js')}
@@ -102,15 +94,6 @@ export default class App extends React.Component {
   config;
 
   /**
-   * 控制器对应的插件
-   *
-   * 如 {articles:article}
-   *
-   * @type {object}
-   */
-  controllerPlugins = {};
-
-  /**
    * 缓存加载过的页面
    *
    * 以便 modal 页面不会重新加载
@@ -141,12 +124,7 @@ export default class App extends React.Component {
       plugins: props.plugins,
     });
 
-    // 解析出页面路径中的插件和控制对应关系
-    // 如 article/articles/Edit => {articles:article}
-    Object.keys(this.props.pages).forEach(key => {
-      const [plugin, controller] = key.split('/');
-      this.controllerPlugins[controller] = plugin;
-    });
+    router.setPages(this.props.pages);
   }
 
   async componentDidMount() {
@@ -154,43 +132,21 @@ export default class App extends React.Component {
     this.setState({theme: Object.assign(this.state.theme, config.theme)});
   }
 
-  getController(params) {
-    return params.controller || 'index';
-  }
-
-  getAction(params) {
-    if (params.action) {
-      return params.action;
-    } else if (params.id) {
-      return 'show';
-    } else {
-      return 'index';
-    }
-  }
-
   loadableComponent = (props) => {
-    const params = this.match(props.location) || {};
-    const controller = this.getController(params);
-    const action = this.getAction(params);
-    const plugin = this.controllerPlugins[controller];
-
-    app.namespace = params.namespace;
-    app.controller = controller;
-    app.action = action;
-    app.id = params.id;
+    const result = this.match(props.location);
 
     event.trigger('pageLoad', props);
 
     const key = props.location.pathname + props.location.search;
     if (!this.loadedPages[key]) {
       this.loadedPages[key] = Loadable({
-        loader: () => this.importPage(plugin, controller, action),
+        loader: () => this.importPage(result),
         loading: LoadableLoading,
       });
     }
 
     const LoadableComponent = this.loadedPages[key];
-    const PageLayout = this.getLayout(app);
+    const PageLayout = this.getLayout(result);
     return <PageLayout>
       <LoadableComponent {...props}/>
     </PageLayout>;
@@ -203,44 +159,36 @@ export default class App extends React.Component {
     } else {
       path = '/' + app.req('r');
     }
+    app.page = router.match(path);
 
-    const params = pathToRegexp('/:namespace(admin)?/:controller?/:id(\\d+)?/:action?').exec(path);
-    if (!params) {
-      return null;
+    // 常用字段特殊处理
+    // TODO 改为 req.id
+    if (app.page && typeof app.page.params.id !== 'undefined') {
+      app.id = app.page.params.id;
+    } else {
+      app.id = '';
     }
 
-    return {
-      namespace: params[1],
-      controller: params[2],
-      id: params[3],
-      action: params[4],
-    };
+    return app.page;
   }
 
-  async importPage(plugin, controller, action) {
-    const config = await this.config;
-
-    // 允许外部配置替换页面
-    let path = `${plugin}/${controller}/${action}`;
-    if (config.pageMap && typeof config.pageMap[path] !== 'undefined') {
-      path = config.pageMap[path];
-    }
-    return this.props.pages[path] ? this.props.pages[path]() : NotFound;
+  async importPage(result) {
+    return result ? result.import : NotFound;
   }
 
-  getLayout(app) {
-    const page = app.controller + '/' + app.action;
-    if (typeof this.props.layouts[page] !== 'undefined') {
-      if (this.props.layouts[page]) {
+  getLayout(result) {
+    if (result && typeof result.layout !== 'undefined') {
+      if (result.layout) {
         return Loadable({
-          loader: this.props.layouts[page],
+          loader: result.layout,
           loading: LoadableLoading,
         });
       } else {
         return React.Fragment;
       }
+    } else {
+      return this.props.defaultLayout;
     }
-    return this.props.defaultLayout;
   }
 
   loadConfig() {
