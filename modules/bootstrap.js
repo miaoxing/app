@@ -16,20 +16,6 @@ $.ret = message.ret;
 $.suc = message.success;
 $.err = message.danger;
 
-$.get = (...args) => {
-  return axios(...args).then(({data}) => data);
-};
-$.post = (...args) => {
-  let config;
+$.http = (...args) => axios(...args).then(({data}) => data);
 
-  if (typeof args[0] === 'string') {
-    config = args[1] || {};
-    config.url = args[0];
-  } else {
-    config = args[0];
-  }
-
-  config.method = 'POST';
-
-  return $.get(config);
-};
+window.$ = $;
