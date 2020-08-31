@@ -1,16 +1,13 @@
 <?php
 
-namespace Miaoxing\App\Controller\Api;
-
 use Miaoxing\App\Service\JsConfig;
 use Miaoxing\Plugin\BaseController;
 
-class JsConfigController extends BaseController
-{
+return new class extends BaseController {
     protected $controllerAuth = false;
 
-    public function indexAction()
+    public function get()
     {
         return suc(JsConfig::toArray());
     }
-}
+};
