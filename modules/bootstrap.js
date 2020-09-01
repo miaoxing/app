@@ -8,6 +8,8 @@ import 'react-bootstrap-message/scss/react-bootstrap-message.scss';
 
 import axios from '@mxjs/axios';
 
+import {req, url} from '@mxjs/app';
+
 $.loading = message.loading;
 $.alert = (message, fn) => modal.alert(message).then(fn);
 $.confirm = (message, fn) => modal(message).then(fn);
@@ -17,5 +19,9 @@ $.suc = message.success;
 $.err = message.danger;
 
 $.http = (...args) => axios(...args).then(({data}) => data);
+
+$.req = req.get.bind(req);
+$.url = url.to.bind(url);
+$.apiUrl = url.api.bind(url);
 
 window.$ = $;
