@@ -46,7 +46,7 @@ async function generatePages(name: string) {
   }
 
   console.log(chalk.green(`Founds ${pageCount} page files.`));
-  return {pages};
+  return {router: {pages}};
 }
 
 async function generateEvents(name: string) {
@@ -85,7 +85,7 @@ async function generateEvents(name: string) {
     } while (match);
   }
 
-  return {plugins, events};
+  return {event: {plugins, events}};
 }
 
 async function scanPages(name: string, rootDir: string, dir: string, pages: any = {}): Promise<any> {

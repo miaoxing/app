@@ -30,10 +30,15 @@ class JsConfig extends BaseService
     protected function toArray()
     {
         return [
-            // optional
-            'debug' => $this->wei->isDebug(),
-            'pluginIds' => $this->app->getModel()->pluginIds,
-            'pageMap' => $this->pageMap,
+            'wei' => [
+                'debug' => $this->wei->isDebug(),
+            ],
+            'app' => [
+                'pluginIds' => $this->app->getModel()->pluginIds,
+                // @experimental
+                'pageMap' => $this->pageMap,
+            ],
+            // @experimental
             'theme' => $this->theme,
         ];
     }

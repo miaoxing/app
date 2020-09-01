@@ -6,9 +6,8 @@ import Loadable from 'react-loadable';
 import {Button} from 'antd';
 import * as Sentry from '@sentry/browser';
 import $ from 'miaoxing';
-import app, {history, router} from '@mxjs/app';
+import {wei, app, event, history} from '@mxjs/app';
 import http from '@mxjs/http';
-import {event} from '@mxjs/event';
 import {InternalServerError, NotFound} from '@mxjs/ret';
 import {PageLoading} from '@mxjs/loading';
 import {ModalSwitch} from '@mxjs/router-modal';
@@ -18,7 +17,7 @@ import PropTypes from 'prop-types';
 const LoadableLoading = (props) => {
   if (props.error) {
     // eslint-disable-next-line no-console
-    app.debug && console.error(props.error);
+    wei.getDebug() && console.error(props.error);
     Sentry.captureException(props.error);
     return <InternalServerError
       extra={<Button type="primary" onClick={props.retry}>重试</Button>}
@@ -33,57 +32,23 @@ LoadableLoading.propTypes = {
 
 export default class App extends React.Component {
   static propTypes = {
-    pages: PropTypes.object,
-    events: PropTypes.object,
-    theme: PropTypes.object,
-    plugins: PropTypes.object,
-    layouts: PropTypes.object,
+    configs: PropTypes.object,
     defaultLayout: PropTypes.elementType,
   }
 
   static defaultProps = {
-    /**
-     * 所有的页面
-     *
-     * 如 {'admin/admins/edit': () => import('plugins/admin/pages/admin/admins/edit.js')}
-     */
-    pages: {},
+    configs: {
+      theme: {}
+    },
 
     /**
      * 默认布局
      */
     defaultLayout: React.Fragment,
-
-    /**
-     * 插件的事件入口
-     *
-     * 如 {'app': () => import('plugins/app/events/admin/events.js')}
-     *
-     * @todo rename
-     */
-    plugins: {},
-
-    /**
-     * 插件的事件配置
-     *
-     * 如 {
-     * 'pageLoad': {
-     *   '100': [
-     *     'app'
-     *    ]
-     *   }
-     * }
-     */
-    events: {},
-
-    /**
-     * 主题配置
-     */
-    theme: {},
   };
 
   state = {
-    theme: this.props.theme,
+    theme: this.props.configs.theme,
   };
 
   /**
@@ -105,26 +70,11 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
-    // 最先设置，因为 config 要用到
-    app.baseUrl = miaoxing.baseUrl;
-
+    wei.setConfigs(this.props.configs);
     this.config = this.loadConfig();
-
-    // 初始化事件
     this.config.then(ret => {
-      if (typeof ret.debug !== 'undefined') {
-        app.debug = ret.debug;
-      }
-      event.setConfigs({
-        pluginIds: ret.pluginIds,
-      });
+      wei.setConfigs(ret.data);
     });
-    event.setConfigs({
-      events: props.events,
-      plugins: props.plugins,
-    });
-
-    router.setPages(this.props.pages);
   }
 
   async componentDidMount() {
@@ -133,54 +83,34 @@ export default class App extends React.Component {
   }
 
   loadableComponent = (props) => {
-    const result = this.match(props.location);
+    const page = app.matchLocation(props.location);
 
     event.trigger('pageLoad', props);
 
     const key = props.location.pathname + props.location.search;
     if (!this.loadedPages[key]) {
       this.loadedPages[key] = Loadable({
-        loader: () => this.importPage(result),
+        loader: () => this.importPage(page),
         loading: LoadableLoading,
       });
     }
 
     const LoadableComponent = this.loadedPages[key];
-    const PageLayout = this.getLayout(result);
+    const PageLayout = this.getLayout(page);
     return <PageLayout>
       <LoadableComponent {...props}/>
     </PageLayout>;
   };
 
-  match(location) {
-    let path = '';
-    if (app.isUrlRewrite()) {
-      path = location.pathname.substr(app.baseUrl.length);
-    } else {
-      path = '/' + app.req('r');
-    }
-    app.page = router.match(path);
-
-    // 常用字段特殊处理
-    // TODO 改为 req.id
-    if (app.page && typeof app.page.params.id !== 'undefined') {
-      app.id = app.page.params.id;
-    } else {
-      app.id = '';
-    }
-
-    return app.page;
+  async importPage(page) {
+    return page ? page.import : NotFound;
   }
 
-  async importPage(result) {
-    return result ? result.import : NotFound;
-  }
-
-  getLayout(result) {
-    if (result && typeof result.layout !== 'undefined') {
-      if (result.layout) {
+  getLayout(page) {
+    if (page && typeof page.layout !== 'undefined') {
+      if (page.layout) {
         return Loadable({
-          loader: result.layout,
+          loader: page.layout,
           loading: LoadableLoading,
         });
       } else {

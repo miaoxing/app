@@ -8,6 +8,6 @@ return new class extends BaseController {
 
     public function get()
     {
-        return suc(JsConfig::toArray());
+        return suc(['data' => JsConfig::toArray()]);
     }
 };
