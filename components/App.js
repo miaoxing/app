@@ -7,7 +7,7 @@ import {Button} from 'antd';
 import * as Sentry from '@sentry/browser';
 import $ from 'miaoxing';
 import {wei, app, event, history} from '@mxjs/app';
-import http from '@mxjs/http';
+import api from '@mxjs/api';
 import {InternalServerError, NotFound} from '@mxjs/ret';
 import {PageLoading} from '@mxjs/loading';
 import {ModalSwitch} from '@mxjs/router-modal';
@@ -122,7 +122,7 @@ export default class App extends React.Component {
   }
 
   loadConfig() {
-    return http.get('js-config').then(ret => {
+    return api.get('js-config').then(ret => {
       if (ret.code !== 1) {
         $.ret(ret);
         return;
