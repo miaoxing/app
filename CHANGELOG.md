@@ -1,3 +1,34 @@
+# [0.2.0](https://github.com/miaoxing/app/compare/v0.1.7...v0.2.0) (2020-09-01)
+
+
+### Code Refactoring
+
+* 前端控制器改为 page 模式 ([5d2f2f3](https://github.com/miaoxing/app/commit/5d2f2f3ebc88c3f2767c2ca686b82deba6e5b171))
+* 后端控制器改为 page 模式 ([7e11983](https://github.com/miaoxing/app/commit/7e1198379a6e6c631872ce3501bc2e423c70dfc1))
+* 重构 app 包，增加 Req，Url，Event 服务，统一配置 ([df7e2cd](https://github.com/miaoxing/app/commit/df7e2cd9dd40086e8bd786cf8eeebfaa16783003))
+
+
+### Features
+
+* 增加 $.http $.patch $.put $.delete 接口 ([27b73a8](https://github.com/miaoxing/app/commit/27b73a89f64ce9fa2066ed31080155f588736e99))
+* 增加 $.req $.url $.apiUrl 接口 ([0143931](https://github.com/miaoxing/app/commit/014393120110eff9723a3ecbc7a77c07ca6a2a8f))
+
+
+### BREAKING CHANGES
+
+* 重构 app 包，增加 Req，Url，Event 等服务，统一配置
+* 前端控制器改为 page 模式
+* 后端控制器改为 page 模式
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from 0.1.7 to 0.2.0
+* **@miaoxing/services:** upgrade from 0.1.7 to 0.2.0
+
 ## [0.1.7](https://github.com/miaoxing/app/compare/v0.1.6...v0.1.7) (2020-08-17)
 
 
