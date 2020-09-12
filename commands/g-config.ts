@@ -105,9 +105,14 @@ async function scanPages(name: string, rootDir: string, dir: string, pages: any 
     const fullPath = path.join(dir, file);
     if ((await fs.lstat(fullPath)).isDirectory()) {
       const result = await scanPages(name, rootDir, fullPath);
+      // Ignore empty array
       if (Object.keys(result).length > 0) {
-        // Ignore empty array
-        pages['/' + file] = result;
+        const key = '/' + file;
+        if (typeof pages[key] !== 'undefined') {
+          pages[key] = {...pages[key], ...result};
+        } else {
+          pages[key] = result;
+        }
       }
       continue;
     }
