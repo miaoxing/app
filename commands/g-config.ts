@@ -3,6 +3,7 @@ import * as glob from 'glob';
 import * as fs from 'fs-extra';
 import * as chalk from 'chalk';
 import * as path from 'path';
+import {parse} from "path-to-regexp";
 
 let command: CommandModule = {
   handler: () => {
@@ -119,8 +120,11 @@ async function scanPages(name: string, rootDir: string, dir: string, pages: any 
 
     const parsedPath = path.parse(file);
 
-    // Ignore file start with underscore
-    if (!validExts.includes(parsedPath.ext) || parsedPath.name.substr(0, 1) === '_') {
+    if (!validExts.includes(parsedPath.ext)
+      // Ignore file start with underscore
+      || parsedPath.name.substr(0, 1) === '_'
+      || parsedPath.name.substr(-5) === '.test'
+    ) {
       continue;
     }
 
