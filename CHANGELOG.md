@@ -1,3 +1,21 @@
+## [0.2.3](https://github.com/miaoxing/app/compare/v0.2.2...v0.2.3) (2020-09-25)
+
+
+### Bug Fixes
+
+* 忽略 pages 目录下的测试文件 ([de1ee17](https://github.com/miaoxing/app/commit/de1ee17c4079f1b7a3e0ed0408f2eb7726466e5a))
+* 生成页面覆盖会被其他插件覆盖 ([967e0e7](https://github.com/miaoxing/app/commit/967e0e74827b13ec7045fbe14bfa7cd0cf6ce3f7))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from 6.1.1 to 6.1.2
+* **@miaoxing/plugin:** upgrade from 0.2.2 to 0.2.3
+* **@miaoxing/services:** upgrade from 0.2.2 to 0.2.3
+
 ## [0.2.2](https://github.com/miaoxing/app/compare/v0.2.1...v0.2.2) (2020-09-06)
 
 
