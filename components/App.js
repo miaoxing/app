@@ -123,7 +123,7 @@ export default class App extends React.Component {
 
   loadConfig() {
     return api.get('js-config').then(ret => {
-      if (ret.code !== 1) {
+      if (ret.isErr()) {
         $.ret(ret);
         return;
       }
