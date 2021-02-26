@@ -3,7 +3,6 @@ import * as glob from 'glob';
 import * as fs from 'fs-extra';
 import * as chalk from 'chalk';
 import * as path from 'path';
-import {parse} from "path-to-regexp";
 
 let command: CommandModule = {
   handler: () => {
@@ -59,7 +58,7 @@ async function generateEvents(name: string) {
 
   eventFiles.forEach(file => {
     const plugin = file.split('/')[1];
-    plugins[plugin] = Symbol(`import('${file}')`);
+    plugins[plugin] = Symbol(`() => import('${file}')`);
   });
 
   // 附加事件对应关系
@@ -146,7 +145,7 @@ async function addPages(pages: any, name: string, file: string) {
     page = pages['/' + name];
   }
 
-  page['import'] = Symbol(`import('${file}')`);
+  page['import'] = Symbol(`() => import('${file}')`);
 
   const text = await fs.readFile(file, 'utf8');
 
@@ -157,7 +156,7 @@ async function addPages(pages: any, name: string, file: string) {
     if (match[1] === 'false') {
       page['layout'] = false;
     } else {
-      page['layout'] = Symbol(`import('${match[1]}')`);
+      page['layout'] = Symbol(`() => import('${match[1]}')`);
     }
   }
 
@@ -170,7 +169,7 @@ async function addPages(pages: any, name: string, file: string) {
       nextPages['/' + name] = {};
       nextPages = nextPages['/' + name];
     });
-    nextPages['import'] = Symbol(`import('${file}')`);
+    nextPages['import'] = Symbol(`() => import('${file}')`);
   }
 
   return pages;

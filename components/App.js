@@ -103,7 +103,7 @@ export default class App extends React.Component {
   };
 
   async importPage(page) {
-    return page ? page.import : NotFound;
+    return page ? page.import() : NotFound;
   }
 
   getLayout(page) {
