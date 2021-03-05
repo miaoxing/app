@@ -1,3 +1,19 @@
+## [0.2.5](https://github.com/miaoxing/app/compare/v0.2.4...v0.2.5) (2021-03-05)
+
+
+### Bug Fixes
+
+* 解决页面没有按需加载 ([e6a7663](https://github.com/miaoxing/app/commit/e6a76637cd9abdfb65b5751677f9557dc0077350))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from 0.2.4 to 0.3.0
+* **@miaoxing/services:** upgrade from 0.2.4 to 0.3.0
+
 ## [0.2.4](https://github.com/miaoxing/app/compare/v0.2.3...v0.2.4) (2020-09-27)
 
 
