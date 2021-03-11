@@ -1,4 +1,4 @@
-import $ from 'miaoxing';
+import $, {Ret} from 'miaoxing';
 
 import modal from '@mxjs/modal';
 import '@mxjs/modal/style/index.scss';
@@ -18,7 +18,7 @@ $.ret = message.ret;
 $.suc = message.success;
 $.err = message.danger;
 
-$.http = (...args) => axios(...args).then(({data}) => data);
+$.http = (...args) => axios(...args).then(({data}) => new Ret(data));
 
 $.req = req.get.bind(req);
 $.url = url.to.bind(url);
