@@ -1,6 +1,6 @@
 {
   "name": "@miaoxing/app",
-  "version": "0.2.10",
+  "version": "0.2.11",
   "private": true,
   "repository": "https://github.com/miaoxing/app",
   "license": "MIT",
@@ -16,7 +16,7 @@
     "chokidar": "^3.3.1",
     "execa": "^4.0.0",
     "globby": "^11.0.0",
-    "@miaoxing/dev": "^6.3.2",
+    "@miaoxing/dev": "^6.3.3",
     "path-to-regexp": "^1.7.0",
     "prop-types": "^15.7.2",
     "@sentry/browser": "^5.12.1",

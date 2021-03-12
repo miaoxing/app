@@ -1,3 +1,20 @@
+## [0.2.11](https://github.com/miaoxing/app/compare/v0.2.10...v0.2.11) (2021-03-12)
+
+
+### Bug Fixes
+
+* 更新前端包依赖 ([67ab67e](https://github.com/miaoxing/app/commit/67ab67e2d88189ea5c2c921b8f9dcfb5acc8f3c8))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from `6.3.2` to `6.3.3`
+* **@miaoxing/plugin:** upgrade from `0.4.1` to `0.4.2`
+* **@miaoxing/services:** upgrade from `0.3.5` to `0.3.6`
+
 ## [0.2.10](https://github.com/miaoxing/app/compare/v0.2.9...v0.2.10) (2021-03-10)
 
 
