@@ -9,7 +9,7 @@ final class IndexTest extends BaseTestCase
 {
     public function testGet()
     {
-        $res = Tester::call('/app', 'get');
+        $res = Tester::request([])->get('/app');
 
         $this->assertSame([], $res);
     }

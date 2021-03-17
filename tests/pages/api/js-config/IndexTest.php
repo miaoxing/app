@@ -9,7 +9,7 @@ class IndexTest extends BaseTestCase
 {
     public function testGet()
     {
-        $ret = Tester::call('/api/js-config', 'get');
+        $ret = Tester::request([])->get('/api/js-config');
 
         $this->assertRetSuc($ret);
 
