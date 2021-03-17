@@ -1,5 +1,3 @@
-/* global miaoxing */
-
 import React from 'react';
 import {Router, Route} from 'react-router-dom';
 import Loadable from 'react-loadable';
@@ -38,7 +36,7 @@ export default class App extends React.Component {
 
   static defaultProps = {
     configs: {
-      theme: {}
+      theme: {},
     },
 
     /**
