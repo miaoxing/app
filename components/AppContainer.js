@@ -1,4 +1,3 @@
-import {hot} from 'react-hot-loader/root';
 import React from 'react';
 import App from './App';
 import configs from 'storage/configs/app';
@@ -8,4 +7,4 @@ const AppContainer = () => {
   return (<App configs={{theme, ...configs}}/>);
 };
 
-export default hot(AppContainer);
+export default AppContainer;
