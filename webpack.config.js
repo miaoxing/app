@@ -15,9 +15,8 @@ module.exports = WebpackConfig.build({
     },
   },
   sassLoaderOptions: {
-    prependData: function () {
-      return generateBootstrapVars(theme) + `@import "plugins/${name}/scss/config";`;
-    },
+    // NOTE: 使用回调（即使返回值为空），实现使用 dart-sass 时，js 中加载的 sass 会消失不见
+    additionalData: generateBootstrapVars(theme) + `@import "plugins/${name}/scss/config";`,
   },
   getEntries() {
     return {
