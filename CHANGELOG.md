@@ -1,3 +1,20 @@
+## [0.2.13](https://github.com/miaoxing/app/compare/v0.2.12...v0.2.13) (2021-03-22)
+
+
+### Bug Fixes
+
+* 废弃 `watch-auto-completion` 命令，改为使用 `watch-php` ([3748b8b](https://github.com/miaoxing/app/commit/3748b8bd1a295779a2edac8882bf77be010b6486))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from `6.3.3` to `6.3.4`
+* **@miaoxing/plugin:** upgrade from `0.4.2` to `0.4.3`
+* **@miaoxing/services:** upgrade from `0.3.7` to `0.3.8`
+
 ## [0.2.12](https://github.com/miaoxing/app/compare/v0.2.11...v0.2.12) (2021-03-17)
 
 
