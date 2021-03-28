@@ -1,6 +1,7 @@
 {
   "name": "miaoxing/app",
   "type": "miaoxing-plugin",
+  "description": "",
   "keywords": [
     "miaoxing",
     "app"
@@ -33,6 +34,9 @@
       "plugins/{$name}/": [
         "type:miaoxing-plugin"
       ]
+    },
+    "branch-alias": {
+      "dev-develop/page": "0.x-dev"
     }
   }
 }
