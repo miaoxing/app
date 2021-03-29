@@ -34,9 +34,6 @@
       "plugins/{$name}/": [
         "type:miaoxing-plugin"
       ]
-    },
-    "branch-alias": {
-      "dev-develop/page": "0.2.x-dev"
     }
   }
 }
