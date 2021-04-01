@@ -3,6 +3,8 @@ import * as glob from 'glob';
 import * as fs from 'fs-extra';
 import * as chalk from 'chalk';
 import * as path from 'path';
+// @ts-ignore
+import * as lcfirst from 'lcfirst';
 
 let command: CommandModule = {
   handler: () => {
@@ -73,7 +75,7 @@ async function generateEvents(name: string) {
     do {
       match = regex.exec(text);
       if (match) {
-        const [, event, priority = DEFAULT_PRIORITY] = /(.+?)(\d+)?$/.exec(match[1]);
+        const [, event, priority = DEFAULT_PRIORITY] = /(.+?)(\d+)?$/.exec(lcfirst(match[1]));
         if (typeof events[event] === 'undefined') {
           events[event] = {};
         }
