@@ -9,7 +9,7 @@ import api from '@mxjs/api';
 import {InternalServerError, NotFound} from '@mxjs/ret';
 import {PageLoading} from '@mxjs/loading';
 import {ModalSwitch} from '@mxjs/router-modal';
-import {ThemeProvider} from 'emotion-theming';
+import {ThemeProvider} from '@emotion/react';
 import PropTypes from 'prop-types';
 
 const LoadableLoading = (props) => {

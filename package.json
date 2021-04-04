@@ -21,9 +21,7 @@
     "prop-types": "^15.7.2",
     "@sentry/browser": "^5.12.1",
     "react-loadable": "^5.5.0",
-    "emotion": "^10.0.27",
-    "emotion-theming": "^10.0.27",
-    "@emotion/core": "^10.0.27",
+    "@emotion/react": "^11.1.5",
     "glob": "^7.1.6"
   },
   "jest": {
