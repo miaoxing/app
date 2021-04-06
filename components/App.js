@@ -9,8 +9,8 @@ import api from '@mxjs/api';
 import {InternalServerError, NotFound} from '@mxjs/ret';
 import {PageLoading} from '@mxjs/loading';
 import {ModalSwitch} from '@mxjs/router-modal';
-import {ThemeProvider} from '@emotion/react';
 import PropTypes from 'prop-types';
+import {ThemeProvider, extendTheme} from '@chakra-ui/react';
 
 const LoadableLoading = (props) => {
   if (props.error) {
@@ -46,7 +46,7 @@ export default class App extends React.Component {
   };
 
   state = {
-    theme: this.props.configs.theme,
+    theme: {}
   };
 
   /**
@@ -68,6 +68,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state.theme = extendTheme(this.props.configs.theme);
+
     wei.setConfigs(this.props.configs);
     this.config = this.loadConfig();
     this.config.then(ret => {
@@ -77,7 +79,7 @@ export default class App extends React.Component {
 
   async componentDidMount() {
     const config = await this.config;
-    this.setState({theme: Object.assign(this.state.theme, config.theme)});
+    this.setState({theme: extendTheme(config.theme, this.state.theme)});
   }
 
   loadableComponent = (props) => {
