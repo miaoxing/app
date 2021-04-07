@@ -64,7 +64,7 @@ async function generateEvents(name: string) {
   });
 
   // 附加事件对应关系
-  const events: any = {};
+  const handlers: any = {};
   for (const file of eventFiles) {
     const plugin = file.split('/')[1];
 
@@ -76,18 +76,18 @@ async function generateEvents(name: string) {
       match = regex.exec(text);
       if (match) {
         const [, event, priority = DEFAULT_PRIORITY] = /(.+?)(\d+)?$/.exec(lcfirst(match[1]));
-        if (typeof events[event] === 'undefined') {
-          events[event] = {};
+        if (typeof handlers[event] === 'undefined') {
+          handlers[event] = {};
         }
-        if (typeof events[priority] === 'undefined') {
-          events[event][priority] = [];
+        if (typeof handlers[priority] === 'undefined') {
+          handlers[event][priority] = [];
         }
-        events[event][priority].push(plugin);
+        handlers[event][priority].push(plugin);
       }
     } while (match);
   }
 
-  return {event: {plugins, events}};
+  return {plugin: {events: {plugins, handlers}}};
 }
 
 async function scanPages(name: string, rootDir: string, dir: string, pages: any = {}): Promise<any> {
