@@ -70,7 +70,7 @@ async function generateEvents(name: string) {
 
     // NOTE: 先直接解析字符串
     const text = await fs.readFile(file, 'utf8');
-    const regex = new RegExp('\n  on(.+?)\\(', 'g');
+    const regex = new RegExp('\\s+(?:async)?\\s+on(.+?)\\(', 'g');
     let match;
     do {
       match = regex.exec(text);
