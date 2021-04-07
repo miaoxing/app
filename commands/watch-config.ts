@@ -20,6 +20,7 @@ command.handler = async () => {
   ])
     .on('add', listener)
     .on('unlink', listener)
+    .on('change', listener)
     .on('ready', () => {
       ready = true
     });
