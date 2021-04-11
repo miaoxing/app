@@ -8,6 +8,9 @@
     "test": "jest"
   },
   "dependencies": {
+    "@chakra-ui/react": "^1.4.2",
+    "@emotion/styled": "^11.1.5",
+    "framer-motion": "^4.1.2",
     "lcfirst": "^1.1.0"
   },
   "devDependencies": {
@@ -28,9 +31,5 @@
   },
   "jest": {
     "preset": "jest-preset-miaoxing"
-  },
-  "dependencies": {
-    "@chakra-ui/react": "^1.4.2",
-    "framer-motion": "^4.1.2"
   }
 }
