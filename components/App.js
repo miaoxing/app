@@ -32,7 +32,7 @@ export default class App extends React.Component {
   static propTypes = {
     configs: PropTypes.object,
     defaultLayout: PropTypes.elementType,
-  }
+  };
 
   static defaultProps = {
     configs: {
@@ -46,7 +46,7 @@ export default class App extends React.Component {
   };
 
   state = {
-    theme: {}
+    theme: {},
   };
 
   /**
