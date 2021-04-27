@@ -1,3 +1,40 @@
+# [0.3.0](https://github.com/miaoxing/app/compare/v0.2.13...v0.3.0) (2021-04-27)
+
+
+### Bug Fixes
+
+* **watch-config:** 监听修改文件更新配置 ([0c4e7d0](https://github.com/miaoxing/app/commit/0c4e7d092d827b87511f98406452c8c89fe0fb51))
+* 解析出事件名称首字母未转换为小写 ([d160534](https://github.com/miaoxing/app/commit/d160534f80106e126539e9ed2b1db1957392d0f5))
+
+
+### Code Refactoring
+
+* **app:** 调整事件的数据结构为 `{plugin: {events: {plugins, handlers}}}` ([d5345b7](https://github.com/miaoxing/app/commit/d5345b7417ab753e371a416a0355abd750f723b5))
+* 更改主题为 `@chakra-ui/react` 的 `ThemeProvider` ([a606f81](https://github.com/miaoxing/app/commit/a606f814e495c0b13eec557ec70dc03c75410b8c))
+
+
+### Features
+
+* **g-config:** 解析事件方法支持包含 `async` 关键字 ([836c77e](https://github.com/miaoxing/app/commit/836c77ef29afe9623b5f774e259c217c216171e5))
+* 升级 `emotion` 到 11 ([af0e9f5](https://github.com/miaoxing/app/commit/af0e9f572c05dc28754b33bf47da1b69296254b1))
+
+
+### BREAKING CHANGES
+
+* **app:** 调整事件的数据结构为 `{plugin: {events: {plugins, handlers}}}`
+* 更改主题为 `@chakra-ui/react` 的 `ThemeProvider`
+* 升级 `emotion` 到 11
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from `6.3.4` to `6.4.0`
+* **@miaoxing/plugin:** upgrade from `0.4.3` to `0.4.4`
+* **@miaoxing/services:** upgrade from `0.3.8` to `0.3.9`
+
 ## [0.2.13](https://github.com/miaoxing/app/compare/v0.2.12...v0.2.13) (2021-03-22)
 
 
