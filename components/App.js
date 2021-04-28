@@ -1,32 +1,15 @@
 import React from 'react';
 import {Router, Route} from 'react-router-dom';
-import Loadable from 'react-loadable';
-import {Button} from 'antd';
-import * as Sentry from '@sentry/browser';
+import loadable from '@loadable/component';
 import $ from 'miaoxing';
 import {wei, app, event, history} from '@mxjs/app';
 import api from '@mxjs/api';
-import {InternalServerError, NotFound} from '@mxjs/ret';
+import {NotFound} from '@mxjs/ret';
 import {PageLoading} from '@mxjs/loading';
 import {ModalSwitch} from '@mxjs/router-modal';
 import PropTypes from 'prop-types';
 import {ThemeProvider, extendTheme} from '@chakra-ui/react';
-
-const LoadableLoading = (props) => {
-  if (props.error) {
-    // eslint-disable-next-line no-console
-    wei.getDebug() && console.error(props.error);
-    Sentry.captureException(props.error);
-    return <InternalServerError
-      extra={<Button type="primary" onClick={props.retry}>重试</Button>}
-    />;
-  }
-  return <PageLoading/>;
-};
-LoadableLoading.propTypes = {
-  error: PropTypes.instanceOf(Error),
-  retry: PropTypes.func,
-};
+import ErrorBoundary from './ErrorBoundary';
 
 export default class App extends React.Component {
   static propTypes = {
@@ -89,16 +72,17 @@ export default class App extends React.Component {
 
     const key = props.location.pathname + props.location.search;
     if (!this.loadedPages[key]) {
-      this.loadedPages[key] = Loadable({
-        loader: () => this.importPage(page),
-        loading: LoadableLoading,
+      this.loadedPages[key] = loadable(() => this.importPage(page), {
+        fallback: <PageLoading/>,
       });
     }
 
     const LoadableComponent = this.loadedPages[key];
     const PageLayout = this.getLayout(page);
     return <PageLayout>
-      <LoadableComponent {...props}/>
+      <ErrorBoundary>
+        <LoadableComponent {...props}/>
+      </ErrorBoundary>
     </PageLayout>;
   };
 
@@ -109,9 +93,8 @@ export default class App extends React.Component {
   getLayout(page) {
     if (page && typeof page.layout !== 'undefined') {
       if (page.layout) {
-        return Loadable({
-          loader: page.layout,
-          loading: LoadableLoading,
+        return loadable(() => page.layout, {
+          fallback: <PageLoading/>,
         });
       } else {
         return React.Fragment;

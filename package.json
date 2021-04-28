@@ -10,6 +10,7 @@
   "dependencies": {
     "@chakra-ui/react": "^1.4.2",
     "@emotion/styled": "^11.1.5",
+    "@loadable/component": "^5.14.1",
     "framer-motion": "^4.1.2",
     "lcfirst": "^1.1.0"
   },
@@ -26,8 +27,7 @@
     "path-to-regexp": "^1.7.0",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-loadable": "^5.5.0"
+    "react-dom": "^16.13.1"
   },
   "jest": {
     "preset": "jest-preset-miaoxing"
