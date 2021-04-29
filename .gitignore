@@ -6,6 +6,7 @@
 /coverage/
 /yarn.lock
 /yarn-error.log
+/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 
 # php
 /vendor/
@@ -14,8 +15,10 @@ phpunit.xml
 .php_cs.cache
 .phpunit.result.cache
 
+# php-coveralls
+/build/logs/clover.xml
+
 # miaoxing
-/plugins/
 /storage/
 /tests/config-local.php
 
