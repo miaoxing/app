@@ -1,7 +1,7 @@
 {
   "name": "miaoxing/app",
   "type": "miaoxing-plugin",
-  "description": "",
+  "description": "Miaoxing App Plugin",
   "keywords": [
     "miaoxing",
     "app"
