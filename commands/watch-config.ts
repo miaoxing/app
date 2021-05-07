@@ -2,10 +2,7 @@ import {CommandModule} from 'yargs';
 import * as chokidar from 'chokidar';
 import {generate} from './g-config';
 
-let command: CommandModule = {
-  handler: () => {
-  }
-};
+const command: Partial<CommandModule> = {};
 
 command.command = 'watch-config';
 
@@ -16,13 +13,13 @@ command.handler = async () => {
 
   chokidar.watch([
     'plugins/*/pages/**',
-    'plugins/*/events/**'
+    'plugins/*/events/**',
   ])
     .on('add', listener)
     .on('unlink', listener)
     .on('change', listener)
     .on('ready', () => {
-      ready = true
+      ready = true;
     });
 
   function listener(path: string) {
@@ -34,6 +31,6 @@ command.handler = async () => {
     const type = path.split('/')[3] === 'admin' ? 'admin' : 'app';
     generate(type);
   }
-}
+};
 
 export default command;

@@ -1,15 +1,34 @@
-import {CommandModule} from 'yargs';
+import {Arguments, CommandModule} from 'yargs';
 import * as glob from 'glob';
 import * as fs from 'fs-extra';
 import * as chalk from 'chalk';
 import * as path from 'path';
-// @ts-ignore
+// @ts-ignore 缺少类型声明
 import * as lcfirst from 'lcfirst';
 
-let command: CommandModule = {
-  handler: () => {
+interface GConfigArgv extends Arguments {
+  type: string
+}
+
+interface Plugins {
+  [key: string]: symbol
+}
+
+interface Handlers {
+  [key: string]: {
+    [key: string]: string[]
   }
-};
+}
+
+interface Pages {
+  index?: boolean
+  import?: symbol
+  layout?: symbol | false
+
+  [key: string]: boolean | symbol | string | this
+}
+
+const command: Partial<CommandModule> = {};
 
 command.command = 'g-config [type]';
 
@@ -22,13 +41,13 @@ command.builder = {
   },
 };
 
-command.handler = async (argv: any) => {
+command.handler = async (argv: GConfigArgv) => {
   await generate(argv.type);
-}
+};
 
 const validExts = ['.js', '.ts', '.tsx'];
 
-async function generate(name: string) {
+async function generate(name: string): Promise<void> {
   const content = 'export default ' + varExport(Object.assign(
     await generatePages(name),
     await generateEvents(name)
@@ -42,7 +61,7 @@ let pageCount = 0;
 async function generatePages(name: string) {
   pageCount = 0;
   let pages = {};
-  const dirs = glob.sync(`plugins/*/pages`);
+  const dirs = glob.sync('plugins/*/pages');
   for (const dir of dirs) {
     pages = await scanPages(name, dir, dir, pages);
   }
@@ -54,7 +73,7 @@ async function generatePages(name: string) {
 async function generateEvents(name: string) {
   const DEFAULT_PRIORITY = 100;
 
-  const plugins: any = {};
+  const plugins: Plugins = {};
   const eventFiles = glob.sync(`plugins/*/events/${name === 'admin' ? 'admin/' : ''}events.js`);
   console.log(chalk.green(`Founds ${eventFiles.length} event files.`));
 
@@ -64,7 +83,7 @@ async function generateEvents(name: string) {
   });
 
   // 附加事件对应关系
-  const handlers: any = {};
+  const handlers: Handlers = {};
   for (const file of eventFiles) {
     const plugin = file.split('/')[1];
 
@@ -90,7 +109,7 @@ async function generateEvents(name: string) {
   return {plugin: {events: {plugins, handlers}}};
 }
 
-async function scanPages(name: string, rootDir: string, dir: string, pages: any = {}): Promise<any> {
+async function scanPages(name: string, rootDir: string, dir: string, pages: Pages = {}): Promise<Pages> {
   const files = await fs.readdir(dir);
 
   for (const file of files) {
@@ -111,7 +130,7 @@ async function scanPages(name: string, rootDir: string, dir: string, pages: any 
       if (Object.keys(result).length > 0) {
         const key = '/' + file;
         if (typeof pages[key] !== 'undefined') {
-          pages[key] = {...pages[key], ...result};
+          pages[key] = {...pages[key] as Pages, ...result};
         } else {
           pages[key] = result;
         }
@@ -135,16 +154,16 @@ async function scanPages(name: string, rootDir: string, dir: string, pages: any 
   return pages;
 }
 
-async function addPages(pages: any, name: string, file: string) {
+async function addPages(pages: Pages, name: string, file: string) {
   pageCount++;
 
-  let page;
+  let page: Pages;
   if (name === 'index') {
     page = pages;
     page['index'] = true;
   } else {
     pages['/' + name] = {};
-    page = pages['/' + name];
+    page = pages['/' + name] as Pages;
   }
 
   page['import'] = Symbol(`() => import('${file}')`);
@@ -152,6 +171,7 @@ async function addPages(pages: any, name: string, file: string) {
   const text = await fs.readFile(file, 'utf8');
 
   // 读取布局配置
+  // eslint-disable-next-line no-control-regex
   const regex = new RegExp('\n \\* @layout (.+?)\n');
   const match = regex.exec(text);
   if (match) {
@@ -163,13 +183,14 @@ async function addPages(pages: any, name: string, file: string) {
   }
 
   // 读取共用配置
+  // eslint-disable-next-line no-control-regex
   const shareRegex = new RegExp('\n \\* @share (.+?)\n');
   const shareMatch = shareRegex.exec(text);
   if (shareMatch) {
     let nextPages = pages;
     shareMatch[1].split('/').forEach(name => {
       nextPages['/' + name] = {};
-      nextPages = nextPages['/' + name];
+      nextPages = nextPages['/' + name] as Pages;
     });
     nextPages['import'] = Symbol(`() => import('${file}')`);
   }
@@ -177,25 +198,29 @@ async function addPages(pages: any, name: string, file: string) {
   return pages;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function varExport(variable: any, indent = '', level = 0) {
   const nextLevel = level + 1;
   switch (Object.prototype.toString.call(variable)) {
     case '[object String]':
       return `'${variable}'`;
 
-    case '[object Object]':
-      let result: string[] = [];
+    case '[object Object]': {
+      const result: string[] = [];
       Object.keys(variable).forEach(key => {
         result.push(indent + '  ' + varExport(key) + ': ' + varExport(variable[key], `${indent}  `, nextLevel) + ',');
       });
-      return `{\n${result.join("\n")}\n${indent}}`;
+      return `{\n${result.join('\n')}\n${indent}}`;
+    }
 
-    case '[object Array]':
-      let array: string[] = [];
+    case '[object Array]': {
+      const array: string[] = [];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       variable.forEach((value: any) => {
         array.push(varExport(value));
       });
       return `[${array.join(', ')}]`;
+    }
 
     case '[object Symbol]':
       return variable.description;
