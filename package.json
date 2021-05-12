@@ -1,6 +1,6 @@
 {
   "name": "@miaoxing/app",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "private": true,
   "repository": "https://github.com/miaoxing/app",
   "license": "MIT",
@@ -15,7 +15,7 @@
     "lcfirst": "^1.1.0"
   },
   "devDependencies": {
-    "@miaoxing/dev": "^7.0.0",
+    "@miaoxing/dev": "^7.0.1",
     "@sentry/browser": "^5.12.1",
     "@types/execa": "^2.0.0",
     "chalk": "^4.0.0",
