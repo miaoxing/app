@@ -98,7 +98,7 @@ async function generateEvents(name: string) {
         if (typeof handlers[event] === 'undefined') {
           handlers[event] = {};
         }
-        if (typeof handlers[priority] === 'undefined') {
+        if (typeof handlers[event][priority] === 'undefined') {
           handlers[event][priority] = [];
         }
         handlers[event][priority].push(plugin);
