@@ -1,3 +1,19 @@
+## [0.3.3](https://github.com/miaoxing/app/compare/v0.3.2...v0.3.3) (2021-05-21)
+
+
+### Bug Fixes
+
+* **g-config:** 构造对象错误 ([362f7de](https://github.com/miaoxing/app/commit/362f7de44c4a93318ba8daf9e52e83995f1e7929))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.4.6` to `0.4.7`
+* **@miaoxing/services:** upgrade from `0.3.11` to `0.3.12`
+
 ## [0.3.2](https://github.com/miaoxing/app/compare/v0.3.1...v0.3.2) (2021-05-12)
 
 
