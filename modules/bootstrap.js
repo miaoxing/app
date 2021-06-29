@@ -18,7 +18,10 @@ $.ret = message.ret;
 $.suc = message.success;
 $.err = message.danger;
 
-$.http = (...args) => axios(...args).then(({data}) => new Ret(data));
+$.http = (...args) => axios(...args).then(res => {
+  res.ret = new Ret(res.data);
+  return res;
+});
 
 $.req = req.get.bind(req);
 $.url = url.to.bind(url);
