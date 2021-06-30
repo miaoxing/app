@@ -105,7 +105,7 @@ export default class App extends React.Component {
   }
 
   loadConfig() {
-    return api.get('js-config').then(ret => {
+    return api.get('js-config').then(({ret}) => {
       if (ret.isErr()) {
         $.ret(ret);
         return;
