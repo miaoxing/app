@@ -1,4 +1,3 @@
-import React from 'react';
 import App from './App';
 import configs from 'storage/configs/app';
 import theme from '@mxjs/style/theme-preset';
