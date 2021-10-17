@@ -3,13 +3,15 @@
 /**
  * @property    Miaoxing\App\Service\JsConfig $jsConfig
  */
-class JsConfigMixin {
+class JsConfigMixin
+{
 }
 
 /**
  * @mixin JsConfigMixin
  */
-class AutoCompletion {
+class AutoCompletion
+{
 }
 
 /**
@@ -17,7 +19,7 @@ class AutoCompletion {
  */
 function wei()
 {
-    return new AutoCompletion;
+    return new AutoCompletion();
 }
 
 /** @var Miaoxing\App\Service\JsConfig $jsConfig */

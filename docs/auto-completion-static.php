@@ -16,14 +16,14 @@ class JsConfig
 namespace Miaoxing\App\Service;
 
 if (0) {
-class JsConfig
-{
-    /**
-     * @return array
-     * @see JsConfig::toArray
-     */
-    public function toArray()
+    class JsConfig
     {
+        /**
+         * @return array
+         * @see JsConfig::toArray
+         */
+        public function toArray()
+        {
+        }
     }
-}
 }
