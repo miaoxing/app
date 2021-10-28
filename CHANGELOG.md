@@ -1,3 +1,31 @@
+# [0.4.0](https://github.com/miaoxing/app/compare/v0.3.3...v0.4.0) (2021-10-28)
+
+
+### Code Refactoring
+
+* **$.http:** `$.http` 改为返回原始 `response` 对象，其中包含 `ret` 对象 ([896529e](https://github.com/miaoxing/app/commit/896529ee14b8d62782add16b5575f9c486efc20a))
+
+
+### Features
+
+* 更新 `react` 到 17 ([12a5c89](https://github.com/miaoxing/app/commit/12a5c89c00d34e6dc4e5094369988adebf6eb0a9))
+
+
+### BREAKING CHANGES
+
+* 更新 `react` 到 17
+* **$.http:** `$.http` 改为返回原始 `response` 对象，其中包含 `ret` 对象
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from `7.0.1` to `8.0.0`
+* **@miaoxing/plugin:** upgrade from `0.4.7` to `0.5.0`
+* **@miaoxing/services:** upgrade from `0.3.12` to `0.4.0`
+
 ## [0.3.3](https://github.com/miaoxing/app/compare/v0.3.2...v0.3.3) (2021-05-21)
 
 
