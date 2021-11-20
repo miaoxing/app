@@ -4,14 +4,55 @@ import modal from '@mxjs/modal';
 import '@mxjs/modal/style/index.scss';
 
 import {message} from 'antd';
-import message2 from 'react-bootstrap-message/js/react-bootstrap-message';
-import 'react-bootstrap-message/scss/react-bootstrap-message.scss';
 
 import axios from '@mxjs/axios';
 
 import {req, url} from '@mxjs/app';
+import {isValidElement} from 'react';
 
-$.loading = message2.loading;
+const loadingOptions = {
+  content: '加载中...',
+};
+
+let count = 0;
+let loading;
+
+function showLoading() {
+  count++;
+  if (count === 1) {
+    loading = message.loading({content: loadingOptions.content});
+  }
+}
+
+function hideLoading() {
+  if (!loading) {
+    return;
+  }
+
+  if (count > 0) {
+    count--;
+  }
+  if (count === 0) {
+    loading();
+  }
+}
+
+$.loading = (options) => {
+  switch (options) {
+    case 'show':
+      return showLoading();
+
+    case 'hide':
+      return hideLoading();
+
+    default:
+      if (typeof options === 'string' || isValidElement(options)) {
+        options = {content: options};
+      }
+      return message.loading({...loadingOptions, ...options});
+  }
+};
+
 $.alert = (message, fn) => modal.alert(message).then(fn);
 $.confirm = (message, fn) => modal(message).then(fn);
 
