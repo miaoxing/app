@@ -1,14 +1,8 @@
-import $, {Ret} from 'miaoxing';
-
-import modal from '@mxjs/modal';
-import '@mxjs/modal/style/index.scss';
-
-import {message} from 'antd';
-
-import axios from '@mxjs/axios';
-
-import {req, url} from '@mxjs/app';
 import {isValidElement} from 'react';
+import $, {Ret} from 'miaoxing';
+import {message, Modal} from 'antd';
+import axios from '@mxjs/axios';
+import {req, url} from '@mxjs/app';
 
 const loadingOptions = {
   content: '加载中...',
@@ -53,8 +47,58 @@ $.loading = (options) => {
   }
 };
 
-$.alert = (message, fn) => modal.alert(message).then(fn);
-$.confirm = (message, fn) => modal(message).then(fn);
+function confirm(config, type = 'confirm') {
+  if (typeof config.content === 'undefined') {
+    config = {content: config};
+  }
+
+  let currentConfig = addPromise({...config, show: true});
+
+  let ok;
+  let cancel;
+  let callback;
+  const result = new Promise(resolve => {
+    callback = resolve;
+  });
+  result.ok = fn => {
+    ok = fn;
+    return result;
+  };
+  result.cancel = fn => {
+    cancel = fn;
+    return result;
+  };
+
+  function addPromise(config) {
+    const onOk = config.onOk;
+    config.onOk = () => {
+      callback(true);
+      const result = ok && ok();
+      const result2 = onOk && onOk();
+      return result || result2;
+    };
+
+    const onCancel = config.onCancel;
+    config.onCancel = () => {
+      callback(false);
+      const result = cancel && cancel();
+      const result2 = onCancel && onCancel();
+      return result || result2;
+    };
+
+    return config;
+  }
+
+  const confirmResult = Modal[type](currentConfig);
+
+  result.destroy = confirmResult.destroy;
+  result.update = confirmResult.update;
+
+  return result;
+}
+
+$.alert = (message, fn) => confirm(message, 'info').then(fn);
+$.confirm = (message, fn) => confirm(message).then(fn);
 
 $.suc = message.success;
 $.err = message.error;
