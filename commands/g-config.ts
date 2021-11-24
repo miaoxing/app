@@ -77,7 +77,7 @@ async function generateEvents(name: string) {
   const eventFiles = glob.sync(`plugins/*/events/${name === 'admin' ? 'admin/' : ''}events.js`);
   console.log(chalk.green(`Founds ${eventFiles.length} event files.`));
 
-  eventFiles.forEach(file => {
+  eventFiles.forEach((file: string) => {
     const plugin = file.split('/')[1];
     plugins[plugin] = Symbol(`() => import('${file}')`);
   });
