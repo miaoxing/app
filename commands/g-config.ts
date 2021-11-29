@@ -113,6 +113,11 @@ async function scanPages(name: string, rootDir: string, dir: string, pages: Page
   const files = await fs.readdir(dir);
 
   for (const file of files) {
+    // 忽略移动端目录，由 taro-plugin-miaoxing 去生成
+    if ('m' === file) {
+      continue;
+    }
+
     // 首级目录区分 app 和 admin
     if (rootDir === dir) {
       if (name === 'admin' && file !== 'admin') {
