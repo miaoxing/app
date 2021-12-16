@@ -10,6 +10,7 @@ import {ModalSwitch} from '@mxjs/router-modal';
 import PropTypes from 'prop-types';
 import {ThemeProvider, extendTheme} from '@chakra-ui/react';
 import ErrorBoundary from './ErrorBoundary';
+import {ConfigProvider} from './ConfigContext';
 
 export default class App extends React.Component {
   static propTypes = {
@@ -30,6 +31,9 @@ export default class App extends React.Component {
 
   state = {
     theme: {},
+    config: {
+      page: {},
+    },
   };
 
   /**
@@ -57,6 +61,10 @@ export default class App extends React.Component {
     this.config = this.loadConfig();
     this.config.then(ret => {
       wei.setConfigs(ret.data);
+      this.setState({
+        config: ret.data,
+      });
+      document.title = ret.data.page.title;
     });
   }
 
@@ -118,13 +126,15 @@ export default class App extends React.Component {
     const Component = this.loadableComponent;
 
     return (
-      <ThemeProvider theme={this.state.theme}>
-        <Router history={history}>
-          <ModalSwitch>
-            <Route component={Component}/>
-          </ModalSwitch>
-        </Router>
-      </ThemeProvider>
+      <ConfigProvider value={this.state.config}>
+        <ThemeProvider theme={this.state.theme}>
+          <Router history={history}>
+            <ModalSwitch>
+              <Route component={Component}/>
+            </ModalSwitch>
+          </Router>
+        </ThemeProvider>
+      </ConfigProvider>
     );
   }
 }
