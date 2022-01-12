@@ -4,6 +4,9 @@
   "private": true,
   "repository": "https://github.com/miaoxing/app",
   "license": "MIT",
+  "workspaces": [
+    "plugins/*"
+  ],
   "scripts": {
     "test": "jest"
   },
