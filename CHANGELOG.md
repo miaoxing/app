@@ -1,3 +1,36 @@
+# [0.5.0](https://github.com/miaoxing/app/compare/v0.4.0...v0.5.0) (2022-01-12)
+
+
+### Bug Fixes
+
+* **app:** 解决 ts 运行失败 ([0255997](https://github.com/miaoxing/app/commit/0255997d0dc9b785a23e0670a5038ccb3974df28))
+* **app, g-config:** 生成页面时忽略移动端目录 ([0c19a09](https://github.com/miaoxing/app/commit/0c19a09a0cc39b41e26cb66a1100ff15f0212e14))
+
+
+### Features
+
+* **app:** `$.ret` 提示改为 antd 的 message 组件 ([837247a](https://github.com/miaoxing/app/commit/837247ae4a0454cbf0eb96bc19287d2b481fa812))
+* **app:** 启动时加载配置 ([64256bd](https://github.com/miaoxing/app/commit/64256bdf99d000fea5c2544b3c39285ca3829e90))
+* **app:** 增加 `ConfigProvider` 组件，允许访问后台返回的配置 ([96e9b06](https://github.com/miaoxing/app/commit/96e9b06a7c1bd8ed5113c2ee1a2cf276f69d7b09))
+* **app:** 更改 `$.alert` 和 `$.confirm` 为 antd 的 Modal 组件 ([240ad40](https://github.com/miaoxing/app/commit/240ad403d737c37a507a28fbd25e09c257f15c66))
+* **app:** 更改 `$.loading` 为 antd 的 message 组件 ([745ad95](https://github.com/miaoxing/app/commit/745ad9505195998e485c2f46ff3131a1cfdff363))
+* **webpack:** 改为通过 `HtmlWebpackPlugin` 生成静态首页，移除 `WebpackManifestPlugin` 生成的映射表 ([9fbf413](https://github.com/miaoxing/app/commit/9fbf4132c753ca7d556c649fa828bce2bf5f1991))
+
+
+### BREAKING CHANGES
+
+* **webpack:** 改为通过 `HtmlWebpackPlugin` 生成静态首页，移除 `WebpackManifestPlugin` 生成的映射表
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from `8.0.0` to `8.0.1`
+* **@miaoxing/plugin:** upgrade from `0.5.0` to `0.6.0`
+* **@miaoxing/services:** upgrade from `0.4.0` to `0.4.1`
+
 # [0.4.0](https://github.com/miaoxing/app/compare/v0.3.3...v0.4.0) (2021-10-28)
 
 
