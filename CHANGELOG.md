@@ -1,3 +1,24 @@
+# [0.6.0](https://github.com/miaoxing/app/compare/v0.5.1...v0.6.0) (2022-02-28)
+
+
+### Code Refactoring
+
+* **app:** 用户端加载默认前端资源 ([17fd8d6](https://github.com/miaoxing/app/commit/17fd8d655921ef118c75c47f24096f63f99940d3))
+
+
+### BREAKING CHANGES
+
+* **app:** 用户端加载默认前端资源
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.7.0` to `0.7.1`
+* **@miaoxing/services:** upgrade from `0.4.2` to `0.5.0`
+
 ## [0.5.1](https://github.com/miaoxing/app/compare/v0.5.0...v0.5.1) (2022-02-05)
 
 
