@@ -78,7 +78,7 @@ export default class App extends React.Component {
 
     event.trigger('pageLoad', props);
 
-    const key = props.location.pathname + props.location.search;
+    const key = props.location.pathname.replace(/\/+$/, '') + props.location.search;
     if (!this.loadedPages[key]) {
       this.loadedPages[key] = loadable(() => this.importPage(page), {
         fallback: <PageLoading/>,
