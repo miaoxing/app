@@ -1,3 +1,19 @@
+## [0.6.1](https://github.com/miaoxing/app/compare/v0.6.0...v0.6.1) (2022-03-04)
+
+
+### Bug Fixes
+
+* 处理路径时，兼容结尾有 `/` 的情况 ([2dd4677](https://github.com/miaoxing/app/commit/2dd4677607f9bd59db0517fed254c3e1adf1a60d))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.7.1` to `0.8.0`
+* **@miaoxing/services:** upgrade from `0.5.0` to `0.5.1`
+
 # [0.6.0](https://github.com/miaoxing/app/compare/v0.5.1...v0.6.0) (2022-02-28)
 
 
