@@ -6,6 +6,7 @@ import {req, url} from '@mxjs/app';
 
 const loadingOptions = {
   content: '加载中...',
+  duration: 0,
 };
 
 let count = 0;
