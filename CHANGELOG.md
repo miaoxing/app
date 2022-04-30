@@ -1,3 +1,19 @@
+## [0.6.3](https://github.com/miaoxing/app/compare/v0.6.2...v0.6.3) (2022-04-30)
+
+
+### Bug Fixes
+
+* **u, app:** 解决接口超过 3s 时，`$.loading` 会自动消失 ([328814f](https://github.com/miaoxing/app/commit/328814fb4146a0724ede36f458d3c34c5d6f5360))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.8.1` to `0.8.2`
+* **@miaoxing/services:** upgrade from `0.5.2` to `0.5.3`
+
 ## [0.6.2](https://github.com/miaoxing/app/compare/v0.6.1...v0.6.2) (2022-03-31)
 
 
