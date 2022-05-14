@@ -35,6 +35,7 @@ class JsConfig extends BaseService
             ],
             'app' => [
                 'pluginIds' => $this->app->getModel()->pluginIds,
+                'isDemo' => $this->app->isDemo(),
                 // @experimental
                 'pageMap' => $this->pageMap,
             ],
