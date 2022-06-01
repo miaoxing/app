@@ -1,3 +1,20 @@
+## [0.6.4](https://github.com/miaoxing/app/compare/v0.6.3...v0.6.4) (2022-06-01)
+
+
+### Features
+
+* **app:** 返回前台配置增加是否演示模式 ([5e33f5a](https://github.com/miaoxing/app/commit/5e33f5a9b164c62859d7307718986d262bc91649))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from `8.1.0` to `8.1.1`
+* **@miaoxing/plugin:** upgrade from `0.8.2` to `0.8.3`
+* **@miaoxing/services:** upgrade from `0.5.3` to `0.5.4`
+
 ## [0.6.3](https://github.com/miaoxing/app/compare/v0.6.2...v0.6.3) (2022-04-30)
 
 
