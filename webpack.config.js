@@ -6,7 +6,6 @@ const name = 'index';
 
 module.exports = WebpackConfig.build({
   name,
-  manifest: true,
   lessLoaderOptions: {
     lessOptions: {
       modifyVars: generateAntdVars(theme),
