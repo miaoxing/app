@@ -14,14 +14,6 @@ class AppPlugin extends \Miaoxing\Plugin\BasePlugin
 
     protected $code = 202;
 
-    public function onAdminNavGetNavs(&$navs, &$categories, &$subCategories)
-    {
-        $categories['app'] = [
-            'name' => '网站',
-            'sort' => 1000,
-        ];
-    }
-
     public function onLinkToGetLinks(&$links, &$types)
     {
         $types['site'] = [
