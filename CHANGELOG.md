@@ -1,3 +1,20 @@
+## [0.6.5](https://github.com/miaoxing/app/compare/v0.6.4...v0.6.5) (2022-07-01)
+
+
+### Features
+
+* **app, experimental:** 增加 `$.fullUrl` 的实现 ([2824acd](https://github.com/miaoxing/app/commit/2824acd80d47740129f4f6002faee5f73a8e480a))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from `8.1.1` to `8.1.2`
+* **@miaoxing/plugin:** upgrade from `0.8.3` to `0.8.4`
+* **@miaoxing/services:** upgrade from `0.5.4` to `0.5.5`
+
 ## [0.6.4](https://github.com/miaoxing/app/compare/v0.6.3...v0.6.4) (2022-06-01)
 
 
