@@ -3,6 +3,7 @@
 namespace Miaoxing\App;
 
 use Miaoxing\App\Middleware\CheckAppStatus;
+use Miaoxing\Plugin\BasePage;
 use Miaoxing\Services\Middleware\Auth;
 use Wei\BaseController;
 
@@ -41,6 +42,11 @@ class AppPlugin extends \Miaoxing\Plugin\BasePlugin
         if (0 === strpos($this->app->getController(), 'admin/')) {
             $controller->middleware(CheckAppStatus::class);
         }
+    }
+
+    public function onPageInit(BasePage $page)
+    {
+        $this->onControllerInit($page);
     }
 
     public function onBeforeScript()
