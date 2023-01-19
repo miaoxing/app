@@ -5,6 +5,7 @@ import * as chalk from 'chalk';
 import * as path from 'path';
 // @ts-ignore 缺少类型声明
 import * as lcfirst from 'lcfirst';
+import * as _ from 'lodash';
 
 interface GConfigArgv extends Arguments {
   type: string
@@ -135,7 +136,7 @@ async function scanPages(name: string, rootDir: string, dir: string, pages: Page
       if (Object.keys(result).length > 0) {
         const key = '/' + file;
         if (typeof pages[key] !== 'undefined') {
-          pages[key] = {...pages[key] as Pages, ...result};
+          pages[key] = _.merge(pages[key], result);
         } else {
           pages[key] = result;
         }
