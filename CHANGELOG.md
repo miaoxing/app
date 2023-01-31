@@ -1,3 +1,24 @@
+## [0.6.13](https://github.com/miaoxing/app/compare/v0.6.12...v0.6.13) (2023-01-31)
+
+
+### Bug Fixes
+
+* **app:** `g-config` 生成页面支持合并多级目录 ([bd1aa36](https://github.com/miaoxing/app/commit/bd1aa368caa909756827b8b80e4a288e334ebfff))
+
+
+### Features
+
+* **app:** 支持 `pageInit` 事件 ([86acd94](https://github.com/miaoxing/app/commit/86acd942ae051565effc089c531cd27fe83291c6))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.10.0` to `0.10.1`
+* **@miaoxing/services:** upgrade from `0.6.5` to `0.6.6`
+
 ## [0.6.12](https://github.com/miaoxing/app/compare/v0.6.11...v0.6.12) (2023-01-01)
 
 
