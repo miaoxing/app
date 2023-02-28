@@ -4,17 +4,11 @@ namespace Miaoxing\App\Service;
 
 use Miaoxing\Admin\Service\GroupModel;
 use Miaoxing\App\Metadata\UserTrait;
+use Miaoxing\App\Model\BelongsToGroupTrait;
 use Miaoxing\Plugin\Service\UserModel as BaseUserModel;
 
-/**
- * @property GroupModel $group
- */
 class UserModel extends BaseUserModel
 {
+    use BelongsToGroupTrait;
     use UserTrait;
-
-    public function group()
-    {
-        return $this->hasOne(GroupModel::class, 'id', 'groupId');
-    }
 }
