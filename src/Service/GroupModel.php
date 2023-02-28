@@ -46,7 +46,7 @@ use Wei\Ret;
  *   type="string",
  *   description="创建时间"
  * )
- *  @OA\Property(
+ * @OA\Property(
  *   property="updatedBy",
  *   type="string",
  *   description="更新用户编号"
@@ -68,15 +68,6 @@ class GroupModel extends BaseModel
     use SnowflakeTrait;
     use SoftDeleteTrait;
 
-    protected $attributes = [
-        'sort' => 50,
-    ];
-
-    /**
-     * @var GroupModel|GroupModel[]
-     */
-    protected $parents;
-
     public function parent(): self
     {
         return $this->hasOne(static::class, 'id', 'parentId');
@@ -85,47 +76,6 @@ class GroupModel extends BaseModel
     public function children(): self
     {
         return $this->hasMany(static::class, 'parentId')->desc('sort');
-    }
-
-    public function afterSave()
-    {
-        wei()->cache->delete('groups:' . wei()->app->getId());
-    }
-
-    public function afterDestroy()
-    {
-        wei()->cache->delete('groups:' . wei()->app->getId());
-    }
-
-    public function getFullName()
-    {
-        return implode('-', array_reverse($this->getParents()->getAll('name')));
-    }
-
-    /**
-     * 获取分组的所有上级分组
-     *
-     * @return GroupModel|GroupModel[]
-     * @throws \Exception
-     */
-    public function getParents()
-    {
-        if (!$this->parents) {
-            $groups = wei()->group->getGroupsFromCache();
-
-            $parents = wei()->groupModel()->beColl();
-            $parents[] = $this;
-
-            $group = $this;
-            while ($group->parentId) {
-                $group = $groups[$group->parentId];
-                $parents[] = $group;
-            }
-
-            $this->parents = $parents;
-        }
-
-        return $this->parents;
     }
 
     public function checkDestroy(): Ret
