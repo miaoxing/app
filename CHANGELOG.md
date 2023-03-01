@@ -1,3 +1,30 @@
+# [0.7.0](https://github.com/miaoxing/app/compare/v0.6.13...v0.7.0) (2023-03-01)
+
+
+### Code Refactoring
+
+* **app:** `UserModel` 的 `group` 关联改为引入 `BelongsToGroupTrait` ([9e55daf](https://github.com/miaoxing/app/commit/9e55daf526248113f76e09643407ae7d96345c56))
+
+
+### Features
+
+* 分组功能从 `admin` 插件迁移到 `app` 插件中 ([61af12e](https://github.com/miaoxing/app/commit/61af12e9422e0f4edf1132540ac13471d5035ec2))
+* **app:** 增加 `UserModel` 服务 ([1c395cc](https://github.com/miaoxing/app/commit/1c395cc1ef658bc855d92a32ef53cb7c3a272b18))
+
+
+### BREAKING CHANGES
+
+* **app:** `UserModel::group()` 增加返回类型
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.10.1` to `0.11.0`
+* **@miaoxing/services:** upgrade from `0.6.6` to `0.6.7`
+
 ## [0.6.13](https://github.com/miaoxing/app/compare/v0.6.12...v0.6.13) (2023-01-31)
 
 
