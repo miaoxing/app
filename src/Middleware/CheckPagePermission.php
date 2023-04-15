@@ -14,6 +14,7 @@ class CheckPagePermission extends BaseMiddleware
             return $next();
         }
 
+        /** @phpstan-ignore-next-line Call to an undefined method */
         $ret = User::cur()->checkPagePermission($this->req->getMethod(), $this->req->getPathInfo());
         if ($ret->isErr()) {
             return $ret;
