@@ -1,3 +1,19 @@
+## [0.7.1](https://github.com/miaoxing/app/compare/v0.7.0...v0.7.1) (2023-04-15)
+
+
+### Features
+
+* **app:** 增加权限相关功能和接口 ([a2e5083](https://github.com/miaoxing/app/commit/a2e50831c3e828197514fc449439c1929bc58898))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.11.0` to `0.11.1`
+* **@miaoxing/services:** upgrade from `0.6.7` to `0.7.0`
+
 # [0.7.0](https://github.com/miaoxing/app/compare/v0.6.13...v0.7.0) (2023-03-01)
 
 
