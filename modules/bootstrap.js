@@ -15,7 +15,7 @@ let loading;
 function showLoading() {
   count++;
   if (count === 1) {
-    loading = message.loading({content: loadingOptions.content});
+    loading = message.loading({content: loadingOptions.content, duration: loadingOptions.duration});
   }
 }
 
