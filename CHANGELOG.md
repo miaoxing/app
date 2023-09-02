@@ -1,3 +1,20 @@
+## [0.7.6](https://github.com/miaoxing/app/compare/v0.7.5...v0.7.6) (2023-09-02)
+
+
+### Bug Fixes
+
+* **app:** `$.loading` 超过 3 秒后自动消失 ([0ef23e2](https://github.com/miaoxing/app/commit/0ef23e22781e3bca653a8da29a0cb2a838a96bd6))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from `8.2.2` to `8.2.3`
+* **@miaoxing/plugin:** upgrade from `0.12.2` to `0.13.0`
+* **@miaoxing/services:** upgrade from `0.7.4` to `0.7.5`
+
 ## [0.7.5](https://github.com/miaoxing/app/compare/v0.7.4...v0.7.5) (2023-07-31)
 
 
