@@ -3,6 +3,7 @@
 namespace Miaoxing\App;
 
 use Miaoxing\App\Middleware\CheckAppStatus;
+use Miaoxing\App\Middleware\LogRequest;
 use Miaoxing\Plugin\BasePage;
 use Miaoxing\Services\Middleware\Auth;
 use Wei\BaseController;
@@ -37,6 +38,7 @@ class AppPlugin extends \Miaoxing\Plugin\BasePlugin
     public function onControllerInit(BaseController $controller)
     {
         $controller->middleware(Auth::class);
+        $controller->middleware(LogRequest::class);
 
         // 除去 admin/login 页面
         if (0 === strpos($this->app->getController(), 'admin/')) {
