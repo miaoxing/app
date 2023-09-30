@@ -1,3 +1,19 @@
+## [0.7.7](https://github.com/miaoxing/app/compare/v0.7.6...v0.7.7) (2023-09-30)
+
+
+### Features
+
+* **app, experimental:** 记录请求日志 ([8de25f0](https://github.com/miaoxing/app/commit/8de25f0df196b1bb6855958f479111af947ea9d7))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.13.0` to `0.13.1`
+* **@miaoxing/services:** upgrade from `0.7.5` to `0.8.0`
+
 ## [0.7.6](https://github.com/miaoxing/app/compare/v0.7.5...v0.7.6) (2023-09-02)
 
 
