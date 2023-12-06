@@ -342,6 +342,19 @@ class GroupModel
     }
 
     /**
+     * Check if the query has result
+     *
+     * @param mixed|null $column
+     * @param mixed|null $operator
+     * @param mixed|null $value
+     * @return bool
+     * @see GroupModel::exists
+     */
+    public static function exists($column = null, $operator = null, $value = null): bool
+    {
+    }
+
+    /**
      * @param string $column
      * @param string|null $index
      * @return array
@@ -584,13 +597,13 @@ class GroupModel
      * Replaces any previously specified restrictions, if any.
      *
      * ```php
-     * $user = wei()->db('user')->where('id = 1');
-     * $user = wei()->db('user')->where('id = ?', 1);
-     * $users = wei()->db('user')->where(array('id' => '1', 'username' => 'twin'));
-     * $users = wei()->where(array('id' => array('1', '2', '3')));
+     * $user = QueryBuilder::table('user')->where('id', 1);
+     * $users = QueryBuilder::table('user')->where('id', '>', 1);
+     * $users = QueryBuilder::table('user')->where(['id' => '1', 'username' => 'twin']);
+     * $users = QueryBuilder::table('user')->where(['id' => ['1', '2', '3']]);
      * ```
      *
-     * @param array|Closure|string|null $column
+     * @param array|\Closure|string|null $column
      * @param mixed|null $operator
      * @param mixed|null $value
      * @return $this
@@ -777,6 +790,16 @@ class GroupModel
      * @see GroupModel::whereHas
      */
     public static function whereHas(string $column, bool $has = true): self
+    {
+    }
+
+    /**
+     * @param mixed $if
+     * @param mixed ...$args
+     * @return $this
+     * @see GroupModel::whereIf
+     */
+    public static function whereIf($if, ...$args): self
     {
     }
 
@@ -1427,6 +1450,19 @@ class PermissionModel
     }
 
     /**
+     * Check if the query has result
+     *
+     * @param mixed|null $column
+     * @param mixed|null $operator
+     * @param mixed|null $value
+     * @return bool
+     * @see PermissionModel::exists
+     */
+    public static function exists($column = null, $operator = null, $value = null): bool
+    {
+    }
+
+    /**
      * @param string $column
      * @param string|null $index
      * @return array
@@ -1669,13 +1705,13 @@ class PermissionModel
      * Replaces any previously specified restrictions, if any.
      *
      * ```php
-     * $user = wei()->db('user')->where('id = 1');
-     * $user = wei()->db('user')->where('id = ?', 1);
-     * $users = wei()->db('user')->where(array('id' => '1', 'username' => 'twin'));
-     * $users = wei()->where(array('id' => array('1', '2', '3')));
+     * $user = QueryBuilder::table('user')->where('id', 1);
+     * $users = QueryBuilder::table('user')->where('id', '>', 1);
+     * $users = QueryBuilder::table('user')->where(['id' => '1', 'username' => 'twin']);
+     * $users = QueryBuilder::table('user')->where(['id' => ['1', '2', '3']]);
      * ```
      *
-     * @param array|Closure|string|null $column
+     * @param array|\Closure|string|null $column
      * @param mixed|null $operator
      * @param mixed|null $value
      * @return $this
@@ -1862,6 +1898,16 @@ class PermissionModel
      * @see PermissionModel::whereHas
      */
     public static function whereHas(string $column, bool $has = true): self
+    {
+    }
+
+    /**
+     * @param mixed $if
+     * @param mixed ...$args
+     * @return $this
+     * @see PermissionModel::whereIf
+     */
+    public static function whereIf($if, ...$args): self
     {
     }
 
@@ -2464,6 +2510,19 @@ class PermissionsRoleModel
     }
 
     /**
+     * Check if the query has result
+     *
+     * @param mixed|null $column
+     * @param mixed|null $operator
+     * @param mixed|null $value
+     * @return bool
+     * @see PermissionsRoleModel::exists
+     */
+    public static function exists($column = null, $operator = null, $value = null): bool
+    {
+    }
+
+    /**
      * @param string $column
      * @param string|null $index
      * @return array
@@ -2706,13 +2765,13 @@ class PermissionsRoleModel
      * Replaces any previously specified restrictions, if any.
      *
      * ```php
-     * $user = wei()->db('user')->where('id = 1');
-     * $user = wei()->db('user')->where('id = ?', 1);
-     * $users = wei()->db('user')->where(array('id' => '1', 'username' => 'twin'));
-     * $users = wei()->where(array('id' => array('1', '2', '3')));
+     * $user = QueryBuilder::table('user')->where('id', 1);
+     * $users = QueryBuilder::table('user')->where('id', '>', 1);
+     * $users = QueryBuilder::table('user')->where(['id' => '1', 'username' => 'twin']);
+     * $users = QueryBuilder::table('user')->where(['id' => ['1', '2', '3']]);
      * ```
      *
-     * @param array|Closure|string|null $column
+     * @param array|\Closure|string|null $column
      * @param mixed|null $operator
      * @param mixed|null $value
      * @return $this
@@ -2899,6 +2958,16 @@ class PermissionsRoleModel
      * @see PermissionsRoleModel::whereHas
      */
     public static function whereHas(string $column, bool $has = true): self
+    {
+    }
+
+    /**
+     * @param mixed $if
+     * @param mixed ...$args
+     * @return $this
+     * @see PermissionsRoleModel::whereIf
+     */
+    public static function whereIf($if, ...$args): self
     {
     }
 
@@ -3501,6 +3570,19 @@ class RoleModel
     }
 
     /**
+     * Check if the query has result
+     *
+     * @param mixed|null $column
+     * @param mixed|null $operator
+     * @param mixed|null $value
+     * @return bool
+     * @see RoleModel::exists
+     */
+    public static function exists($column = null, $operator = null, $value = null): bool
+    {
+    }
+
+    /**
      * @param string $column
      * @param string|null $index
      * @return array
@@ -3743,13 +3825,13 @@ class RoleModel
      * Replaces any previously specified restrictions, if any.
      *
      * ```php
-     * $user = wei()->db('user')->where('id = 1');
-     * $user = wei()->db('user')->where('id = ?', 1);
-     * $users = wei()->db('user')->where(array('id' => '1', 'username' => 'twin'));
-     * $users = wei()->where(array('id' => array('1', '2', '3')));
+     * $user = QueryBuilder::table('user')->where('id', 1);
+     * $users = QueryBuilder::table('user')->where('id', '>', 1);
+     * $users = QueryBuilder::table('user')->where(['id' => '1', 'username' => 'twin']);
+     * $users = QueryBuilder::table('user')->where(['id' => ['1', '2', '3']]);
      * ```
      *
-     * @param array|Closure|string|null $column
+     * @param array|\Closure|string|null $column
      * @param mixed|null $operator
      * @param mixed|null $value
      * @return $this
@@ -3936,6 +4018,16 @@ class RoleModel
      * @see RoleModel::whereHas
      */
     public static function whereHas(string $column, bool $has = true): self
+    {
+    }
+
+    /**
+     * @param mixed $if
+     * @param mixed ...$args
+     * @return $this
+     * @see RoleModel::whereIf
+     */
+    public static function whereIf($if, ...$args): self
     {
     }
 
@@ -4538,6 +4630,19 @@ class RolesUserModel
     }
 
     /**
+     * Check if the query has result
+     *
+     * @param mixed|null $column
+     * @param mixed|null $operator
+     * @param mixed|null $value
+     * @return bool
+     * @see RolesUserModel::exists
+     */
+    public static function exists($column = null, $operator = null, $value = null): bool
+    {
+    }
+
+    /**
      * @param string $column
      * @param string|null $index
      * @return array
@@ -4780,13 +4885,13 @@ class RolesUserModel
      * Replaces any previously specified restrictions, if any.
      *
      * ```php
-     * $user = wei()->db('user')->where('id = 1');
-     * $user = wei()->db('user')->where('id = ?', 1);
-     * $users = wei()->db('user')->where(array('id' => '1', 'username' => 'twin'));
-     * $users = wei()->where(array('id' => array('1', '2', '3')));
+     * $user = QueryBuilder::table('user')->where('id', 1);
+     * $users = QueryBuilder::table('user')->where('id', '>', 1);
+     * $users = QueryBuilder::table('user')->where(['id' => '1', 'username' => 'twin']);
+     * $users = QueryBuilder::table('user')->where(['id' => ['1', '2', '3']]);
      * ```
      *
-     * @param array|Closure|string|null $column
+     * @param array|\Closure|string|null $column
      * @param mixed|null $operator
      * @param mixed|null $value
      * @return $this
@@ -4973,6 +5078,16 @@ class RolesUserModel
      * @see RolesUserModel::whereHas
      */
     public static function whereHas(string $column, bool $has = true): self
+    {
+    }
+
+    /**
+     * @param mixed $if
+     * @param mixed ...$args
+     * @return $this
+     * @see RolesUserModel::whereIf
+     */
+    public static function whereIf($if, ...$args): self
     {
     }
 
@@ -5595,6 +5710,19 @@ class UserModel
     }
 
     /**
+     * Check if the query has result
+     *
+     * @param mixed|null $column
+     * @param mixed|null $operator
+     * @param mixed|null $value
+     * @return bool
+     * @see UserModel::exists
+     */
+    public static function exists($column = null, $operator = null, $value = null): bool
+    {
+    }
+
+    /**
      * @param string $column
      * @param string|null $index
      * @return array
@@ -5837,13 +5965,13 @@ class UserModel
      * Replaces any previously specified restrictions, if any.
      *
      * ```php
-     * $user = wei()->db('user')->where('id = 1');
-     * $user = wei()->db('user')->where('id = ?', 1);
-     * $users = wei()->db('user')->where(array('id' => '1', 'username' => 'twin'));
-     * $users = wei()->where(array('id' => array('1', '2', '3')));
+     * $user = QueryBuilder::table('user')->where('id', 1);
+     * $users = QueryBuilder::table('user')->where('id', '>', 1);
+     * $users = QueryBuilder::table('user')->where(['id' => '1', 'username' => 'twin']);
+     * $users = QueryBuilder::table('user')->where(['id' => ['1', '2', '3']]);
      * ```
      *
-     * @param array|Closure|string|null $column
+     * @param array|\Closure|string|null $column
      * @param mixed|null $operator
      * @param mixed|null $value
      * @return $this
@@ -6030,6 +6158,16 @@ class UserModel
      * @see UserModel::whereHas
      */
     public static function whereHas(string $column, bool $has = true): self
+    {
+    }
+
+    /**
+     * @param mixed $if
+     * @param mixed ...$args
+     * @return $this
+     * @see UserModel::whereIf
+     */
+    public static function whereIf($if, ...$args): self
     {
     }
 
@@ -6584,6 +6722,19 @@ if (0) {
         }
 
         /**
+         * Check if the query has result
+         *
+         * @param mixed|null $column
+         * @param mixed|null $operator
+         * @param mixed|null $value
+         * @return bool
+         * @see GroupModel::exists
+         */
+        public function exists($column = null, $operator = null, $value = null): bool
+        {
+        }
+
+        /**
          * @param string $column
          * @param string|null $index
          * @return array
@@ -6814,13 +6965,13 @@ if (0) {
          * Replaces any previously specified restrictions, if any.
          *
          * ```php
-         * $user = wei()->db('user')->where('id = 1');
-         * $user = wei()->db('user')->where('id = ?', 1);
-         * $users = wei()->db('user')->where(array('id' => '1', 'username' => 'twin'));
-         * $users = wei()->where(array('id' => array('1', '2', '3')));
+         * $user = QueryBuilder::table('user')->where('id', 1);
+         * $users = QueryBuilder::table('user')->where('id', '>', 1);
+         * $users = QueryBuilder::table('user')->where(['id' => '1', 'username' => 'twin']);
+         * $users = QueryBuilder::table('user')->where(['id' => ['1', '2', '3']]);
          * ```
          *
-         * @param array|Closure|string|null $column
+         * @param array|\Closure|string|null $column
          * @param mixed|null $operator
          * @param mixed|null $value
          * @return $this
@@ -7007,6 +7158,16 @@ if (0) {
          * @see GroupModel::whereHas
          */
         public function whereHas(string $column, bool $has = true): self
+        {
+        }
+
+        /**
+         * @param mixed $if
+         * @param mixed ...$args
+         * @return $this
+         * @see GroupModel::whereIf
+         */
+        public function whereIf($if, ...$args): self
         {
         }
 
@@ -7657,6 +7818,19 @@ if (0) {
         }
 
         /**
+         * Check if the query has result
+         *
+         * @param mixed|null $column
+         * @param mixed|null $operator
+         * @param mixed|null $value
+         * @return bool
+         * @see PermissionModel::exists
+         */
+        public function exists($column = null, $operator = null, $value = null): bool
+        {
+        }
+
+        /**
          * @param string $column
          * @param string|null $index
          * @return array
@@ -7887,13 +8061,13 @@ if (0) {
          * Replaces any previously specified restrictions, if any.
          *
          * ```php
-         * $user = wei()->db('user')->where('id = 1');
-         * $user = wei()->db('user')->where('id = ?', 1);
-         * $users = wei()->db('user')->where(array('id' => '1', 'username' => 'twin'));
-         * $users = wei()->where(array('id' => array('1', '2', '3')));
+         * $user = QueryBuilder::table('user')->where('id', 1);
+         * $users = QueryBuilder::table('user')->where('id', '>', 1);
+         * $users = QueryBuilder::table('user')->where(['id' => '1', 'username' => 'twin']);
+         * $users = QueryBuilder::table('user')->where(['id' => ['1', '2', '3']]);
          * ```
          *
-         * @param array|Closure|string|null $column
+         * @param array|\Closure|string|null $column
          * @param mixed|null $operator
          * @param mixed|null $value
          * @return $this
@@ -8080,6 +8254,16 @@ if (0) {
          * @see PermissionModel::whereHas
          */
         public function whereHas(string $column, bool $has = true): self
+        {
+        }
+
+        /**
+         * @param mixed $if
+         * @param mixed ...$args
+         * @return $this
+         * @see PermissionModel::whereIf
+         */
+        public function whereIf($if, ...$args): self
         {
         }
 
@@ -8682,6 +8866,19 @@ if (0) {
         }
 
         /**
+         * Check if the query has result
+         *
+         * @param mixed|null $column
+         * @param mixed|null $operator
+         * @param mixed|null $value
+         * @return bool
+         * @see PermissionsRoleModel::exists
+         */
+        public function exists($column = null, $operator = null, $value = null): bool
+        {
+        }
+
+        /**
          * @param string $column
          * @param string|null $index
          * @return array
@@ -8912,13 +9109,13 @@ if (0) {
          * Replaces any previously specified restrictions, if any.
          *
          * ```php
-         * $user = wei()->db('user')->where('id = 1');
-         * $user = wei()->db('user')->where('id = ?', 1);
-         * $users = wei()->db('user')->where(array('id' => '1', 'username' => 'twin'));
-         * $users = wei()->where(array('id' => array('1', '2', '3')));
+         * $user = QueryBuilder::table('user')->where('id', 1);
+         * $users = QueryBuilder::table('user')->where('id', '>', 1);
+         * $users = QueryBuilder::table('user')->where(['id' => '1', 'username' => 'twin']);
+         * $users = QueryBuilder::table('user')->where(['id' => ['1', '2', '3']]);
          * ```
          *
-         * @param array|Closure|string|null $column
+         * @param array|\Closure|string|null $column
          * @param mixed|null $operator
          * @param mixed|null $value
          * @return $this
@@ -9105,6 +9302,16 @@ if (0) {
          * @see PermissionsRoleModel::whereHas
          */
         public function whereHas(string $column, bool $has = true): self
+        {
+        }
+
+        /**
+         * @param mixed $if
+         * @param mixed ...$args
+         * @return $this
+         * @see PermissionsRoleModel::whereIf
+         */
+        public function whereIf($if, ...$args): self
         {
         }
 
@@ -9707,6 +9914,19 @@ if (0) {
         }
 
         /**
+         * Check if the query has result
+         *
+         * @param mixed|null $column
+         * @param mixed|null $operator
+         * @param mixed|null $value
+         * @return bool
+         * @see RoleModel::exists
+         */
+        public function exists($column = null, $operator = null, $value = null): bool
+        {
+        }
+
+        /**
          * @param string $column
          * @param string|null $index
          * @return array
@@ -9937,13 +10157,13 @@ if (0) {
          * Replaces any previously specified restrictions, if any.
          *
          * ```php
-         * $user = wei()->db('user')->where('id = 1');
-         * $user = wei()->db('user')->where('id = ?', 1);
-         * $users = wei()->db('user')->where(array('id' => '1', 'username' => 'twin'));
-         * $users = wei()->where(array('id' => array('1', '2', '3')));
+         * $user = QueryBuilder::table('user')->where('id', 1);
+         * $users = QueryBuilder::table('user')->where('id', '>', 1);
+         * $users = QueryBuilder::table('user')->where(['id' => '1', 'username' => 'twin']);
+         * $users = QueryBuilder::table('user')->where(['id' => ['1', '2', '3']]);
          * ```
          *
-         * @param array|Closure|string|null $column
+         * @param array|\Closure|string|null $column
          * @param mixed|null $operator
          * @param mixed|null $value
          * @return $this
@@ -10130,6 +10350,16 @@ if (0) {
          * @see RoleModel::whereHas
          */
         public function whereHas(string $column, bool $has = true): self
+        {
+        }
+
+        /**
+         * @param mixed $if
+         * @param mixed ...$args
+         * @return $this
+         * @see RoleModel::whereIf
+         */
+        public function whereIf($if, ...$args): self
         {
         }
 
@@ -10732,6 +10962,19 @@ if (0) {
         }
 
         /**
+         * Check if the query has result
+         *
+         * @param mixed|null $column
+         * @param mixed|null $operator
+         * @param mixed|null $value
+         * @return bool
+         * @see RolesUserModel::exists
+         */
+        public function exists($column = null, $operator = null, $value = null): bool
+        {
+        }
+
+        /**
          * @param string $column
          * @param string|null $index
          * @return array
@@ -10962,13 +11205,13 @@ if (0) {
          * Replaces any previously specified restrictions, if any.
          *
          * ```php
-         * $user = wei()->db('user')->where('id = 1');
-         * $user = wei()->db('user')->where('id = ?', 1);
-         * $users = wei()->db('user')->where(array('id' => '1', 'username' => 'twin'));
-         * $users = wei()->where(array('id' => array('1', '2', '3')));
+         * $user = QueryBuilder::table('user')->where('id', 1);
+         * $users = QueryBuilder::table('user')->where('id', '>', 1);
+         * $users = QueryBuilder::table('user')->where(['id' => '1', 'username' => 'twin']);
+         * $users = QueryBuilder::table('user')->where(['id' => ['1', '2', '3']]);
          * ```
          *
-         * @param array|Closure|string|null $column
+         * @param array|\Closure|string|null $column
          * @param mixed|null $operator
          * @param mixed|null $value
          * @return $this
@@ -11155,6 +11398,16 @@ if (0) {
          * @see RolesUserModel::whereHas
          */
         public function whereHas(string $column, bool $has = true): self
+        {
+        }
+
+        /**
+         * @param mixed $if
+         * @param mixed ...$args
+         * @return $this
+         * @see RolesUserModel::whereIf
+         */
+        public function whereIf($if, ...$args): self
         {
         }
 
@@ -11777,6 +12030,19 @@ if (0) {
         }
 
         /**
+         * Check if the query has result
+         *
+         * @param mixed|null $column
+         * @param mixed|null $operator
+         * @param mixed|null $value
+         * @return bool
+         * @see UserModel::exists
+         */
+        public function exists($column = null, $operator = null, $value = null): bool
+        {
+        }
+
+        /**
          * @param string $column
          * @param string|null $index
          * @return array
@@ -12007,13 +12273,13 @@ if (0) {
          * Replaces any previously specified restrictions, if any.
          *
          * ```php
-         * $user = wei()->db('user')->where('id = 1');
-         * $user = wei()->db('user')->where('id = ?', 1);
-         * $users = wei()->db('user')->where(array('id' => '1', 'username' => 'twin'));
-         * $users = wei()->where(array('id' => array('1', '2', '3')));
+         * $user = QueryBuilder::table('user')->where('id', 1);
+         * $users = QueryBuilder::table('user')->where('id', '>', 1);
+         * $users = QueryBuilder::table('user')->where(['id' => '1', 'username' => 'twin']);
+         * $users = QueryBuilder::table('user')->where(['id' => ['1', '2', '3']]);
          * ```
          *
-         * @param array|Closure|string|null $column
+         * @param array|\Closure|string|null $column
          * @param mixed|null $operator
          * @param mixed|null $value
          * @return $this
@@ -12200,6 +12466,16 @@ if (0) {
          * @see UserModel::whereHas
          */
         public function whereHas(string $column, bool $has = true): self
+        {
+        }
+
+        /**
+         * @param mixed $if
+         * @param mixed ...$args
+         * @return $this
+         * @see UserModel::whereIf
+         */
+        public function whereIf($if, ...$args): self
         {
         }
 
