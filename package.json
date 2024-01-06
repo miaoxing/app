@@ -11,10 +11,11 @@
     "test": "jest"
   },
   "dependencies": {
-    "@chakra-ui/react": "^1.6.8",
-    "@emotion/styled": "^11.1.5",
+    "@chakra-ui/react": "^2",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
     "@loadable/component": "^5.14.1",
-    "framer-motion": "^4.1.2",
+    "framer-motion": "^10",
     "lcfirst": "^1.1.0"
   },
   "devDependencies": {
