@@ -4,7 +4,7 @@ import loadable from '@loadable/component';
 import $ from 'miaoxing';
 import {wei, app, event, history} from '@mxjs/app';
 import api from '@mxjs/api';
-import {NotFound} from '@mxjs/ret';
+import {NotFound} from '@mxjs/a-ret';
 import {PageLoading} from '@mxjs/loading';
 import {ModalSwitch} from '@mxjs/router-modal';
 import PropTypes from 'prop-types';

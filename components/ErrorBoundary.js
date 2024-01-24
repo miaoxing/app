@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button} from 'antd';
-import {InternalServerError} from '@mxjs/ret';
+import {InternalServerError} from '@mxjs/a-ret';
 import {wei} from '@mxjs/app';
 import * as Sentry from '@sentry/browser';
 import {withRouter} from 'react-router';
