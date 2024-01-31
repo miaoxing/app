@@ -1,3 +1,18 @@
+# [0.8.0](https://github.com/miaoxing/app/compare/v0.7.11...v0.8.0) (2024-01-31)
+
+
+### Features
+
+* 更新 `react` 支持 18 ([46ef334](https://github.com/miaoxing/app/commit/46ef33411d810047f93d6c298dc9f3c503b2b13e))
+* 更新调用方法为 `react` 18 ([da6a7b2](https://github.com/miaoxing/app/commit/da6a7b269e19f3dfa51e6886c4896e0807a36ebf))
+* **app:** 升级 `@chakra-ui/react` 到 v2 ([29634c8](https://github.com/miaoxing/app/commit/29634c8ced953dda3d13e2de40656364f2ac01d5))
+
+
+### BREAKING CHANGES
+
+* 更新调用方法为 `react` 18
+* **app:** 升级 `@chakra-ui/react` 到 v2
+
 ## [0.7.11](https://github.com/miaoxing/app/compare/v0.7.10...v0.7.11) (2024-01-08)
 
 
