@@ -8,7 +8,7 @@ use Wei\BaseController;
 
 class CheckPagePermission extends BaseMiddleware
 {
-    public function __invoke($next, BaseController $controller = null)
+    public function __invoke($next, ?BaseController $controller = null)
     {
         if (false === $controller->getOption('requireAuth')) {
             return $next();
