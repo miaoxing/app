@@ -107,32 +107,32 @@ class PermissionMap extends BaseService
         return explode('/', $permission, 3);
     }
 
-    protected function buildGet(string $scope, string $resource, string $more = null): string
+    protected function buildGet(string $scope, string $resource, ?string $more = null): string
     {
         return $this->build('GET', $scope, $resource, $more);
     }
 
-    protected function buildPost(string $scope, string $resource, string $more = null): string
+    protected function buildPost(string $scope, string $resource, ?string $more = null): string
     {
         return $this->build('POST', $scope, $resource, $more);
     }
 
-    protected function buildPut(string $scope, string $resource, string $more = null): string
+    protected function buildPut(string $scope, string $resource, ?string $more = null): string
     {
         return $this->build('PUT', $scope, $resource, $more);
     }
 
-    protected function buildPatch(string $scope, string $resource, string $more = null): string
+    protected function buildPatch(string $scope, string $resource, ?string $more = null): string
     {
         return $this->build('PATCH', $scope, $resource, $more);
     }
 
-    protected function buildDelete(string $scope, string $resource, string $more = null): string
+    protected function buildDelete(string $scope, string $resource, ?string $more = null): string
     {
         return $this->build('DELETE', $scope, $resource, $more);
     }
 
-    protected function build(string $method, string $scope, string $resource, string $more = null): string
+    protected function build(string $method, string $scope, string $resource, ?string $more = null): string
     {
         return $method . ' api/' . ($scope ? ($scope . '/') : '') . $resource . ($more ? ('/' . $more) : '');
     }
