@@ -1,3 +1,19 @@
+## [0.8.1](https://github.com/miaoxing/app/compare/v0.8.0...v0.8.1) (2024-02-20)
+
+
+### Features
+
+* `@mxjs/loading` 依赖更改为 `@mxjs/a-loading` ([06b6107](https://github.com/miaoxing/app/commit/06b6107acb18f82ef296159f201fbb75dbab71d0))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.14.2` to `0.14.3`
+* **@miaoxing/services:** upgrade from `0.8.4` to `0.8.5`
+
 # [0.8.0](https://github.com/miaoxing/app/compare/v0.7.11...v0.8.0) (2024-01-31)
 
 
