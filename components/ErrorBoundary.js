@@ -1,12 +1,25 @@
 import React from 'react';
-import {Button} from 'antd';
-import {InternalServerError} from '@mxjs/a-ret';
-import {wei} from '@mxjs/app';
+import { Button } from 'antd';
+import { InternalServerError } from '@mxjs/a-ret';
+import { wei } from '@mxjs/app';
 import * as Sentry from '@sentry/browser';
-import {withRouter} from 'react-router';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router-dom';
 
-export default @withRouter
+function withLocation(Component) {
+  function ComponentWithRouterProp(props) {
+    const location = useLocation();
+    return (
+      <Component
+        {...props}
+        location={location}
+      />
+    );
+  }
+
+  return ComponentWithRouterProp;
+}
+
 class ErrorBoundary extends React.Component {
   static propTypes = {
     location: PropTypes.object,
@@ -50,3 +63,5 @@ class ErrorBoundary extends React.Component {
     return this.props.children;
   }
 }
+
+export default withLocation(ErrorBoundary);
