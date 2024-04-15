@@ -1,140 +1,112 @@
-import * as React from 'react';
-import {Router, Route} from 'react-router-dom';
+import React, { useState } from 'react';
+import { Route, Router, useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
 import $ from 'miaoxing';
-import {wei, app, event, history} from '@mxjs/app';
+import { app, event, history, wei } from '@mxjs/app';
 import api from '@mxjs/api';
-import {NotFound} from '@mxjs/a-ret';
-import {PageLoading} from '@mxjs/a-loading';
-import {ModalSwitch} from '@mxjs/router-modal';
+import { NotFound } from '@mxjs/a-ret';
+import { PageLoading } from '@mxjs/a-loading';
+import { ModalSwitch } from '@mxjs/router-modal';
 import PropTypes from 'prop-types';
-import {ThemeProvider, extendTheme} from '@chakra-ui/react';
-import {ConfigProvider} from '@mxjs/config';
+import { extendTheme, ThemeProvider } from '@chakra-ui/react';
+import { ConfigProvider } from '@mxjs/config';
+import useAsyncEffect from 'use-async-effect';
 import ErrorBoundary from './ErrorBoundary';
 
-export default class App extends React.Component {
-  static propTypes = {
-    configs: PropTypes.object,
-    defaultLayout: PropTypes.elementType,
-  };
+const importPage = async (page) => {
+  return page ? page.import() : NotFound;
+};
 
-  static defaultProps = {
-    configs: {
-      theme: {},
-    },
-
-    /**
-     * 默认布局
-     */
-    defaultLayout: React.Fragment,
-  };
-
-  state = {
-    theme: {},
-    config: {
-      page: {},
-    },
-  };
-
-  /**
-   * 从后端加载的配置
-   *
-   * @type {Promise}
-   */
-  config;
-
-  /**
-   * 缓存加载过的页面
-   *
-   * 以便 modal 页面不会重新加载
-   *
-   * @type {object}
-   */
-  loadedPages = {};
-
-  constructor(props) {
-    super(props);
-
-    this.state.theme = extendTheme(this.props.configs.theme);
-
-    wei.setConfigs(this.props.configs);
-    this.config = this.loadConfig();
-    this.config.then(ret => {
-      wei.setConfigs(ret.data);
-      this.setState({
-        config: ret.data,
+const getLayout = (page, defaultLayout) => {
+  if (page && typeof page.layout !== 'undefined') {
+    if (page.layout) {
+      return loadable(() => page.layout, {
+        fallback: <PageLoading/>,
       });
-      document.title = ret.data.page.title;
-    });
+    } else {
+      return React.Fragment;
+    }
+  } else {
+    return defaultLayout;
   }
+};
 
-  async componentDidMount() {
-    const config = await this.config;
-    this.setState({theme: extendTheme(config.theme, this.state.theme)});
+const loadConfig = async () => {
+  const { ret } = await api.get('js-config');
+  if (ret.isErr()) {
+    $.ret(ret);
+    return;
   }
+  return ret;
+};
 
-  loadableComponent = (props) => {
-    const page = app.matchLocation(props.location);
+// 缓存加载过的页面，以便 modal 页面不会重新加载
+const loadedPages = {};
+
+const App = (
+  {
+    configs = { theme: {} },
+    defaultLayout = React.Fragment,
+  }
+) => {
+  const [theme, setTheme] = useState(configs.theme);
+
+  // 从后端加载的配置
+  const [config, setConfig] = useState({ page: {} });
+
+  useAsyncEffect(async () => {
+    wei.setConfigs(configs);
+
+    const ret = await loadConfig();
+    wei.setConfigs(ret.data);
+    setConfig(ret.data);
+    setTheme(extendTheme(ret.data.theme, theme));
+    document.title = ret.data.page.title;
+  }, []);
+
+  const loadableComponent = (props) => {
+    const location = useLocation();
+    const page = app.matchLocation(location);
+    if (!page) {
+      return;
+    }
 
     event.trigger('pageLoad', props);
 
-    const key = props.location.pathname.replace(/\/+$/, '') + props.location.search;
-    if (!this.loadedPages[key]) {
-      this.loadedPages[key] = loadable(() => this.importPage(page), {
+    const key = location.pathname.replace(/\/+$/, '') + location.search;
+    if (!loadedPages[key]) {
+      loadedPages[key] = loadable(() => importPage(page), {
         fallback: <PageLoading/>,
       });
     }
 
-    const LoadableComponent = this.loadedPages[key];
-    const PageLayout = this.getLayout(page);
-    return <PageLayout>
-      <ErrorBoundary>
-        <LoadableComponent {...props}/>
-      </ErrorBoundary>
-    </PageLayout>;
+    const LoadableComponent = loadedPages[key];
+    const PageLayout = getLayout(page, defaultLayout);
+    return (
+      <PageLayout>
+        <ErrorBoundary>
+          <LoadableComponent {...props}/>
+        </ErrorBoundary>
+      </PageLayout>
+    );
   };
 
-  async importPage(page) {
-    return page ? page.import() : NotFound;
-  }
+  return (
+    <ConfigProvider config={config}>
+      <ThemeProvider theme={theme}>
+        <Router history={history}>
+          <ModalSwitch>
+            <Route component={loadableComponent}/>
+          </ModalSwitch>
+        </Router>
+      </ThemeProvider>
+    </ConfigProvider>
+  );
+};
 
-  getLayout(page) {
-    if (page && typeof page.layout !== 'undefined') {
-      if (page.layout) {
-        return loadable(() => page.layout, {
-          fallback: <PageLoading/>,
-        });
-      } else {
-        return React.Fragment;
-      }
-    } else {
-      return this.props.defaultLayout;
-    }
-  }
+App.propTypes = {
+  configs: PropTypes.object,
+  defaultLayout: PropTypes.elementType,
+};
 
-  loadConfig() {
-    return api.get('js-config').then(({ret}) => {
-      if (ret.isErr()) {
-        $.ret(ret);
-        return;
-      }
-      return ret;
-    });
-  }
-
-  render() {
-    const Component = this.loadableComponent;
-
-    return (
-      <ConfigProvider config={this.state.config}>
-        <ThemeProvider theme={this.state.theme}>
-          <Router history={history}>
-            <ModalSwitch>
-              <Route component={Component}/>
-            </ModalSwitch>
-          </Router>
-        </ThemeProvider>
-      </ConfigProvider>
-    );
-  }
-}
+export default App;
