@@ -12,6 +12,7 @@ import { extendTheme, ThemeProvider } from '@chakra-ui/react';
 import { ConfigProvider } from '@mxjs/config';
 import useAsyncEffect from 'use-async-effect';
 import ErrorBoundary from './ErrorBoundary';
+import RouterStore from './RouterStore';
 
 const importPage = async (page) => {
   return page ? page.import() : NotFound;
@@ -95,6 +96,7 @@ const App = (
     <ConfigProvider config={config}>
       <ThemeProvider theme={theme}>
         <Router history={history}>
+          <RouterStore/>
           <ModalSwitch>
             <Route component={loadableComponent}/>
           </ModalSwitch>
