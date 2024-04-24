@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { Route, Router, useLocation } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
 import $ from 'miaoxing';
-import { app, event, history, wei } from '@mxjs/app';
+import { app, event, wei } from '@mxjs/app';
 import api from '@mxjs/api';
 import { NotFound } from '@mxjs/a-ret';
 import { PageLoading } from '@mxjs/a-loading';
-import { ModalSwitch } from '@mxjs/router-modal';
 import PropTypes from 'prop-types';
 import { extendTheme, ThemeProvider } from '@chakra-ui/react';
 import { ConfigProvider } from '@mxjs/config';
@@ -65,14 +64,14 @@ const App = (
     document.title = ret.data.page.title;
   }, []);
 
-  const loadableComponent = (props) => {
+  const LoadableComponent = () => {
     const location = useLocation();
     const page = app.matchLocation(location);
     if (!page) {
       return;
     }
 
-    event.trigger('pageLoad', props);
+    event.trigger('pageLoad', {location});
 
     const key = location.pathname.replace(/\/+$/, '') + location.search;
     if (!loadedPages[key]) {
@@ -86,7 +85,7 @@ const App = (
     return (
       <PageLayout>
         <ErrorBoundary>
-          <LoadableComponent {...props}/>
+          <LoadableComponent/>
         </ErrorBoundary>
       </PageLayout>
     );
@@ -95,12 +94,12 @@ const App = (
   return (
     <ConfigProvider config={config}>
       <ThemeProvider theme={theme}>
-        <Router history={history}>
+        <BrowserRouter>
           <RouterStore/>
-          <ModalSwitch>
-            <Route component={loadableComponent}/>
-          </ModalSwitch>
-        </Router>
+          <Routes>
+            <Route path="*" element={<LoadableComponent/>}/>
+          </Routes>
+        </BrowserRouter>
       </ThemeProvider>
     </ConfigProvider>
   );
