@@ -1,14 +1,14 @@
-import { useHistory } from 'react-router';
+import { useNavigate } from 'react-router';
 
-let history;
+let navigate;
 
 /**
  * @experimental
  */
 const RouterStore = () => {
-  history = useHistory();
+  navigate = useNavigate();
 };
 
 export default RouterStore;
 
-export { history };
+export { navigate };
