@@ -1,3 +1,33 @@
+# [0.9.0](https://github.com/miaoxing/app/compare/v0.8.3...v0.9.0) (2024-05-01)
+
+
+### Code Refactoring
+
+* **app:** config 改为 `@mxjs/config` ([2998c96](https://github.com/miaoxing/app/commit/2998c9602ce27bdfae225f18c5dfed5badb7b2fd))
+
+
+### Features
+
+* **app:** `App` 组件改为函数式 ([aa09cf8](https://github.com/miaoxing/app/commit/aa09cf82ef3feb9829ac5bd1bbd03efa537cf877))
+* **app:** 更新 `App` 组件支持 `react-router` v6 ([6686745](https://github.com/miaoxing/app/commit/6686745dbc94c8abeeb78fbc4ca3a394ea7a6812))
+* **app:** 更新 `ErrorBoundary` 支持 `react-router` v6 ([4971caa](https://github.com/miaoxing/app/commit/4971caabdb0e5348dcf975cf643dce33a60cbd51))
+* **app, experimental:** 增加 `RouterStore` 组件，用于在外部获取 `react-router` 的值 ([d88239b](https://github.com/miaoxing/app/commit/d88239b8da4900c930137ea61d08435119486496))
+* **app, experimental:** 更新 `RouterStore` 组件支持 `react-router` v6，返回值改为 `navigate` 变量 ([f4e0862](https://github.com/miaoxing/app/commit/f4e08624742290b0c2e5fc7961924e3b86430a0a))
+
+
+### BREAKING CHANGES
+
+* **app:** config 改为 `@mxjs/config`
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.14.5` to `0.14.6`
+* **@miaoxing/services:** upgrade from `0.9.0` to `0.9.1`
+
 ## [0.8.3](https://github.com/miaoxing/app/compare/v0.8.2...v0.8.3) (2024-03-31)
 
 
