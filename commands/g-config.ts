@@ -129,6 +129,11 @@ async function scanPages(name: string, rootDir: string, dir: string, pages: Page
       }
     }
 
+    // Ignore file/dir start with underscore or dot
+    if (['_', '.'].includes(file.substring(0, 1))) {
+      continue;
+    }
+
     const fullPath = path.join(dir, file);
     if ((await fs.lstat(fullPath)).isDirectory()) {
       const result = await scanPages(name, rootDir, fullPath);
@@ -146,11 +151,7 @@ async function scanPages(name: string, rootDir: string, dir: string, pages: Page
 
     const parsedPath = path.parse(file);
 
-    if (!validExts.includes(parsedPath.ext)
-      // Ignore file start with underscore
-      || parsedPath.name.substr(0, 1) === '_'
-      || parsedPath.name.substr(-5) === '.test'
-    ) {
+    if (!validExts.includes(parsedPath.ext) || parsedPath.name.substr(-5) === '.test') {
       continue;
     }
 
