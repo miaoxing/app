@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import loadable from '@loadable/component';
 import $ from 'miaoxing';
 import { app, event, wei } from '@mxjs/app';
-import api from '@mxjs/api';
 import { NotFound } from '@mxjs/a-ret';
 import { PageLoading } from '@mxjs/a-loading';
 import PropTypes from 'prop-types';
@@ -32,7 +31,7 @@ const getLayout = (page, defaultLayout) => {
 };
 
 const loadConfig = async () => {
-  const { ret } = await api.get('js-config');
+  const { ret } = await $.get('js-config');
   if (ret.isErr()) {
     $.ret(ret);
     return;
