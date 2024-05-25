@@ -137,10 +137,6 @@ $.http = (...args) => axios(...args).then(res => {
 
 $.req = req.get.bind(req);
 $.url = url.to.bind(url);
-/**
- * @experimental
- */
-$.fullUrl = url.full.bind(url);
 $.apiUrl = url.api.bind(url);
 
 window.$ = $;
