@@ -11,16 +11,9 @@
     "test": "jest"
   },
   "dependencies": {
-    "@chakra-ui/react": "^2",
-    "@emotion/react": "^11",
-    "@emotion/styled": "^11",
-    "@loadable/component": "^5.14.1",
-    "framer-motion": "^10",
-    "lcfirst": "^1.1.0"
   },
   "devDependencies": {
     "@miaoxing/dev": "^9.1.1",
-    "@sentry/browser": "^5.12.1",
     "@types/execa": "^2.0.0",
     "@types/glob": "^7.2.0",
     "chalk": "^4.0.0",

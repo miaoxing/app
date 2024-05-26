@@ -1,8 +1,0 @@
-// 1. Webpack 注入 theme 变量
-// @see <rootDir>/webpack.config.js
-
-// 2. 加载自身用到的变量
-@import "variables";
-
-// 3. 根据使用习惯调整 bootstrap 主题
-@import "~@mxjs/style/config";
