@@ -1,3 +1,33 @@
+# [0.10.0](https://github.com/miaoxing/app/compare/v0.9.0...v0.10.0) (2024-05-30)
+
+
+### Code Refactoring
+
+* **app:** 移除未使用的前端功能 ([db8cce2](https://github.com/miaoxing/app/commit/db8cce23a8dd9e4082d683298864000ba733af6b))
+
+
+### Features
+
+* **app:** `g-config` 命令忽略 `_` 或 `.` 开头的文件和目录 ([3639d42](https://github.com/miaoxing/app/commit/3639d42b78dc58f7edebd052eafdccef913be879))
+* **app:** `location` 变化时，设置到 `req` 对象中，以便获得请求参数 ([f38da08](https://github.com/miaoxing/app/commit/f38da08ca500a9614231b1d7f82ff17996256366))
+* **app:** `RouterStore `增加 `location` 变量 ([aeafd1f](https://github.com/miaoxing/app/commit/aeafd1fcc4d681972d015b8278b7a15e57edbbee))
+* **experimental:** 移除 `$.fullUrl` 方法 ([fc2cbcc](https://github.com/miaoxing/app/commit/fc2cbcc9ca0f4ed3bd59645e22dee25a70268877))
+* `api.xxx` 调用改为 `$.xx` ([97a330f](https://github.com/miaoxing/app/commit/97a330f67507cfef9acc591c502756e3f999fcd4))
+
+
+### BREAKING CHANGES
+
+* **app:** 移除未使用的前端功能
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.14.6` to `0.14.7`
+* **@miaoxing/services:** upgrade from `0.9.1` to `0.9.2`
+
 # [0.9.0](https://github.com/miaoxing/app/compare/v0.8.3...v0.9.0) (2024-05-01)
 
 

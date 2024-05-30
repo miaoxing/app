@@ -1,6 +1,6 @@
 {
   "name": "@miaoxing/app",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "private": true,
   "repository": "https://github.com/miaoxing/app",
   "license": "MIT",
@@ -10,8 +10,7 @@
   "scripts": {
     "test": "jest"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@miaoxing/dev": "^9.1.1",
     "@types/execa": "^2.0.0",
