@@ -26,7 +26,7 @@ final class PermissionMapTest extends BaseTestCase
     public function testPrefix()
     {
         $permissionMap = new PermissionMap();
-        $permissionMap->prefix('admin', function (PermissionMap $map) {
+        $permissionMap->prefix('admin', static function (PermissionMap $map) {
             $map->add('dashboard', ['read']);
         });
         $this->assertSame(['read'], $permissionMap->getMap()['admin/dashboard']);
