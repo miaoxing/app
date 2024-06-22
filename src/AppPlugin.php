@@ -6,6 +6,7 @@ use Miaoxing\App\Middleware\CheckAppStatus;
 use Miaoxing\App\Middleware\LogRequest;
 use Miaoxing\Plugin\BasePage;
 use Miaoxing\Services\Middleware\Auth;
+use Miaoxing\Services\Middleware\Cors;
 use Wei\BaseController;
 
 class AppPlugin extends \Miaoxing\Plugin\BasePlugin
@@ -37,6 +38,7 @@ class AppPlugin extends \Miaoxing\Plugin\BasePlugin
      */
     public function onControllerInit(BaseController $controller)
     {
+        $controller->middleware(Cors::class);
         $controller->middleware(Auth::class);
         $controller->middleware(LogRequest::class);
 
