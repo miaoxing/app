@@ -7,7 +7,6 @@ use Miaoxing\App\Middleware\LogRequest;
 use Miaoxing\Plugin\BasePage;
 use Miaoxing\Services\Middleware\Auth;
 use Miaoxing\Services\Middleware\Cors;
-use Wei\BaseController;
 
 class AppPlugin extends \Miaoxing\Plugin\BasePlugin
 {
@@ -31,26 +30,16 @@ class AppPlugin extends \Miaoxing\Plugin\BasePlugin
         ];
     }
 
-    /**
-     * 限制命令行控制器,只有在命令行下或超级管理员才可以访问
-     *
-     * @param BaseController $controller
-     */
-    public function onControllerInit(BaseController $controller)
+    public function onPageInit(BasePage $page)
     {
-        $controller->middleware(Cors::class);
-        $controller->middleware(Auth::class);
-        $controller->middleware(LogRequest::class);
+        $page->middleware(Cors::class);
+        $page->middleware(Auth::class);
+        $page->middleware(LogRequest::class);
 
         // 除去 admin/login 页面
         if (0 === strpos($this->app->getController(), 'admin/')) {
-            $controller->middleware(CheckAppStatus::class);
+            $page->middleware(CheckAppStatus::class);
         }
-    }
-
-    public function onPageInit(BasePage $page)
-    {
-        $this->onControllerInit($page);
     }
 
     public function onBeforeScript()
