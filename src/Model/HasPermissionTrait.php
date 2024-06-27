@@ -129,7 +129,7 @@ trait HasPermissionTrait
             }
 
             if (false !== strpos($apiPath, '[')) {
-                $regex = preg_replace('#[.\+*?[^\]${}=!|:-]#', '\\\\$0', $apiPath);
+                $regex = preg_replace('#[.\+*?[^\]${}=!|:-]#', '\\\$0', $apiPath);
                 $regex = str_replace(['\[', '\]'], ['(?P<', '>.+?)'], $regex);
                 $regex = '#^' . $regex . '$#uUD';
                 if (preg_match($regex, $path)) {
