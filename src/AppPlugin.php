@@ -30,7 +30,7 @@ class AppPlugin extends \Miaoxing\Plugin\BasePlugin
         ];
     }
 
-    public function onPageInit(BasePage $page)
+    public function onPageInit110(BasePage $page)
     {
         $page->middleware(Cors::class);
         $page->middleware(Auth::class);
