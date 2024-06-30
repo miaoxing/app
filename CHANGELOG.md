@@ -1,3 +1,25 @@
+## [0.10.1](https://github.com/miaoxing/app/compare/v0.10.0...v0.10.1) (2024-06-30)
+
+
+### Bug Fixes
+
+* **app:** 提前运行 Cors 中间件，以便处理 options 请求 ([314f156](https://github.com/miaoxing/app/commit/314f1568cd2f91b4d8df9146ba8676b631b8cee7))
+
+
+### Features
+
+* 更新 `onControllerInit` 为 `onPageInit` ([d7f84ef](https://github.com/miaoxing/app/commit/d7f84ef2c4d89b2d71173c09e8fb0860e10c6da1))
+* **app:** 控制器默认加上 `Cors` 中间件 ([781601f](https://github.com/miaoxing/app/commit/781601f6d2cb0970b2c2b1c7ec325caeda72bb15))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.14.7` to `0.15.0`
+* **@miaoxing/services:** upgrade from `0.9.2` to `0.9.3`
+
 # [0.10.0](https://github.com/miaoxing/app/compare/v0.9.0...v0.10.0) (2024-05-30)
 
 
