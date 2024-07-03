@@ -46,7 +46,10 @@ command.handler = async (argv: GConfigArgv) => {
   await generate(argv.type);
 };
 
-const validExts = ['.js', '.ts', '.tsx'];
+// 生成的文件相对于根目录的路径
+const relativePath = '../../';
+
+const validExts = ['.js', '.jsx', '.ts', '.tsx'];
 
 async function generate(name: string): Promise<void> {
   const content = 'export default ' + varExport(Object.assign(
@@ -80,7 +83,7 @@ async function generateEvents(name: string) {
 
   eventFiles.forEach((file: string) => {
     const plugin = file.split('/')[1];
-    plugins[plugin] = Symbol(`() => import('${file}')`);
+    plugins[plugin] = Symbol(`() => import('${relativePath}${file}')`);
   });
 
   // 附加事件对应关系
@@ -173,7 +176,7 @@ async function addPages(pages: Pages, name: string, file: string) {
     page = pages['/' + name] as Pages;
   }
 
-  page['import'] = Symbol(`() => import('${file}')`);
+  page['import'] = Symbol(`() => import('${relativePath}${file}')`);
 
   const text = await fs.readFile(file, 'utf8');
 
@@ -185,7 +188,7 @@ async function addPages(pages: Pages, name: string, file: string) {
     if (match[1] === 'false') {
       page['layout'] = false;
     } else {
-      page['layout'] = Symbol(`() => import('${match[1]}')`);
+      page['layout'] = Symbol(`() => import('${relativePath}${match[1]}')`);
     }
   }
 
@@ -199,7 +202,7 @@ async function addPages(pages: Pages, name: string, file: string) {
       nextPages['/' + name] = {};
       nextPages = nextPages['/' + name] as Pages;
     });
-    nextPages['import'] = Symbol(`() => import('${file}')`);
+    nextPages['import'] = Symbol(`() => import('${relativePath}${file}')`);
   }
 
   return pages;
