@@ -199,7 +199,9 @@ async function addPages(pages: Pages, name: string, file: string) {
   if (shareMatch) {
     let nextPages = pages;
     shareMatch[1].split('/').forEach(name => {
-      nextPages['/' + name] = {};
+      if (!nextPages['/' + name]) {
+        nextPages['/' + name] = {};
+      }
       nextPages = nextPages['/' + name] as Pages;
     });
     nextPages['import'] = Symbol(`() => import('${relativePath}${file}')`);
