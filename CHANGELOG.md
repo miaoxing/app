@@ -1,3 +1,25 @@
+## [0.10.2](https://github.com/miaoxing/app/compare/v0.10.1...v0.10.2) (2024-07-31)
+
+
+### Bug Fixes
+
+* **app:** 解决 g-config 命令未生成 `[id].jsx` 路由的问题 ([cb8b50f](https://github.com/miaoxing/app/commit/cb8b50f0cc935523b157b730949325af4e925012))
+
+
+### Features
+
+* **app:** `g-config` 生成路径使用相对路径，支持 vite 加载 ([896b01c](https://github.com/miaoxing/app/commit/896b01cb48045225c6400da1d41c6a506ace2603))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from `9.1.1` to `9.1.2`
+* **@miaoxing/plugin:** upgrade from `0.15.0` to `0.15.1`
+* **@miaoxing/services:** upgrade from `0.9.3` to `0.9.4`
+
 ## [0.10.1](https://github.com/miaoxing/app/compare/v0.10.0...v0.10.1) (2024-06-30)
 
 
