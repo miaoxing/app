@@ -1,6 +1,6 @@
 {
   "name": "@miaoxing/app",
-  "version": "0.10.2",
+  "version": "0.10.3",
   "private": true,
   "repository": "https://github.com/miaoxing/app",
   "license": "MIT",
@@ -12,7 +12,7 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@miaoxing/dev": "^9.1.2",
+    "@miaoxing/dev": "^9.1.3",
     "@types/execa": "^2.0.0",
     "@types/glob": "^7.2.0",
     "chalk": "^4.0.0",
