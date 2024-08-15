@@ -2,16 +2,22 @@
 
 namespace Miaoxing\App\Model;
 
+use Miaoxing\App\Service\Permission;
 use Wei\Ret;
 
 /**
  * @mixin \LoggerPropMixin
  * @mixin \PermissionMapPropMixin
+ * @mixin \PermissionPropMixin
  */
 trait HasPermissionTrait
 {
     public function getPermissionCodes(): array
     {
+        if (!$this->permission->isEnabledCheck()) {
+            return ['*'];
+        }
+
         return array_unique(array_merge(
             $this->getActionPermissionCodes(),
             $this->enabledRoles->enabledPermissions->getAll('code'),
