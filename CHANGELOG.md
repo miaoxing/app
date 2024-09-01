@@ -1,3 +1,25 @@
+## [0.10.4](https://github.com/miaoxing/app/compare/v0.10.3...v0.10.4) (2024-09-01)
+
+
+### Bug Fixes
+
+* **app:** 如果未启用权限，则返回允许访问所有功能 ([b5520be](https://github.com/miaoxing/app/commit/b5520be1b42c7ed12ded04604679d68af9b1b3a7))
+
+
+### Features
+
+* 插件增加 wei 命令行入口 ([7a15a78](https://github.com/miaoxing/app/commit/7a15a78b8dbd4798942aca6b188b9f4d8de290c6))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from `9.1.3` to `9.2.0`
+* **@miaoxing/plugin:** upgrade from `0.15.2` to `0.16.0`
+* **@miaoxing/services:** upgrade from `0.9.5` to `0.9.6`
+
 ## [0.10.3](https://github.com/miaoxing/app/compare/v0.10.2...v0.10.3) (2024-08-03)
 
 
