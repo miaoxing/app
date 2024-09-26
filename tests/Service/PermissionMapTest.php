@@ -72,4 +72,13 @@ final class PermissionMapTest extends BaseTestCase
         $permissionMap->addShow('admin/products');
         $this->assertSame(['GET api/admin/products/[id]'], $permissionMap->getMap()['admin/products/[id]']);
     }
+
+    public function testPrefixAddAction()
+    {
+        $permissionMap = new PermissionMap();
+        $permissionMap->prefix('admin/products', static function (PermissionMap $map) {
+            $map->add('#delete', ['read']);
+        });
+        $this->assertSame(['read'], $permissionMap->getMap()['admin/products#delete']);
+    }
 }

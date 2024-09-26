@@ -96,7 +96,8 @@ class PermissionMap extends BaseService
     protected function addPrefix(string $basePath): string
     {
         if ($this->prefix && $basePath) {
-            return $this->prefix . '/' . ltrim($basePath, '/');
+            $basePath = ltrim($basePath, '/');
+            return $this->prefix . ('#' === $basePath[0] ? $basePath : ('/' . $basePath));
         } else {
             return $this->prefix . $basePath;
         }
