@@ -1,3 +1,19 @@
+## [0.10.5](https://github.com/miaoxing/app/compare/v0.10.4...v0.10.5) (2024-09-30)
+
+
+### Features
+
+* **app, experimental:** 权限支持使用 `#` 表示操作 ([b2058b4](https://github.com/miaoxing/app/commit/b2058b4eb8c2c99a4acfed51349467c335b935b9))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.16.0` to `0.16.1`
+* **@miaoxing/services:** upgrade from `0.9.6` to `0.9.7`
+
 ## [0.10.4](https://github.com/miaoxing/app/compare/v0.10.3...v0.10.4) (2024-09-01)
 
 
