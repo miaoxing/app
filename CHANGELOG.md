@@ -1,3 +1,26 @@
+## [0.10.8](https://github.com/miaoxing/app/compare/v0.10.7...v0.10.8) (2024-12-30)
+
+
+### Bug Fixes
+
+* 限制 react 版本低于 19，避免测试失败 ([774fca7](https://github.com/miaoxing/app/commit/774fca7392b373c3aa86495e6a1fdfe0d691aeaa))
+
+
+### Features
+
+* **app:** 初始化登录日志表，模型 ([40a71b5](https://github.com/miaoxing/app/commit/40a71b5c8abb53847527518de6b71f777ae4e3fb))
+* **app:** 记录用户登录日志 ([f9bae65](https://github.com/miaoxing/app/commit/f9bae65a5c4a9c6d162835787e9c12e7f5b50857))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/dev:** upgrade from `9.2.0` to `9.3.0`
+* **@miaoxing/plugin:** upgrade from `0.17.1` to `0.17.2`
+* **@miaoxing/services:** upgrade from `0.9.9` to `0.9.10`
+
 ## [0.10.7](https://github.com/miaoxing/app/compare/v0.10.6...v0.10.7) (2024-11-30)
 
 
