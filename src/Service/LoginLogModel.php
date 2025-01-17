@@ -2,7 +2,6 @@
 
 namespace Miaoxing\App\Service;
 
-use Miaoxing\App\Metadata\LoginLogTrait;
 use Miaoxing\Plugin\BaseModel;
 use Miaoxing\Plugin\Model\HasAppIdTrait;
 use Miaoxing\Plugin\Model\IpTrait;
@@ -12,12 +11,24 @@ use Miaoxing\Plugin\Service\User;
 
 /**
  * @mixin \StrPropMixin
+ * @property string|null $id
+ * @property string $appId 应用编号
+ * @property string $userId
+ * @property string $username 用户名
+ * @property int $type 操作类型
+ * @property int $code 返回代码
+ * @property string $message 返回消息
+ * @property int $platform 平台，默认为浏览器
+ * @property string $userAgent 用户代理
+ * @property string|null $createdAt 创建时间
+ * @property string $createdBy 创建用户编号
+ * @property string $createdIp 创建用户 IP
+ * @property string $createdIpAddress 创建用户地址
  */
 class LoginLogModel extends BaseModel
 {
     use HasAppIdTrait;
     use IpTrait;
-    use LoginLogTrait;
     use ModelTrait;
     use ReqQueryTrait;
 

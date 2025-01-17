@@ -2,7 +2,6 @@
 
 namespace Miaoxing\App\Service;
 
-use Miaoxing\App\Metadata\GroupTrait;
 use Miaoxing\Plugin\BaseModel;
 use Miaoxing\Plugin\Model\HasAppIdTrait;
 use Miaoxing\Plugin\Model\ModelTrait;
@@ -56,23 +55,56 @@ use Wei\Ret;
  *   type="string",
  *   description="更新时间"
  * )
- * @property GroupModel $parent
- * @property GroupModel[]|GroupModel $children
+ * @property string|null $id
+ * @property string $appId 应用编号
+ * @property string $parentId 父级分组编号
+ * @property int $level 层级
+ * @property string $name
+ * @property int $sort
+ * @property int $status
+ * @property string|null $createdAt
+ * @property string|null $updatedAt
+ * @property string $createdBy
+ * @property string $updatedBy
+ * @property string|null $deletedAt
+ * @property string $deletedBy
+ * @property self $parent
+ * @property self|self[] $children
+ * @property string|null $id
+ * @property string $appId 应用编号
+ * @property string $parentId 父级分组编号
+ * @property int $level 层级
+ * @property string $name
+ * @property int $sort
+ * @property int $status
+ * @property string|null $createdAt
+ * @property string|null $updatedAt
+ * @property string $createdBy
+ * @property string $updatedBy
+ * @property string|null $deletedAt
+ * @property string $deletedBy
  */
 class GroupModel extends BaseModel
 {
-    use GroupTrait;
     use HasAppIdTrait;
     use ModelTrait;
     use ReqQueryTrait;
     use SnowflakeTrait;
     use SoftDeleteTrait;
 
+    /**
+     * @Relation
+     * @return self
+     */
     public function parent(): self
     {
         return $this->hasOne(static::class, 'id', 'parentId');
     }
 
+    /**
+     * @Relation
+     * @return self|self[]
+     */
     public function children(): self
     {
         return $this->hasMany(static::class, 'parentId')->desc('sort');
