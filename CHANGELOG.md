@@ -1,3 +1,19 @@
+## [0.10.10](https://github.com/miaoxing/app/compare/v0.10.9...v0.10.10) (2025-02-02)
+
+
+### Bug Fixes
+
+* **app:** 解决 `g-config` 命令将 `[id].jsx` 排在最前面导致其他页面失效 ([3334b41](https://github.com/miaoxing/app/commit/3334b41b3b6654f9004dffe230bb7a8c82484463))
+
+
+
+
+
+### Dependencies
+
+* **@miaoxing/plugin:** upgrade from `0.17.3` to `0.17.4`
+* **@miaoxing/services:** upgrade from `0.9.11` to `0.9.12`
+
 ## [0.10.9](https://github.com/miaoxing/app/compare/v0.10.8...v0.10.9) (2024-12-31)
 
 
