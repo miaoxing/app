@@ -116,6 +116,17 @@ async function generateEvents(name: string) {
 async function scanPages(name: string, rootDir: string, dir: string, pages: Pages = {}): Promise<Pages> {
   const files = await fs.readdir(dir);
 
+  // 将动态的路由(如 [id])排到最后面
+  files.sort((a, b) => {
+    if (a.startsWith('[')) {
+      return 1;
+    }
+    if (b.startsWith('[')) {
+      return -1;
+    }
+    return 0;
+  });
+
   for (const file of files) {
     // 忽略移动端目录，由 taro-plugin-miaoxing 去生成
     if ('m' === file) {
